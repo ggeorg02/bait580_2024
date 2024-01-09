@@ -1,0 +1,53 @@
+format: jb-book
+root: intro
+parts:
+- caption: Installation instructions
+  chapters:
+  - file: installation/conda
+  - file: installation/jupyterlabtest
+
+  # - file: installation/aws
+  # - file: installation/RDSCreation
+  # - file: installation/pgadmin
+  # - file: installation/dump
+
+  # - file: installation/neo4j
+  # - file: installation/Mongodb
+  
+# - caption: Additional materials / Refresher
+#   chapters:
+#   - file: additional/pscopg2
+#   - file: additional/normalization
+#   - file: additional/views
+#   - file: additional/secrets
+#   - file: installation/psql
+#   - file: additional/dumpscommand
+
+- caption: Video series
+  chapters:
+  - file: additional/video
+
+# - caption: Regrade requests
+#   chapters:
+#   - file: additional/regrade
+  
+- caption: Lectures
+  numbered: False
+  chapters:
+  - file: lectures/lecture0
+  - file: lectures/lecture1
+  # - file: lectures/lecture2
+  # - file: lectures/lecture3
+  # - file: lectures/lecture4
+  # - file: lectures/lecture5
+  # - file: lectures/lecture6
+  # - file: lectures/lecture7
+  # - file: lectures/lecture8
+  # - file: lectures/lecture9
+  # - file: lectures/lecture10
+  
+  - file: basics/organize
+    sections:
+    - file: structure/toc
+    - file: structure/configure
+    - file: file-types/index
