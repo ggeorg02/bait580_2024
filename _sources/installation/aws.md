@@ -1,6 +1,6 @@
 # AWS
 
-I highly recommend using google chrome browser for this.
+I recommend you all use Google Chrome for this course.
 
 You will be using AWS academy as part of this course and will be given 100$ credit. This is more than sufficient for you to do your assignments and projects.
 
