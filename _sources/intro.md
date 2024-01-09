@@ -10,18 +10,6 @@ These are lecture notes for the course BAIT 580A offered in Winter 2022 at the U
 - To work with the data to find the tools best suited to answering the questions you pose
 - To be able to present analytic workflows and decisions clearly to stakeholders
 
-## Teaching squad
-
-| Name         | Position   | email | 
-| :---:        | :---:      | :---:         | 
-| Gittu George, PhD | Instructor | | 
-| Daniel Ramandi | Teaching Assistant |  |
-| Ngoc Bui | Teaching Assistant | |  
-| Olivia Garland| Teaching Assistant |  | 
-| Shanny Lu| Teaching Assistant |  | 
-| Vishal Desh | Teaching Assistant | |  
-| Zach Warham| Teaching Assistant |  | 
-
 If you have any questions, you can always reach out to us by creating a discussion on your course canvas page.
 
 ## Assessments
@@ -38,8 +26,4 @@ Please refer to the course canvas to see when each assignment and project delive
 
 Want to talk about the course outside of the lecture? Let's talk during these dedicated times.
 
-| Teaching Member | When                 | Where    |
-| :---:           | :---:                | :---:    |
-|  Gittu George | TBD | Zoom link in Canvas |
-| TA hour 1 | TBD | Zoom link in Canvas |
-| TA hour 2 | TBD | Zoom link in Canvas |
+Check canvas for days/time
