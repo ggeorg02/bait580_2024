@@ -1,6 +1,9 @@
 # AWS
 
+I highly recommend using google chrome browser for this.
+
 You will be using AWS academy as part of this course and will be given 100$ credit. This is more than sufficient for you to do your assignments and projects.
+
 
 ```{Warning}
 If you get exhausted of this 100 $ credit, we won’t offer you more credits. So please make sure you spin instance type that is enough (I have run through all the assignment problems using db.t3.small instance) to get through your problems. Please check with me if you have any questions regarding this.
@@ -40,7 +43,7 @@ align: center
 ---
 ```
 
-- Later, follow the instructions in [this](https://canvas.ubc.ca/files/24609058/download?download_frd=1) pdf. 
+- Later, follow the instructions in [this](https://canvas.ubc.ca/files/30825932/download?download_frd=1) pdf. 
 
 
 After clicking on `Learner Lab - Foundational Services,` if you can't see anything (or show a `refused to connect` error), in most cases, it's that you have to configure your [SwitchyOmega for chrome](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html) or if you see a blank screen you probably be using safari. If you do see lab with no issues then you don't have to install SwitchyOmega.
