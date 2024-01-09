@@ -1,0 +1,1048 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 5: Beyond RDBMS &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture5';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture5.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture5.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture5.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture5.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 5: Beyond RDBMS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-we-with-rdbms-halfway-check">Where are we with RDBMS? (halfway check)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#story-time-justin-beiber-problem">Story Time (Justin Beiber problem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-rdbms">Advantages of RDBMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-rdbms">Disadvantages of RDBMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-nosql">What is NoSQL?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-goals-of-nosql">Main Goals of NoSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql-strengths">NoSQL Strengths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-types-of-nosql-database">Different types of NoSQL database.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#keyvalue-store">Key–value store</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#document-store">Document store</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#column-based">Column based</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based">Graph based</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-graph-databases">Introduction to Graph Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-database-history">Graph database history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases-of-graph-databases">Use cases of graph databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-interact-with-a-graph-database">How Do We Interact with a Graph Database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neo4j-dbms">Neo4j DBMS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-model">Graph model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cypher-art">Cypher Art</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-for-nodes">Property for nodes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-work-out-our-nodes">Let’s work out our nodes</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationships">Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-type">Relationship type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-for-relationships">Properties for relationships</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-work-out-our-relationships">Let’s work out our relationships</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-graph-database">Setting up your graph database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-connect">How to connect?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py2neo-drivers">Python py2neo (drivers)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-beyond-rdbms">
+<h1>Lecture 5: Beyond RDBMS<a class="headerlink" href="#lecture-5-beyond-rdbms" title="Permalink to this headline">#</a></h1>
+<p>Gittu George, January 17 2023</p>
+<p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Late submissions won’t be accepted even for partial credits.</p></li>
+<li><p>Internet was not working when you tried to upload it at 11:45 PM is not an excuse. You are responsible for uploading it earlier so that situations like this don’t happen.</p></li>
+<li><p>You are allowed to make multiple submission</p></li>
+<li><p>RHL provided date and time for the final exam - Tuesday, Feb 7th 1:00PM – 2:30PM</p></li>
+<li><p>Check for the upcoming deadlines with assignments - We won’t be able to provide you an extension.</p></li>
+</ul>
+</section>
+<section id="todays-agenda">
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Where are we with RDBMS?</p></li>
+<li><p>Advantages &amp; Disadvantages of RDBMS</p></li>
+<li><p>What is NoSQL?</p></li>
+<li><p>Different types of NoSQL?</p></li>
+<li><p>Introduction to graph database</p></li>
+<li><p>Understanding the graph model</p></li>
+<li><p>Setting up and connecting to graph database</p></li>
+<li><p>Class Activity:</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Understand (traditional) limitations of RDBMS</p></li>
+<li><p>Understand the main forms of NoSQL/non-relational databases</p></li>
+<li><p>Examine some potential solutions</p></li>
+<li><p>Introduce Graph Databases</p></li>
+<li><p>Understanding graph model</p></li>
+</ul>
+</section>
+<section id="where-are-we-with-rdbms-halfway-check">
+<h2>Where are we with RDBMS? (halfway check)<a class="headerlink" href="#where-are-we-with-rdbms-halfway-check" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>We talked about Big Data generally and issues with data specifically</p></li>
+<li><p>We talked about cloud computing and set up an RDS instance in the cloud.</p></li>
+<li><p>We talked about how to connect to a database through Jupyter (or essentially from anywhere using the ODBC drivers)</p></li>
+<li><p>We used the connection to query data and plot it using interactive figures</p></li>
+<li><p>We added appropriate indexes to the data where necessary to (ostensibly) speed up data queries</p></li>
+<li><p>We de-normalized to support broader data access and built a mini-warehouse</p></li>
+</ul>
+</section>
+<section id="story-time-justin-beiber-problem">
+<h2>Story Time (Justin Beiber problem)<a class="headerlink" href="#story-time-justin-beiber-problem" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/justin.png" src="../_images/justin.png" />
+<p>Check out <a class="reference external" href="https://www.wired.com/2015/11/how-instagram-solved-its-justin-bieber-problem/">this article</a> to know why I am here!!</p>
+</aside>
+<p>We want the right tool for the job. So far, we’ve used RDBMS appropriately by normalizing it, using indexes wherever needed &amp; denormalizing it for analytical and dashboard purposes. Postgres or any other database ( like MySQL, Oracle, and SQL Server) can support very large operations. Instagram, IMDB, Skype, and others use Postgres for business-critical services. But, SQL is not suited to all analyses. Here is what happened with Instagram - how Justin Beiber’s popularity could destroy the entire infrastructure.</p>
+<p>Even around 2013, Instagram already had a pretty big infrastructure, and they used to use Postgres as their database. Everything was going well until Justin Beiber got into Instagram. He was one of the first high-profile people to get on Instagram. When he would post something, people would comment and like him so much. But people around the globe are doing it simultaneously that it is hitting servers so fast that people can’t see their likes or comments, or it took a long time for that to get updated as a result of <a class="reference external" href="https://www.postgresql.org/docs/9.1/explicit-locking.html">locking tables</a>. After so much debugging to this issue, Instagram decided to move to a hybrid system with Amazon Cassandra and Postgres.</p>
+<p>The takeaway message from this story is that even though they had a big infrastructure on Postgres, no other techniques really worked out to solve this problem. And they want to rely on a hybrid solution ( Postgres and Cassandra) to this problem. Most data systems are hybrid in the era we are in; you will experience this when you start working in the industry.</p>
+</section>
+<section id="advantages-of-rdbms">
+<h2>Advantages of RDBMS<a class="headerlink" href="#advantages-of-rdbms" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Uses a (semi) standard language (SQL) across all platforms.</p></li>
+<li><p>Uses ACID principles</p>
+<ul>
+<li><p>Atomic Transactions</p></li>
+<li><p>Consistent data representation</p></li>
+<li><p>Independent Transactions</p></li>
+<li><p>Durable Data</p></li>
+</ul>
+</li>
+<li><p>Highly optimized query planner (EXPLAIN ANALYZE)</p></li>
+</ul>
+</section>
+<section id="disadvantages-of-rdbms">
+<h2>Disadvantages of RDBMS<a class="headerlink" href="#disadvantages-of-rdbms" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Write times and table locks reduce efficiency</p>
+<ul>
+<li><p>Particularly when the upsert level is high (UPDATE &amp; INSERT)</p></li>
+</ul>
+</li>
+<li><p>Some data has complex models</p></li>
+<li><p>Some data may be “sparse” in a normalized format</p></li>
+<li><p>Documents &amp; keys may not be suited to an RDBMS</p></li>
+<li><p>Scaling difficulties</p></li>
+</ul>
+</section>
+<section id="what-is-nosql">
+<h2>What is NoSQL?<a class="headerlink" href="#what-is-nosql" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/NoSQL.jpg" src="../_images/NoSQL.jpg" />
+<p><a class="reference external" href="http://www.strozzi.it/cgi-bin/CSA/tw7/I/en_US/nosql/Home%20Page">Here</a> checkout the real NoSQL from 1998.</p>
+</aside>
+<p>NoSQL (Not (Only) SQL) was there for quite a while now. It was first introduced in 1998 by <a class="reference external" href="http://www.strozzi.it/users/carlo/vitae.html">Carlo Strozzi’s</a> to call his lightweight, relational database that did not follow the standard SQL interface, and hence NoSQL. Later in 2000, this got popular as hashtag #NoSQL to discuss the advancement in the non-relational database world. It’s a trendy buzzword these days.</p>
+<section id="main-goals-of-nosql">
+<h3>Main Goals of NoSQL<a class="headerlink" href="#main-goals-of-nosql" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Reduce the dependence on fixed data schema.</p></li>
+<li><p>Reduce the dependence on a single point of truth.</p></li>
+<li><p>Scaling!</p></li>
+</ul>
+</section>
+<section id="nosql-strengths">
+<h3>NoSQL Strengths<a class="headerlink" href="#nosql-strengths" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>I came up with [the BASE] acronym with my students in their office earlier that year. I agree it is contrived a bit, but so is “ACID” – much more than people realize, so we figured it was good enough. <em><strong>- Eric Brewer</strong></em></p>
+</aside>
+<ul class="simple">
+<li><p>(semi) Schema-free</p>
+<ul>
+<li><p>With no referential integrity and internal consistency, we can easily split data across servers</p></li>
+</ul>
+</li>
+<li><p>Accepting Basic Availability:</p>
+<ul>
+<li><p>You usually see all the tweets when you sort by “Latest”, but sometimes a refresh shows some messages you missed.</p></li>
+<li><p>You are usually chatting in real-time, but sometimes messages pile up.</p></li>
+</ul>
+</li>
+<li><p>NoSQL is BASE</p>
+<ul>
+<li><p>Basically Available</p></li>
+<li><p>Soft State</p></li>
+<li><p>Eventual Consistency</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="different-types-of-nosql-database">
+<h3>Different types of NoSQL database.<a class="headerlink" href="#different-types-of-nosql-database" title="Permalink to this headline">#</a></h3>
+<section id="keyvalue-store">
+<h4>Key–value store<a class="headerlink" href="#keyvalue-store" title="Permalink to this headline">#</a></h4>
+<p>In these kinds of databases, data is stored as key-value pairs. You can think of it as a giant dictionary object. In these cases, the database will contain a simple, unique string as the key, and that key will point to a large data value. The data value can be stored as an integer, a string, or a complex structure. This database is based on the Amazon Dynamo <a class="reference external" href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf">paper</a>.</p>
+<p>E.g., Amazon DynamoDB, Redis, Memcached</p>
+</section>
+<section id="document-store">
+<h4>Document store<a class="headerlink" href="#document-store" title="Permalink to this headline">#</a></h4>
+<p>A type of key-value DB with internal (searchable) structure. A “document” contains all relevant data and has a unique key.</p>
+<p>Eg: ElasticSearch, MongoDB, AWS DocumentDB</p>
+</section>
+<section id="column-based">
+<h4>Column based<a class="headerlink" href="#column-based" title="Permalink to this headline">#</a></h4>
+<p>Column-based databases are built based on google’s big table <a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf">paper</a>. Our normal files and relational databases store data in the disk in a row based fashion, but here data is stored in a column-based fashion. Efficiency comes in filtering when a few columns are needed.</p>
+<p>E.g., Bigtable, Cassandra, Amazon Redshift.</p>
+</section>
+<section id="graph-based">
+<h4>Graph based<a class="headerlink" href="#graph-based" title="Permalink to this headline">#</a></h4>
+<p>Objects are defined with properties, focused on relationships between objects. More to follow…</p>
+<p>E.g., Neo4j, OrientDB, AWS Neptune.</p>
+</section>
+</section>
+</section>
+<section id="introduction-to-graph-databases">
+<h2>Introduction to Graph Databases<a class="headerlink" href="#introduction-to-graph-databases" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/bridge.png" src="../_images/bridge.png" />
+<p>Can you cross all 7 bridges without crossing any of them more than once?</p>
+</aside>
+<p>Graph databases are based on graph theory, an area of discrete mathematics. Leonhard Euler is considered to be the father of graph theory. In 1735 he used graph theory to prove the <a class="reference external" href="https://www.ime.usp.br/~yw/2012/grafinhos/aulas/material-aulas/Paper-Euler-Letters.pdf">famous Seven Bridges of Konigsberg problem</a> had no solution.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“This question is so banal, but seemed to be worthy of attention in that neither geometry, nor algebra, nor even the art of counting [ars combi- natoria] was sufficient to solve it. In view of this, it occurred to me to wonder whether it belonged to the geometry of position [geometria situs], which Leibniz had once so much longed for. ” <em><strong>- Leonhard Euler</strong></em></p>
+</aside>
+<p>You can watch <a class="reference external" href="https://www.youtube.com/watch?v=nZwSo4vfw6c">this</a> exciting TEDEd video that explains in detail this problem and why it doesn’t have a solution.</p>
+<p>You can think about a graph as a network of connections. You can see that in various disciplines and everywhere around us. For example, here are some networks you can see in computer science, chemistry, and biology.</p>
+<img alt="../_images/network.png" src="../_images/network.png" />
+<p>Source: <a class="reference external" href="https://www.pnas.org/content/104/21/8685">pnas</a>,<a class="reference external" href="https://www.britannica.com/science/molecule">britannica</a>,
+,<a class="reference external" href="http://3.bp.blogspot.com/_k2eyFIEQ3fk/THzBoljqTPI/AAAAAAAAABk/IUUY1vuAnw0/s1600/metro_network.gif">metro</a></p>
+<p>If you look closely into these networks, you can notice that all these networks got some objects linked to each other. So we can also define graphs as a collection of objects linked to each other.</p>
+<p>We can model many things around us using simple graphs. Let’s draw out a simple example here…</p>
+<img alt="../_images/draw.png" src="../_images/draw.png" />
+<section id="graph-database-history">
+<h3>Graph database history<a class="headerlink" href="#graph-database-history" title="Permalink to this headline">#</a></h3>
+<p>A graph database is a database management system that will enable you to perform Create, Read, Update, and Delete (CRUD) operations on these graph models that we drew out before.</p>
+<p>Graph databases were there for quite a long time. It may be that it’s getting traction these days because of this big data and NoSQL era. So here, I drew out a timeline of graph databases.</p>
+<img alt="../_images/timeline.png" src="../_images/timeline.png" />
+<p>Graph databases are often used for OLTP; data is stored inside these databases as graphs, and relationship brings lots of value. So from a data scientist/ analyst perspective, relationships end up being the critical element for analyzing the data.</p>
+</section>
+<section id="use-cases-of-graph-databases">
+<h3>Use cases of graph databases<a class="headerlink" href="#use-cases-of-graph-databases" title="Permalink to this headline">#</a></h3>
+<img alt="../_images/usecase.png" src="../_images/usecase.png" />
+<p>You can find various use-cases from different domains. Please check <a class="reference external" href="https://neo4j.com/use-cases/">this out</a> to see use-cases for your domain of interest.</p>
+</section>
+<section id="how-do-we-interact-with-a-graph-database">
+<h3>How Do We Interact with a Graph Database?<a class="headerlink" href="#how-do-we-interact-with-a-graph-database" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><em><strong>AQL (ArangoDB Query Language):</strong></em> a SQL-like query language used in ArangoDB for both documents and graphs</p></li>
+<li><p><em><strong>Cypher Query Language (Cypher):</strong></em> a graph query declarative language for Neo4j that enables ad hoc and programmatic (SQL-like) access to the graph.</p></li>
+<li><p><em><strong>GQL:</strong></em> proposed ISO standard graph query language</p></li>
+<li><p><em><strong>GraphQL:</strong></em> an open-source data query and manipulation language for APIs. Dgraph implements a modified GraphQL language called DQL (formerly GraphQL+-)</p></li>
+<li><p><em><strong>Gremlin:</strong></em> a graph programming language that is a part of Apache TinkerPop open-source project[42]</p></li>
+<li><p><em><strong>SPARQL:</strong></em> a query language for RDF databases that can retrieve and manipulate data stored in RDF format</p></li>
+</ul>
+<p>Source: Wikipedia</p>
+</section>
+<section id="neo4j-dbms">
+<h3>Neo4j DBMS<a class="headerlink" href="#neo4j-dbms" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>I recommend watching <a class="reference external" href="https://www.youtube.com/watch?v=GM9bB4ytGao">this video</a> on Neo4j.</p>
+</aside>
+<p>In this course, we will be learning about neo4j. Neo4j is one of the first players in the graph database and is a very popular database. Neo4j DBMS mainly consists of 2 parts</p>
+<ul class="simple">
+<li><p>Neo4j database storage for storing the data and</p></li>
+<li><p>Neo4j graph engine to retrieve the data.</p></li>
+</ul>
+<p><em><strong>Neo4j DBMS storage:</strong></em></p>
+<p>Neo4j stores the data as graphs on disk. Index-free adjacency is one advantage of storing the data like this. I found a good</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Check out this article by <a class="reference external" href="https://dmccreary.medium.com/how-to-explain-index-free-adjacency-to-your-manager-1a8e68ec664a">Dan McCreary</a>. I strongly recommend reading it even though I am summarizing contents from this article.</p>
+</aside>
+<p>This analogy will help you understand this concept. Say if you want to visit your neighbor’s house, what steps would you take?</p>
+<img alt="../_images/neo4j.png" src="../_images/neo4j.png" />
+<p>Source: <a class="reference external" href="https://dmccreary.medium.com/how-to-explain-index-free-adjacency-to-your-manager-1a8e68ec664a">Medium</a></p>
+<ol class="arabic simple">
+<li><p>Leave my house.</p></li>
+<li><p>Point me towards Anne’s house.</p></li>
+<li><p>Walk to Anne’s house.</p></li>
+</ol>
+<p>This is exactly how graph databases are designed, and this is what I mean when I say data is stored as graphs. So when objects and connections are added to a database, these objects are added as connected, and hence we can access data using pointer navigation.</p>
+<p>If you wonder why I am saying this, you need to understand how this process is done in an RDBMS.</p>
+<img alt="../_images/dbms.png" src="../_images/dbms.png" />
+<p>Source: <a class="reference external" href="https://dmccreary.medium.com/how-to-explain-index-free-adjacency-to-your-manager-1a8e68ec664a">Medium</a></p>
+<p>In RDBMS, it needs to go to a central index where it needs to look for the address location of Anne’s house and later point towards that address. So every time I need to visit Anne’s house, I need to take this approach, and this can be time-consuming as I need to walk longer and wait at the central index to get Anne’s address.</p>
+<p>Even though neo4j is in the class of NoSQL databases, its ACID complaint</p>
+<p><em><strong>Neo4j DBMS Graph engine:</strong></em></p>
+<p>As we discussed before, Neo4j uses Cypher Query Language (CQL) to retrieve data. This graph engine is used to interpret the cypher query passed by the user to retrieve the data, whether it is on disk or cached in memory. Our next 2 lectures are dedicated to CQL.</p>
+</section>
+<section id="graph-model">
+<span id="graphmodel"></span><h3>Graph model<a class="headerlink" href="#graph-model" title="Permalink to this headline">#</a></h3>
+<p>Let’s understand the key elements in a graph model. What we sketched before will be modeled like this in Neo4j. Understanding this is very important for querying the graph database.</p>
+<img alt="../_images/graph.png" src="../_images/graph.png" />
+<ul class="simple">
+<li><p><em><strong>Nodes -</strong></em> Entities with searchable properties.</p></li>
+<li><p><em><strong>Labels -</strong></em> To define what kind of nodes they are.</p></li>
+<li><p><em><strong>Relationships -</strong></em> Links between entities with searchable properties and directionality.</p></li>
+<li><p><em><strong>Relationship types -</strong></em> Entities with searchable properties</p></li>
+<li><p><em><strong>Properties -</strong></em> Entities with searchable properties</p></li>
+</ul>
+</section>
+</section>
+<section id="cypher-art">
+<h2>Cypher Art<a class="headerlink" href="#cypher-art" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Querying a graph using Cypher is intuitive.</p></li>
+<li><p>Cypher is ASCII art</p></li>
+<li><p>Optimized for being read by humans,</p></li>
+<li><p>Self-explanatory queries</p></li>
+</ul>
+<p>You can think of Cypher as mapping English language sentence structure to patterns in a graph. Here nouns are nodes of the graph, the verbs are the relationships in the graph, and the adjectives and adverbs are the properties.</p>
+<img alt="../_images/english.png" src="../_images/english.png" />
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>You can check out <a class="reference external" href="https://neo4j.com/developer/cypher/guide-sql-to-cypher/">this</a> article to see how you can compare SQL to cypher.</p>
+</aside>
+<p>We saw our dummy example and graph model. Two key elements that make up a graph are Nodes (also known as vertices) and Relationships (also known as edges). And a graph model consists of 5 elements Nodes, Labels, Properties Value, Relationships, Relationship types. So let’s see how these elements are represented in cypher language.</p>
+<section id="nodes">
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">#</a></h3>
+<p>Cypher uses a pair of parentheses like ( ), (n) to represent a node.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>( ) – represents an anonymous node.
+(n) – Here n represents a variable. All the nodes will be referred to this variable.
+</pre></div>
+</div>
+<p>We can specify the nodes we want based on the Label and/or properties inside ( ).</p>
+<section id="labels">
+<h4>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(:Label) – returns all nodes with specified Label
+(variable:Label) – returns all nodes with specified Label to variable
+(:Label1:Label2) – returns all nodes with Label1 and Label2
+(variable:Label1:Label2) – returns all nodes with Label1 and Label2 to variable
+</pre></div>
+</div>
+</section>
+<section id="property-for-nodes">
+<h4>Property for nodes<a class="headerlink" href="#property-for-nodes" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">variable</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">})</span>
+<span class="p">(</span><span class="n">variable</span><span class="p">:</span><span class="n">Label</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">})</span>
+<span class="p">(</span><span class="n">variable</span> <span class="p">{</span><span class="n">propertyKey1</span><span class="p">:</span> <span class="n">propertyValue1</span><span class="p">,</span> <span class="n">propertyKey2</span><span class="p">:</span> <span class="n">propertyValue2</span><span class="p">})</span>
+<span class="p">(</span><span class="n">variable</span><span class="p">:</span><span class="n">Label</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">,</span> <span class="n">propertyKey2</span><span class="p">:</span> <span class="n">propertyValue2</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+<section id="let-s-work-out-our-nodes">
+<h4>Let’s work out our nodes<a class="headerlink" href="#let-s-work-out-our-nodes" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">git</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Gittu&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
+<span class="p">(</span><span class="n">mik</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Associate Professor&#39;</span><span class="p">})</span>
+<span class="p">(</span><span class="n">tom</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
+<span class="p">(</span><span class="n">pan</span><span class="p">:</span><span class="n">ANIMAL</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Panda&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Climb&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;China&#39;</span><span class="p">})</span>
+<span class="p">(</span><span class="n">pol</span><span class="p">:</span><span class="n">ANIMAL</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Polar Bear&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Walk&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;Canada&#39;</span><span class="p">})</span>
+<span class="p">(</span><span class="n">kan</span><span class="p">:</span><span class="n">ANIMAL</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Kangaroo&#39;</span><span class="p">,</span><span class="n">method_of_movement</span><span class="p">:</span> <span class="s1">&#39;Hop&#39;</span><span class="p">,</span><span class="n">height</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="n">mainly_found</span><span class="p">:</span> <span class="s1">&#39;Australia&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="relationships">
+<h3>Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">#</a></h3>
+<p>Syntax: Specifying aliases for column headings</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">()</span> <span class="o">//</span> <span class="n">a</span> <span class="n">node</span>
+<span class="p">()</span><span class="o">--</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span> <span class="n">nodes</span> <span class="n">have</span> <span class="n">some</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">relationship</span>
+<span class="p">()</span><span class="o">--&gt;</span><span class="p">()</span> <span class="o">//</span> <span class="n">the</span> <span class="n">first</span> <span class="n">node</span> <span class="n">has</span> <span class="n">a</span> <span class="n">relationship</span> <span class="n">to</span> <span class="n">the</span> <span class="n">second</span> <span class="n">node</span>
+<span class="p">()</span><span class="o">&lt;--</span><span class="p">()</span> <span class="o">//</span> <span class="n">the</span> <span class="n">second</span> <span class="n">node</span> <span class="n">has</span> <span class="n">a</span> <span class="n">relationship</span> <span class="n">to</span> <span class="n">the</span> <span class="n">first</span> <span class="n">node</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Comments in Cypher - //
+Just like how # is in python &amp; how – in SQL</p>
+</div>
+<section id="relationship-type">
+<h4>Relationship type<a class="headerlink" href="#relationship-type" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="properties-for-relationships">
+<h4>Properties for relationships<a class="headerlink" href="#properties-for-relationships" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+<span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">,</span> <span class="n">propertyKey2</span><span class="p">:</span> <span class="n">propertyValue2</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="let-s-work-out-our-relationships">
+<h4>Let’s work out our relationships<a class="headerlink" href="#let-s-work-out-our-relationships" title="Permalink to this headline">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">git</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pan</span><span class="p">)</span>
+<span class="p">(</span><span class="n">mik</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">90</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
+<span class="p">(</span><span class="n">tom</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
+<span class="p">(</span><span class="n">tom</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">50</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">kan</span><span class="p">)</span>
+<span class="p">(</span><span class="n">pol</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">git</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We modeled our nodes and relationship, and in the next class, we will create these in our graph database.</p>
+</section>
+</section>
+</section>
+<section id="setting-up-your-graph-database">
+<h2>Setting up your graph database<a class="headerlink" href="#setting-up-your-graph-database" title="Permalink to this headline">#</a></h2>
+<p>Now we are quite knowledgeable about graph databases, and in particular, with Neo4j, we will set up our graph database(neo4j).</p>
+<p>You can install neo4j</p>
+<ul class="simple">
+<li><p>On your laptop,</p></li>
+<li><p>On your company’s on-premise server, or</p></li>
+<li><p>On the cloud.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/demos.png" src="../_images/demos.png" />
+</aside>
+<p>We will be setting up our neo4j in the cloud. There are a couple of options to do it, either we can spin up an ec2 instance in AWS and install neo4j in there, but remember doing it this way means we need to manage neo4j for all the software updates, system maintenance, and other admin tasks. Recently, in 2019, neo4j came up with its own managed cloud service called neo4j Aura. So we will be using neo4j aura for this course. Follow the instructions under <a class="reference internal" href="../installation/neo4j.html"><span class="doc std std-doc">installation instructions</span></a> to setup this.</p>
+</section>
+<section id="how-to-connect">
+<h2>How to connect?<a class="headerlink" href="#how-to-connect" title="Permalink to this headline">#</a></h2>
+<p>How we can create a</p>
+<ul class="simple">
+<li><p>Command-line</p></li>
+<li><p>Neo4j Browser</p></li>
+<li><p>Python py2neo (drivers)</p></li>
+</ul>
+<section id="python-py2neo-drivers">
+<h3>Python py2neo (drivers)<a class="headerlink" href="#python-py2neo-drivers" title="Permalink to this headline">#</a></h3>
+<p>First, you need to install the packages; I recommend installing it using pip, as conda might not install dependencies. If you followed the instructions in <a class="reference internal" href="../installation/conda.html"><span class="doc std std-doc">conda</span></a> and have used the environment file and the environment <code class="docutils literal notranslate"><span class="pre">bait580env</span></code>, then you don’t want to worry about it as it is already installed for you.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
+!{sys.executable} -m pip install py2neo
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">from</span> <span class="nn">py2neo</span> <span class="kn">import</span> <span class="n">Graph</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_neo4j.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">username</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;neo4j+s://</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+
+<span class="c1"># This is our neo4j Connection Object:</span>
+<span class="n">graph</span> <span class="o">=</span> <span class="n">Graph</span><span class="p">(</span><span class="n">uri</span> <span class="o">=</span> <span class="n">url</span><span class="p">,</span>
+              <span class="n">user</span> <span class="o">=</span> <span class="n">username</span><span class="p">,</span>
+              <span class="n">password</span> <span class="o">=</span> <span class="n">password</span><span class="p">,</span>
+             <span class="n">secure</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+             <span class="n">routing</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Your query</span>
+<span class="n">most</span> <span class="o">=</span> <span class="n">graph</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;MATCH (m:Movie) RETURN m.title LIMIT 1&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">most</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">py2neo</span> <span class="kn">import</span> <span class="n">Graph</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_neo4j.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;py2neo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="can-you">
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Describe what a graph is.</p></li>
+<li><p>Describe what a graph database is.</p></li>
+<li><p>Describe some common use cases for using a graph database.</p></li>
+<li><p>Describe the Neo4j property graph model.</p></li>
+<li><p>Whiteboard a graph data model.</p></li>
+<li><p>Describe the components and benefits of the Neo4j Graph Platform.</p></li>
+</ul>
+</section>
+<section id="class-activity">
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check worksheet 5 in canvas for detailed instructions on activity and submission instructions.</p>
+</div>
+<ul class="simple">
+<li><p>Identify a Graph model and draw your model like <a class="reference internal" href="#graphmodel"><span class="std std-ref">in the example</span></a> that we discussed.</p></li>
+<li><p>Setup your graph database</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-we-with-rdbms-halfway-check">Where are we with RDBMS? (halfway check)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#story-time-justin-beiber-problem">Story Time (Justin Beiber problem)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-rdbms">Advantages of RDBMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-rdbms">Disadvantages of RDBMS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-nosql">What is NoSQL?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-goals-of-nosql">Main Goals of NoSQL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nosql-strengths">NoSQL Strengths</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-types-of-nosql-database">Different types of NoSQL database.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#keyvalue-store">Key–value store</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#document-store">Document store</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#column-based">Column based</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-based">Graph based</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-graph-databases">Introduction to Graph Databases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-database-history">Graph database history</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases-of-graph-databases">Use cases of graph databases</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-interact-with-a-graph-database">How Do We Interact with a Graph Database?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neo4j-dbms">Neo4j DBMS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graph-model">Graph model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cypher-art">Cypher Art</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nodes">Nodes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#labels">Labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-for-nodes">Property for nodes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-work-out-our-nodes">Let’s work out our nodes</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationships">Relationships</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-type">Relationship type</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-for-relationships">Properties for relationships</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-work-out-our-relationships">Let’s work out our relationships</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-graph-database">Setting up your graph database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-connect">How to connect?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py2neo-drivers">Python py2neo (drivers)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

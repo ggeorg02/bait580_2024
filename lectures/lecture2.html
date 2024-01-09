@@ -1,0 +1,1429 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 2: Setting up RDS and connection to cloud &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture2';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture2.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 2: Setting up RDS and connection to cloud</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-rds">Setting up RDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-cloud-rds">Connecting To Cloud (RDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-thing-first">First thing first</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pgadmin">pgAdmin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psql">psql</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-sql-sql-and-sql"><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> (<code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-returned-and-displayed-rows">Limiting returned and displayed rows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-returned-rows-to-python-variables">Assigning returned rows to Python variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-psycopg2-package-optional">Using psycopg2 package (OPTIONAL)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-setting-up-rds-and-connection-to-cloud">
+<h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this headline">#</a></h1>
+<p>Gittu George, January 5 2023</p>
+<section id="todays-agenda">
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Connecting to RDS (Postgres)</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Setup your first cloud database (RDS instance)</p></li>
+<li><p>You will know how to connect to a remote database from a Jupyter notebook.</p></li>
+<li><p>Different ways in interacting with the database from jupyter notebook.</p></li>
+<li><p>Showing different ways of loading the data.</p></li>
+<li><p>You will use queries to bring data into a Jupyter notebook and provide a simple data analysis.</p></li>
+</ul>
+</section>
+<section id="setting-up-rds">
+<span id="settingup"></span><h2>Setting up RDS<a class="headerlink" href="#setting-up-rds" title="Permalink to this headline">#</a></h2>
+<p>Demo time</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
+</figure>
+<p>I recommend you do this with me or during the class activity time. <a class="reference internal" href="../installation/RDSCreation.html"><span class="doc std std-doc">Here are the instructions</span></a> on setting up your first RDS instance.</p>
+<p>Consider your database what you built as an independent entity. Then, follow below instructions to connect to your database in the cloud.</p>
+</section>
+<section id="connecting-to-cloud-rds">
+<h2>Connecting To Cloud (RDS)<a class="headerlink" href="#connecting-to-cloud-rds" title="Permalink to this headline">#</a></h2>
+<p>If you haven’t yet set it up, please follow instructions in <a class="reference internal" href="#settingup"><span class="std std-ref">Setting up RDS</span></a></p>
+<p>OKAY.. so now you have your database ready! In our case, we set up our Postgres database in RDS. Since you are not using an already existing database, you created it, so it’s empty now. So we need to load data into this database. After loading data to the database, we are all set with querying from the database.</p>
+<p>Whether it’s for loading or querying the database, we need to connect to the database.</p>
+<p>Well, we have a variety of options to run our SQL statements in PostgreSQL (You already aware of couple of options from your BAIT 507) :</p>
+<ul class="simple">
+<li><p>pgAdmin is the official web-based GUI for interacting with PostgreSQL databases</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psql</span></code> is PostgreSQL’s interactive command-line interface</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code> magic commands in Jupyter notebooks, which are provided by the <code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> package</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> is the official Python adapter for PostgreSQL databases</p></li>
+<li><p>Using <code class="docutils literal notranslate"><span class="pre">.read_sql_query()</span></code> method in Pandas</p></li>
+</ul>
+<section id="first-thing-first">
+<h3>First thing first<a class="headerlink" href="#first-thing-first" title="Permalink to this headline">#</a></h3>
+<p><em><strong>What information do you want to know if you’re going to connect to the above?</strong></em> We need to know the information of the database that you wanted to connect to</p>
+<ul class="simple">
+<li><p>Hostname</p></li>
+<li><p>Port number</p></li>
+<li><p>User name (need to make sure that this user have access to the database)</p></li>
+<li><p>Password (Ofcourse !! you need to know the password for this user)</p></li>
+</ul>
+<p>Now let’s think about other sources you want to connect to the database. Here are a few that I thought of</p>
+<ul class="simple">
+<li><p>From a programming language (java, R, python, etc..)</p></li>
+<li><p>From your jupyter notebook</p></li>
+<li><p>From tableau</p></li>
+<li><p>From excel</p></li>
+<li><p>From R Studio</p></li>
+<li><p>OR from any other application that you are using, e.g., your banking website</p></li>
+</ul>
+<p>Besides knowing the hostname, port name, username, and password, we also need to install an Application programming interface (API) that helps the applications on the client-side communicate with the server-side (in our case database). Java Database Connectivity (JDBC) and Open Database Connectivity (ODBC) are 2 of such APIs that are provided by the database vendor (Postgres, Oracle, MySQL, etc..) to access their database.</p>
+<p>JDBC is language-specific, and its the standard interface between any java application and database. JDBC converts the java programmer’s requests to the database to something that the database understands (you can think of it as a translator). Meanwhile, ODBC is not language-specific, so it can convert requests from any application/software/programming language to something the database understands. Here is a diagram that will help you understand how ODBC works.</p>
+<a class="reference internal image-reference" href="../_images/connection.png"><img alt="../_images/connection.png" src="../_images/connection.png" style="width: 65%;" /></a>
+<aside class="sidebar">
+<p class="sidebar-title">How ODBC connects ?</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/odbc.png"><img alt="../_images/odbc.png" src="../_images/odbc.png" style="width: 450px;" /></a>
+</figure>
+</aside>
+<p>In the rest of the section, let’s focus on connecting to the database from python and the jupyter notebook. We will be using specific packages to make this possible, but as we have discussed, it uses ODBC for the connection. Many packages make this possible, but we will discuss a package named <code class="docutils literal notranslate"><span class="pre">psycopg2.</span></code></p>
+</section>
+<section id="pgadmin">
+<h3>pgAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this headline">#</a></h3>
+<div class="admonition-checkout admonition">
+<p class="admonition-title">Checkout</p>
+<p>Please check <a class="reference internal" href="../installation/pgadmin.html"><span class="doc std std-doc">here</span></a> for more details on setting up pgadmin and connecting to your database.</p>
+</div>
+<blockquote>
+<div><p>I like to use a <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code> keyboard shortcut to run my queries. You can configure this too by going Preferences -&gt; Query Tool -&gt; Keyboard shortcuts -&gt; Change “Execute query” to <code class="docutils literal notranslate"><span class="pre">Shift</span> <span class="pre">+</span> <span class="pre">Enter</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="psql">
+<h3>psql<a class="headerlink" href="#psql" title="Permalink to this headline">#</a></h3>
+<div class="admonition-checkout admonition">
+<p class="admonition-title">Checkout</p>
+<p>Please check <a class="reference internal" href="../installation/psql.html"><span class="doc std std-doc">here</span></a> for more details on setting up psql and connecting to your database.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can run SQL commands in pgadmin and/or jupyter notebook. <em><strong>In our situation, we need to install psql mainly to load the dumps.</strong></em></p>
+</div>
+</section>
+<section id="ipython-sql-sql-and-sql">
+<h3><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> (<code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code>)<a class="headerlink" href="#ipython-sql-sql-and-sql" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> is a package that enables us to run SQL statements right from a Jupyter notebook. You should install this package in your conda environment ( you probabily have it <a class="reference internal" href="../installation/conda.html"><span class="doc std std-doc">if you used the yml file</span></a> to setup your environment). In order to use it, we should load it first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> sql
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;load_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;sql&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2369,</span> in <span class="ni">InteractiveShell.run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2367</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2368</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2369</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2371</span> <span class="c1"># The code below prevents the output from being displayed</span>
+<span class="g g-Whitespace">   </span><span class="mi">2372</span> <span class="c1"># when using magics with decodator @output_can_be_silenced</span>
+<span class="g g-Whitespace">   </span><span class="mi">2373</span> <span class="c1"># when the last Python token in the expression is a &#39;;&#39;.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2374</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">magic</span><span class="o">.</span><span class="n">MAGIC_OUTPUT_CAN_BE_SILENCED</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/IPython/core/magics/extension.py:33,</span> in <span class="ni">ExtensionMagics.load_ext</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">module_str</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span><span class="s1">&#39;Missing module name.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">33</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">extension_manager</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="s1">&#39;already loaded&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The </span><span class="si">%s</span><span class="s2"> extension is already loaded. To reload it, use:&quot;</span> <span class="o">%</span> <span class="n">module_str</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/IPython/core/extensions.py:76,</span> in <span class="ni">ExtensionManager.load_extension</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Load an IPython extension by its module name.</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd"> Returns the string &quot;already loaded&quot; if the extension is already loaded,</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd"> &quot;no load function&quot; if the module doesn&#39;t have a load_ipython_extension</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="sd"> function, or None if it succeeded.</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">76</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_extension</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span> <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="k">if</span> <span class="n">module_str</span> <span class="ow">in</span> <span class="n">BUILTINS_EXTS</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/IPython/core/extensions.py:91,</span> in <span class="ni">ExtensionManager._load_extension</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="k">if</span> <span class="n">module_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>         <span class="n">mod</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">mod</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_str</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_load_ipython_extension</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023clone/lib/python3.11/importlib/__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1206,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1178,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1142,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sql&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we need the host address of where the database is stored, along with a username and a password.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/secret.png" src="../_images/secret.png" />
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are a couple of ways to deal with packages. In the following section, I am showing you one way of dealing with passwords, and I recommend following approach.</p>
+<p><em><strong>(OPTIONAL)</strong></em> There is also a way to use <code class="docutils literal notranslate"><span class="pre">dotenv</span></code> package, if you want, you can check out those <a class="reference internal" href="../additional/secrets.html"><span class="doc std std-doc">here</span></a></p>
+</div>
+<p>It is always a bad idea to store login information directly in a notebook or code file because of security reasons. Say if you want to share this notebook with your colleague, or if somebody came by and looked at your notebook, they can see your database connection details, including your password. It’s probably okay now as it’s a toy database, but when you start working in the industry, you will be dealing with a database ( or, in other words, business), and it can cause lots of problems if the password is compromised. So, let’s practice not doing the connection call by including the credentials directly into your notebook.</p>
+<p>In order to avoid that, we store that kind of information in a separate file, like <code class="docutils literal notranslate"><span class="pre">credentials.json</span></code> here, and read the username and password into our IPython session:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that your <code class="docutils literal notranslate"><span class="pre">credentials.json</span></code> file looks like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;host&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;the_end_point&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5432</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;password&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;your_password&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/demos.png" src="../_images/demos.png" />
+</aside>
+<p>This way, you don’t have to worry about exposing your password to anyone.</p>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Nowhere in assignments/projects should you include the hostname or password. If anything needs to be checked, then TA’s will contact you.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    
+<span class="n">username</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;port&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can establish the connection to the <code class="docutils literal notranslate"><span class="pre">postgres</span></code> database using the following code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> postgresql://{username}:{password}@{host}:{port}/postgres
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Connected: postgres@postgres&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we have used the <code class="docutils literal notranslate"><span class="pre">%sql</span></code> line magic to interpret the line in front of it as a magic command.</p>
+<p>We can also use <code class="docutils literal notranslate"><span class="pre">%%sql</span></code> cell magic to apply the magic to an entire notebook cell.</p>
+<p>List the relations (i.e. tables) in the database:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+SELECT *
+FROM pg_catalog.pg_tables
+WHERE schemaname != &#39;pg_catalog&#39; AND 
+    schemaname != &#39;information_schema&#39;;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+9 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>schemaname</th>
+            <th>tablename</th>
+            <th>tableowner</th>
+            <th>tablespace</th>
+            <th>hasindexes</th>
+            <th>hasrules</th>
+            <th>hastriggers</th>
+            <th>rowsecurity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>tweets</td>
+            <td>stockvalues</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>tweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>symbols</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>cashtags</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>cleantweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>users</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>replies</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>retweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>public</td>
+            <td>tesrt</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<p>Let’s run some SQL statements now. Let’s retrieve the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">population</span></code> columns from the <code class="docutils literal notranslate"><span class="pre">country</span></code> table:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM tweets.symbols limit 10;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+10 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+    </tbody>
+</table></div></div>
+</div>
+<section id="limiting-returned-and-displayed-rows">
+<h4>Limiting returned and displayed rows<a class="headerlink" href="#limiting-returned-and-displayed-rows" title="Permalink to this headline">#</a></h4>
+<p>As you can see, all rows are returned and displayed by default. This behaviour can be problematic if our table is very large for two reasons:</p>
+<ol class="arabic simple">
+<li><p>Retrieving large tables can be slow, and maybe not necessary</p></li>
+<li><p>Displaying a lot of rows clutters our Jupyter notebook</p></li>
+</ol>
+<p>We can modifying <code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> configuration to limit the number of returned and displayed rows. For example, here we change the display limit:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">config</span> SqlMagic.displaylimit = 10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">sql</span> SELECT * FROM tweets.symbols;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+6121 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>AAIN</td>
+            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>AAMC</td>
+            <td>Altisource Asset Management Corp Com</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>AAN</td>
+            <td>Aarons Holdings Company, Inc. Common Stock </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>AAP</td>
+            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>AAQC</td>
+            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>AAQC=</td>
+            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>AAQC+</td>
+            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>AAT</td>
+            <td>American Assets Trust, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>AAU</td>
+            <td>Almaden Minerals, Ltd. Common Shares</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>AB</td>
+            <td>AllianceBernstein Holding L.P.  Units</td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+</div>
+<p>Looks good. Let’s apply the magic to an entire cell so that we can break the lines:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> 
+SELECT * 
+FROM tweets.symbols;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+6121 rows affected.
+</pre></div>
+</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>AAIN</td>
+            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>AAMC</td>
+            <td>Altisource Asset Management Corp Com</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>AAN</td>
+            <td>Aarons Holdings Company, Inc. Common Stock </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>AAP</td>
+            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>AAQC</td>
+            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>AAQC=</td>
+            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>AAQC+</td>
+            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>AAT</td>
+            <td>American Assets Trust, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>AAU</td>
+            <td>Almaden Minerals, Ltd. Common Shares</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>AB</td>
+            <td>AllianceBernstein Holding L.P.  Units</td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+</div>
+</section>
+<section id="assigning-returned-rows-to-python-variables">
+<h4>Assigning returned rows to Python variables<a class="headerlink" href="#assigning-returned-rows-to-python-variables" title="Permalink to this headline">#</a></h4>
+<p>Single line queries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_output</span> <span class="o">=</span> <span class="o">%</span><span class="k">sql</span> SELECT * FROM tweets.symbols;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+6121 rows affected.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Multi-line queries:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span> query_output &lt;&lt;
+
+SELECT * 
+FROM tweets.symbols;
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+6121 rows affected.
+Returning data to local variable query_output
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_output</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>AAIN</td>
+            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>AAMC</td>
+            <td>Altisource Asset Management Corp Com</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>AAN</td>
+            <td>Aarons Holdings Company, Inc. Common Stock </td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>AAP</td>
+            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>AAQC</td>
+            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>AAQC=</td>
+            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>AAQC+</td>
+            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>AAT</td>
+            <td>American Assets Trust, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>19</td>
+            <td>AAU</td>
+            <td>Almaden Minerals, Ltd. Common Shares</td>
+        </tr>
+        <tr>
+            <td>20</td>
+            <td>AB</td>
+            <td>AllianceBernstein Holding L.P.  Units</td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+</div>
+<p>Now you can use the <code class="docutils literal notranslate"><span class="pre">query_output</span></code> dataframe to do any other analysis or visualization that you learned in your other courses.</p>
+</section>
+</section>
+<section id="using-psycopg2-package-optional">
+<h3>Using psycopg2 package (OPTIONAL)<a class="headerlink" href="#using-psycopg2-package-optional" title="Permalink to this headline">#</a></h3>
+<p>Refer <a class="reference internal" href="../additional/pscopg2.html"><span class="doc std std-doc">here</span></a> if you want to know on psycopg2 package and how to use it.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not using your RDS instance, make sure you shut it down from your AWS console. You can always restart it when working on your assignments/projects. However, your credits are limited, and if those get exhausted, we won’t provide you with more.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Closing your lab doesn’t shut down the RDS instance; you need to shut it down from your AWS console explicitly.</p>
+</div>
+</section>
+</section>
+<section id="can-you">
+<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Setup your database in cloud ?</p></li>
+<li><p>Recollect various options that are available while setting up ?</p></li>
+<li><p>connect to your databases from various options (jupyter, tableau, pgadmin etc)that we discussed ?</p></li>
+<li><p>use good practices in storing passwords and using them from your notebook ?</p></li>
+<li><p>Load data to your database using dumps ?</p></li>
+</ul>
+</section>
+<section id="class-activity">
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<a class="reference internal image-reference" href="../_images/cloudb21.png"><img alt="../_images/cloudb21.png" src="../_images/cloudb21.png" style="width: 50%;" /></a>
+</aside>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check worksheet 2 in canvas for detailed instructions on activity and submission instructions.</p>
+</div>
+<ul class="simple">
+<li><p>Setup your RDS instance</p></li>
+<li><p>Load data to your RDS instance using dump</p></li>
+<li><p>Ensure you installed the necessary packages for this course (bait580env.yml). Refer to Conda installation instructions for more details.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-rds">Setting up RDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-to-cloud-rds">Connecting To Cloud (RDS)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-thing-first">First thing first</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pgadmin">pgAdmin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psql">psql</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-sql-sql-and-sql"><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> (<code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-returned-and-displayed-rows">Limiting returned and displayed rows</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-returned-rows-to-python-variables">Assigning returned rows to Python variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-psycopg2-package-optional">Using psycopg2 package (OPTIONAL)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

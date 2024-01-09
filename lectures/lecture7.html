@@ -1,0 +1,912 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 7: CQL 2/ MongoDB introduction &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture7';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture7.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture7.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture7.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture7.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 7: CQL 2/ MongoDB introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#today-s-agenda">Today’s Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-in-cypher">Aggregation in Cypher</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-the-query-chain">Controlling the Query Chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-results-returned">Controlling Results Returned</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-duplicates">Dealing with duplicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-results">Ordering results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-the-number-of-results">Limiting the number of results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb">MongoDB</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-uses-mongodb">Who uses MongoDB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bson">BSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documents">Documents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-7">Worksheet 7</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-7-cql-2-mongodb-introduction">
+<h1>Lecture 7: CQL 2/ MongoDB introduction<a class="headerlink" href="#lecture-7-cql-2-mongodb-introduction" title="Permalink to this headline">#</a></h1>
+<p>Gittu George, January 24 2023</p>
+<p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The video recording link is sorted out. I will paste the link in the piazza soon.</p></li>
+<li><p>Student Attendance &amp; Check-in system - Plan to run a pilot at the start of our last class, so please bring your ID card.</p></li>
+<li><p>2 more weeks before the final exam.</p>
+<ul>
+<li><p>No changes to this week’s and next week’s OHs.</p></li>
+<li><p>Next week, we have a tutorial on MongoDB.</p></li>
+<li><p>Exam week, we won’t be having any Office Hours.</p></li>
+<li><p>No worksheet 10.</p></li>
+<li><p>Last class, we will have open office hours.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="today-s-agenda">
+<h2>Today’s Agenda<a class="headerlink" href="#today-s-agenda" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Aggregation in cypher</p></li>
+<li><p>Controlling the query chain</p></li>
+<li><p>Controlling results returned</p></li>
+<li><p>Introduction to NoSQL document database (MongoDB)</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Using CQL to query the graph database</p></li>
+<li><p>To make you capable on applying CQL skills on a real world problem (twitter data)</p></li>
+<li><p>Have an understanding on document database and mongoDB</p></li>
+</ul>
+<p><a class="reference external" href="https://canvas.ubc.ca/files/19165620/download?download_frd=1">Check the ticks in this</a> cheat sheet to see all topics we will cover by the end of this lecture. You only need these to finish your assignment.</p>
+</section>
+<section id="aggregation-in-cypher">
+<h2>Aggregation in Cypher<a class="headerlink" href="#aggregation-in-cypher" title="Permalink to this headline">#</a></h2>
+<p>When you return results as values, Cypher automatically returns the values grouped by a common value.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+<p>Aggregation in Cypher is different from aggregation in SQL. In Cypher, you need not specify a grouping key. As soon as an aggregation function is used, all non-aggregated result columns become grouping keys. The <em><strong>grouping is implicitly done, based upon the fields in the RETURN clause</strong></em>.</p>
+<ul class="simple">
+<li><p>count()</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">count()</span></code> is a common way to aggregate your data. You can use count() to perform a</p>
+<ul class="simple">
+<li><p>count of nodes</p></li>
+<li><p>relationships</p></li>
+<li><p>paths</p></li>
+<li><p>rows during query processing</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The query engine processed all nodes and relationships in the pattern so that it could perform a count of all movies for a particular actor/director pair in the graph. Then the results returned grouped the results by the name of the actor and director.</p>
+<p>There are many places we can use count; check out this <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/#functions-count">document</a></p>
+<p>More aggregating functions such as <code class="docutils literal notranslate"><span class="pre">avg()</span></code>,<code class="docutils literal notranslate"><span class="pre">stDev()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code> or <code class="docutils literal notranslate"><span class="pre">max()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>. For entire list check in <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/">cypher manual.</a></p>
+</section>
+<section id="controlling-the-query-chain">
+<h2>Controlling the Query Chain<a class="headerlink" href="#controlling-the-query-chain" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><em><strong>Intermediate processing using <code class="docutils literal notranslate"><span class="pre">WITH</span></code></strong></em></p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">numMovies</span>
+</pre></div>
+</div>
+<p>During the execution of a <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> clause, you can specify that you want some intermediate calculations or values that will be used for further processing of the query. You <em><strong>use the WITH clause to perform intermediate processing that is not possible in a RETURN clause.</strong></em></p>
+<p>Example: Using <code class="docutils literal notranslate"><span class="pre">WITH</span></code></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">count</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">numMovies</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">numMovies</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">numMovies</span>
+</pre></div>
+</div>
+<p>In the above example, we start the query processing by retrieving all actors and their movie count. During the query processing, we only want to return actors with 2 or 3 movies. All other actors and the aggregated results are filtered out. Here <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clause does the counting and collecting, and the intermediate result is used in the subsequent <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> clause to test.</p>
+<ul class="simple">
+<li><p><em><strong>Subqueries with <code class="docutils literal notranslate"><span class="pre">WITH</span></code></strong></em></p></li>
+</ul>
+<p>Here is an example where we retrieve all movies reviewed by a person. For a particular movie found, we want the list of directors of the movie, so we do a second query, a subquery as follows:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">,</span><span class="w"> </span><span class="n">r</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<p>For the second <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> clause, we use the found movie nodes, m. The <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> clause has access to the movie, rating by that reviewer, the name of the reviewer, and the collection of director names for that movie.</p>
+</section>
+<section id="controlling-results-returned">
+<h2>Controlling Results Returned<a class="headerlink" href="#controlling-results-returned" title="Permalink to this headline">#</a></h2>
+<aside class="sidebar">
+<p class="sidebar-title"><em><strong>What have you learned until now?</strong></em></p>
+<ul class="simple">
+<li><p>How to query the database using both simple and complex patterns</p></li>
+<li><p>How to control query processing by chaining queries using WITH.</p></li>
+</ul>
+</aside>
+<p>Now we will focus on controlling how results are processed in the <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> and <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clauses.</p>
+<section id="dealing-with-duplicates">
+<h3>Dealing with duplicates<a class="headerlink" href="#dealing-with-duplicates" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Duplicate results</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/clauses/return/#return-unique-results">DISTINCT</a> can be used to deal with duplicates.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span>
+</pre></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code> in the <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> clause here means that rows with identical values will not be returned.</p>
+<p>Another way to avoid duplicates is by using <code class="docutils literal notranslate"><span class="pre">WITH</span></code> and <code class="docutils literal notranslate"><span class="pre">DISTINCT</span></code> together.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span>
+<span class="k">WITH</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">m</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+</section>
+<section id="ordering-results">
+<h3>Ordering results<a class="headerlink" href="#ordering-results" title="Permalink to this headline">#</a></h3>
+<p>If you want the results to be sorted, specify the expression to use for the sort using the <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> keyword and whether you want the order to be descending using the <code class="docutils literal notranslate"><span class="pre">DESC</span></code> keyword. <em><strong>Ascending order is the default.</strong></em></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Keanu Reeves&#39;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">DESC</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Ordering multiple results</p></li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Keanu Reeves&#39;</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span>
+</pre></div>
+</div>
+</section>
+<section id="limiting-the-number-of-results">
+<h3>Limiting the number of results<a class="headerlink" href="#limiting-the-number-of-results" title="Permalink to this headline">#</a></h3>
+<p>Use <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(m:Movie)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">actor</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="n">r</span><span class="p">:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="w"> </span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">actor</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">actor</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">movienumber</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">movienumber</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Limiting the number of intermediate results</p></li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> and <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code> together can be helpful in many scenarios, just like how you did it in your SQL assignments.</p>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(m:Movie)</span>
+<span class="k">WITH</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">pp</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(mm:Movie)</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">mm</span><span class="p">.</span><span class="n">title</span><span class="o">=</span><span class="n">title</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">pp</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="k">year</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Expression in <code class="docutils literal notranslate"><span class="pre">WITH</span></code> must be aliased (use <code class="docutils literal notranslate"><span class="pre">AS</span></code>). As we discussed before whatever we give in WITH will be available for subquery. And <em><strong>if you are using a property within a node then you must use alias</strong></em> to refer to that in your subquery.</p>
+</div>
+<p>If within WITH you are using entire node or relationship then you don’t want to alias (but its okay if you want to use)</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">,</span><span class="w"> </span><span class="n">r</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[</span><span class="n">rv</span><span class="p">:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">WITH</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mov</span><span class="p">,</span><span class="w"> </span><span class="n">rv</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">movierel</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">person</span>
+<span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">mov</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
+<span class="k">RETURN</span><span class="w"> </span><span class="n">mov</span><span class="p">.</span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">movierel</span><span class="p">.</span><span class="n">rating</span><span class="p">,</span><span class="w"> </span><span class="n">person</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="can-you">
+<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Specify varying length paths.</p></li>
+<li><p>Perform intermediate processing with WITH.</p></li>
+<li><p>Perform subqueries with WITH.</p></li>
+<li><p>Count results returned.</p></li>
+<li><p>Eliminate duplication in results returned.</p></li>
+<li><p>Order results returned.</p></li>
+<li><p>Limit the number of results returned.</p></li>
+</ul>
+</section>
+<section id="mongodb">
+<h2>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/mongo.png"><img alt="../_images/mongo.png" src="../_images/mongo.png" style="width: 400px;" /></a>
+<p>MongoDB is a document-based DBMS:</p>
+<ul class="simple">
+<li><p>Released in 2009</p></li>
+<li><p>Written in C++</p></li>
+<li><p>Open source</p></li>
+<li><p>Cross platform</p></li>
+<li><p>Super fast</p></li>
+</ul>
+<p>MongoDB is based on JSON-like documents for data storage. It offers:</p>
+<ul class="simple">
+<li><p>Native replication and sharding</p></li>
+<li><p>Automatic scaling and load balancing</p></li>
+<li><p>Multi-language support</p></li>
+<li><p>Powerful query language</p></li>
+</ul>
+<section id="who-uses-mongodb">
+<h3>Who uses MongoDB<a class="headerlink" href="#who-uses-mongodb" title="Permalink to this headline">#</a></h3>
+<p>Google, ebay, Craigslist, Toyota, Forbes, Electronic Arts, Adobe, AstraZeneca, and the list goes on.</p>
+<p>(https://www.mongodb.com/who-uses-mongodb)</p>
+</section>
+<section id="json">
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>JSON is short for Java Script Object Notation.</p></li>
+<li><p>JSON documents are simple containers, where a string key is mapped to a value (e.g. a number, string, function, another object).</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;first&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;last&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Backus&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;contribs&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">&quot;Fortran&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;ALGOL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Backus-Naur Form&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;FP&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;awards&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;award&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;W.W. McDowell Award&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;year&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1967</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;by&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;IEEE Computer Society&quot;</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;award&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Draper Prize&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;year&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="mi">1993</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;by&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;National Academy of Engineering&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>JSON documents can be found everywhere:</p>
+<ul class="simple">
+<li><p>APIs</p></li>
+<li><p>Configuration files</p></li>
+<li><p>Log messages</p></li>
+<li><p>Database storage</p></li>
+</ul>
+</section>
+<section id="bson">
+<h3>BSON<a class="headerlink" href="#bson" title="Permalink to this headline">#</a></h3>
+<p>Although the JSON document may look great for storing data <strong><em>as is</em></strong>, but it has a number of drawbacks:</p>
+<ul class="simple">
+<li><p>JSON is text, and text parsing is very slow</p></li>
+<li><p>JSON’s format is readable but not space-efficient (a database concern)</p></li>
+<li><p>JSON’s support of various data types is not great</p></li>
+</ul>
+<p>It’s because of the above reasons that MongoDB stores data in BSON (Binary JSON) files, which address all of the above issues but still look like JSON when we work with them in MongoDB.</p>
+<p>For a an overview, see <a class="reference external" href="https://www.mongodb.com/json-and-bson">here</a>.</p>
+</section>
+<section id="collections">
+<h3>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">#</a></h3>
+<p>In MongoDB, a database consists of one or more <strong>collections</strong>, each containing multiple <strong>documents</strong>.</p>
+<a class="reference internal image-reference" href="../_images/collection.png"><img alt="../_images/collection.png" src="../_images/collection.png" style="width: 600px;" /></a>
+</section>
+<section id="documents">
+<h3>Documents<a class="headerlink" href="#documents" title="Permalink to this headline">#</a></h3>
+<a class="reference internal image-reference" href="../_images/document.png"><img alt="../_images/document.png" src="../_images/document.png" style="width: 600px;" /></a>
+<ul class="simple">
+<li><p>Each document contains field-value pairs</p></li>
+<li><p>The field name <code class="docutils literal notranslate"><span class="pre">_id</span></code> acts as the primary key of each document, and should therefore be unique in a collection</p></li>
+<li><p>MongoDB automatically assigns an <code class="docutils literal notranslate"><span class="pre">_id</span></code> value if not specified at the time of inserting a document</p></li>
+<li><p>MongoDB creates an index on the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field by default</p></li>
+<li><p>The maximum size of a BSON document is about 16MB</p></li>
+</ul>
+<p><a class="reference external" href="https://docs.atlas.mongodb.com/">MongoDB Atlas</a> is a fully managed cloud database service, that automates the whole process of configuring, administration and maintaining of a database server for you. Basically, you specify what kind of server (CPU, RAM, number of nodes, location, etc.) you need, and MongoDB Atlas sets it up for you. They’ve partnered with Amazon Web Services, Google Cloud Platform, Microsoft Azure to host their database instances.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/demos.png" src="../_images/demos.png" />
+</aside>
+<p>The majority of these services are paid, however, they also offer a basic database service that is <strong>free</strong> and is best suited for learning and exploring. We’ll use the free MongoDB Atlas clusters for our course. You can set up your own cluster <a class="reference external" href="https://www.mongodb.com/cloud/atlas/register">here</a>.</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="../installation/Mongodb.html"><span class="doc std std-doc">Here are the details</span></a> on how to setup your MongoDB atlas and setup your <code class="docutils literal notranslate"><span class="pre">mongosh</span></code>.</p>
+</div>
+</section>
+</section>
+<section id="class-activity">
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check worksheet 7 in canvas for detailed instructions on activity and submission instructions.</p>
+</div>
+<ul class="simple">
+<li><p>Practice CQL using twitter data</p></li>
+</ul>
+</section>
+<section id="worksheet-7">
+<h2>Worksheet 7<a class="headerlink" href="#worksheet-7" title="Permalink to this headline">#</a></h2>
+<p><em><strong>In any graph questions keep two rules in mind. Can you…</strong></em></p>
+<ul class="simple">
+<li><p>Break the questions into various parts</p>
+<ul>
+<li><p>the rate at which people reply</p></li>
+<li><p>and are replied to</p></li>
+</ul>
+</li>
+<li><p>Can you draw the logic with a pen and paper? (Maybe for a complex scenario or for identifying some interesting questions)</p></li>
+</ul>
+<div class="toggle docutils container">
+<p>Did you draw ?</p>
+<p><img alt="" src="../_images/graphtwi.png" /></p>
+</div>
+<p><em><strong>Here are some of my thoughts on formulating a CQL query.</strong></em></p>
+<ul class="simple">
+<li><p>What are the elements that I need to RETURN?</p>
+<ul>
+<li><p>gotreply (the rate at which people reply),</p></li>
+<li><p>sentreply (and are replied to)</p></li>
+</ul>
+</li>
+<li><p>Where can I get these elements? (Check CALL apoc.meta.data())</p></li>
+<li><p>What pattern do I need to give in my MATCH?</p>
+<ul>
+<li><p>I need to be careful <a class="reference external" href="https://ggeorg02.github.io/BAIT580a_students/lectures/lecture5.html#relationships">with the direction</a>.</p></li>
+</ul>
+</li>
+<li><p>Do I need to provide multiple MATCH clauses/patterns?</p>
+<ul>
+<li><p>Maybe multiple MATCH for subquerying</p></li>
+</ul>
+</li>
+<li><p>Is any <a class="reference external" href="https://ggeorg02.github.io/BAIT580a_students/lectures/lecture7.html#limiting-the-number-of-results">subquery needed?</a></p>
+<ul>
+<li><p>Maybe YES, one for the first breakdown (gotreply)</p></li>
+<li><p>and the other for the second breakdown I listed.(sentreply)</p></li>
+</ul>
+</li>
+<li><p>Do I have to do any aggregation?</p>
+<ul>
+<li><p>YES, <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/#functions-sum">sum()</a>, so what property needs to be inside this?</p></li>
+</ul>
+</li>
+<li><p>Okay, I need to do aggregation, but what should be <a class="reference external" href="https://ggeorg02.github.io/BAIT580a_students/lectures/lecture7.html#aggregation-in-cypher">the grouping key ?</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#today-s-agenda">Today’s Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aggregation-in-cypher">Aggregation in Cypher</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-the-query-chain">Controlling the Query Chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlling-results-returned">Controlling Results Returned</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dealing-with-duplicates">Dealing with duplicates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordering-results">Ordering results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-the-number-of-results">Limiting the number of results</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you ?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb">MongoDB</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#who-uses-mongodb">Who uses MongoDB</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#json">JSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bson">BSON</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collections">Collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#documents">Documents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#worksheet-7">Worksheet 7</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

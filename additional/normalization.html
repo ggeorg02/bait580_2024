@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Data Normalization &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'additional/normalization';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/additional/normalization.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/additional/normalization.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Fadditional/normalization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/additional/normalization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Data Normalization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-to-some-problems">Introducing to some problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-normalize">Let’s Normalize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-normal-form-1nf">First normal form (1NF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-normal-form-2nf">Second normal form (2NF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#third-normal-form">Third normal form</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="data-normalization">
+<h1>Data Normalization<a class="headerlink" href="#data-normalization" title="Permalink to this headline">#</a></h1>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>WHY breaking the table is essential?</p></li>
+<li><p>Have an understanding of various normal forms in a database.</p></li>
+</ul>
+</section>
+<section id="introducing-to-some-problems">
+<h2>Introducing to some problems<a class="headerlink" href="#introducing-to-some-problems" title="Permalink to this headline">#</a></h2>
+<p>We will start with a CSV file or an excel spreadsheet. This is the most common way of storing data in various organizations. Often people organize it messy. Checkout this CSV file</p>
+<a class="center reference internal image-reference" href="additional/img/tablel3.png"><img alt="additional/img/tablel3.png" class="center" src="additional/img/tablel3.png" style="width: 80%;" /></a>
+<p>This looks okay now as it’s just 3 rows, but think about how it will look if we are going to store entire students in a university. Here what are the problems that come to your mind? Here are a few of them</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="additional/img/problems.png" src="additional/img/problems.png" />
+</aside>
+<ul>
+<li><p><em><strong>Does the order of courses in a course column matter?</strong></em></p>
+<p>E.g., For Amir Khan, the order for course number is 525,516. Does this mean that the order in which he took classes? How many courses are a student supposed to take? We see Catherine, Amir, Gittu taking 3, 2, and 1 class, respectively. Is there a minimum number of courses that a student needs to take? Is there any maximum limit?</p>
+</li>
+<li><p><em><strong>Too many duplicates ?</strong></em></p></li>
+<li><p><em><strong>What happens if I am loading incoming students to the database ?</strong></em></p>
+<p>They won’t be taking any classes until they start, which can result in lots of null values.</p>
+</li>
+<li><p><em><strong>Human errors can happen.</strong></em></p>
+<p>Assume what happens if I accidentally entered 525a as the course number?</p>
+</li>
+<li><p><em><strong>Deletion anomaly</strong></em></p>
+<p>Deleting a student can end up deleting course information.
+E.g., deleting Catherine can take out the course information for course numbers 580, 518.</p>
+</li>
+<li><p><em><strong>Update anomaly</strong></em></p>
+<p>We plan to change the course name for 525 from “Web and cloud computing” to “Cloud computing for Big Data”! How many places need to be updated?</p>
+</li>
+<li><p><em><strong>Insertion anomaly</strong></em></p>
+<p>We plan to launch a new course named 999 named “Big Data Systems,” and no students are currently enrolled in it. So how are we going to store this information?</p>
+</li>
+</ul>
+<p>Loading this data into a database table can bring in problems mentioned above, resulting in serious data integrity issues, and hence we should do data normalization.</p>
+</section>
+<section id="let-s-normalize">
+<h2>Let’s Normalize<a class="headerlink" href="#let-s-normalize" title="Permalink to this headline">#</a></h2>
+<p>Normalization is the process of minimizing redundancy from a table of relations. These redundancies in relation may cause insertion, deletion, and update anomalies. Normal forms are a certain set of defined rules to “break a table smartly” to create normalized tables.</p>
+<p>Storytime:</p>
+<p>Ted Codd introduced the concept of normalization and first normal form in his <a class="reference external" href="https://www.seas.upenn.edu/~zives/03f/cis550/codd.pdf">paper</a> in 1970, which provides theoretical foundation of designing a database. After a year, he defined 2nd and 3rd normal form in <a class="reference external" href="https://forum.thethirdmanifesto.com/wp-content/uploads/asgarosforum/987737/00-efc-further-normalization.pdf">this</a> paper. Later in 1974, Codd and Raymond F. Boyce defined the Boyce–Codd normal form (BCNF). These 4 normal forms are considered the most common or important ones; Most database systems are designed to follow the 3rd normal form or BCNF.</p>
+<p>Later came some more restrictive normal forms (4NF,5NF,6NF), but these are mainly used for theoretical purposes and are less implemented in industries.</p>
+<p>Note: We explain the normal forms in an easier-to-understand fashion, and they can also be explained using theoretical formulas and derivations.</p>
+<section id="first-normal-form-1nf">
+<h3>First normal form (1NF)<a class="headerlink" href="#first-normal-form-1nf" title="Permalink to this headline">#</a></h3>
+<p>To be in 1NF,</p>
+<ul class="simple">
+<li><p>All types must be atomic.❌</p></li>
+<li><p>No repeating groups ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/tablel3.png"><img alt="additional/img/tablel3.png" class="center" src="additional/img/tablel3.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>All types must be atomic.✅</p></li>
+<li><p>No repeating groups ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/1nf.png"><img alt="additional/img/1nf.png" class="center" src="additional/img/1nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>All types must be atomic. ✅</p></li>
+<li><p>No repeating groups✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/1nfdone.png"><img alt="additional/img/1nfdone.png" class="center" src="additional/img/1nfdone.png" style="width: 80%;" /></a>
+</section>
+<section id="second-normal-form-2nf">
+<h3>Second normal form (2NF)<a class="headerlink" href="#second-normal-form-2nf" title="Permalink to this headline">#</a></h3>
+<p>To be in 2NF</p>
+<ul class="simple">
+<li><p>Must be in first normal form  ✅</p></li>
+<li><p>Any non-key attributes fully depend on the candidate key ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/2nf.png"><img alt="additional/img/2nf.png" class="center" src="additional/img/2nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>Must be in first normal form  ✅</p></li>
+<li><p>Any non-key attributes fully depend on the candidate key ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/2nfdone.png"><img alt="additional/img/2nfdone.png" class="center" src="additional/img/2nfdone.png" style="width: 80%;" /></a>
+</section>
+<section id="third-normal-form">
+<h3>Third normal form<a class="headerlink" href="#third-normal-form" title="Permalink to this headline">#</a></h3>
+<p>To be in 3NF</p>
+<ul class="simple">
+<li><p>Must be in second normal form  ✅</p></li>
+<li><p>There should be no transitive dependency ❌</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/3nf.png"><img alt="additional/img/3nf.png" class="center" src="additional/img/3nf.png" style="width: 80%;" /></a>
+<ul class="simple">
+<li><p>Must be in second normal form  ✅</p></li>
+<li><p>There should be no transitive dependency ✅</p></li>
+</ul>
+<a class="center reference internal image-reference" href="additional/img/3nfdone.png"><img alt="additional/img/3nfdone.png" class="center" src="additional/img/3nfdone.png" style="width: 80%;" /></a>
+<p>Now we have finished normalizing the table, let’s create this table’s in our database.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="c1"># Create a connection</span>
+<span class="n">conString</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;host&#39;</span><span class="p">:</span><span class="s1">&#39;mbandtweet.xxxx.rds.amazonaws.com&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;dbname&#39;</span><span class="p">:</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;user&#39;</span><span class="p">:</span><span class="s1">&#39;postgres&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;password&#39;</span><span class="p">:</span><span class="s1">&#39;xxxx&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;port&#39;</span><span class="p">:</span><span class="mi">5432</span><span class="p">}</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="o">**</span><span class="n">conString</span><span class="p">)</span>
+<span class="c1"># Create a cursor</span>
+<span class="n">cur</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">createTables</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.students(student_no integer PRIMARY KEY, stud_fname text, </span>
+<span class="s2">stud_lname text, major text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.courses(course_no integer PRIMARY KEY, course_name text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.grades( grade text PRIMARY KEY, grade_type text);</span>
+
+<span class="s2">CREATE TABLE IF NOT EXISTS classwork.student_course_grade( </span>
+<span class="s2">student_no integer REFERENCES classwork.students(student_no), </span>
+<span class="s2">course_no integer REFERENCES classwork.courses(course_no), </span>
+<span class="s2">grade text REFERENCES classwork.grades(grade), </span>
+<span class="s2">PRIMARY KEY(student_no, course_no));&quot;&quot;&quot;</span>
+
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">createTables</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">insertinto</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">INSERT INTO classwork.students VALUES (111,&#39;Catherine&#39;,&#39;John&#39;,&#39;MBAN&#39;);</span>
+<span class="s2">INSERT INTO classwork.students VALUES (222,&#39;Amir&#39;,&#39;Khan&#39;,&#39;MDS&#39;);</span>
+<span class="s2">INSERT INTO classwork.students VALUES (333,&#39;Gittu&#39;,&#39;George&#39;,&#39;MBAN&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (580,&#39;TPCS INFO TECH&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (518,&#39;Data Visualization&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (516,&#39;Health and Technology&#39;);</span>
+<span class="s2">INSERT INTO classwork.courses VALUES (525,&#39;Web and Cloud Computing&#39;);</span>
+
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;A&#39;,&#39;Excellent&#39;);</span>
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;B&#39;,&#39;Good&#39;);</span>
+<span class="s2">INSERT INTO classwork.grades VALUES (&#39;C&#39;,&#39;Average&#39;);</span>
+
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,580,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,518,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(111,516,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(222,525,&#39;A&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(222,516,&#39;B&#39;);</span>
+<span class="s2">INSERT INTO classwork.student_course_grade VALUES(333,525,&#39;C&#39;);</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">insertinto</span><span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Exploring it from pgadmin vizualizer.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/problemsolved.png" src="../_images/problemsolved.png" />
+</aside>
+<a class="center reference internal image-reference" href="../_images/erd.png"><img alt="../_images/erd.png" class="center" src="../_images/erd.png" style="width: 80%;" /></a>
+<p>Revisit the problems listed at the beginning to see if we have resolved those by performing this normalization.</p>
+<p>Entity Relation Models are about Entities. So we can put these tables together using the primary keys and foreign keys in getting what we want.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SELECT stu.stud_fname, stu.stud_lname,g.grade,c.course_name FROM schema.students AS stu</span>
+<span class="s2">INNER JOIN schema.student_course_grade AS g ON g.student_no = stu.student_no</span>
+<span class="s2">INNER JOIN schema.courses AS c ON c.course_no = g.course_no</span>
+<span class="s2">WHERE g.grade=&#39;A&#39; AND c.course_name=&#39;Health and Technology&#39;;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="n">cur</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">insertinto</span><span class="p">)</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">cur</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./additional"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-to-some-problems">Introducing to some problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-normalize">Let’s Normalize</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-normal-form-1nf">First normal form (1NF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#second-normal-form-2nf">Second normal form (2NF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#third-normal-form">Third normal form</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

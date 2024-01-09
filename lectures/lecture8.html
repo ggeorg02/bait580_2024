@@ -1,0 +1,1159 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 8: MQL 1 &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture8';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture8.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture8.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture8.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture8.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 8: MQL 1</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-interfaces">MongoDB interfaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-shell-mongosh">MongoDB shell (<code class="docutils literal notranslate"><span class="pre">mongosh</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-compass">MongoDB Compass</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-s-python-driver-pymongo">MongoDB’s Python driver (<code class="docutils literal notranslate"><span class="pre">pymongo</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-query-language-mql">MongoDB query language (MQL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-databases-and-collections">Accessing databases and collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find"><code class="docutils literal notranslate"><span class="pre">find</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection"><code class="docutils literal notranslate"><span class="pre">projection</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort"><code class="docutils literal notranslate"><span class="pre">sort</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit"><code class="docutils literal notranslate"><span class="pre">limit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-and-count-documents"><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">count_documents</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip"><code class="docutils literal notranslate"><span class="pre">skip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinct"><code class="docutils literal notranslate"><span class="pre">distinct</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-8-mql-1">
+<h1>Lecture 8: MQL 1<a class="headerlink" href="#lecture-8-mql-1" title="Permalink to this headline">#</a></h1>
+<p>Gittu George, January 26, 2023</p>
+<p><em>Attribution: This notebook is developed using materials from DSCI 513 by Arman.</em></p>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Please make sure you follow the mechanics correctly.</p></li>
+<li><p>We can’t accept chatGPT responses - this can be a more serious issue as we want assignments to be done by you, not chatGPT.</p></li>
+<li><p>Plan is to release assignment 1 grades this week.</p></li>
+<li><p>Read <a class="reference internal" href="../additional/regrade.html"><span class="doc std std-doc">regrade request policy</span></a> very carefully before submitting. Address to Daniel and cc me too.</p></li>
+<li><p>There won’t be mongoDB tutorial. But we will have all OHs next week, so please make use of it.</p></li>
+</ul>
+</section>
+<section id="agenda">
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Introduction to NoSQL document database (MongoDB)</p></li>
+<li><p>Basic queries in MongoDB</p></li>
+</ul>
+</section>
+<section id="objectives">
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Setting up mongoDB instance in cloud</p></li>
+<li><p>Write basic MQL</p></li>
+</ul>
+<section id="mongodb-interfaces">
+<h3>MongoDB interfaces<a class="headerlink" href="#mongodb-interfaces" title="Permalink to this headline">#</a></h3>
+<section id="mongodb-shell-mongosh">
+<h4>MongoDB shell (<code class="docutils literal notranslate"><span class="pre">mongosh</span></code>)<a class="headerlink" href="#mongodb-shell-mongosh" title="Permalink to this headline">#</a></h4>
+<p>This is command line interface for interacting with a MongoDB database, similar to <code class="docutils literal notranslate"><span class="pre">psql</span></code> that we’ve used for Postgres. <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> is based on the JavaScript language. We will not use <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> much in this course.</p>
+</section>
+<section id="mongodb-compass">
+<h4>MongoDB Compass<a class="headerlink" href="#mongodb-compass" title="Permalink to this headline">#</a></h4>
+<p>Compass is a versatile graphical user interface for using MongoDB databases. This is a similar application to pgAdmin that we’ve used for Postgres.</p>
+</section>
+<section id="mongodb-s-python-driver-pymongo">
+<h4>MongoDB’s Python driver (<code class="docutils literal notranslate"><span class="pre">pymongo</span></code>)<a class="headerlink" href="#mongodb-s-python-driver-pymongo" title="Permalink to this headline">#</a></h4>
+<p>And finally, <code class="docutils literal notranslate"><span class="pre">pymongo</span></code> is the official Python driver for MongoDB. If your using the course <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment, this package is installed and ready to use in Jupyter Lab. You can take a look at <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>s documentation <a class="reference external" href="https://pymongo.readthedocs.io/en/stable/tutorial.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_mongodb.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">username</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">@</span><span class="si">{}</span><span class="s2">/?retryWrites=true&amp;w=majority&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymongo&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;mds&#39;,
+ &#39;sample_airbnb&#39;,
+ &#39;sample_analytics&#39;,
+ &#39;sample_geospatial&#39;,
+ &#39;sample_guides&#39;,
+ &#39;sample_mflix&#39;,
+ &#39;sample_restaurants&#39;,
+ &#39;sample_supplies&#39;,
+ &#39;sample_training&#39;,
+ &#39;sample_weatherdata&#39;,
+ &#39;admin&#39;,
+ &#39;local&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="mongodb-query-language-mql">
+<h2>MongoDB query language (MQL)<a class="headerlink" href="#mongodb-query-language-mql" title="Permalink to this headline">#</a></h2>
+<a class="reference internal image-reference" href="../_images/nosql.png"><img alt="../_images/nosql.png" src="../_images/nosql.png" style="width: 400px;" /></a>
+<p>(<a class="reference external" href="https://dataedo.com/cartoon/it-is-nosql">image source</a>)</p>
+<div class="admonition-see-also admonition">
+<p class="admonition-title">See also …</p>
+<p>SQL to MongoDB mapping chart: https://docs.mongodb.com/manual/reference/sql-comparison/</p>
+</div>
+<p>As mentioned earlier, there is no standard query language among NoSQL DBMSs. This is because each NoSQL DBMS supports a different data model and obviously no one language can suit all data models.</p>
+<p>MongoDB has its own query language known as MongoDB Query Language or MQL (We already saw CQL for neo4j). I will walk you through the usage of MQL in the remainder of this lecture.</p>
+<section id="accessing-databases-and-collections">
+<h3>Accessing databases and collections<a class="headerlink" href="#accessing-databases-and-collections" title="Permalink to this headline">#</a></h3>
+<p>Here is how we can access databases through different interfaces.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Compass</span></code></strong>:</p>
+<p>It’s just point and click. I’ll demo this in class.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
+</figure>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/demos.png" src="../_images/demos.png" />
+</aside>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">show</span><span class="w"> </span><span class="nx">dbs</span>
+<span class="nx">use</span><span class="w"> </span><span class="nx">my_db</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_db</span> <span class="o">=</span> <span class="n">client</span><span class="p">[</span><span class="s1">&#39;my_db&#39;</span><span class="p">]</span>
+<span class="n">my_db</span>
+</pre></div>
+</div>
+<p>Running the above cell just gives you some information about our connection to the server. We’ll learn how to run queries on this connection in a bit. For now, let’s see what databases we have:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;mds&#39;,
+ &#39;sample_airbnb&#39;,
+ &#39;sample_analytics&#39;,
+ &#39;sample_geospatial&#39;,
+ &#39;sample_guides&#39;,
+ &#39;sample_mflix&#39;,
+ &#39;sample_restaurants&#39;,
+ &#39;sample_supplies&#39;,
+ &#39;sample_training&#39;,
+ &#39;sample_weatherdata&#39;,
+ &#39;admin&#39;,
+ &#39;local&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>To access collections withing each database, use the following syntax:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">my_collection</span><span class="p">.</span><span class="nx">method</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">my_collection</span> <span class="o">=</span> <span class="n">my_db</span><span class="p">[</span><span class="s1">&#39;my_collection&#39;</span><span class="p">]</span>
+<span class="n">my_collection</span>
+</pre></div>
+</div>
+<p>Again, some information that we don’t need. We will never use the database or collection objects simple like this. For now, let’s take a look at the collections inside the <code class="docutils literal notranslate"><span class="pre">sample_mflix</span></code> database:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;theaters&#39;, &#39;comments&#39;, &#39;sessions&#39;, &#39;movies&#39;, &#39;users&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or alternatively:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">sample_mflix</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;theaters&#39;, &#39;comments&#39;, &#39;sessions&#39;, &#39;movies&#39;, &#39;users&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>A very important thing to know before using MQL is that</p>
+<blockquote>
+<div><p><strong>Everything in MongoDB is a JSON-like document</strong></p>
+</div></blockquote>
+<p>even queries themselves!</p>
+</section>
+<section id="find">
+<h3><code class="docutils literal notranslate"><span class="pre">find</span></code><a class="headerlink" href="#find" title="Permalink to this headline">#</a></h3>
+<p>The main method used for querying documents is the <code class="docutils literal notranslate"><span class="pre">.find()</span></code> method. Here is an example of a query in MongoDB:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.cursor.Cursor at 0x111b10090&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">filter=</span></code> is optional in the argument list, but if you remember from Python’s Zen advice, “<em>explicit is better than implicit</em>”.</p>
+<p>Well, the above code doesn’t do anything because it returns a cursor object which is basically a Python generator. Let’s return the first element of this generator:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">next</span><span class="p">(</span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">}</span> <span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
+ &#39;plot&#39;: &#39;An unhappy married couple deal with their problems on board the ill-fated ship.&#39;,
+ &#39;genres&#39;: [&#39;Drama&#39;, &#39;History&#39;, &#39;Romance&#39;],
+ &#39;runtime&#39;: 98,
+ &#39;rated&#39;: &#39;NOT RATED&#39;,
+ &#39;cast&#39;: [&#39;Clifton Webb&#39;,
+  &#39;Barbara Stanwyck&#39;,
+  &#39;Robert Wagner&#39;,
+  &#39;Audrey Dalton&#39;],
+ &#39;num_mflix_comments&#39;: 0,
+ &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BMTU3NTUyMTc3Nl5BMl5BanBnXkFtZTgwOTA2MDE3MTE@._V1_SY1000_SX677_AL_.jpg&#39;,
+ &#39;title&#39;: &#39;Titanic&#39;,
+ &#39;fullplot&#39;: &#39;Unhappily married and uncomfortable with life among the British upper crust, Julia Sturges takes her two children and boards the Titanic for America. Her husband Richard also arranges passage on the doomed luxury liner in order to let him have custody of their two children. Their problems soon seem minor when the ship hits an iceberg.&#39;,
+ &#39;languages&#39;: [&#39;English&#39;, &#39;Basque&#39;, &#39;French&#39;, &#39;Spanish&#39;],
+ &#39;released&#39;: datetime.datetime(1953, 7, 13, 0, 0),
+ &#39;directors&#39;: [&#39;Jean Negulesco&#39;],
+ &#39;writers&#39;: [&#39;Charles Brackett&#39;, &#39;Walter Reisch&#39;, &#39;Richard L. Breen&#39;],
+ &#39;awards&#39;: {&#39;wins&#39;: 0,
+  &#39;nominations&#39;: 3,
+  &#39;text&#39;: &#39;Won 1 Oscar. Another 2 nominations.&#39;},
+ &#39;lastupdated&#39;: &#39;2015-09-16 00:00:16.593000000&#39;,
+ &#39;year&#39;: 1953,
+ &#39;imdb&#39;: {&#39;rating&#39;: 7.3, &#39;votes&#39;: 4677, &#39;id&#39;: 46435},
+ &#39;countries&#39;: [&#39;USA&#39;],
+ &#39;type&#39;: &#39;movie&#39;,
+ &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.6, &#39;numReviews&#39;: 86400, &#39;meter&#39;: 65},
+  &#39;dvd&#39;: datetime.datetime(2003, 9, 2, 0, 0),
+  &#39;critic&#39;: {&#39;rating&#39;: 6.7, &#39;numReviews&#39;: 9, &#39;meter&#39;: 89},
+  &#39;lastUpdated&#39;: datetime.datetime(2015, 9, 10, 19, 15, 34),
+  &#39;rotten&#39;: 1,
+  &#39;production&#39;: &#39;20th Century Fox&#39;,
+  &#39;fresh&#39;: 8}}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or we can pass it to <code class="docutils literal notranslate"><span class="pre">list()</span></code> to materialize the generator entirely:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span> <span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">}</span> <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
+  &#39;plot&#39;: &#39;An unhappy married couple deal with their problems on board the ill-fated ship.&#39;,
+  &#39;genres&#39;: [&#39;Drama&#39;, &#39;History&#39;, &#39;Romance&#39;],
+  &#39;runtime&#39;: 98,
+  &#39;rated&#39;: &#39;NOT RATED&#39;,
+  &#39;cast&#39;: [&#39;Clifton Webb&#39;,
+   &#39;Barbara Stanwyck&#39;,
+   &#39;Robert Wagner&#39;,
+   &#39;Audrey Dalton&#39;],
+  &#39;num_mflix_comments&#39;: 0,
+  &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BMTU3NTUyMTc3Nl5BMl5BanBnXkFtZTgwOTA2MDE3MTE@._V1_SY1000_SX677_AL_.jpg&#39;,
+  &#39;title&#39;: &#39;Titanic&#39;,
+  &#39;fullplot&#39;: &#39;Unhappily married and uncomfortable with life among the British upper crust, Julia Sturges takes her two children and boards the Titanic for America. Her husband Richard also arranges passage on the doomed luxury liner in order to let him have custody of their two children. Their problems soon seem minor when the ship hits an iceberg.&#39;,
+  &#39;languages&#39;: [&#39;English&#39;, &#39;Basque&#39;, &#39;French&#39;, &#39;Spanish&#39;],
+  &#39;released&#39;: datetime.datetime(1953, 7, 13, 0, 0),
+  &#39;directors&#39;: [&#39;Jean Negulesco&#39;],
+  &#39;writers&#39;: [&#39;Charles Brackett&#39;, &#39;Walter Reisch&#39;, &#39;Richard L. Breen&#39;],
+  &#39;awards&#39;: {&#39;wins&#39;: 0,
+   &#39;nominations&#39;: 3,
+   &#39;text&#39;: &#39;Won 1 Oscar. Another 2 nominations.&#39;},
+  &#39;lastupdated&#39;: &#39;2015-09-16 00:00:16.593000000&#39;,
+  &#39;year&#39;: 1953,
+  &#39;imdb&#39;: {&#39;rating&#39;: 7.3, &#39;votes&#39;: 4677, &#39;id&#39;: 46435},
+  &#39;countries&#39;: [&#39;USA&#39;],
+  &#39;type&#39;: &#39;movie&#39;,
+  &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.6, &#39;numReviews&#39;: 86400, &#39;meter&#39;: 65},
+   &#39;dvd&#39;: datetime.datetime(2003, 9, 2, 0, 0),
+   &#39;critic&#39;: {&#39;rating&#39;: 6.7, &#39;numReviews&#39;: 9, &#39;meter&#39;: 89},
+   &#39;lastUpdated&#39;: datetime.datetime(2015, 9, 10, 19, 15, 34),
+   &#39;rotten&#39;: 1,
+   &#39;production&#39;: &#39;20th Century Fox&#39;,
+   &#39;fresh&#39;: 8}},
+ {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
+  &#39;plot&#39;: &#39;The story of the 1912 sinking of the largest luxury liner ever built, the tragedy that befell over two thousand of the rich and famous as well as of the poor and unknown passengers aboard the doomed ship.&#39;,
+  &#39;genres&#39;: [&#39;Action&#39;, &#39;Drama&#39;, &#39;History&#39;],
+  &#39;runtime&#39;: 173,
+  &#39;cast&#39;: [&#39;Peter Gallagher&#39;,
+   &#39;George C. Scott&#39;,
+   &#39;Catherine Zeta-Jones&#39;,
+   &#39;Eva Marie Saint&#39;],
+  &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BYWM0MDE3OWMtMzlhZC00YzMyLThiNjItNzFhNGVhYzQ1YWM5XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_SY1000_SX677_AL_.jpg&#39;,
+  &#39;title&#39;: &#39;Titanic&#39;,
+  &#39;fullplot&#39;: &quot;The plot focuses on the romances of two couples upon the doomed ship&#39;s maiden voyage. Isabella Paradine (Catherine Zeta-Jones) is a wealthy woman mourning the loss of her aunt, who reignites a romance with former flame Wynn Park (Peter Gallagher). Meanwhile, a charming ne&#39;er-do-well named Jamie Perse (Mike Doyle) steals a ticket for the ship, and falls for a sweet innocent Irish girl on board. But their romance is threatened by the villainous Simon Doonan (Tim Curry), who has discovered about the ticket and makes Jamie his unwilling accomplice, as well as having sinister plans for the girl.&quot;,
+  &#39;languages&#39;: [&#39;English&#39;],
+  &#39;released&#39;: datetime.datetime(1996, 11, 17, 0, 0),
+  &#39;rated&#39;: &#39;PG-13&#39;,
+  &#39;awards&#39;: {&#39;wins&#39;: 0,
+   &#39;nominations&#39;: 9,
+   &#39;text&#39;: &#39;Won 1 Primetime Emmy. Another 8 nominations.&#39;},
+  &#39;lastupdated&#39;: &#39;2015-08-30 00:47:02.163000000&#39;,
+  &#39;year&#39;: 1996,
+  &#39;imdb&#39;: {&#39;rating&#39;: 5.9, &#39;votes&#39;: 3435, &#39;id&#39;: 115392},
+  &#39;countries&#39;: [&#39;Canada&#39;, &#39;USA&#39;],
+  &#39;type&#39;: &#39;series&#39;,
+  &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.8, &#39;numReviews&#39;: 30909, &#39;meter&#39;: 71},
+   &#39;dvd&#39;: datetime.datetime(1999, 9, 7, 0, 0),
+   &#39;production&#39;: &#39;Hallmark Entertainment&#39;,
+   &#39;lastUpdated&#39;: datetime.datetime(2015, 8, 15, 18, 12, 51)},
+  &#39;num_mflix_comments&#39;: 0},
+ {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcf0d74&#39;),
+  &#39;fullplot&#39;: &#39;84 years later, a 101-year-old woman named Rose DeWitt Bukater tells the story to her granddaughter Lizzy Calvert, Brock Lovett, Lewis Bodine, Bobby Buell and Anatoly Mikailavich on the Keldysh about her life set in April 10th 1912, on a ship called Titanic when young Rose boards the departing ship with the upper-class passengers and her mother, Ruth DeWitt Bukater, and her fiancè, Caledon Hockley. Meanwhile, a drifter and artist named Jack Dawson and his best friend Fabrizio De Rossi win third-class tickets to the ship in a game. And she explains the whole story from departure until the death of Titanic on its first and last voyage April 15th, 1912 at 2:20 in the morning.&#39;,
+  &#39;imdb&#39;: {&#39;rating&#39;: 7.7, &#39;votes&#39;: 716392, &#39;id&#39;: 120338},
+  &#39;year&#39;: 1997,
+  &#39;plot&#39;: &#39;A seventeen-year-old aristocrat falls in love with a kind, but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.&#39;,
+  &#39;genres&#39;: [&#39;Drama&#39;, &#39;Romance&#39;],
+  &#39;rated&#39;: &#39;PG-13&#39;,
+  &#39;metacritic&#39;: 74,
+  &#39;title&#39;: &#39;Titanic&#39;,
+  &#39;lastupdated&#39;: &#39;2015-09-13 00:41:42.117000000&#39;,
+  &#39;languages&#39;: [&#39;English&#39;,
+   &#39;French&#39;,
+   &#39;German&#39;,
+   &#39;Swedish&#39;,
+   &#39;Italian&#39;,
+   &#39;Russian&#39;],
+  &#39;writers&#39;: [&#39;James Cameron&#39;],
+  &#39;type&#39;: &#39;movie&#39;,
+  &#39;tomatoes&#39;: {&#39;website&#39;: &#39;http://www.titanicmovie.com/&#39;,
+   &#39;viewer&#39;: {&#39;rating&#39;: 3.3, &#39;numReviews&#39;: 35792304, &#39;meter&#39;: 69},
+   &#39;dvd&#39;: datetime.datetime(2012, 9, 10, 0, 0),
+   &#39;critic&#39;: {&#39;rating&#39;: 8.0, &#39;numReviews&#39;: 178, &#39;meter&#39;: 88},
+   &#39;boxOffice&#39;: &#39;$57.9M&#39;,
+   &#39;consensus&#39;: &#39;A mostly unqualified triumph for James Cameron, who offers a dizzying blend of spectacular visuals and old-fashioned melodrama.&#39;,
+   &#39;rotten&#39;: 21,
+   &#39;production&#39;: &#39;Paramount Pictures&#39;,
+   &#39;lastUpdated&#39;: datetime.datetime(2015, 9, 13, 17, 5, 18),
+   &#39;fresh&#39;: 157},
+  &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BMDdmZGU3NDQtY2E5My00ZTliLWIzOTUtMTY4ZGI1YjdiNjk3XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_SY1000_SX677_AL_.jpg&#39;,
+  &#39;num_mflix_comments&#39;: 128,
+  &#39;released&#39;: datetime.datetime(1997, 12, 19, 0, 0),
+  &#39;awards&#39;: {&#39;wins&#39;: 127,
+   &#39;nominations&#39;: 63,
+   &#39;text&#39;: &#39;Won 11 Oscars. Another 116 wins &amp; 63 nominations.&#39;},
+  &#39;countries&#39;: [&#39;USA&#39;],
+  &#39;cast&#39;: [&#39;Leonardo DiCaprio&#39;, &#39;Kate Winslet&#39;, &#39;Billy Zane&#39;, &#39;Kathy Bates&#39;],
+  &#39;directors&#39;: [&#39;James Cameron&#39;],
+  &#39;runtime&#39;: 194}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">.find(</span> <span class="pre">filter={}</span> <span class="pre">)</span></code> or <code class="docutils literal notranslate"><span class="pre">.find()</span></code> returns every document in the collection.</p>
+</div>
+<p>Note that there is another method <code class="docutils literal notranslate"><span class="pre">.findOne()</span></code> in <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> and <code class="docutils literal notranslate"><span class="pre">.find_one()</span></code> in <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>. This method returns only one document regardless of how many there are, according to the order in which documents are stored on the physical disk. It can be</p>
+</section>
+<section id="projection">
+<h3><code class="docutils literal notranslate"><span class="pre">projection</span></code><a class="headerlink" href="#projection" title="Permalink to this headline">#</a></h3>
+<p>Remember what projection meant in SQL? Returning a particular set of columns among all that exist in a table was called projection (of the results onto particular columns).</p>
+<p>Projection has a similar meaning in NoSQL: it means explicitly choosing the fields that we are interested in, instead of all fields that are returned by default. This is done by feeding a list of fields to the <code class="docutils literal notranslate"><span class="pre">projection=</span></code> argument, as well as a truthy of falsy value that indicates whether or not that field should be included.</p>
+<p>For example, here I return the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> fields only from the document in the result:</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;year&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">},</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
+  &#39;title&#39;: &#39;Titanic&#39;,
+  &#39;year&#39;: 1953},
+ {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
+  &#39;title&#39;: &#39;Titanic&#39;,
+  &#39;year&#39;: 1996},
+ {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcf0d74&#39;),
+  &#39;year&#39;: 1997,
+  &#39;title&#39;: &#39;Titanic&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>In <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">True</span></code> instead of <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> instead of <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></li>
+<li><p>In <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>, we need to enclose all field names in single or double quotes (e.g. <code class="docutils literal notranslate"><span class="pre">'title'</span></code> not <code class="docutils literal notranslate"><span class="pre">title</span></code>), otherwise Python would complain because it doesn’t recognize those names. In <code class="docutils literal notranslate"><span class="pre">mongosh</span></code>, this is not necessary.</p></li>
+</ul>
+</div>
+<p>In the above returned documents, note that the primary key field, namely, the <code class="docutils literal notranslate"><span class="pre">_id</span></code> field is always returned by default unless you explicitly exclude it using <code class="docutils literal notranslate"><span class="pre">{'_id':</span> <span class="pre">0}</span></code> or <code class="docutils literal notranslate"><span class="pre">{'_id':</span> <span class="pre">False}</span></code>. <strong>This is the only scenario where we might mix up <code class="docutils literal notranslate"><span class="pre">1</span></code>s and <code class="docutils literal notranslate"><span class="pre">0</span></code>s (or <code class="docutils literal notranslate"><span class="pre">True</span></code>s and <code class="docutils literal notranslate"><span class="pre">False</span></code>s) in the projection field.</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">},</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1953},
+ {&#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996},
+ {&#39;year&#39;: 1997, &#39;title&#39;: &#39;Titanic&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sort">
+<h3><code class="docutils literal notranslate"><span class="pre">sort</span></code><a class="headerlink" href="#sort" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">filter</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">projection</span><span class="o">&gt;</span><span class="p">).</span><span class="nx">sort</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">runtime</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="o">:-</span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">},</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;runtime&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="n">sort</span><span class="o">=</span><span class="p">[(</span><span class="s1">&#39;runtime&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)]</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 98, &#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1953},
+ {&#39;runtime&#39;: 173, &#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996},
+ {&#39;year&#39;: 1997, &#39;title&#39;: &#39;Titanic&#39;, &#39;runtime&#39;: 194}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="limit">
+<h3><code class="docutils literal notranslate"><span class="pre">limit</span></code><a class="headerlink" href="#limit" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">({},</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}).</span><span class="nx">limit</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;_id&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="n">limit</span><span class="o">=</span><span class="mi">5</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Blacksmith Scene&#39;},
+ {&#39;title&#39;: &#39;The Great Train Robbery&#39;},
+ {&#39;title&#39;: &#39;The Land Beyond the Sunset&#39;},
+ {&#39;title&#39;: &#39;A Corner in Wheat&#39;},
+ {&#39;title&#39;: &#39;Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="count-and-count-documents">
+<h3><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">count_documents</span></code><a class="headerlink" href="#count-and-count-documents" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">year</span><span class="o">:</span><span class="mf">2000</span><span class="p">}).</span><span class="nx">count</span><span class="p">()</span>
+<span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count_documents</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>618
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="skip">
+<h3><code class="docutils literal notranslate"><span class="pre">skip</span></code><a class="headerlink" href="#skip" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="nx">filter</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">},</span><span class="w"> </span><span class="nx">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;year&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">).</span><span class="nx">skip</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">},</span>
+        <span class="n">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="n">skip</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcf0d74&#39;),
+  &#39;year&#39;: 1997,
+  &#39;title&#39;: &#39;Titanic&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distinct">
+<h3><code class="docutils literal notranslate"><span class="pre">distinct</span></code><a class="headerlink" href="#distinct" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
+<div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">distinct</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pymongo</span></code></strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
+    <span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">][</span><span class="s1">&#39;movies&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Titanic&#39;</span><span class="p">},</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Titanic&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">distinct</span></code> method here only returns unique <strong>values</strong>, not entire documents.</p>
+</section>
+</section>
+<section id="can-you">
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>list down the benefits of having a document database</p></li>
+<li><p>Set up MongoDB cloud instance?</p></li>
+<li><p>Various ways to interact with MongoDB</p></li>
+<li><p>Do basic MQL query</p></li>
+</ul>
+</section>
+<section id="class-activity">
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check worksheet 8 in canvas for detailed instructions on activity and submission instructions.</p>
+</div>
+<ul class="simple">
+<li><p>Set up MongoDB in the cloud.</p></li>
+<li><p>Practice MQL.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#agenda">Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectives">Objectives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-interfaces">MongoDB interfaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-shell-mongosh">MongoDB shell (<code class="docutils literal notranslate"><span class="pre">mongosh</span></code>)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-compass">MongoDB Compass</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-s-python-driver-pymongo">MongoDB’s Python driver (<code class="docutils literal notranslate"><span class="pre">pymongo</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mongodb-query-language-mql">MongoDB query language (MQL)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-databases-and-collections">Accessing databases and collections</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find"><code class="docutils literal notranslate"><span class="pre">find</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#projection"><code class="docutils literal notranslate"><span class="pre">projection</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sort"><code class="docutils literal notranslate"><span class="pre">sort</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limit"><code class="docutils literal notranslate"><span class="pre">limit</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-and-count-documents"><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">count_documents</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#skip"><code class="docutils literal notranslate"><span class="pre">skip</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinct"><code class="docutils literal notranslate"><span class="pre">distinct</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

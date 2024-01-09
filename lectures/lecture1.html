@@ -1,0 +1,1035 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Lecture 1: Data Management in a Big Data Environment &#8212; BAIT 580A - Topics in Information Technology Management</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/lecture1';</script>
+    <link rel="shortcut icon" href="../_static/logo.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lecture 0: Course Introduction" href="lecture0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 1: Data Management in a Big Data Environment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/lectures/lecture1.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/lectures/lecture1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Flectures/lecture1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lectures/lecture1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lecture 1: Data Management in a Big Data Environment</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-hear-a-story-on-it-depends">Let’s hear a story on ‘it Depends.’</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-of-big-data">3 Vs of Big Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume">Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-solutions">Volume Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity">Velocity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-solutions">Velocity Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variety">Variety</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variety-solutions">Variety Solutions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-3-v-s-and-analytic-workflows">The 3 V’s and Analytic Workflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-based-approaches">Problem Based Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#processing">Processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-big-data">Approaches for big data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-up">Scale UP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-out">Scale OUT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-cloud-computing">Intro to cloud computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clicker-1">Clicker 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity-1">Class activity 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-cloud-computing">Benefits of cloud computing:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-providers">Cloud providers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-of-services-available-in-aws">Category of services available in AWS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-amazon-rds">Database (Amazon RDS)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ways-to-interact-with-aws">Ways to interact with AWS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity-2">Class activity 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-data-management-in-a-big-data-environment">
+<h1>Lecture 1: Data Management in a Big Data Environment<a class="headerlink" href="#lecture-1-data-management-in-a-big-data-environment" title="Permalink to this headline">#</a></h1>
+<p>Gittu George, January 3 2023</p>
+<section id="todays-agenda">
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Formal introduction to big data</p></li>
+<li><p>Intro to cloud computing – WHAT ?, WHY ?, HOW?</p></li>
+<li><p>General overview on services available in AWS (Amazon web services)</p></li>
+<li><p>Various database services available in AWS</p></li>
+<li><p>Details on RDS - Relational Database Service</p></li>
+<li><p>Demo</p></li>
+</ul>
+</section>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>You will understand how database management systems can be optimized for big data applications</p></li>
+<li><p>You will understand how the axes of big data (the 3Vs) apply to databases</p></li>
+<li><p>You will understand how the questions you ask affect the tools needed for data analysis</p></li>
+<li><p>Have a general understanding of cloud computing and help you get started.</p></li>
+</ul>
+</section>
+<section id="let-s-hear-a-story-on-it-depends">
+<h2>Let’s hear a story on ‘it Depends.’<a class="headerlink" href="#let-s-hear-a-story-on-it-depends" title="Permalink to this headline">#</a></h2>
+<p>You probably might have come across many questions like this in Reddit or StackOverflow.</p>
+<img alt="../_images/l21.png" src="../_images/l21.png" />
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><em><strong>“Focus on the business challenge first and then figure out the technology required to support this challenge.”</strong></em></p>
+<p>Lopes et al., 2017. Software Architecture for Big Data and the Cloud.
+DOI:<a class="reference external" href="https://www.sciencedirect.com/science/article/pii/B9780128054673000107?via%3Dihub">10.1016/B978-0-12-805467-3.00010-7</a></p>
+</aside>
+<p>You probably want to check out these questions and answers,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/hd3tqs/the_best_sql_vs_nosql_mindset_ive_ever_heard/">1</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/i0y3po/how_big_is_big_data/">2</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/9vwhl8/when_to_use_r_vs_when_to_use_python/">3</a>,<a class="reference external" href="https://www.reddit.com/r/learnprogramming/comments/lo5kpt/can_someone_explain_with_example_when_to_choose/">4</a>,<a class="reference external" href="https://www.reddit.com/r/webdev/comments/9g0z6f/sql_vs_nosql/">5</a>,<a class="reference external" href="https://www.reddit.com/r/webdev/comments/c3226n/when_should_one_use_sql_and_when_should_one_use/">6</a>,<a class="reference external" href="https://www.reddit.com/r/datascience/comments/b09mfj/for_data_visualization_what_is_the_benefit_of/">7</a> to see what they are talking about. Reading these questions and answers is interesting, but before thinking about all these technologies, you have to first think about the problem in your hand. If you have a clear understanding of the business problem in hand and list down all the features of your problem, you can list out the pros and cons of using one technology over another.</p>
+<p>So which technology should I use?
+It all boils down to <code class="docutils literal notranslate"><span class="pre">it</span> <span class="pre">depends</span></code> on your business problem. Let me take you through some of the <code class="docutils literal notranslate"><span class="pre">Depends</span></code>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/depends.png" src="../_images/depends.png" />
+</aside>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the output you need</p>
+<ul>
+<li><p>Interactive or static graphs?</p></li>
+<li><p>Integrated reports, tables, websites?</p></li>
+<li><p>For yourself, for your company, for the public?</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the data you use</p>
+<ul>
+<li><p>One large file, many small files?</p></li>
+<li><p>Use the whole file at once or in small chunks?</p></li>
+<li><p>Is data static (cold) or dynamic (hot)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Depends</span></code> on the question(s) you are trying to ask</p>
+<ul>
+<li><p>Is it high value?</p></li>
+<li><p>Are they complex (OLAP) or simple (OLTP)</p></li>
+<li><p>Do you need results quickly?</p></li>
+<li><p>For yourself, for your company, for the public?</p></li>
+</ul>
+</li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>The analysis also showed that the underlying infrastructures have special usage and operational characteristics. <em><strong>Clusters should be operated at high utilisation rate to keep costs low;</strong></em> in the cloud, careful management of virtual machine instances and data transfer between frequent and infrequent-access storage services are necessary for minimising cost……..</p>
+<p>Juhasz, Z. 2020. Cluster Computing. <a class="reference external" href="https://link.springer.com/article/10.1007%2Fs10586-020-03141-y">DOI: 10.1007/s10586-020-03141-y</a></p>
+</aside>
+<p><code class="docutils literal notranslate"><span class="pre">It</span> <span class="pre">Depends</span></code> matters a lot, especially in “Big Data,” as</p>
+<ul class="simple">
+<li><p>The costs and benefits are much higher</p></li>
+<li><p>The impact on a business’s bottom line can be significant</p></li>
+</ul>
+<p>Some of you might be thinking now, how big the data should be for it to be big data ? that too <code class="docutils literal notranslate"><span class="pre">It</span> <span class="pre">Depends.</span></code>
+It depends on many <code class="docutils literal notranslate"><span class="pre">V's.</span></code> Let’s discuss 3 <code class="docutils literal notranslate"><span class="pre">V's</span></code> in our next section.</p>
+</section>
+<section id="vs-of-big-data">
+<h2>3 Vs of Big Data<a class="headerlink" href="#vs-of-big-data" title="Permalink to this headline">#</a></h2>
+<p>Whenever you come across any big-data article, you will hear about V’s. 3V ’s definition was introduced in 2001 by Gartner Inc. analyst Doug Laney. After this, it evolved a lot with many other V’s. Here I will be going through more common 3V’s discussed in today’s industry. The 3 V’s are, broadly speaking, Velocity, Volume, and Variety. These were introduced to help understand the challenges of Big Data in computing and analytics.  The concepts are broadly applicable across all disciplines—for example, check what my colleague wrote about <a class="reference external" href="https://doi.org/10.1093/biosci/biy068">big data in Ecology</a>.  Various datasets or problems are affected differently by each of the different axes, so understanding the different dimensions of big data is critical to finding the analytic solutions we intend to apply.</p>
+<img alt="../_images/vvvv.png" src="../_images/vvvv.png" />
+<p>Source: Farley, Dawson, Goring &amp; Williams, Ecography, 2018 <a class="reference external" href="https://academic.oup.com/bioscience/article/68/8/563/5049569">Open Access</a></p>
+<p>Other people have spoken about five Vs (<a class="reference external" href="https://bizibl.com/marketing/download/fifth-v-big-data">Value</a>), <a class="reference external" href="https://impact.com/marketing-intelligence/7-vs-big-data/">seven Vs</a> (adding Variability, Visualization and Value), and even more.  If you want to know more V’s ( 42 of them ) and add your vocabulary, you can check out <a class="reference external" href="https://www.elderresearch.com/blog/the-42-vs-of-big-data-and-data-science/">this</a> article. These additional V’s can be informative, but, by and large, the Four V’s provide the most insight into data challenges.</p>
+<p>Let’s checkout 3 V’s in detail.</p>
+<section id="volume">
+<h3>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/volume.png" src="../_images/volume.png" />
+</aside>
+<p>When we think about “Big Data, ” this is often the most familiar dimension.  We think of Big Data in terms of gigabytes, terabytes, or petabytes.  The volume presents a significant challenge for data storage, although modern technology has reduced this challenge to some degree.  It also produces a challenge for recall (simply finding information) and for data processing (transforming and analyzing data). Here are the pointers to look out for:</p>
+<ul class="simple">
+<li><p>How big is the data?</p></li>
+<li><p>Total File Size</p></li>
+<li><p>Number of Data Points</p></li>
+</ul>
+<section id="volume-solutions">
+<h4>Volume Solutions<a class="headerlink" href="#volume-solutions" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Cloud storage solutions</p></li>
+</ul>
+<p>But in most cases, it’s not just about storing your data; it’s more about how you will process the data. Then there will be limitations by read-write access or/and memory capacity.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/volumesolu.png" src="../_images/volumesolu.png" />
+</aside>
+<ul class="simple">
+<li><p>Partitioning/Sharding</p></li>
+</ul>
+<p>We must look at this from different angles, partitioning/sharding from a database perspective, which we will touch upon later in this course. Another option is to go for distributed file system where it stores data in small blocks so that it’s easy to process when needed.</p>
+<ul class="simple">
+<li><p>Parallel processing</p></li>
+</ul>
+<p>Small chunks of files can be processed simultaneously by using different servers/cores and aggregate results at the end. This is mainly made possible in the industry by high-performance/cluster computing or other map-reduce-based frameworks like Hadoop/spark.</p>
+</section>
+</section>
+<section id="velocity">
+<h3>Velocity<a class="headerlink" href="#velocity" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/velocitysolu.png" src="../_images/velocitysolu.png" />
+</aside>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>“The speed of transmission is what allows HFTs to always have a head start because they closeout and softsell [more] rapidly than anyone.”
+<a class="reference external" href="https://medium.com/&#64;moonxfamily/high-frequency-trading-races-to-nanoseconds-689f86109fb4">High Frequency Trading - Medium post</a></p>
+</aside>
+<p>Velocity is a second factor.  We may be interested in only the most recent data, minutes or seconds, requiring low volumes of data, but at a high velocity.  For example, quant traders might be using high-frequency stock data to maximize trading profits.  This involves analysis with extremely fast turnover. Here are the pointers to look out for:</p>
+<ul class="simple">
+<li><p>How fast is the data arriving?</p>
+<ul>
+<li><p>Annual data from Stats Can?</p></li>
+<li><p>Real-time data from stock tickers or Twitter?</p></li>
+</ul>
+</li>
+<li><p>How fast do we need our answers?</p>
+<ul>
+<li><p>Monthly or annual strategy planning?</p></li>
+<li><p>Real-time commodities purchasing?</p></li>
+</ul>
+</li>
+<li><p>How fast is the data changing?</p>
+<ul>
+<li><p>Changing interpretations?</p></li>
+</ul>
+</li>
+</ul>
+<section id="velocity-solutions">
+<h4>Velocity Solutions<a class="headerlink" href="#velocity-solutions" title="Permalink to this headline">#</a></h4>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/coldhot.png" src="../_images/coldhot.png" />
+</aside>
+<ul class="simple">
+<li><p>Agile development.</p></li>
+<li><p>BASE databases (Basically available).</p></li>
+<li><p>Modular analytics &amp; fault tolerance.</p></li>
+<li><p>Identify “Key Performance Indicators”.</p></li>
+<li><p>Develop real-time reporting.</p></li>
+<li><p>Split the data into hot (Redis , RAM) and cold data (RDBMS, Disk Storage).</p></li>
+</ul>
+</section>
+</section>
+<section id="variety">
+<h3>Variety<a class="headerlink" href="#variety" title="Permalink to this headline">#</a></h3>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/variety.png" src="../_images/variety.png" />
+</aside>
+<p>When we bring in multiple data sources or build data lakes, how well do data fields align?  Are temporal scales aligned?  Are addresses, zip codes, census tracts, or electoral districts aligned with other spatial data?  Are financial values in standard units? If not, how do we transform the values to account for fluctuating exchange rates? Here are the pointers to look out for</p>
+<ul class="simple">
+<li><p>How different is the data source?</p></li>
+<li><p>Are data coming from multiple sources?</p>
+<ul>
+<li><p>Do fields in sources align well?</p></li>
+<li><p>Do files have similar formatting?</p></li>
+</ul>
+</li>
+<li><p>How different are the data structures?</p>
+<ul>
+<li><p>Can the data work in a relational model?</p></li>
+<li><p>Do we need multiple data models?</p></li>
+</ul>
+</li>
+</ul>
+<section id="variety-solutions">
+<h4>Variety Solutions<a class="headerlink" href="#variety-solutions" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Normalize using multiple data sources.</p></li>
+<li><p>Clear interface layers (structured based on velocity and volume).</p></li>
+<li><p>Different management systems (RDBMS &amp; Graph DB).</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="the-3-v-s-and-analytic-workflows">
+<h2>The 3 V’s and Analytic Workflows<a class="headerlink" href="#the-3-v-s-and-analytic-workflows" title="Permalink to this headline">#</a></h2>
+<p>These challenges come to the forefront when we’re working with data.  The goto standard is to open up an Excel or read in a comma-separated file to look at the data, get a sense of what is happening, or summarise the key elements.</p>
+<ul class="simple">
+<li><p>When that file is &lt;10MB in size, that’s often not a big problem, but as files get bigger and bigger, even calculating a simple mean is an issue (<strong>Volume</strong>).</p></li>
+<li><p>When the data contains text, images, values in different currencies, summary becomes problematic (<strong>Variety</strong>)</p></li>
+<li><p>When the 10MB you just summarized are out-of-date, as soon as you’re done outlining them, how do you present these results to your colleagues? (<strong>Velocity</strong>)</p></li>
+</ul>
+<section id="problem-based-approaches">
+<h3>Problem Based Approaches<a class="headerlink" href="#problem-based-approaches" title="Permalink to this headline">#</a></h3>
+<p>Many of these challenges have straightforward(ish) solutions, but how we apply those solutions and our choices are often specific to the problem we are trying to answer.  For example, a common solution people present to <strong>Volume</strong> is to use a NoSQL database to store and index information.  This is an appropriate solution in many cases; <em><strong>however, most data is well suited to relational databases</strong></em>, and these often provide advantages over non-relational databases.</p>
+<p>One of the most important steps in choosing how to set up your analytic workflow is the proper framing of your question.  This will help you understand:</p>
+<ol class="arabic simple">
+<li><p>What data sources do you need ?</p></li>
+<li><p>How you will transform that data ?</p></li>
+<li><p>How you will represent your data ?</p></li>
+</ol>
+<p>To summarize, when is big data appropriate? <code class="docutils literal notranslate"><span class="pre">Depends</span> <span class="pre">on:</span></code></p>
+<ul class="simple">
+<li><p>Velocity, Volume, and Variety</p></li>
+<li><p>When traditional tools begin to fail</p></li>
+<li><p>If analysis crashes your computer (laptop)</p></li>
+</ul>
+<section id="processing">
+<h4>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>Bring just what is needed to memory (<code class="docutils literal notranslate"><span class="pre">usecols</span></code>, <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, <code class="docutils literal notranslate"><span class="pre">working</span> <span class="pre">on</span> <span class="pre">individual</span> <span class="pre">files</span></code>, <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Parallel</span> <span class="pre">processing</span></code> so that pieces of files can be processed at the same time. (packages like arrow does all these for you)</p></li>
+</ul>
+<p>The local solutions are applicable everywhere, but when we get to a much larger data set, then these techniques alone won’t help. Hence we wanted to learn about <code class="docutils literal notranslate"><span class="pre">scale-UP</span></code> and <code class="docutils literal notranslate"><span class="pre">scale-OUT</span></code> solutions.</p>
+</section>
+</section>
+</section>
+<section id="approaches-for-big-data">
+<h2>Approaches for big data<a class="headerlink" href="#approaches-for-big-data" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/upcartoon.png" src="../_images/upcartoon.png" />
+</aside>
+<section id="scale-up">
+<h3>Scale UP<a class="headerlink" href="#scale-up" title="Permalink to this headline">#</a></h3>
+<p><em><strong>With cloud computing, a scale-UP solution is just one click away;</strong></em> before the rise of cloud computing, it was considered very difficult as it had to be done in an on-premise setup. As a student, you can think about buying a new 32 GB RAM laptop when things don’t work anymore in your 16 GB laptop. You can, of course, think about all the difficulties involved in it.</p>
+<p>Even though a scale-UP solution sounds easy with cloud computing, it might not be appropriate in many situations, especially when dealing with big data. Here are some of the disadvantages you can think of with a scale-UP solution.</p>
+<ul class="simple">
+<li><p>No default high availability</p></li>
+<li><p>Single point failure</p></li>
+<li><p>Server upgrade can be tricky (I agree with cloud computing, it is easy !)</p></li>
+<li><p>No upper limit with hardware capacity</p></li>
+<li><p>Downtime related to upgrade</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/outcartoonn.png" src="../_images/outcartoonn.png" />
+</aside>
+</section>
+<section id="scale-out">
+<h3>Scale OUT<a class="headerlink" href="#scale-out" title="Permalink to this headline">#</a></h3>
+<p>Add more computers so that it behaves as a single machine. Many scale OUT solutions are available, like <code class="docutils literal notranslate"><span class="pre">cluster</span> <span class="pre">computer</span></code>, <code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Computing</span> <span class="pre">(HPC)</span></code>, <code class="docutils literal notranslate"><span class="pre">Hadoop</span></code>, <code class="docutils literal notranslate"><span class="pre">Spark</span></code> etc… Our focus will be on the Scale UP solution. In our last class on special topics, I will briefly touch upon some more details on the scale OUT solution.</p>
+<p>To summarize;
+A scale-UP solution makes more sense when thinking about just an individual working on some data on a research project. However, looking from a large scale or an enterprise solution standpoint, a scale-UP solution is not a great option in most cases as there is always an expectation of huge and steady growth in data in the long run. So, let’s get into the details of a scale-OUT solution.</p>
+<p>Adding some advantages related to the scale-OUT solution;</p>
+<ul class="simple">
+<li><p><em><strong>Scale-out is easy</strong></em> - as you want to add servers when the load is high, and you can remove servers when the load is less.</p></li>
+<li><p>You can make use of <em><strong>distributed frameworks</strong></em> and it’s advantages for processing</p></li>
+</ul>
+<p>Here is a diagram that shows the difference in scale-UP and scale-OUT solutions.</p>
+<img alt="../_images/scale.png" src="../_images/scale.png" />
+</section>
+</section>
+<section id="intro-to-cloud-computing">
+<h2>Intro to cloud computing<a class="headerlink" href="#intro-to-cloud-computing" title="Permalink to this headline">#</a></h2>
+<p>Let me tell you a short cloud-computing tale. This story starts from a computer that you all are familiar with. By the end of this tale, you will answer <em><strong>WHAT, WHY &amp; HOW cloud computing.</strong></em></p>
+<p>Here is the computer that I am talking about:
+<br>
+<img alt="../_images/l31.png" src="../_images/l31.png" />
+<br>
+OKAY! So now we all agreed to call monitor as the client and that box as server. Now let’s take this knowledge to a bigger picture or think about how this idea will be when you start working in the industry.
+<br>
+<img alt="../_images/l32.png" src="../_images/l32.png" />
+<br></p>
+<p>Collectively we call these servers data centers ( you can also hear people calling some other names like on-premise infrastructure). Mostly all companies (may be used to as there is this trend of moving to cloud) have data centers, which is considered a company powerhouse for powering data needs (like storage, processing, etc.)</p>
+<p>If you want to check out more on those gigantic data centers. Checkout <a class="reference external" href="https://www.youtube.com/watch?v=g7JaN3rTK2A">here</a></p>
+<p>Let me pause and take a minute to answer this question:</p>
+</section>
+<section id="clicker-1">
+<h2>Clicker 1<a class="headerlink" href="#clicker-1" title="Permalink to this headline">#</a></h2>
+<aside class="sidebar">
+<p class="sidebar-title">Question is here..</p>
+<p>So assume that UBC has some server, and we are using this “client-server model” to do our analysis, then what do we not care about in the laptop requirements that MBAN mandates?</p>
+<ul class="simple">
+<li><p>YES</p></li>
+<li><p>NO</p></li>
+</ul>
+</aside>
+<a class="reference internal image-reference" href="../_images/l33.png"><img alt="../_images/l33.png" src="../_images/l33.png" style="width: 55%;" /></a>
+<br>
+<br><p>Now that you understand this client-server model, let’s look inside these data centers to see which parties are involved.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/funny.png" src="../_images/funny.png" />
+</aside>
+<img alt="../_images/l35.png" src="../_images/l35.png" />
+</section>
+<section id="class-activity-1">
+<h2>Class activity 1<a class="headerlink" href="#class-activity-1" title="Permalink to this headline">#</a></h2>
+<div class="toggle docutils container">
+<p><em><strong>List down in your notes about the labor costs:</strong></em></p>
+<p><em><strong>List down costs other than labor cost:</strong></em></p>
+</div>
+<p>With cloud computing, we are bringing down most of the costs you listed now. Look how neat and clean the diagram below is as cloud providers are taking care of most of the responsibilities that we discussed and using their infrastructure servers as services.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/whocares.png" src="../_images/whocares.png" />
+</aside>
+<img alt="../_images/l34.png" src="../_images/l34.png" />
+<p>I hope by now you can formulate an answer for questions WHAT, WHY, and HOW cloud computing.</p>
+<ul class="simple">
+<li><p><em><strong>WHAT?</strong></em>
+Cloud Computing is when we get a server in the cloud for our compute, storage, databases, and network services provided to users via the internet.</p></li>
+<li><p><em><strong>WHY?</strong></em>
+Save lots of money that otherwise need to spend for on-premise infrastructure, and I don’t want to worry about infrastructure and can focus on your analysis right from day1.</p></li>
+<li><p><em><strong>HOW?</strong></em>
+Some cloud vendors provide infrastructure as a service by taking care of all the responsibilities that otherwise need to be done on-premise.</p></li>
+</ul>
+</section>
+<section id="benefits-of-cloud-computing">
+<h2>Benefits of cloud computing:<a class="headerlink" href="#benefits-of-cloud-computing" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Trade capital expense for variable expense</p></li>
+<li><p>Massive economies of scale</p></li>
+<li><p>Stop guessing capacity</p></li>
+<li><p>Increase speed and agility</p></li>
+<li><p>Stop spending money on running and maintaining data centers</p></li>
+<li><p>Go global in minutes</p></li>
+</ul>
+<p>Source: aws</p>
+</section>
+<section id="cloud-providers">
+<h2>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Amazon Web Services (AWS)</p></li>
+<li><p>Microsoft Azure</p></li>
+<li><p>Google Cloud</p></li>
+</ul>
+</section>
+<section id="category-of-services-available-in-aws">
+<h2>Category of services available in AWS<a class="headerlink" href="#category-of-services-available-in-aws" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Compute</p>
+<ul>
+<li><p>EC2 – Elastic Cloud Compute</p></li>
+</ul>
+</li>
+<li><p>Storage</p>
+<ul>
+<li><p>EBS - Elastic Block Storage</p></li>
+<li><p>S3 - Simple Storage Service</p></li>
+</ul>
+</li>
+<li><p>Database</p></li>
+</ul>
+<img alt="../_images/l36.png" src="../_images/l36.png" />
+<p>Source: <a class="reference external" href="https://www.dbbest.com/technologies/nosql-databases/">dbtest</a></p>
+<section id="database-amazon-rds">
+<h3>Database (Amazon RDS)<a class="headerlink" href="#database-amazon-rds" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Relational database service (RDS) provides a simple way to provision, create, and scale a relational database within AWS.</p></li>
+<li><p>Managed service – AWS takes responsibility for the administrative tasks</p></li>
+<li><p>Following database engines are supported</p>
+<ul>
+<li><p>Amazon Aurora</p></li>
+<li><p>PostgreSQL</p></li>
+<li><p>MySQL</p></li>
+<li><p>MariaDB</p></li>
+<li><p>Oracle Database</p></li>
+<li><p>SQL Server</p></li>
+</ul>
+</li>
+</ul>
+<p>For a list of entire services and details, check out <a class="reference external" href="https://d1.awsstatic.com/whitepapers/aws-overview.pdf">here</a></p>
+</section>
+</section>
+<section id="ways-to-interact-with-aws">
+<h2>Ways to interact with AWS<a class="headerlink" href="#ways-to-interact-with-aws" title="Permalink to this headline">#</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://www.awsacademy.com/LMS_Login">Web interface</a></p>
+<p>A web-based GUI provides the capability to interact with the services within AWS.</p>
+</li>
+<li><p><a class="reference external" href="https://aws.amazon.com/cli/">AWS CLI</a></p></li>
+<li><p><a class="reference external" href="https://aws.amazon.com/sdk-for-python/">SDK</a></p></li>
+</ul>
+<p>A good blog <a class="reference external" href="https://adamraffe.com/2019/02/20/aws-fundamentals-part-3-interacting-with-aws/">here</a> explains various ways of interaction.</p>
+</section>
+<section id="demo">
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">#</a></h2>
+<p>Let’s together explore AWS</p>
+<ul class="simple">
+<li><p>Sign up for AWS Academy</p></li>
+<li><p>Logging into your AWS console</p></li>
+<li><p>Navigating in the console</p></li>
+</ul>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can checkout these <a class="reference internal" href="../installation/aws.html"><span class="doc std std-doc">instructions</span></a> on setting up your AWS instance.</p>
+</div>
+</section>
+<section id="can-you">
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Define what Big data is in a more formal way ?</p></li>
+<li><p>List down various dimensions of Big data?</p></li>
+<li><p>2 general approaches taken for big data ?</p></li>
+<li><p>WHAT, WHY, and HOW cloud computing is made possible ?</p></li>
+<li><p>Set up your AWS account and navigate to various services ?</p></li>
+</ul>
+</section>
+<section id="class-activity-2">
+<h2>Class activity 2<a class="headerlink" href="#class-activity-2" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check worksheet 1 in canvas for detailed instructions on activity and submission instructions.</p>
+</div>
+<ul class="simple">
+<li><p>Setup your AWS account</p></li>
+<li><p>Navigate to various services</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "ggeorg02/BAIT580",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 0: Course Introduction</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-hear-a-story-on-it-depends">Let’s hear a story on ‘it Depends.’</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vs-of-big-data">3 Vs of Big Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume">Volume</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-solutions">Volume Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity">Velocity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-solutions">Velocity Solutions</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variety">Variety</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variety-solutions">Variety Solutions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-3-v-s-and-analytic-workflows">The 3 V’s and Analytic Workflows</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-based-approaches">Problem Based Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#processing">Processing</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#approaches-for-big-data">Approaches for big data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-up">Scale UP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scale-out">Scale OUT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-to-cloud-computing">Intro to cloud computing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clicker-1">Clicker 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity-1">Class activity 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benefits-of-cloud-computing">Benefits of cloud computing:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cloud-providers">Cloud providers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#category-of-services-available-in-aws">Category of services available in AWS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#database-amazon-rds">Database (Amazon RDS)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ways-to-interact-with-aws">Ways to interact with AWS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demo">Demo</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity-2">Class activity 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            <div class="bd-footer-content__inner">
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Gittu George, PhD
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div></div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
