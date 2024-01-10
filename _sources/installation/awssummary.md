@@ -19,7 +19,7 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 - We expect you to know this from your previous courses. But if you still need help, then use the following helpers.
 
 ```{admonition} Helpers:
-- You can use previous year's tutorial recording. https://canvas.ubc.ca/files/30831874/download?download_frd=1 
+- You can use previous year's tutorial recording. [https://canvas.ubc.ca/files/30831874/download?download_frd=1](https://canvas.ubc.ca/files/30831874/download?download_frd=1)
 - Tutorial this week by Jordan 5 - 6 pm.
 ```
 
