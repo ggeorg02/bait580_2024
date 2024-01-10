@@ -25,7 +25,7 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 
 ## Install pgadmin.
 
-- You can follow the instructions here https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html 
+- You can follow the instructions here [https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html](https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html)
 - Basically, it is to download the pgadmin software for your operating system. 
 - Please make sure you download the latest version. 
 
@@ -53,7 +53,7 @@ You need this for your worksheets and assignment 1.
 ## Connecting from your Jupyter notebook to RDS database.
 
 ```{admonition} Helpers:
-- You can find information in our lecture 2 notes. https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql 
+- You can find information in our lecture 2 notes. [https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql](https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql)
 - You can also check out the youtube video Chapter 3 from timestamp .. To .. 
 - Tutorial Daniel this week Friday 2 – 3 PM.
 ```
@@ -67,7 +67,7 @@ Tutorial Daniel this week Friday 2 – 3 PM.
 ## Connecting from your pgadmin to RDS database.
 
 ```{admonition} Helpers:
-- You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html 
+- You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html](https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html)
 - You can also check out the youtube video Chapter 4 from timestamp .. To .. 
 - I will also show this in class during lecture 2 time.
 - Tutorial Daniel this week Friday 2 – 3 PM.
@@ -78,7 +78,7 @@ Tutorial Daniel this week Friday 2 – 3 PM.
 You need to do this for assignment 1 and worksheet 2.
 
 ```{admonition} Helpers:
-- You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/dump.html Windows users, make sure you check it.
+- You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/dump.html](https://ggeorg02.github.io/bait580_2024/installation/dump.html) Windows users, make sure you check it.
 - I will also show this in class during lecture 2 time.
 - You can also check out the youtube video Chapter 5 from timestamp .. To ..
 - Tutorial Daniel this week Friday 2 – 3 PM.
