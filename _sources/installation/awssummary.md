@@ -6,13 +6,15 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 
 ## Following are the installations for first week 
 
-- Setting up conda, environment, and Jupyter notebook
-- Install pgadmin.
-- Setting up your RDS database.
-- Connecting from your Jupyter Notebook to the RDS database.
-- Connecting from your pgadmin to the RDS database.
-- Loading dumps to your Database
+- [Setting up conda, environment, and Jupyter notebook](one)
+- [Install pgadmin](two)
+- [Setting up AWS account](three)
+- [Setting up your RDS database](four)
+- [Connecting from your Jupyter Notebook to the RDS database](five)
+- [Connecting from your pgadmin to the RDS database](six)
+- [Loading dumps to your Database](seven)
 
+(one)=
 ## Setting up conda, environment and Jupyter notebook
 
 - Setting up conda, environment, and Jupyter notebook (vscode, jupyterlab is also fine).
@@ -22,7 +24,7 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 - You can use previous year's tutorial recording. [https://canvas.ubc.ca/files/30831874/download?download_frd=1](https://canvas.ubc.ca/files/30831874/download?download_frd=1)
 - Tutorial this week by Jordan 5 - 6 pm.
 ```
-
+(two)=
 ## Install pgadmin.
 
 - You can follow the instructions here [https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html](https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html)
@@ -39,7 +41,7 @@ For MAC OS users, download correct file based on your laptop chip.
 ```{admonition} Helpers:
 Tutorial this week by Jordan 5 - 6 pm.
 ```
-
+(three)=
 ## Setting up AWS account
 
 ```{admonition} Helpers:
@@ -47,7 +49,7 @@ Tutorial this week by Jordan 5 - 6 pm.
 - I showed you this in lecture 1.
 - Daniel is also hosting a tutorial Friday 2 – 3 PM.
 ```
-
+(four)=
 ## Setting up your RDS database.
 
 You need this for your worksheets and assignment 1.
@@ -57,7 +59,7 @@ You need this for your worksheets and assignment 1.
 - You can also check out the YouTube video Chapter 2 from timestamp .. To .. 
 - Daniel is also hosting a tutorial Friday 2 – 3 PM.
 ```
-
+(five)=
 ## Connecting from your Jupyter notebook to RDS database.
 
 ```{admonition} Helpers:
@@ -71,7 +73,7 @@ In order to do this correctly, you should know about absolute and relative paths
 watch chapter 2 from timestamp .. To .. 
 Tutorial Daniel this week Friday 2 – 3 PM.
 ```
-
+(six)=
 ## Connecting from your pgadmin to RDS database.
 
 ```{admonition} Helpers:
@@ -80,7 +82,7 @@ Tutorial Daniel this week Friday 2 – 3 PM.
 - I will also show this in class during lecture 2 time.
 - Tutorial Daniel this week Friday 2 – 3 PM.
 ```
-
+(seven)=
 ## Loading dumps to your Database
 
 You need to do this for assignment 1 and worksheet 2.
