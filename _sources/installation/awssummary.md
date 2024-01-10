@@ -1,7 +1,7 @@
 # Overview first week installations and setup.
 
 ```{note}
-Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this PPT to guide you through the slides in a sequential order. You will also find various sources for assistance, including our lectures, videos, or tutorials, or a combination of all three. Hopefully, we will all navigate through this week smoothly.
+Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this page to guide you through the things in a sequential order. You will also find various sources for assistance, including our lectures, videos, or tutorials, or a combination of all three. Hopefully, we will all navigate through this week smoothly.
 ```
 
 ## Following are the installations for first week 
@@ -105,17 +105,17 @@ In order to do this correctly, you should know about absolute and relative paths
     - 45:10 Understanding absolute vs relative path
 Tutorial Daniel this week Friday 2 – 3 PM.
 ```
-
+(summary)=
 ## Summary
 
 Here is the summary of the contents in the YouTube video, which is in sections above. You will also find it in the description of the YouTube video.
 
 [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
 
-0:00 Brief intro
-11:30 Setting up RDS database
-25:58 IMPORTANT: Update security group RDS
-29:00 Connecting pgadmin to the RDS
-34:30 Loading dumps to your Database
-45:10 Understanding absolute vs relative path
-52:58 Connecting Jupyter Notebook to the RDS
+- 0:00 Brief intro
+- 11:30 Setting up RDS database
+- 25:58 IMPORTANT: Update security group RDS
+- 29:00 Connecting pgadmin to the RDS
+- 34:30 Loading dumps to your Database
+- 45:10 Understanding absolute vs relative path
+- 52:58 Connecting Jupyter Notebook to the RDS
