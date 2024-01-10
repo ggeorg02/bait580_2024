@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lecture 0: Course Introduction" href="../lectures/lecture0.html" />
-    <link rel="prev" title="AWS" href="../installation/aws.html" />
+    <link rel="prev" title="Load Dumps (using pgadmin)" href="../installation/dump.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -154,6 +154,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/aws.html">AWS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/pgadmin.html">pgAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/dump.html">Load Dumps (using pgadmin)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="current nav bd-sidenav">
@@ -163,6 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 </ul>
 
     </div>
@@ -419,16 +422,16 @@ document.write(`
 </ul>
 <p>We will also be having a tutorial this year. Scheduled to happen Thur this week by Jordan Yu (TA) 5 - 6 pm.</p>
 <p>Do you want it online or In-person?</p>
-<p>A) Online via zoom</p>
+<p>A) Online via zoom - Based on the poll we will schedule it online: https://ubc.zoom.us/s/63290621368</p>
 <p>B) Inperson (subject to room availability)</p>
 <p>C) Hybrid (subject to room availability)</p>
-<!-- - [Absolute and relative paths - for credentials.json](https://ubc.zoom.us/rec/share/qquSwlsZxHJP7tmDT3yIz_TLXbZdqBKqdm0yf1fEuQEg1TUk4I6A8pU8U3olqTwe.B0SHyYHjdiBjddKa?startTime=1673308251000) - Passcode: check piazza
-- [Connecting from notebook and credentials.json setup](https://ubc.zoom.us/rec/share/PGBLUxRwIbSTZByM2gU74IMqhkKGizQoN8wxQvPpvv7X-_-489sBgkk24u8G8sBN.3miQidugrqrc6t1X?startTime=1673310310000) - Passcode: check piazza
-Following the lecture notes from [here](https://ggeorg02.github.io/BAIT580a_students/lectures/lecture2.html#ipython-sql-sql-and-sql)
-- [Loading tweets.sql dump for Assignment 1 and Worksheet2](https://ubc.zoom.us/rec/share/V9AOHvihsg8bdyFnQ0OF9LIrYV15YHCNI7rQOmUU3lkf9AlzRt97KfD-lMlZgnME.AMgczF2XIOEaN0Sd) - Passcode: check piazza
-- [Loading neo4j.dump for assignment2, connecting from jupyter and host name details](https://ubc.zoom.us/rec/share/_mlCek84z7T-xRzilLDBMJQ8ec30YLgiHc_TJQJf9j5-yvU2w1uG-fP5ibYpENZD.ckeZxE7BNnZ-GZko?startTime=1674173369000) - Passcode: check piazza
-- [neo4j Tutorial @Daniel ](https://ubc.zoom.us/rec/play/1w9EWzwwLzTRVukHRATitmgoDO_JnraF2bf9mCZUmE8TH9f1DqCb2642aItYjRjYqbAq8nJDoZ1g83ul.sHFnehWmxCpmaRg3) - Passcode: check piazza
-- [Setting up mongoDB database and loading data](https://ubc.zoom.us/rec/share/sK7rYzxzPi9awyauzxgn2HrVx0o-Ogiiv8_lbxH9PpYWpDrXSUEetgqhM2doUqqA.JG2uGdqJ1qWyfeqG) - Passcode: check piazza --></section>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/qquSwlsZxHJP7tmDT3yIz_TLXbZdqBKqdm0yf1fEuQEg1TUk4I6A8pU8U3olqTwe.B0SHyYHjdiBjddKa?startTime=1673308251000">Absolute and relative paths - for credentials.json</a> - Passcode: <code class="docutils literal notranslate"><span class="pre">6YqU&amp;nCb</span></code></p></li>
+<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/PGBLUxRwIbSTZByM2gU74IMqhkKGizQoN8wxQvPpvv7X-_-489sBgkk24u8G8sBN.3miQidugrqrc6t1X?startTime=1673310310000">Connecting from notebook and credentials.json setup</a> - Passcode: <code class="docutils literal notranslate"><span class="pre">cw2.X2*&amp;</span></code>
+Following the lecture notes from <a class="reference external" href="https://ggeorg02.github.io/BAIT580a_students/lectures/lecture2.html#ipython-sql-sql-and-sql">here</a></p></li>
+<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/V9AOHvihsg8bdyFnQ0OF9LIrYV15YHCNI7rQOmUU3lkf9AlzRt97KfD-lMlZgnME.AMgczF2XIOEaN0Sd">Loading tweets.sql dump for Assignment 1</a> - Passcode: check piazza</p></li>
+</ul>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -459,12 +462,12 @@ Following the lecture notes from [here](https://ggeorg02.github.io/BAIT580a_stud
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../installation/aws.html"
+       href="../installation/dump.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">AWS</p>
+        <p class="prev-next-title">Load Dumps (using pgadmin)</p>
       </div>
     </a>
     <a class="right-next"
