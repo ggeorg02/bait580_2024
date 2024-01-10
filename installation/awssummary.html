@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Conda &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    <title>Overview first week installations and setup. &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
   
   
@@ -61,12 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'installation/conda';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'installation/awssummary';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="JuypterLab" href="jupyterlabtest.html" />
-    <link rel="prev" title="Overview first week installations and setup." href="awssummary.html" />
+    <link rel="next" title="Conda" href="conda.html" />
+    <link rel="prev" title="BAIT 580A - Topics in Information Technology Management" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -151,8 +151,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview first week installations and setup.</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Conda</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Overview first week installations and setup.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyterlabtest.html">JuypterLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
@@ -221,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/installation/conda.md" target="_blank"
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/installation/awssummary.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Finstallation/conda.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Finstallation/awssummary.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -268,7 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/installation/conda.md" target="_blank"
+      <li><a href="../_sources/installation/awssummary.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +350,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Conda</h1>
+    <h1>Overview first week installations and setup.</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -360,8 +360,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-environment">Setting up environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-environment">Importance of environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#following-are-the-installations-for-first-week">Following are the installations for first week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-conda-environment-and-jupyter-notebook">Setting up conda, environment and Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pgadmin">Install pgadmin.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rds-database">Setting up your RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-pgadmin-to-rds-database">Connecting from your pgadmin to RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dumps-to-your-database">Loading dumps to your Database</a></li>
 </ul>
             </nav>
         </div>
@@ -373,55 +377,86 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="conda">
-<h1>Conda<a class="headerlink" href="#conda" title="Permalink to this headline">#</a></h1>
-<p>In this course, you are supposed to do your assignments and projects in python. Therefore, I hope you already have your python 3 installed from your previous courses.</p>
-<p>Conda is a python package manager, which we will be using for this course. This makes managing the python environment and packages easy. If you already have it in your system well and good, if not, please follow <a class="reference external" href="https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html#regular-installation">these instructions</a> to install conda in your system.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="overview-first-week-installations-and-setup">
+<h1>Overview first week installations and setup.<a class="headerlink" href="#overview-first-week-installations-and-setup" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Make sure to install conda based on the version of python 3 that you installed.</p>
+<p>Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this PPT to guide you through the slides in a sequential order. You will also find various sources for assistance, including our lectures, videos, or tutorials, or a combination of all three. Hopefully, we will all navigate through this week smoothly.</p>
 </div>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>Once you have finished installation, make sure you restart your terminal before trying out the following commands.</p>
-</div>
-<p>The following commands confirm that you have conda installed in your system, as it lists the version.</p>
-<div class="admonition attention">
-<p class="admonition-title">Attention</p>
-<p>ggeorg02&#64;MacBook-Pro ~ % is my terminal prompt. You want to paste what copy what comes after <code class="docutils literal notranslate"><span class="pre">%</span></code>. Eg, in below example <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">--version</span></code></p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>--version
-conda<span class="w"> </span><span class="m">4</span>.10.3<span class="w"> </span>
-</pre></div>
-</div>
-<p>Check the python version that you have.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>python<span class="w"> </span>--version<span class="w">        </span>
-Python<span class="w"> </span><span class="m">3</span>.8.5
-</pre></div>
-</div>
-<section id="setting-up-environment">
-<h2>Setting up environment<a class="headerlink" href="#setting-up-environment" title="Permalink to this headline">#</a></h2>
-<p>Now let us create an environment that we will be using for this course. We are providing you with a conda environment file which is available here. You can download <a class="reference external" href="https://canvas.ubc.ca/files/30845979/download?download_frd=1">this file</a> and create a conda environment for the course and activate it as follows.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bait580env.yml
-<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>bait580env
-</pre></div>
-</div>
-<p>Note that this is not a complete list of the packages we’ll be using in the course and there might be a few packages you will be installing using conda install later in the course. But this is a good enough list to get you started.</p>
-<p>The above command activates the MBAN environment and will show the following in the terminal.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>MBAN<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Notice the (base) changed to the (MBAN) once the MBAN environment is activated.</p>
-</div>
-<p><a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/#installing-a-conda-package">Here</a> are instructions on installing any additional packages using conda.</p>
+<section id="following-are-the-installations-for-first-week">
+<h2>Following are the installations for first week<a class="headerlink" href="#following-are-the-installations-for-first-week" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Setting up conda, environment, and Jupyter notebook</p></li>
+<li><p>Install pgadmin.</p></li>
+<li><p>Setting up your RDS database.</p></li>
+<li><p>Connecting from your Jupyter Notebook to the RDS database.</p></li>
+<li><p>Connecting from your pgadmin to the RDS database.</p></li>
+<li><p>Loading dumps to your Database</p></li>
+</ul>
 </section>
-<section id="importance-of-environment">
-<h2>Importance of environment<a class="headerlink" href="#importance-of-environment" title="Permalink to this headline">#</a></h2>
-<p>Python environment management is important for properly organizing your packages in a python environment because it ensures that all developers work in the same environment with the same packages and versions. The primary use of anaconda is to manage your python environment. You will definitely see this and use it when you start working on a large data science project. If you understand its value, you will also use it for your projects to organize your python environments with other courses/projects. This also helps with deployments, as the code can be tested in the same environment in which it will be deployed. It also allows for testing the effects of upgrading packages by creating a new environment with the updated packages.</p>
-<p>In our case, the developer (in this situation, me) is sharing a specific environment called “bait580env.yml” with other developers (you all) to use. To create a new environment using the “bait580env.yml” file, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">bait580env.yml</span></code>. In addition, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nb_conda_kernels</span></code> to install in base environment so that you can easily select all available environments from your jupyter.</p>
-<p>Please read more about it <a class="reference external" href="https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/">here</a></p>
+<section id="setting-up-conda-environment-and-jupyter-notebook">
+<h2>Setting up conda, environment and Jupyter notebook<a class="headerlink" href="#setting-up-conda-environment-and-jupyter-notebook" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Setting up conda, environment, and Jupyter notebook (vscode, jupyterlab is also fine).</p></li>
+<li><p>We expect you to know this from your previous courses. But if you still need help, then use the following helpers.</p></li>
+</ul>
+<p>Helpers</p>
+<ul class="simple">
+<li><p>You can use previous year’s tutorial recording. https://canvas.ubc.ca/files/30831874/download?download_frd=1</p></li>
+<li><p>Tutorial this week by Jordan 5 - 6 pm.</p></li>
+</ul>
+</section>
+<section id="install-pgadmin">
+<h2>Install pgadmin.<a class="headerlink" href="#install-pgadmin" title="Permalink to this headline">#</a></h2>
+<p>You can follow the instructions here https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html</p>
+<ul class="simple">
+<li><p>Basically, it is to download the pgadmin software for your operating system.</p></li>
+<li><p>Please make sure you download the latest version.</p></li>
+</ul>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>For MAC OS users, download correct file based on your laptop chip.</p>
+<p>pgadmin4-8.1-arm64.dmg – M1, M2, M3 chip
+pgadmin4-8.1-x86_64.dmg — INTEL CHIP</p>
+</div>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<p>Tutorial this week by Jordan 5 - 6 pm.</p>
+</div>
+</section>
+<section id="setting-up-your-rds-database">
+<h2>Setting up your RDS database.<a class="headerlink" href="#setting-up-your-rds-database" title="Permalink to this headline">#</a></h2>
+<p>You need this for your worksheets and assignment 1.</p>
+<p>•Helpers:
+•I will be showing you this in lecture 2.
+•You can also check out the YouTube video Chapter 2 from timestamp .. To ..
+•Daniel is also hosting a tutorial Friday 2 – 3 PM.</p>
+<p>Connecting from your Jupyter notebook to RDS database.</p>
+<p>Helpers:
+You can find information in our lecture 2 notes. https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql
+You can also check out the youtube video Chapter 3 from timestamp .. To ..
+Tutorial Daniel this week Friday 2 – 3 PM.
+In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
+Helpers
+watch chapter 2 from timestamp .. To ..
+Tutorial Daniel this week Friday 2 – 3 PM.</p>
+</section>
+<section id="connecting-from-your-pgadmin-to-rds-database">
+<h2>Connecting from your pgadmin to RDS database.<a class="headerlink" href="#connecting-from-your-pgadmin-to-rds-database" title="Permalink to this headline">#</a></h2>
+<p>Helpers:
+You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html
+You can also check out the youtube video Chapter 4 from timestamp .. To ..
+I will also show this in class during lecture 2 time.
+Tutorial Daniel this week Friday 2 – 3 PM.</p>
+</section>
+<section id="loading-dumps-to-your-database">
+<h2>Loading dumps to your Database<a class="headerlink" href="#loading-dumps-to-your-database" title="Permalink to this headline">#</a></h2>
+<p>You need to do this for assignment 1 and worksheet 2.
+Helpers
+You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/dump.html Windows users, make sure you check it.
+I will also show this in class during lecture 2 time.
+You can also check out the youtube video Chapter 5 from timestamp .. To ..
+Tutorial Daniel this week Friday 2 – 3 PM.</p>
 </section>
 </section>
 
@@ -454,20 +489,20 @@ Python<span class="w"> </span><span class="m">3</span>.8.5
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="awssummary.html"
+       href="../intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Overview first week installations and setup.</p>
+        <p class="prev-next-title">BAIT 580A - Topics in Information Technology Management</p>
       </div>
     </a>
     <a class="right-next"
-       href="jupyterlabtest.html"
+       href="conda.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">JuypterLab</p>
+        <p class="prev-next-title">Conda</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -486,8 +521,12 @@ Python<span class="w"> </span><span class="m">3</span>.8.5
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-environment">Setting up environment</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-environment">Importance of environment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#following-are-the-installations-for-first-week">Following are the installations for first week</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-conda-environment-and-jupyter-notebook">Setting up conda, environment and Jupyter notebook</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pgadmin">Install pgadmin.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rds-database">Setting up your RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-pgadmin-to-rds-database">Connecting from your pgadmin to RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dumps-to-your-database">Loading dumps to your Database</a></li>
 </ul>
   </nav></div>
 
