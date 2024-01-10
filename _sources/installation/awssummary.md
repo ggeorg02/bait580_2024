@@ -13,6 +13,8 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 - [Connecting from your Jupyter Notebook to the RDS database](five)
 - [Connecting from your pgadmin to the RDS database](six)
 - [Loading dumps to your Database](seven)
+- [Summary](summary)
+
 
 (one)=
 ## Setting up conda, environment and Jupyter notebook
@@ -59,29 +61,18 @@ You need this for your worksheets and assignment 1.
 
 ```{admonition} Helpers:
 - I will be showing you this in lecture 2.
-- You can also check out the YouTube video Chapter 2 from timestamp .. To .. 
+- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+    - 11:30 Setting up RDS database
+    - 25:58 IMPORTANT: Update security group RDS
 - Daniel is also hosting a tutorial Friday 2 – 3 PM.
-```
-(five)=
-## Connecting from your Jupyter notebook to RDS database.
-
-```{admonition} Helpers:
-- You can find information in our lecture 2 notes. [https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql](https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql)
-- You can also check out the youtube video Chapter 3 from timestamp .. To .. 
-- Tutorial Daniel this week Friday 2 – 3 PM.
-```
-In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
-
-```{admonition} Helpers:
-watch chapter 2 from timestamp .. To .. 
-Tutorial Daniel this week Friday 2 – 3 PM.
 ```
 (six)=
 ## Connecting from your pgadmin to RDS database.
 
 ```{admonition} Helpers:
 - You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html](https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html)
-- You can also check out the youtube video Chapter 4 from timestamp .. To .. 
+- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+    - 29:00 Connecting pgadmin to the RDS
 - I will also show this in class during lecture 2 time.
 - Tutorial Daniel this week Friday 2 – 3 PM.
 ```
@@ -93,6 +84,38 @@ You need to do this for assignment 1 and worksheet 2.
 ```{admonition} Helpers:
 - You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/dump.html](https://ggeorg02.github.io/bait580_2024/installation/dump.html) Windows users, make sure you check it.
 - I will also show this in class during lecture 2 time.
-- You can also check out the youtube video Chapter 5 from timestamp .. To ..
+- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+    - 34:30 Loading dumps to your Database
 - Tutorial Daniel this week Friday 2 – 3 PM.
 ```
+
+(five)=
+## Connecting from your Jupyter notebook to RDS database.
+
+```{admonition} Helpers:
+- You can find information in our lecture 2 notes. [https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql](https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql)
+- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+    - 52:58 Connecting Jupyter Notebook to the RDS
+- Tutorial Daniel this week Friday 2 – 3 PM.
+```
+In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
+
+```{admonition} Helpers:
+- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+    - 45:10 Understanding absolute vs relative path
+Tutorial Daniel this week Friday 2 – 3 PM.
+```
+
+## Summary
+
+Here is the summary of the contents in the YouTube video, which is in sections above. You will also find it in the description of the YouTube video.
+
+[https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+
+0:00 Brief intro
+11:30 Setting up RDS database
+25:58 IMPORTANT: Update security group RDS
+29:00 Connecting pgadmin to the RDS
+34:30 Loading dumps to your Database
+45:10 Understanding absolute vs relative path
+52:58 Connecting Jupyter Notebook to the RDS
