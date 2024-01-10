@@ -364,6 +364,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-conda-environment-and-jupyter-notebook">Setting up conda, environment and Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pgadmin">Install pgadmin.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rds-database">Setting up your RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-jupyter-notebook-to-rds-database">Connecting from your Jupyter notebook to RDS database.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-pgadmin-to-rds-database">Connecting from your pgadmin to RDS database.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dumps-to-your-database">Loading dumps to your Database</a></li>
 </ul>
@@ -400,24 +401,28 @@ document.write(`
 <li><p>Setting up conda, environment, and Jupyter notebook (vscode, jupyterlab is also fine).</p></li>
 <li><p>We expect you to know this from your previous courses. But if you still need help, then use the following helpers.</p></li>
 </ul>
-<p>Helpers</p>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
 <ul class="simple">
 <li><p>You can use previous year’s tutorial recording. https://canvas.ubc.ca/files/30831874/download?download_frd=1</p></li>
 <li><p>Tutorial this week by Jordan 5 - 6 pm.</p></li>
 </ul>
+</div>
 </section>
 <section id="install-pgadmin">
 <h2>Install pgadmin.<a class="headerlink" href="#install-pgadmin" title="Permalink to this headline">#</a></h2>
-<p>You can follow the instructions here https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html</p>
 <ul class="simple">
+<li><p>You can follow the instructions here https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html</p></li>
 <li><p>Basically, it is to download the pgadmin software for your operating system.</p></li>
 <li><p>Please make sure you download the latest version.</p></li>
 </ul>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>For MAC OS users, download correct file based on your laptop chip.</p>
-<p>pgadmin4-8.1-arm64.dmg – M1, M2, M3 chip
-pgadmin4-8.1-x86_64.dmg — INTEL CHIP</p>
+<ul class="simple">
+<li><p>pgadmin4-8.1-arm64.dmg – M1, M2, M3 chip</p></li>
+<li><p>pgadmin4-8.1-x86_64.dmg — INTEL CHIP</p></li>
+</ul>
 </div>
 <div class="admonition-helpers admonition">
 <p class="admonition-title">Helpers:</p>
@@ -427,36 +432,56 @@ pgadmin4-8.1-x86_64.dmg — INTEL CHIP</p>
 <section id="setting-up-your-rds-database">
 <h2>Setting up your RDS database.<a class="headerlink" href="#setting-up-your-rds-database" title="Permalink to this headline">#</a></h2>
 <p>You need this for your worksheets and assignment 1.</p>
-<p>•Helpers:
-•I will be showing you this in lecture 2.
-•You can also check out the YouTube video Chapter 2 from timestamp .. To ..
-•Daniel is also hosting a tutorial Friday 2 – 3 PM.</p>
-<p>Connecting from your Jupyter notebook to RDS database.</p>
-<p>Helpers:
-You can find information in our lecture 2 notes. https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql
-You can also check out the youtube video Chapter 3 from timestamp .. To ..
-Tutorial Daniel this week Friday 2 – 3 PM.
-In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
-Helpers
-watch chapter 2 from timestamp .. To ..
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<ul class="simple">
+<li><p>I will be showing you this in lecture 2.</p></li>
+<li><p>You can also check out the YouTube video Chapter 2 from timestamp .. To ..</p></li>
+<li><p>Daniel is also hosting a tutorial Friday 2 – 3 PM.</p></li>
+</ul>
+</div>
+</section>
+<section id="connecting-from-your-jupyter-notebook-to-rds-database">
+<h2>Connecting from your Jupyter notebook to RDS database.<a class="headerlink" href="#connecting-from-your-jupyter-notebook-to-rds-database" title="Permalink to this headline">#</a></h2>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<ul class="simple">
+<li><p>You can find information in our lecture 2 notes. https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql</p></li>
+<li><p>You can also check out the youtube video Chapter 3 from timestamp .. To ..</p></li>
+<li><p>Tutorial Daniel this week Friday 2 – 3 PM.</p></li>
+</ul>
+</div>
+<p>In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.</p>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<p>watch chapter 2 from timestamp .. To ..
 Tutorial Daniel this week Friday 2 – 3 PM.</p>
+</div>
 </section>
 <section id="connecting-from-your-pgadmin-to-rds-database">
 <h2>Connecting from your pgadmin to RDS database.<a class="headerlink" href="#connecting-from-your-pgadmin-to-rds-database" title="Permalink to this headline">#</a></h2>
-<p>Helpers:
-You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html
-You can also check out the youtube video Chapter 4 from timestamp .. To ..
-I will also show this in class during lecture 2 time.
-Tutorial Daniel this week Friday 2 – 3 PM.</p>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<ul class="simple">
+<li><p>You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html</p></li>
+<li><p>You can also check out the youtube video Chapter 4 from timestamp .. To ..</p></li>
+<li><p>I will also show this in class during lecture 2 time.</p></li>
+<li><p>Tutorial Daniel this week Friday 2 – 3 PM.</p></li>
+</ul>
+</div>
 </section>
 <section id="loading-dumps-to-your-database">
 <h2>Loading dumps to your Database<a class="headerlink" href="#loading-dumps-to-your-database" title="Permalink to this headline">#</a></h2>
-<p>You need to do this for assignment 1 and worksheet 2.
-Helpers
-You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/dump.html Windows users, make sure you check it.
-I will also show this in class during lecture 2 time.
-You can also check out the youtube video Chapter 5 from timestamp .. To ..
-Tutorial Daniel this week Friday 2 – 3 PM.</p>
+<p>You need to do this for assignment 1 and worksheet 2.</p>
+<div class="admonition-helpers admonition">
+<p class="admonition-title">Helpers:</p>
+<ul class="simple">
+<li><p>You can find information here in the lecture notes. https://ggeorg02.github.io/bait580_2024/installation/dump.html Windows users, make sure you check it.</p></li>
+<li><p>I will also show this in class during lecture 2 time.</p></li>
+<li><p>You can also check out the youtube video Chapter 5 from timestamp .. To ..</p></li>
+<li><p>Tutorial Daniel this week Friday 2 – 3 PM.</p></li>
+</ul>
+</div>
 </section>
 </section>
 
@@ -525,6 +550,7 @@ Tutorial Daniel this week Friday 2 – 3 PM.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-conda-environment-and-jupyter-notebook">Setting up conda, environment and Jupyter notebook</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-pgadmin">Install pgadmin.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-rds-database">Setting up your RDS database.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-jupyter-notebook-to-rds-database">Connecting from your Jupyter notebook to RDS database.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-from-your-pgadmin-to-rds-database">Connecting from your pgadmin to RDS database.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dumps-to-your-database">Loading dumps to your Database</a></li>
 </ul>
