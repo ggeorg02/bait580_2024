@@ -40,6 +40,14 @@ For MAC OS users, download correct file based on your laptop chip.
 Tutorial this week by Jordan 5 - 6 pm.
 ```
 
+## Setting up AWS account
+
+```{admonition} Helpers:
+- You can follow the instructions here [https://ggeorg02.github.io/bait580_2024/installation/aws.html](https://ggeorg02.github.io/bait580_2024/installation/aws.html)
+- I showed you this in lecture 1.
+- Daniel is also hosting a tutorial Friday 2 – 3 PM.
+```
+
 ## Setting up your RDS database.
 
 You need this for your worksheets and assignment 1.
