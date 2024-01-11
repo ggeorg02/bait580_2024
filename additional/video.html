@@ -430,12 +430,34 @@ document.write(`
 <p>A) Online via zoom - Based on the poll we will schedule it online: https://ubc.zoom.us/s/63290621368</p>
 <p>B) Inperson (subject to room availability)</p>
 <p>C) Hybrid (subject to room availability)</p>
+<p>Here is the youtube video that will help you with first-week installations and setup.</p>
+<p>Check out youtube video: <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<p>Here are the video chapters:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/qquSwlsZxHJP7tmDT3yIz_TLXbZdqBKqdm0yf1fEuQEg1TUk4I6A8pU8U3olqTwe.B0SHyYHjdiBjddKa?startTime=1673308251000">Absolute and relative paths - for credentials.json</a> - Passcode: <code class="docutils literal notranslate"><span class="pre">6YqU&amp;nCb</span></code></p></li>
-<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/PGBLUxRwIbSTZByM2gU74IMqhkKGizQoN8wxQvPpvv7X-_-489sBgkk24u8G8sBN.3miQidugrqrc6t1X?startTime=1673310310000">Connecting from notebook and credentials.json setup</a> - Passcode: <code class="docutils literal notranslate"><span class="pre">cw2.X2*&amp;</span></code>
-Following the lecture notes from <a class="reference external" href="https://ggeorg02.github.io/BAIT580a_students/lectures/lecture2.html#ipython-sql-sql-and-sql">here</a></p></li>
-<li><p><a class="reference external" href="https://ubc.zoom.us/rec/share/V9AOHvihsg8bdyFnQ0OF9LIrYV15YHCNI7rQOmUU3lkf9AlzRt97KfD-lMlZgnME.AMgczF2XIOEaN0Sd">Loading tweets.sql dump for Assignment 1</a> - Passcode: check piazza</p></li>
+<li><p>0:00 Brief intro</p></li>
+<li><p>11:30 Setting up RDS database</p></li>
+<li><p>25:58 IMPORTANT: Update security group RDS</p></li>
+<li><p>29:00 Connecting pgadmin to the RDS</p></li>
+<li><p>34:30 Loading dumps to your Database</p></li>
+<li><p>45:10 Understanding absolute vs relative path</p></li>
+<li><p>52:58 Connecting Jupyter Notebook to the RDS</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;960&quot; height=&quot;616&quot; src=&quot;https://www.youtube.com/embed/Wm5zLfpLD8I?rel=0&amp;amp;controls=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/IPython/core/display.py:431: UserWarning: Consider using IPython.display.IFrame instead
+  warnings.warn(&quot;Consider using IPython.display.IFrame instead&quot;)
+</pre></div>
+</div>
+<div class="output text_html"><iframe width="960" height="616" src="https://www.youtube.com/embed/Wm5zLfpLD8I?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div></div>
+</div>
 </section>
 
     <script type="text/x-thebe-config">
