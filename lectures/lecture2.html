@@ -157,6 +157,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../installation/pgadmin.html">pgAdmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/dump.html">Load Dumps (using pgadmin)</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
@@ -438,7 +442,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-setting-up-rds-and-connection-to-cloud">
 <h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this headline">#</a></h1>
-<p>Gittu George, January 5 2023</p>
+<p>Gittu George, January 11 2024</p>
 <section id="todays-agenda">
 <h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -461,8 +465,9 @@ document.write(`
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
 </figure>
-<p>I recommend you do this with me or during the class activity time. <a class="reference internal" href="../installation/RDSCreation.html"><span class="doc std std-doc">Here are the instructions</span></a> on setting up your first RDS instance.</p>
-<p>Consider your database what you built as an independent entity. Then, follow below instructions to connect to your database in the cloud.</p>
+<p>I recommend you do this with me or during the class activity time. Or you can watch the youtube video that I made on setting up your first RDS instance.</p>
+<p>Here is the youtube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<p>Consider the database that you built as an independent entity. Then, follow the below instructions to connect to your database in the cloud.</p>
 </section>
 <section id="connecting-to-cloud-rds">
 <h2>Connecting To Cloud (RDS)<a class="headerlink" href="#connecting-to-cloud-rds" title="Permalink to this headline">#</a></h2>
@@ -504,10 +509,14 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/odbc.png"><img alt="../_images/odbc.png" src="../_images/odbc.png" style="width: 450px;" /></a>
 </figure>
 </aside>
-<p>In the rest of the section, let’s focus on connecting to the database from python and the jupyter notebook. We will be using specific packages to make this possible, but as we have discussed, it uses ODBC for the connection. Many packages make this possible, but we will discuss a package named <code class="docutils literal notranslate"><span class="pre">psycopg2.</span></code></p>
+<p>In the rest of the section, let’s focus on connecting to the database from python and the jupyter notebook. We will be using specific packages to make this possible, but as we have discussed, it uses ODBC for the connection.</p>
 </section>
 <section id="pgadmin">
 <h3>pgAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this headline">#</a></h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You use pgadmin to load dumps for worksheet 2 and assignment 1.</p>
+</div>
 <div class="admonition-checkout admonition">
 <p class="admonition-title">Checkout</p>
 <p>Please check <a class="reference internal" href="../installation/pgadmin.html"><span class="doc std std-doc">here</span></a> for more details on setting up pgadmin and connecting to your database.</p>
@@ -518,13 +527,9 @@ document.write(`
 </section>
 <section id="psql">
 <h3>psql<a class="headerlink" href="#psql" title="Permalink to this headline">#</a></h3>
-<div class="admonition-checkout admonition">
-<p class="admonition-title">Checkout</p>
-<p>Please check <a class="reference internal" href="../installation/psql.html"><span class="doc std std-doc">here</span></a> for more details on setting up psql and connecting to your database.</p>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>You can run SQL commands in pgadmin and/or jupyter notebook. <em><strong>In our situation, we need to install psql mainly to load the dumps.</strong></em></p>
+<p>You can run SQL commands in pgadmin and/or jupyter notebook. <em><strong>We don’t need this for this course.</strong></em></p>
 </div>
 </section>
 <section id="ipython-sql-sql-and-sql">
@@ -598,11 +603,7 @@ document.write(`
 <p class="sidebar-title"></p>
 <img alt="../_images/secret.png" src="../_images/secret.png" />
 </aside>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>There are a couple of ways to deal with packages. In the following section, I am showing you one way of dealing with passwords, and I recommend following approach.</p>
-<p><em><strong>(OPTIONAL)</strong></em> There is also a way to use <code class="docutils literal notranslate"><span class="pre">dotenv</span></code> package, if you want, you can check out those <a class="reference internal" href="../additional/secrets.html"><span class="doc std std-doc">here</span></a></p>
-</div>
+<p>There are a couple of ways to deal with packages. In the following section, I am showing you one way of dealing with passwords, and I recommend the following approach.</p>
 <p>It is always a bad idea to store login information directly in a notebook or code file because of security reasons. Say if you want to share this notebook with your colleague, or if somebody came by and looked at your notebook, they can see your database connection details, including your password. It’s probably okay now as it’s a toy database, but when you start working in the industry, you will be dealing with a database ( or, in other words, business), and it can cause lots of problems if the password is compromised. So, let’s practice not doing the connection call by including the credentials directly into your notebook.</p>
 <p>In order to avoid that, we store that kind of information in a separate file, like <code class="docutils literal notranslate"><span class="pre">credentials.json</span></code> here, and read the username and password into our IPython session:</p>
 <div class="admonition note">
