@@ -674,7 +674,7 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 9 rows affected.
 </pre></div>
 </div>
@@ -700,6 +700,16 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
             <td>False</td>
             <td>False</td>
             <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>fakedata</td>
+            <td>testindex</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>False</td>
             <td>False</td>
         </tr>
         <tr>
@@ -772,16 +782,6 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
             <td>True</td>
             <td>False</td>
         </tr>
-        <tr>
-            <td>public</td>
-            <td>tesrt</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>False</td>
-            <td>False</td>
-            <td>False</td>
-            <td>False</td>
-        </tr>
     </tbody>
 </table></div></div>
 </div>
@@ -793,7 +793,7 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
@@ -881,7 +881,7 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 6121 rows affected.
 </pre></div>
 </div>
@@ -944,59 +944,9 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
             <td>AAIC-C</td>
             <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>AAIN</td>
-            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>AAMC</td>
-            <td>Altisource Asset Management Corp Com</td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>AAN</td>
-            <td>Aarons Holdings Company, Inc. Common Stock </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>AAP</td>
-            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>AAQC</td>
-            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>AAQC=</td>
-            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>AAQC+</td>
-            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>AAT</td>
-            <td>American Assets Trust, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>AAU</td>
-            <td>Almaden Minerals, Ltd. Common Shares</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>AB</td>
-            <td>AllianceBernstein Holding L.P.  Units</td>
-        </tr>
     </tbody>
 </table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 <p>Looks good. Let’s apply the magic to an entire cell so that we can break the lines:</p>
 <div class="cell docutils container">
@@ -1008,7 +958,7 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 6121 rows affected.
 </pre></div>
 </div>
@@ -1071,59 +1021,9 @@ FROM tweets.symbols;
             <td>AAIC-C</td>
             <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>AAIN</td>
-            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>AAMC</td>
-            <td>Altisource Asset Management Corp Com</td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>AAN</td>
-            <td>Aarons Holdings Company, Inc. Common Stock </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>AAP</td>
-            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>AAQC</td>
-            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>AAQC=</td>
-            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>AAQC+</td>
-            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>AAT</td>
-            <td>American Assets Trust, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>AAU</td>
-            <td>Almaden Minerals, Ltd. Common Shares</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>AB</td>
-            <td>AllianceBernstein Holding L.P.  Units</td>
-        </tr>
     </tbody>
 </table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 </section>
 <section id="assigning-returned-rows-to-python-variables">
@@ -1136,7 +1036,7 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 6121 rows affected.
 </pre></div>
 </div>
@@ -1153,7 +1053,7 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 6121 rows affected.
 Returning data to local variable query_output
 </pre></div>
@@ -1226,59 +1126,9 @@ Returning data to local variable query_output
             <td>AAIC-C</td>
             <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
         </tr>
-        <tr>
-            <td>11</td>
-            <td>AAIN</td>
-            <td>Arlington Asset Investment Corp 6.000% Senior Notes Due 2026</td>
-        </tr>
-        <tr>
-            <td>12</td>
-            <td>AAMC</td>
-            <td>Altisource Asset Management Corp Com</td>
-        </tr>
-        <tr>
-            <td>13</td>
-            <td>AAN</td>
-            <td>Aarons Holdings Company, Inc. Common Stock </td>
-        </tr>
-        <tr>
-            <td>14</td>
-            <td>AAP</td>
-            <td>Advance Auto Parts Inc Advance Auto Parts Inc W/I</td>
-        </tr>
-        <tr>
-            <td>15</td>
-            <td>AAQC</td>
-            <td>Accelerate Acquisition Corp. Class A Common Stock</td>
-        </tr>
-        <tr>
-            <td>16</td>
-            <td>AAQC=</td>
-            <td>Accelerate Acquisition Corp. Units, each consisting of one Class A common stock, and one-third of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>17</td>
-            <td>AAQC+</td>
-            <td>Accelerate Acquisition Corp. Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>18</td>
-            <td>AAT</td>
-            <td>American Assets Trust, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>19</td>
-            <td>AAU</td>
-            <td>Almaden Minerals, Ltd. Common Shares</td>
-        </tr>
-        <tr>
-            <td>20</td>
-            <td>AB</td>
-            <td>AllianceBernstein Holding L.P.  Units</td>
-        </tr>
     </tbody>
 </table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 20</span></div></div>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 <p>Now you can use the <code class="docutils literal notranslate"><span class="pre">query_output</span></code> dataframe to do any other analysis or visualization that you learned in your other courses.</p>
 </section>
