@@ -341,7 +341,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -357,6 +359,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-user-issues">Windows user issues</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -379,6 +389,8 @@ document.write(`
 <p><img alt="" src="../_images/afterdump.png" /></p>
 <p>Once the process is complete, you will see the <code class="docutils literal notranslate"><span class="pre">fakedata</span></code> schema and <code class="docutils literal notranslate"><span class="pre">testindex</span></code> table under the <code class="docutils literal notranslate"><span class="pre">schema</span></code>. (Please refresh it like in the image below)</p>
 <p><img alt="" src="../_images/dumprefresh.png" /></p>
+<section id="windows-user-issues">
+<h2>Windows user issues<a class="headerlink" href="#windows-user-issues" title="Permalink to this headline">#</a></h2>
 <p>I have listed some of the issues that Windows users in session 2 experienced.</p>
 <ul class="simple">
 <li><p>You need to use a forward slash in the file path as that is how file path looks in windows(e.g., <code class="docutils literal notranslate"><span class="pre">\i</span> <span class="pre">'C:/dumpname.sql'</span></code>)</p></li>
@@ -389,6 +401,7 @@ document.write(`
 <li><p>You might also want to try to move the file from current folder to <code class="docutils literal notranslate"><span class="pre">C:/</span></code> so the path to the file is <code class="docutils literal notranslate"><span class="pre">C:/dumpname.sql</span></code> and then try <code class="docutils literal notranslate"><span class="pre">\i</span> <span class="pre">'C:/dumpname.sql'</span></code> in pgadmin.</p></li>
 <li><p>Having folder names with spaces is not a good practice, so if you have so, please change the folder name without spaces. The previous step of moving the dump (.sql file) to <code class="docutils literal notranslate"><span class="pre">C:/</span></code>  will help no matter what.</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,6 +456,20 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-user-issues">Windows user issues</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
