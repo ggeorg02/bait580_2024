@@ -475,10 +475,14 @@ document.write(`
 <p>OKAY.. so now you have your database ready! In our case, we set up our Postgres database in RDS. Since you are not using an already existing database, you created it, so it’s empty now. So we need to load data into this database. After loading data to the database, we are all set with querying from the database.</p>
 <p>Whether it’s for loading or querying the database, we need to connect to the database.</p>
 <p>Well, we have a variety of options to run our SQL statements in PostgreSQL (You already aware of couple of options from your BAIT 507) :</p>
+<p>We will be using the following 2 approaches in this course</p>
 <ul class="simple">
 <li><p>pgAdmin is the official web-based GUI for interacting with PostgreSQL databases</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">psql</span></code> is PostgreSQL’s interactive command-line interface</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code> magic commands in Jupyter notebooks, which are provided by the <code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> package</p></li>
+</ul>
+<p>Some other ways you can connect (we won’t be discussing these)</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">psql</span></code> is PostgreSQL’s interactive command-line interface</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">psycopg2</span></code> is the official Python adapter for PostgreSQL databases</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">.read_sql_query()</span></code> method in Pandas</p></li>
 </ul>
