@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 3: Disk Management and Indexes &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,8 +67,10 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 4: (de)Normalization &amp; Data Warehousing" href="lecture4.html" />
+    <link rel="prev" title="Lecture 2: Setting up RDS and connection to cloud" href="lecture2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -74,7 +78,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -108,12 +121,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +149,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -140,8 +163,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
   
   
 </a></div>
@@ -159,16 +182,20 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 3: Disk Management and Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 </ul>
 
     </div>
@@ -371,20 +398,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -441,13 +470,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-3-disk-management-and-indexes">
-<h1>Lecture 3: Disk Management and Indexes<a class="headerlink" href="#lecture-3-disk-management-and-indexes" title="Permalink to this headline">#</a></h1>
-<p>Gittu George, January 10 2023</p>
+<h1>Lecture 3: Disk Management and Indexes<a class="headerlink" href="#lecture-3-disk-management-and-indexes" title="Permalink to this heading">#</a></h1>
+<p>Gittu George, January 16 2024</p>
 <section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Change in deadlines</p></li>
 <li><p>Regrade requests</p></li>
@@ -458,7 +487,7 @@ document.write(`
 </ul>
 </section>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>HOW do humans store and search data?</p></li>
 <li><p>HOW does Postgres store data?</p></li>
@@ -470,7 +499,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>You will apply knowledge of disk management and query structure to optimize complex queries.</p></li>
 <li><p>You will understand the different types of INDEXes available in Postgres and the best-suited applications</p></li>
@@ -479,7 +508,7 @@ document.write(`
 <p>You already have the data we will use in this lecture from worksheet 2, but if not, please load it so that you can follow with me in lecture (You can load this data to your database using this <a class="reference external" href="https://canvas.ubc.ca/files/24584464/download?download_frd=1">dump</a>. It’s a zip file; do make sure you extract it.). I will use the <code class="docutils literal notranslate"><span class="pre">testindex</span></code> table from <code class="docutils literal notranslate"><span class="pre">fakedata</span></code> schema for demonstration.</p>
 </section>
 <section id="how-do-humans-store-and-search-data">
-<h2>How do humans store and search data?<a class="headerlink" href="#how-do-humans-store-and-search-data" title="Permalink to this headline">#</a></h2>
+<h2>How do humans store and search data?<a class="headerlink" href="#how-do-humans-store-and-search-data" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <a class="reference internal image-reference" href="../_images/lookcartoon.png"><img alt="../_images/lookcartoon.png" src="../_images/lookcartoon.png" style="width: 50%;" /></a>
@@ -492,7 +521,7 @@ document.write(`
 <p>OKAY, now you all know how humans search for data from a book; Postgres also store and search data similarly.</p>
 </section>
 <section id="how-does-postgres-store-data">
-<h2>How does Postgres store data?<a class="headerlink" href="#how-does-postgres-store-data" title="Permalink to this headline">#</a></h2>
+<h2>How does Postgres store data?<a class="headerlink" href="#how-does-postgres-store-data" title="Permalink to this heading">#</a></h2>
 <p>Information within a database is also stored in pages. A database page is not structured like in a book, but it’s structured like below.</p>
 <a class="reference internal image-reference" href="../_images/page.png"><img alt="../_images/page.png" src="../_images/page.png" style="width: 90%;" /></a>
 <p>.</p>
@@ -501,7 +530,7 @@ document.write(`
 <p>Read more about it <a class="reference external" href="https://www.postgresql.org/docs/current/storage-page-layout.html">here.</a></p>
 </section>
 <section id="how-does-postgres-search-data">
-<h2>How does Postgres search data?<a class="headerlink" href="#how-does-postgres-search-data" title="Permalink to this headline">#</a></h2>
+<h2>How does Postgres search data?<a class="headerlink" href="#how-does-postgres-search-data" title="Permalink to this heading">#</a></h2>
 <p>Let’s consider a complicated table.</p>
 <a class="reference internal image-reference" href="../_images/table.png"><img alt="../_images/table.png" src="../_images/table.png" style="width: 70%;" /></a>
 <p>For explanation, let’s assume that the contents in this table are stored in 3 page files. Here we are interested in finding the rows with the unique name that starts with <code class="docutils literal notranslate"><span class="pre">y</span></code>. A database, just like a kid, needs to search through the 3 pages to find the rows that contain a name that begins with <code class="docutils literal notranslate"><span class="pre">y</span></code>. This is a sequential search, and this is how a database search by default. This process could be slow if we got millions of rows spread across multiple pages, as the computer needs to go through the entire pages to find the names that start with y.</p>
@@ -529,20 +558,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;psycopg2&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,21 +573,17 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">DROP</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">hash_testindex_index</span><span class="p">;</span>
-<span class="n">DROP</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">pgweb_idx</span><span class="p">;</span>
+DROP INDEX if exists fakedata.hash_testindex_index;
+DROP INDEX if exists fakedata.pgweb_idx;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
-Done.
-CPU times: user 9.12 ms, sys: 3.66 ms, total: 12.8 ms
-Wall time: 374 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
@@ -583,17 +594,14 @@ Wall time: 374 ms
 <p>Here, we do a normal search for a product name within the column <code class="docutils literal notranslate"><span class="pre">productname</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">explain</span> <span class="n">analyze</span> <span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">fakedata.testindex</span> <span class="n">where</span> <span class="n">productname</span> <span class="o">=</span> <span class="s1">&#39;flavor halibut&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+explain analyze select count(*) from fakedata.testindex where productname = &#39;flavor halibut&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 5.2 ms, sys: 2.02 ms, total: 7.22 ms
-Wall time: 1.12 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -604,10 +612,10 @@ Wall time: 1.12 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=1053.246..1054.879 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=1165.411..1168.551 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=1053.237..1054.873 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=1160.482..1168.537 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -616,10 +624,10 @@ Wall time: 1.12 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=1047.114..1047.115 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=1154.182..1154.184 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=1047.111..1047.111 rows=0 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=1154.179..1154.179 rows=0 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname = &#x27;flavor halibut&#x27;::text)</td>
@@ -628,10 +636,10 @@ Wall time: 1.12 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3724110</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.241 ms</td>
+            <td>Planning Time: 0.227 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1054.937 ms</td>
+            <td>Execution Time: 1168.603 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -639,17 +647,14 @@ Wall time: 1.12 s
 <p>We are doing a pattern matching search to return all the <code class="docutils literal notranslate"><span class="pre">productname</span></code> that start with <code class="docutils literal notranslate"><span class="pre">fla</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> <span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;fla%&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &#39;fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 5.31 ms, sys: 2.06 ms, total: 7.37 ms
-Wall time: 1.22 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -660,10 +665,10 @@ Wall time: 1.22 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144427.95..144427.96 rows=1 width=8) (actual time=1107.191..1108.705 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1300.245..1303.950 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144427.74..144427.95 rows=2 width=8) (actual time=1106.793..1108.696 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1295.823..1303.938 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -672,10 +677,10 @@ Wall time: 1.22 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143427.74..143427.75 rows=1 width=8) (actual time=1097.375..1097.376 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1286.251..1286.252 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=47006 width=0) (actual time=0.104..1095.977 rows=9271 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.127..1284.037 rows=9271 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
@@ -684,10 +689,10 @@ Wall time: 1.22 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.061 ms</td>
+            <td>Planning Time: 0.084 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1108.734 ms</td>
+            <td>Execution Time: 1303.986 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -699,23 +704,20 @@ Wall time: 1.22 s
 <p>These are computers, so it’s faster than humans to go through all the pages, but it’s inefficient. <em><strong><em>Won’t it be cool to tell the database that the data you are looking for is only on certain pages, so database don’t want to go through all these pages !!!</em></strong></em> This is WHY we want indexes. We will see if indexing can speed up the previous query.</p>
 </section>
 <section id="what-are-indexes">
-<h2>WHAT are indexes?<a class="headerlink" href="#what-are-indexes" title="Permalink to this headline">#</a></h2>
+<h2>WHAT are indexes?<a class="headerlink" href="#what-are-indexes" title="Permalink to this heading">#</a></h2>
 <p>Indexes make a map of each of these rows effectively as where they are put into the page files so we can do a sequential scan of an index to find the pointer to page/pages this information is stored. So the database can go straight to those pages and skip the rest of the pages.</p>
 <a class="reference internal image-reference" href="../_images/indexscan.png"><img alt="../_images/indexscan.png" src="../_images/indexscan.png" style="width: 60%;" /></a>
 <p>Index gets applied to a column in a table. As we were querying on the column <code class="docutils literal notranslate"><span class="pre">productname</span></code>, let’s now apply an index to the column <code class="docutils literal notranslate"><span class="pre">productname</span></code> in the database and see how the query execution plan changes. Will it improve the speed? Let’s see..</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">CREATE</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">default_testindex_index</span> <span class="n">ON</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="p">(</span><span class="n">productname</span> <span class="n">varchar_pattern_ops</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+CREATE INDEX if not exists default_testindex_index ON fakedata.testindex (productname varchar_pattern_ops);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
-CPU times: user 5.91 ms, sys: 3.18 ms, total: 9.09 ms
-Wall time: 11 s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
@@ -725,17 +727,14 @@ Wall time: 11 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">explain</span> <span class="n">analyze</span> <span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">fakedata.testindex</span> <span class="n">where</span> <span class="n">productname</span> <span class="o">=</span> <span class="s1">&#39;flavor halibut&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+explain analyze select count(*) from fakedata.testindex where productname = &#39;flavor halibut&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 6 rows affected.
-CPU times: user 2.92 ms, sys: 1.48 ms, total: 4.41 ms
-Wall time: 59.3 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -746,10 +745,10 @@ Wall time: 59.3 ms
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.032..0.033 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.027..0.028 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.028..0.029 rows=0 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.025..0.025 rows=0 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
@@ -758,29 +757,26 @@ Wall time: 59.3 ms
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.147 ms</td>
+            <td>Planning Time: 0.180 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 0.053 ms</td>
+            <td>Execution Time: 0.049 ms</td>
         </tr>
     </tbody>
 </table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;fla%&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 7 rows affected.
-CPU times: user 4.13 ms, sys: 2.1 ms, total: 6.23 ms
-Wall time: 62.8 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -791,10 +787,10 @@ Wall time: 62.8 ms
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=3190.52..3190.53 rows=1 width=8) (actual time=4.434..4.435 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=7.25..7.26 rows=1 width=8) (actual time=5.628..5.629 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..2908.49 rows=112814 width=0) (actual time=0.042..3.161 rows=27814 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..4.46 rows=1117 width=0) (actual time=0.040..4.156 rows=27814 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((productname ~&gt;=~ &#x27;fla&#x27;::text) AND (productname ~&lt;~ &#x27;flb&#x27;::text))</td>
@@ -806,10 +802,10 @@ Wall time: 62.8 ms
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.176 ms</td>
+            <td>Planning Time: 0.199 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 4.472 ms</td>
+            <td>Execution Time: 5.738 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -820,20 +816,17 @@ Wall time: 62.8 ms
 <p>Let’s try that out.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;%&#39;</span><span class="p">;</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 9 rows affected.
-CPU times: user 5.53 ms, sys: 2.05 ms, total: 7.58 ms
-Wall time: 1.92 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -844,10 +837,10 @@ Wall time: 1.92 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=1833.365..1835.015 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=2130.805..2133.824 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=1833.090..1835.006 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=2130.794..2133.817 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -856,19 +849,19 @@ Wall time: 1.92 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=1826.680..1826.681 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=2122.799..2122.801 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.038..1363.602 rows=3724110 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.017..1551.818 rows=3724110 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.066 ms</td>
+            <td>Planning Time: 0.073 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1835.046 ms</td>
+            <td>Execution Time: 2133.863 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -877,17 +870,14 @@ Wall time: 1.92 s
 <p>As the index is making a map in the disk, it takes up disk storage. Let’s see how much space this index is taking up</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">SELECT</span> <span class="n">pg_size_pretty</span> <span class="p">(</span><span class="n">pg_indexes_size</span><span class="p">(</span><span class="s1">&#39;fakedata.testindex&#39;</span><span class="p">));</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 1 rows affected.
-CPU times: user 3.49 ms, sys: 1.62 ms, total: 5.11 ms
-Wall time: 59.6 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -906,20 +896,17 @@ Wall time: 59.6 ms
 <p>Now we realize indexes are great! So let’s try some different queries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">la%&#39;</span><span class="p">;</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;%fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 4.63 ms, sys: 1.72 ms, total: 6.34 ms
-Wall time: 1.46 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -930,10 +917,10 @@ Wall time: 1.46 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144427.95..144427.96 rows=1 width=8) (actual time=1304.475..1306.018 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1747.330..1748.294 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144427.74..144427.95 rows=2 width=8) (actual time=1304.465..1306.011 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1747.318..1748.286 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -942,10 +929,10 @@ Wall time: 1.46 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143427.74..143427.75 rows=1 width=8) (actual time=1297.557..1297.558 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1734.824..1734.825 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=47006 width=0) (actual time=0.068..1294.714 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.040..1728.447 rows=22257 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
@@ -954,10 +941,10 @@ Wall time: 1.46 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.094 ms</td>
+            <td>Planning Time: 0.104 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1306.055 ms</td>
+            <td>Execution Time: 1748.339 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -965,7 +952,7 @@ Wall time: 1.46 s
 <p>This was not too broad search; we were trying to return all the elements that contains <code class="docutils literal notranslate"><span class="pre">fla</span></code>. <em><strong><em>But why didn’t it speed things up? So we can’t always go with default indexing, and it might not be helpful in all cases.</em></strong></em> That’s why it’s important to know about different indexes and a general understanding of how it works. This will help you to choose indexes properly in various situations.</p>
 </section>
 <section id="different-kinds-of-indexes">
-<h2>Different kinds of indexes<a class="headerlink" href="#different-kinds-of-indexes" title="Permalink to this headline">#</a></h2>
+<h2>Different kinds of indexes<a class="headerlink" href="#different-kinds-of-indexes" title="Permalink to this heading">#</a></h2>
 <p>In this section, we will go through various kinds of indexes and syntax for creating them;</p>
 <ul class="simple">
 <li><p>B-Tree (binary search tree - btree)</p></li>
@@ -980,7 +967,7 @@ Wall time: 1.46 s
 </pre></div>
 </div>
 <section id="b-tree">
-<h3>B-Tree<a class="headerlink" href="#b-tree" title="Permalink to this headline">#</a></h3>
+<h3>B-Tree<a class="headerlink" href="#b-tree" title="Permalink to this heading">#</a></h3>
 <p>B-Tree is the default index, and you can see we used this previously for column <code class="docutils literal notranslate"><span class="pre">productname</span></code>.</p>
 <p>General Syntax: Here the <code class="docutils literal notranslate"> <span class="pre">Operator_Classes</span></code> is optional. Read more on it <a class="reference external" href="https://www.postgresql.org/docs/current/indexes-opclass.html">here</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">index_name</span> <span class="n">ON</span> <span class="n">schema</span><span class="o">.</span><span class="n">tablename</span> <span class="p">(</span><span class="n">columnname</span> <span class="n">Operator_Classes</span><span class="p">);</span>
@@ -1006,7 +993,7 @@ Wall time: 1.46 s
 <a class="reference internal image-reference" href="../_images/btreealph.png"><img alt="../_images/btreealph.png" src="../_images/btreealph.png" style="width: 80%;" /></a>
 </section>
 <section id="hash">
-<h3>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">#</a></h3>
+<h3>Hash<a class="headerlink" href="#hash" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Cell values are hashed (encoded) form and mapped to address “buckets”</p></li>
 <li><p>Hash -&gt; bucket mappings -&gt; disk address</p></li>
@@ -1017,20 +1004,17 @@ Wall time: 1.46 s
 <p>Let’s create a hash index on column <code class="docutils literal notranslate"><span class="pre">productname</span></code> and execute queries that we ran before</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">DROP</span> <span class="n">INDEX</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">default_testindex_index</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">hash_testindex_index</span> <span class="n">ON</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="n">USING</span> <span class="nb">hash</span><span class="p">(</span><span class="n">productname</span><span class="p">);</span>
+DROP INDEX fakedata.default_testindex_index;
+CREATE INDEX if not exists hash_testindex_index ON fakedata.testindex USING hash(productname);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
-CPU times: user 7.3 ms, sys: 3.7 ms, total: 11 ms
-Wall time: 15.9 s
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
@@ -1040,17 +1024,14 @@ Wall time: 15.9 s
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">explain</span> <span class="n">analyze</span> <span class="n">select</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="kn">from</span> <span class="nn">fakedata.testindex</span> <span class="n">where</span> <span class="n">productname</span> <span class="o">=</span> <span class="s1">&#39;flavor halibut&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+explain analyze select count(*) from fakedata.testindex where productname = &#39;flavor halibut&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 7 rows affected.
-CPU times: user 4.02 ms, sys: 1.89 ms, total: 5.92 ms
-Wall time: 65.3 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1061,10 +1042,10 @@ Wall time: 65.3 ms
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.017..0.018 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.015..0.015 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.45..232.63 rows=58 width=0) (actual time=0.013..0.013 rows=0 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.45..232.63 rows=58 width=0) (actual time=0.012..0.012 rows=0 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
@@ -1076,29 +1057,26 @@ Wall time: 65.3 ms
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.147 ms</td>
+            <td>Planning Time: 0.121 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 0.051 ms</td>
+            <td>Execution Time: 0.040 ms</td>
         </tr>
     </tbody>
 </table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;fla%&#39;</span><span class="p">;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 5.77 ms, sys: 2.51 ms, total: 8.28 ms
-Wall time: 1.49 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1109,10 +1087,10 @@ Wall time: 1.49 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144427.95..144427.96 rows=1 width=8) (actual time=1423.753..1425.522 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1458.624..1466.047 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144427.74..144427.95 rows=2 width=8) (actual time=1423.743..1425.516 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1457.603..1466.038 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1121,10 +1099,10 @@ Wall time: 1.49 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143427.74..143427.75 rows=1 width=8) (actual time=1413.177..1413.178 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1450.763..1450.764 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=47006 width=0) (actual time=0.135..1409.815 rows=9271 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.048..1448.959 rows=9271 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
@@ -1133,27 +1111,24 @@ Wall time: 1.49 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.084 ms</td>
+            <td>Planning Time: 0.090 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1425.552 ms</td>
+            <td>Execution Time: 1466.083 ms</td>
         </tr>
     </tbody>
 </table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">SELECT</span> <span class="n">pg_size_pretty</span> <span class="p">(</span><span class="n">pg_indexes_size</span><span class="p">(</span><span class="s1">&#39;fakedata.testindex&#39;</span><span class="p">));</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 1 rows affected.
-CPU times: user 4.06 ms, sys: 1.69 ms, total: 5.76 ms
-Wall time: 67.8 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1175,9 +1150,9 @@ Wall time: 67.8 ms
 </ul>
 </section>
 <section id="gin">
-<h3>GIN<a class="headerlink" href="#gin" title="Permalink to this headline">#</a></h3>
+<h3>GIN<a class="headerlink" href="#gin" title="Permalink to this heading">#</a></h3>
 <p>Before talking about GIN indexes, let me give you a little bit of background on a full-text search. Full-text search is usually used if you have a column with sentences and you need to query rows based on the match for a particular string in that sentence. For example, say we want to get rows with <code class="docutils literal notranslate"><span class="pre">new</span></code> in the <code class="docutils literal notranslate"><span class="pre">sentence</span></code> column.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>row number</p></th>
 <th class="head"><p>sentence</p></th>
@@ -1204,19 +1179,16 @@ Wall time: 67.8 ms
 <p>We usually query it this way, this definitely will return our result, but it takes time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;%new%&#39;</span><span class="p">;</span>
+SELECT * FROM fakedata.testindex 
+WHERE productname LIKE &#39;%new%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 27510 rows affected.
-CPU times: user 24.6 ms, sys: 22.1 ms, total: 46.7 ms
-Wall time: 1.66 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1230,124 +1202,124 @@ Wall time: 1.66 s
     </thead>
     <tbody>
         <tr>
-            <td>60</td>
-            <td>325578</td>
-            <td>replace news</td>
-            <td>$41.82</td>
+            <td>48825</td>
+            <td>103535</td>
+            <td>border newsstand</td>
+            <td>$2.32</td>
         </tr>
         <tr>
-            <td>171</td>
-            <td>34359</td>
-            <td>newsstand bird</td>
-            <td>$26.18</td>
+            <td>48920</td>
+            <td>50624</td>
+            <td>smell news</td>
+            <td>$8.82</td>
         </tr>
         <tr>
-            <td>183</td>
-            <td>24364</td>
-            <td>newsstand Charles</td>
-            <td>$76.91</td>
+            <td>49047</td>
+            <td>57380</td>
+            <td>Swiss newsstand</td>
+            <td>$19.82</td>
         </tr>
         <tr>
-            <td>201</td>
-            <td>142804</td>
-            <td>Venezuela news</td>
-            <td>$8.37</td>
+            <td>49068</td>
+            <td>182597</td>
+            <td>law newsstand</td>
+            <td>$46.33</td>
         </tr>
         <tr>
-            <td>285</td>
-            <td>90194</td>
-            <td>news cub</td>
-            <td>$31.87</td>
+            <td>49174</td>
+            <td>50624</td>
+            <td>smell news</td>
+            <td>$8.82</td>
         </tr>
         <tr>
-            <td>392</td>
-            <td>185778</td>
-            <td>ounce newsstand</td>
-            <td>$92.40</td>
+            <td>49180</td>
+            <td>132623</td>
+            <td>page news</td>
+            <td>$54.57</td>
         </tr>
         <tr>
-            <td>496</td>
-            <td>158475</td>
-            <td>newsprint softball</td>
-            <td>$81.24</td>
+            <td>49243</td>
+            <td>51109</td>
+            <td>newsprint sailor</td>
+            <td>$83.88</td>
         </tr>
         <tr>
-            <td>582</td>
-            <td>83529</td>
-            <td>hub newsstand</td>
-            <td>$87.06</td>
+            <td>49319</td>
+            <td>277042</td>
+            <td>parent newsstand</td>
+            <td>$98.00</td>
         </tr>
         <tr>
-            <td>644</td>
-            <td>130920</td>
-            <td>news carbon</td>
-            <td>$44.99</td>
+            <td>49439</td>
+            <td>69330</td>
+            <td>workshop news</td>
+            <td>$23.70</td>
         </tr>
         <tr>
-            <td>691</td>
-            <td>158475</td>
-            <td>newsprint softball</td>
-            <td>$81.24</td>
+            <td>49503</td>
+            <td>14260</td>
+            <td>rhythm newsstand</td>
+            <td>$74.63</td>
         </tr>
         <tr>
-            <td>760</td>
-            <td>221233</td>
-            <td>news frog</td>
-            <td>$64.35</td>
+            <td>49595</td>
+            <td>50603</td>
+            <td>newsstand tailor</td>
+            <td>$11.89</td>
         </tr>
         <tr>
-            <td>783</td>
-            <td>199957</td>
-            <td>cathedral newsstand</td>
-            <td>$23.38</td>
+            <td>49761</td>
+            <td>50603</td>
+            <td>newsstand tailor</td>
+            <td>$11.89</td>
         </tr>
         <tr>
-            <td>798</td>
-            <td>92081</td>
-            <td>cod newsstand</td>
-            <td>$87.92</td>
+            <td>49806</td>
+            <td>51109</td>
+            <td>newsprint sailor</td>
+            <td>$83.88</td>
         </tr>
         <tr>
-            <td>858</td>
-            <td>250217</td>
-            <td>result newsstand</td>
-            <td>$50.36</td>
+            <td>49823</td>
+            <td>129317</td>
+            <td>newsstand suit</td>
+            <td>$85.11</td>
         </tr>
         <tr>
-            <td>1002</td>
-            <td>204775</td>
-            <td>sing newsstand</td>
-            <td>$57.54</td>
+            <td>49869</td>
+            <td>50624</td>
+            <td>smell news</td>
+            <td>$8.82</td>
         </tr>
         <tr>
-            <td>1025</td>
-            <td>83529</td>
-            <td>hub newsstand</td>
-            <td>$87.06</td>
+            <td>50123</td>
+            <td>389921</td>
+            <td>newsprint mail</td>
+            <td>$42.27</td>
         </tr>
         <tr>
-            <td>1262</td>
-            <td>166133</td>
-            <td>chauffeur newsprint</td>
-            <td>$77.66</td>
+            <td>50320</td>
+            <td>73081</td>
+            <td>newsstand quill</td>
+            <td>$82.05</td>
         </tr>
         <tr>
-            <td>1324</td>
-            <td>24364</td>
-            <td>newsstand Charles</td>
-            <td>$76.91</td>
+            <td>50373</td>
+            <td>42485</td>
+            <td>newsstand son</td>
+            <td>$36.70</td>
         </tr>
         <tr>
-            <td>1410</td>
-            <td>51369</td>
-            <td>lynx newsstand</td>
-            <td>$0.85</td>
+            <td>50375</td>
+            <td>22299</td>
+            <td>newsprint parcel</td>
+            <td>$19.56</td>
         </tr>
         <tr>
-            <td>1490</td>
-            <td>158475</td>
-            <td>newsprint softball</td>
-            <td>$81.24</td>
+            <td>50402</td>
+            <td>123599</td>
+            <td>spandex news</td>
+            <td>$23.25</td>
         </tr>
     </tbody>
 </table>
@@ -1375,18 +1347,15 @@ e.g., “quick”, or “brown” or “the” all point to row 1</p></li>
 <p>Let’s try these on our tables; Following is how much time it will take without indexing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> <span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="n">WHERE</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">productname</span><span class="p">)</span> <span class="o">@@</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span><span class="s1">&#39;flavor&#39;</span><span class="p">);</span>
+EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;english&#39;, productname) @@ to_tsquery(&#39;english&#39;,&#39;flavor&#39;);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 8.15 ms, sys: 3.02 ms, total: 11.2 ms
-Wall time: 26.1 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1397,10 +1366,10 @@ Wall time: 26.1 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=25990.828..25990.914 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=30425.673..30428.315 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=25988.713..25990.905 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=30421.692..30428.303 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1409,10 +1378,10 @@ Wall time: 26.1 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=25982.643..25982.644 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=30414.787..30414.789 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=6.548..25978.503 rows=3158 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=18.494..30408.778 rows=3158 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
@@ -1421,10 +1390,10 @@ Wall time: 26.1 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.825 ms</td>
+            <td>Planning Time: 6.759 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 25990.944 ms</td>
+            <td>Execution Time: 30428.375 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1442,15 +1411,12 @@ Wall time: 26.1 s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
 Done.
-CPU times: user 13.9 ms, sys: 5.37 ms, total: 19.3 ms
-Wall time: 40.4 s
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+CPU times: user 15.3 ms, sys: 13.9 ms, total: 29.2 ms
+Wall time: 52.8 s
 </pre></div>
 </div>
 </div>
@@ -1458,18 +1424,15 @@ Wall time: 40.4 s
 <p>Here is how much time it is taking with indexing.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> <span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="n">WHERE</span> <span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">productname</span><span class="p">)</span> <span class="o">@@</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span><span class="s1">&#39;flavor&#39;</span><span class="p">);</span>
+EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;english&#39;, productname) @@ to_tsquery(&#39;english&#39;,&#39;flavor&#39;);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 12 rows affected.
-CPU times: user 4.02 ms, sys: 1.69 ms, total: 5.71 ms
-Wall time: 75.2 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1480,10 +1443,10 @@ Wall time: 75.2 ms
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=14.016..15.186 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=12.965..14.273 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=8.623..15.177 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=10.411..14.262 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1492,28 +1455,28 @@ Wall time: 75.2 ms
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=3.877..3.878 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=4.725..4.726 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=2.003..3.605 rows=3158 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=2.086..4.456 rows=3158 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=4537</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=6011</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=3.680..3.680 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=4.195..4.196 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.184 ms</td>
+            <td>Planning Time: 0.177 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 15.224 ms</td>
+            <td>Execution Time: 14.310 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1521,20 +1484,17 @@ Wall time: 75.2 ms
 <p><em>Wooohoooo!!! A great improvement!!</em> By creating a materialized view (We will see more about views in next class) with a computed <code class="docutils literal notranslate"><span class="pre">tsvector</span></code> column, we can make searches even faster, since it will not be necessary to redo the <code class="docutils literal notranslate"><span class="pre">to_tsvector</span></code> calls to verify index matches.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">CREATE</span> <span class="n">MATERIALIZED</span> <span class="n">VIEW</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex_materialized</span> <span class="k">as</span> <span class="n">select</span> <span class="o">*</span><span class="p">,</span><span class="n">to_tsvector</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span> <span class="n">productname</span><span class="p">)</span> <span class="k">as</span> <span class="n">productname_ts</span> 
-<span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">pgweb_idx_mat</span> <span class="n">ON</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex_materialized</span> <span class="n">USING</span> <span class="n">GIN</span> <span class="p">(</span><span class="n">productname_ts</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+CREATE MATERIALIZED VIEW if not exists fakedata.testindex_materialized as select *,to_tsvector(&#39;english&#39;, productname) as productname_ts 
+FROM fakedata.testindex;
+CREATE INDEX if not exists pgweb_idx_mat ON fakedata.testindex_materialized USING GIN (productname_ts);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
-CPU times: user 6.89 ms, sys: 2.93 ms, total: 9.82 ms
-Wall time: 250 ms
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
@@ -1544,18 +1504,15 @@ Wall time: 250 ms
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> <span class="n">SELECT</span> <span class="n">count</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex_materialized</span> <span class="n">WHERE</span> <span class="n">productname_ts</span> <span class="o">@@</span> <span class="n">to_tsquery</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">,</span><span class="s1">&#39;flavor&#39;</span><span class="p">);</span>
+EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex_materialized WHERE productname_ts @@ to_tsquery(&#39;english&#39;,&#39;flavor&#39;);
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 8 rows affected.
-CPU times: user 4.53 ms, sys: 2.27 ms, total: 6.8 ms
-Wall time: 65 ms
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1566,28 +1523,28 @@ Wall time: 65 ms
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=31354.41..31354.42 rows=1 width=8) (actual time=5.317..5.318 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=17094.34..17094.35 rows=1 width=8) (actual time=5.437..5.438 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=101.93..31329.27 rows=10055 width=0) (actual time=3.109..4.841 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=62.97..17081.77 rows=5028 width=0) (actual time=3.259..4.981 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9144</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9160</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..99.42 rows=10055 width=0) (actual time=1.626..1.626 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..61.71 rows=5028 width=0) (actual time=1.692..1.692 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.419 ms</td>
+            <td>Planning Time: 0.281 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 5.353 ms</td>
+            <td>Execution Time: 5.468 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1595,20 +1552,17 @@ Wall time: 65 ms
 <p>This indexing does speed up things if we want to search for a particular word from a column, like <code class="docutils literal notranslate"><span class="pre">flavor</span></code>. But if we want to search for some pattern within a sentence, then this index won’t help. EG the query what we trying from beginning</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">la%&#39;</span><span class="p">;</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;%fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
-CPU times: user 6.14 ms, sys: 2.7 ms, total: 8.83 ms
-Wall time: 1.58 s
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1619,10 +1573,10 @@ Wall time: 1.58 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144427.95..144427.96 rows=1 width=8) (actual time=1433.263..1434.450 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1589.090..1596.606 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144427.74..144427.95 rows=2 width=8) (actual time=1433.254..1434.444 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1589.080..1596.598 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1631,10 +1585,10 @@ Wall time: 1.58 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143427.74..143427.75 rows=1 width=8) (actual time=1421.513..1421.514 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1580.477..1580.478 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=47006 width=0) (actual time=0.094..1417.011 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.076..1573.857 rows=22257 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
@@ -1643,17 +1597,17 @@ Wall time: 1.58 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.065 ms</td>
+            <td>Planning Time: 0.072 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1434.482 ms</td>
+            <td>Execution Time: 1596.641 ms</td>
         </tr>
     </tbody>
 </table></div></div>
 </div>
 <p>Hence, we want a different flavor of gin indexing, trigram index. I found <a class="reference external" href="https://scoutapm.com/blog/how-to-make-text-searches-in-postgresql-faster-with-trigram-similarity">this</a> blog to help understand this.</p>
 <section id="trigrams-details-optional">
-<h4>Trigrams Details (OPTIONAL)<a class="headerlink" href="#trigrams-details-optional" title="Permalink to this headline">#</a></h4>
+<h4>Trigrams Details (OPTIONAL)<a class="headerlink" href="#trigrams-details-optional" title="Permalink to this heading">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Trigrams</span></code> are a special case of <a class="reference external" href="https://web.stanford.edu/~jurafsky/slp3/4.pdf">N-grams</a>. The concept relies on dividing the sentence into a sequence of three consecutive letters, and this result is considered as a <code class="docutils literal notranslate"><span class="pre">set</span></code>. Before performing this process</p>
 <ul class="simple">
 <li><p>Two blank spaces are added at the beginning.</p></li>
@@ -1665,23 +1619,36 @@ Wall time: 1.58 s
 <p>These are considered words, and the rest remains the same as what we discussed before. To use this index add <code class="docutils literal notranslate"><span class="pre">gin_trgm_ops</span></code> as <code class="docutils literal notranslate"><span class="pre">operator</span> <span class="pre">class</span></code>. Let’s do it.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
-<span class="n">CREATE</span> <span class="n">EXTENSION</span> <span class="n">pg_trgm</span><span class="p">;</span>
-<span class="n">DROP</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="n">exists</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">pgweb_idx</span><span class="p">;</span>
-<span class="n">CREATE</span> <span class="n">INDEX</span> <span class="n">pgweb_idx</span> <span class="n">ON</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> <span class="n">USING</span> <span class="n">GIN</span> <span class="p">(</span><span class="n">productname</span> <span class="n">gin_trgm_ops</span><span class="p">);</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+CREATE EXTENSION pg_trgm;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
-Done.
-(psycopg2.errors.UndefinedObject) operator class &quot;gin_trgm_ops&quot; does not exist for access method &quot;gin&quot;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+(psycopg2.errors.DuplicateObject) extension &quot;pg_trgm&quot; already exists
 
-[SQL: CREATE INDEX pgweb_idx ON fakedata.testindex USING GIN (productname gin_trgm_ops);]
+[SQL: CREATE EXTENSION pg_trgm;]
 (Background on this error at: https://sqlalche.me/e/14/f405)
-CPU times: user 4.53 ms, sys: 1.94 ms, total: 6.46 ms
-Wall time: 195 ms
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
+DROP INDEX if exists fakedata.pgweb_idx;
+CREATE INDEX pgweb_idx ON fakedata.testindex USING GIN (productname gin_trgm_ops);
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+Done.
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1689,20 +1656,17 @@ Wall time: 195 ms
 <p>Let’s see if it speeds up the query that we tried in many cases before.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">la%&#39;</span><span class="p">;</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;%fla%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
-10 rows affected.
-CPU times: user 4.69 ms, sys: 2.06 ms, total: 6.76 ms
-Wall time: 1.74 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+12 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1713,10 +1677,10 @@ Wall time: 1.74 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144427.95..144427.96 rows=1 width=8) (actual time=1583.628..1585.183 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=124690.89..124690.90 rows=1 width=8) (actual time=131.291..135.543 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144427.74..144427.95 rows=2 width=8) (actual time=1583.619..1585.176 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=124690.67..124690.88 rows=2 width=8) (actual time=131.280..135.535 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1725,42 +1689,45 @@ Wall time: 1.74 s
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143427.74..143427.75 rows=1 width=8) (actual time=1576.930..1576.931 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=123690.67..123690.68 rows=1 width=8) (actual time=118.803..118.805 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=47006 width=0) (actual time=0.045..1570.940 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=2093.20..123455.56 rows=94043 width=0) (actual time=31.242..115.834 rows=22257 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=21201</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.104 ms</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..2036.78 rows=225704 width=0) (actual time=28.108..28.109 rows=66772 loops=1)</td>
         </tr>
         <tr>
-            <td>Execution Time: 1585.214 ms</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+        </tr>
+        <tr>
+            <td>Planning Time: 0.313 ms</td>
+        </tr>
+        <tr>
+            <td>Execution Time: 135.586 ms</td>
         </tr>
     </tbody>
 </table></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="o">%%</span><span class="n">sql</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">sql</span>
 
-<span class="n">EXPLAIN</span> <span class="n">ANALYZE</span> 
-<span class="n">SELECT</span> <span class="n">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
-<span class="n">WHERE</span> <span class="n">productname</span> <span class="n">LIKE</span> <span class="s1">&#39;</span><span class="si">%f</span><span class="s1">lavor%&#39;</span><span class="p">;</span>
+EXPLAIN ANALYZE 
+SELECT COUNT(*) FROM fakedata.testindex 
+WHERE productname LIKE &#39;%flavor%&#39;;
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
-10 rows affected.
-CPU times: user 5.88 ms, sys: 2.12 ms, total: 8 ms
-Wall time: 1.42 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+8 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
@@ -1771,34 +1738,28 @@ Wall time: 1.42 s
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1297.564..1299.146 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=4333.15..4333.16 rows=1 width=8) (actual time=20.704..20.706 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1297.555..1299.139 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=256.66..4330.36 rows=1117 width=0) (actual time=6.631..19.991 rows=9474 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=8925</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1290.749..1290.750 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..256.38 rows=1117 width=0) (actual time=4.180..4.180 rows=9474 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.127..1290.168 rows=3158 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
+            <td>Planning Time: 0.185 ms</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.058 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1299.178 ms</td>
+            <td>Execution Time: 20.746 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1807,7 +1768,7 @@ Wall time: 1.42 s
 </section>
 </section>
 <section id="gist">
-<h3>GIST<a class="headerlink" href="#gist" title="Permalink to this headline">#</a></h3>
+<h3>GIST<a class="headerlink" href="#gist" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Supports many search types, including spatial and full text.</p></li>
 <li><p>Can be extended to custom data types</p></li>
@@ -1816,7 +1777,7 @@ Wall time: 1.42 s
 <a class="reference internal image-reference" href="../_images/gist.png"><img alt="../_images/gist.png" src="../_images/gist.png" style="width: 50%;" /></a>
 </section>
 <section id="brin">
-<h3>BRIN<a class="headerlink" href="#brin" title="Permalink to this headline">#</a></h3>
+<h3>BRIN<a class="headerlink" href="#brin" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Indexes block statistics for ordered data</p></li>
 <li><p>Block min &amp; max mapped to index</p></li>
@@ -1841,7 +1802,7 @@ Wall time: 1.42 s
 </section>
 </section>
 <section id="compared-to-other-services-optional">
-<h2>Compared to Other Services (optional)<a class="headerlink" href="#compared-to-other-services-optional" title="Permalink to this headline">#</a></h2>
+<h2>Compared to Other Services (optional)<a class="headerlink" href="#compared-to-other-services-optional" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>BigQuery, AWS RedShift</p>
 <ul>
@@ -1864,7 +1825,7 @@ Wall time: 1.42 s
 </ul>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Indexes are important to speed up operations</p></li>
 <li><p>Indexes are optimized to certain kinds of data</p></li>
@@ -1873,7 +1834,7 @@ Wall time: 1.42 s
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 3 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1910,9 +1871,29 @@ Wall time: 1.42 s
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 2: Setting up RDS and connection to cloud</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 4: (de)Normalization &amp; Data Warehousing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1921,6 +1902,7 @@ Wall time: 1.42 s
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1957,7 +1939,7 @@ Wall time: 1.42 s
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1970,6 +1952,7 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1987,7 +1970,7 @@ By Gittu George, PhD
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1996,8 +1979,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

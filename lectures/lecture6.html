@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 6: CQL 1 &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -74,7 +76,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -108,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +147,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -140,8 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
   
   
 </a></div>
@@ -159,6 +180,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="nav bd-sidenav">
@@ -169,6 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 </ul>
 
     </div>
@@ -371,20 +396,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -446,14 +473,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-6-cql-1">
-<h1>Lecture 6: CQL 1<a class="headerlink" href="#lecture-6-cql-1" title="Permalink to this headline">#</a></h1>
+<h1>Lecture 6: CQL 1<a class="headerlink" href="#lecture-6-cql-1" title="Permalink to this heading">#</a></h1>
 <p>Gittu George, January 19 2023</p>
 <p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Creating nodes &amp; relationships.</p></li>
 <li><p>Creating constraints.</p></li>
@@ -464,7 +491,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Loading data and creating nodes and relationships</p></li>
 <li><p>Using CQL to query the graph database</p></li>
@@ -472,7 +499,7 @@ document.write(`
 <p><a class="reference external" href="https://neo4j.com/docs/cypher-refcard/current/">Here</a> is a good cheat sheet that you can use.</p>
 </section>
 <section id="creating-nodes-relationships">
-<h2>Creating nodes &amp; relationships<a class="headerlink" href="#creating-nodes-relationships" title="Permalink to this headline">#</a></h2>
+<h2>Creating nodes &amp; relationships<a class="headerlink" href="#creating-nodes-relationships" title="Permalink to this heading">#</a></h2>
 <p>We learned how to define</p>
 <ul class="simple">
 <li><p>Nodes</p></li>
@@ -510,7 +537,7 @@ document.write(`
 </div>
 </section>
 <section id="loading-movie-dataset">
-<h2>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this headline">#</a></h2>
+<h2>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this heading">#</a></h2>
 <p>Let’s create better dummy data in neo4j to learn how to query the database using cypher. <a class="reference external" href="https://canvas.ubc.ca/files/24945340/download?download_frd=1">We will use a movie dataset that neo4j provides</a>. Let’s load the data first. Please download this file and copy it to your neo4j query space.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -521,7 +548,7 @@ document.write(`
 <p>Please make sure you only run this one time, Because every time it’s running, it creates nodes and relationships again.</p>
 </div>
 <section id="creating-constraints">
-<h3>Creating constraints<a class="headerlink" href="#creating-constraints" title="Permalink to this headline">#</a></h3>
+<h3>Creating constraints<a class="headerlink" href="#creating-constraints" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">CONSTRAINT</span> <span class="pre">ON</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">ASSERT</span></code> to create constraints.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Uniqueness</span> <span class="pre">constraint</span></code> - Ensures that a value for a property is unique for all nodes of that type.</p></li>
@@ -553,7 +580,7 @@ document.write(`
 </div>
 </section>
 <section id="inspecting-schema">
-<h3>Inspecting schema<a class="headerlink" href="#inspecting-schema" title="Permalink to this headline">#</a></h3>
+<h3>Inspecting schema<a class="headerlink" href="#inspecting-schema" title="Permalink to this heading">#</a></h3>
 <p>Let’s inspect the schema for the movie data.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">visualization</span><span class="p">()</span>
 </pre></div>
@@ -573,9 +600,9 @@ document.write(`
 </section>
 </section>
 <section id="querying-nodes-and-relationships">
-<h2>Querying nodes and relationships<a class="headerlink" href="#querying-nodes-and-relationships" title="Permalink to this headline">#</a></h2>
+<h2>Querying nodes and relationships<a class="headerlink" href="#querying-nodes-and-relationships" title="Permalink to this heading">#</a></h2>
 <section id="match-return">
-<h3>MATCH &amp; RETURN<a class="headerlink" href="#match-return" title="Permalink to this headline">#</a></h3>
+<h3>MATCH &amp; RETURN<a class="headerlink" href="#match-return" title="Permalink to this heading">#</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> to match the nodes you ask for, and <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> to retrieve the nodes.</p>
 <p>Here we retrieve all the nodes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">//</span> <span class="n">returns</span> <span class="nb">all</span> <span class="n">nodes</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">graph</span>
@@ -644,7 +671,7 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 <section id="where-to-filter-queries">
-<h3>WHERE to Filter Queries<a class="headerlink" href="#where-to-filter-queries" title="Permalink to this headline">#</a></h3>
+<h3>WHERE to Filter Queries<a class="headerlink" href="#where-to-filter-queries" title="Permalink to this heading">#</a></h3>
 <p>Just like in SQL, we use <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> to filter queries.</p>
 <p>We already know how to write this query.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">released</span><span class="p">:</span> <span class="mi">2008</span><span class="p">})</span>
@@ -749,10 +776,10 @@ RETURN p.name, p.born AS `birth year`
 </section>
 </section>
 <section id="iclicker-1">
-<h2>iclicker 1<a class="headerlink" href="#iclicker-1" title="Permalink to this headline">#</a></h2>
+<h2>iclicker 1<a class="headerlink" href="#iclicker-1" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="working-with-patterns-in-queries">
-<h2>Working with Patterns in Queries<a class="headerlink" href="#working-with-patterns-in-queries" title="Permalink to this headline">#</a></h2>
+<h2>Working with Patterns in Queries<a class="headerlink" href="#working-with-patterns-in-queries" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><em><strong>Traversal in a MATCH clause</strong></em></p></li>
 </ul>
@@ -770,7 +797,7 @@ RETURN p.name, p.born AS `birth year`
 </pre></div>
 </div>
 <section id="specifying-multiple-match-patterns">
-<h3>Specifying multiple MATCH patterns<a class="headerlink" href="#specifying-multiple-match-patterns" title="Permalink to this headline">#</a></h3>
+<h3>Specifying multiple MATCH patterns<a class="headerlink" href="#specifying-multiple-match-patterns" title="Permalink to this heading">#</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">),</span>
 <span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">&lt;-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">d</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2000</span>
@@ -812,7 +839,7 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 <section id="multiple-match-clauses">
-<h3>Multiple MATCH clauses,<a class="headerlink" href="#multiple-match-clauses" title="Permalink to this headline">#</a></h3>
+<h3>Multiple MATCH clauses,<a class="headerlink" href="#multiple-match-clauses" title="Permalink to this heading">#</a></h3>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">valKilmer</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
 <span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">actor</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">valKilmer</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Val Kilmer&#39;</span>
@@ -833,7 +860,7 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 <section id="specifying-varying-length-paths">
-<h3>Specifying varying length paths<a class="headerlink" href="#specifying-varying-length-paths" title="Permalink to this headline">#</a></h3>
+<h3>Specifying varying length paths<a class="headerlink" href="#specifying-varying-length-paths" title="Permalink to this heading">#</a></h3>
 <p>Syntax:</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">Retrieve</span><span class="w"> </span><span class="k">all</span><span class="w"> </span><span class="n">paths</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="k">any</span><span class="w"> </span><span class="k">length</span><span class="w"> </span><span class="k">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">relationship</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="n">RELTYPE</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">nodeA</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">nodeB</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">beyond</span>
 <span class="p">(</span><span class="n">nodeA</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">RELTYPE</span><span class="o">*</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">nodeB</span><span class="p">)</span><span class="w"> </span>
@@ -865,7 +892,7 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 <section id="finding-the-shortest-path">
-<h3>Finding the shortest path<a class="headerlink" href="#finding-the-shortest-path" title="Permalink to this headline">#</a></h3>
+<h3>Finding the shortest path<a class="headerlink" href="#finding-the-shortest-path" title="Permalink to this heading">#</a></h3>
 <p>This <code class="docutils literal notranslate"><span class="pre">shortestPath()</span></code> function is very useful in many cases where there are many ways to reach from node A to node B.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">shortestPath</span><span class="p">((</span><span class="n">m1</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span><span class="o">-</span><span class="p">[</span><span class="o">*</span><span class="p">]</span><span class="o">-</span><span class="p">(</span><span class="n">m2</span><span class="p">:</span><span class="n">Movie</span><span class="p">))</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">m1</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;A Few Good Men&#39;</span><span class="w"> </span><span class="k">AND</span>
@@ -880,7 +907,7 @@ RETURN p.name, p.born AS `birth year`
 </section>
 </section>
 <section id="working-with-dumps">
-<h2>Working with dumps.<a class="headerlink" href="#working-with-dumps" title="Permalink to this headline">#</a></h2>
+<h2>Working with dumps.<a class="headerlink" href="#working-with-dumps" title="Permalink to this heading">#</a></h2>
 <p>You can use the GUI interface to load dumps. You need to do this for your assignment 3.</p>
 <p>Go to your Neo4j Aura web console. Click on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Database</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">.dump</span> <span class="pre">file</span></code> –&gt; select the file from your local file system</p>
 <aside class="margin sidebar">
@@ -893,7 +920,7 @@ RETURN p.name, p.born AS `birth year`
 <p>I loaded all this data for you and took a dump. You will be using the CQL that we will be learning in our class to work on the assignments.</p>
 </section>
 <section id="can-you">
-<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
 <p>Write Cypher statements to:</p>
 <ul class="simple">
 <li><p>Retrieve nodes from the graph.</p></li>
@@ -918,7 +945,7 @@ RETURN p.name, p.born AS `birth year`
 <p><a class="reference external" href="https://canvas.ubc.ca/files/19063812/download?download_frd=1">Let’s check out</a> the reference card again to see the covered topics.</p>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 6 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -929,7 +956,7 @@ RETURN p.name, p.born AS `birth year`
 </ul>
 </section>
 <section id="deleting-nodes-and-relationships-optional">
-<h2>Deleting Nodes and Relationships (OPTIONAL)<a class="headerlink" href="#deleting-nodes-and-relationships-optional" title="Permalink to this headline">#</a></h2>
+<h2>Deleting Nodes and Relationships (OPTIONAL)<a class="headerlink" href="#deleting-nodes-and-relationships-optional" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
 <span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Jane Doe&#39;</span>
 <span class="n">DELETE</span> <span class="n">p</span>
@@ -952,7 +979,7 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 <section id="more-on-create-optional-additional-information">
-<h2>More on CREATE (OPTIONAL- Additional information)<a class="headerlink" href="#more-on-create-optional-additional-information" title="Permalink to this headline">#</a></h2>
+<h2>More on CREATE (OPTIONAL- Additional information)<a class="headerlink" href="#more-on-create-optional-additional-information" title="Permalink to this heading">#</a></h2>
 <p>We already saw about creating nodes and relationships. This section shows you that you can create relationships with existing nodes.</p>
 <p>To demonstrate, let’s create some nodes.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">:</span><span class="n">Action</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39; Batman Begins&#39;</span><span class="p">})</span>
@@ -1087,8 +1114,10 @@ RETURN p.name, p.born AS `birth year`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1098,6 +1127,7 @@ RETURN p.name, p.born AS `birth year`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1139,7 +1169,7 @@ RETURN p.name, p.born AS `birth year`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1152,6 +1182,7 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1169,7 +1200,7 @@ By Gittu George, PhD
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1178,8 +1209,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

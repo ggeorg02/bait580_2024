@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 7: CQL 2/ MongoDB introduction &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -66,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -74,7 +76,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -108,12 +119,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +147,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -140,8 +161,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
   
   
 </a></div>
@@ -159,6 +180,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="nav bd-sidenav">
@@ -169,6 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 </ul>
 
     </div>
@@ -371,20 +396,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -442,14 +469,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-7-cql-2-mongodb-introduction">
-<h1>Lecture 7: CQL 2/ MongoDB introduction<a class="headerlink" href="#lecture-7-cql-2-mongodb-introduction" title="Permalink to this headline">#</a></h1>
+<h1>Lecture 7: CQL 2/ MongoDB introduction<a class="headerlink" href="#lecture-7-cql-2-mongodb-introduction" title="Permalink to this heading">#</a></h1>
 <p>Gittu George, January 24 2023</p>
 <p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
 <section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The video recording link is sorted out. I will paste the link in the piazza soon.</p></li>
 <li><p>Student Attendance &amp; Check-in system - Plan to run a pilot at the start of our last class, so please bring your ID card.</p></li>
@@ -465,7 +492,7 @@ document.write(`
 </ul>
 </section>
 <section id="today-s-agenda">
-<h2>Today’s Agenda<a class="headerlink" href="#today-s-agenda" title="Permalink to this headline">#</a></h2>
+<h2>Today’s Agenda<a class="headerlink" href="#today-s-agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Aggregation in cypher</p></li>
 <li><p>Controlling the query chain</p></li>
@@ -474,7 +501,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Using CQL to query the graph database</p></li>
 <li><p>To make you capable on applying CQL skills on a real world problem (twitter data)</p></li>
@@ -483,7 +510,7 @@ document.write(`
 <p><a class="reference external" href="https://canvas.ubc.ca/files/19165620/download?download_frd=1">Check the ticks in this</a> cheat sheet to see all topics we will cover by the end of this lecture. You only need these to finish your assignment.</p>
 </section>
 <section id="aggregation-in-cypher">
-<h2>Aggregation in Cypher<a class="headerlink" href="#aggregation-in-cypher" title="Permalink to this headline">#</a></h2>
+<h2>Aggregation in Cypher<a class="headerlink" href="#aggregation-in-cypher" title="Permalink to this heading">#</a></h2>
 <p>When you return results as values, Cypher automatically returns the values grouped by a common value.</p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
 <span class="k">RETURN</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span>
@@ -509,7 +536,7 @@ document.write(`
 <p>More aggregating functions such as <code class="docutils literal notranslate"><span class="pre">avg()</span></code>,<code class="docutils literal notranslate"><span class="pre">stDev()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code> or <code class="docutils literal notranslate"><span class="pre">max()</span></code>, <code class="docutils literal notranslate"><span class="pre">sum()</span></code>. For entire list check in <a class="reference external" href="https://neo4j.com/docs/cypher-manual/current/functions/aggregating/">cypher manual.</a></p>
 </section>
 <section id="controlling-the-query-chain">
-<h2>Controlling the Query Chain<a class="headerlink" href="#controlling-the-query-chain" title="Permalink to this headline">#</a></h2>
+<h2>Controlling the Query Chain<a class="headerlink" href="#controlling-the-query-chain" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><em><strong>Intermediate processing using <code class="docutils literal notranslate"><span class="pre">WITH</span></code></strong></em></p></li>
 </ul>
@@ -539,7 +566,7 @@ document.write(`
 <p>For the second <code class="docutils literal notranslate"><span class="pre">MATCH</span></code> clause, we use the found movie nodes, m. The <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> clause has access to the movie, rating by that reviewer, the name of the reviewer, and the collection of director names for that movie.</p>
 </section>
 <section id="controlling-results-returned">
-<h2>Controlling Results Returned<a class="headerlink" href="#controlling-results-returned" title="Permalink to this headline">#</a></h2>
+<h2>Controlling Results Returned<a class="headerlink" href="#controlling-results-returned" title="Permalink to this heading">#</a></h2>
 <aside class="sidebar">
 <p class="sidebar-title"><em><strong>What have you learned until now?</strong></em></p>
 <ul class="simple">
@@ -549,7 +576,7 @@ document.write(`
 </aside>
 <p>Now we will focus on controlling how results are processed in the <code class="docutils literal notranslate"><span class="pre">RETURN</span></code> and <code class="docutils literal notranslate"><span class="pre">WITH</span></code> clauses.</p>
 <section id="dealing-with-duplicates">
-<h3>Dealing with duplicates<a class="headerlink" href="#dealing-with-duplicates" title="Permalink to this headline">#</a></h3>
+<h3>Dealing with duplicates<a class="headerlink" href="#dealing-with-duplicates" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Duplicate results</p></li>
 </ul>
@@ -574,7 +601,7 @@ document.write(`
 </div>
 </section>
 <section id="ordering-results">
-<h3>Ordering results<a class="headerlink" href="#ordering-results" title="Permalink to this headline">#</a></h3>
+<h3>Ordering results<a class="headerlink" href="#ordering-results" title="Permalink to this heading">#</a></h3>
 <p>If you want the results to be sorted, specify the expression to use for the sort using the <code class="docutils literal notranslate"><span class="pre">ORDER</span> <span class="pre">BY</span></code> keyword and whether you want the order to be descending using the <code class="docutils literal notranslate"><span class="pre">DESC</span></code> keyword. <em><strong>Ascending order is the default.</strong></em></p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">DIRECTED</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">ACTED_IN</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Tom Hanks&#39;</span><span class="w"> </span><span class="k">OR</span><span class="w"> </span><span class="n">p</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Keanu Reeves&#39;</span>
@@ -591,7 +618,7 @@ document.write(`
 </div>
 </section>
 <section id="limiting-the-number-of-results">
-<h3>Limiting the number of results<a class="headerlink" href="#limiting-the-number-of-results" title="Permalink to this headline">#</a></h3>
+<h3>Limiting the number of results<a class="headerlink" href="#limiting-the-number-of-results" title="Permalink to this heading">#</a></h3>
 <p>Use <code class="docutils literal notranslate"><span class="pre">LIMIT</span></code></p>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">MATCH</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="c1">--&gt;(m:Movie)</span>
 <span class="k">RETURN</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">title</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">title</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">released</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span>
@@ -635,7 +662,7 @@ document.write(`
 </section>
 </section>
 <section id="can-you">
-<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Specify varying length paths.</p></li>
 <li><p>Perform intermediate processing with WITH.</p></li>
@@ -647,7 +674,7 @@ document.write(`
 </ul>
 </section>
 <section id="mongodb">
-<h2>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">#</a></h2>
+<h2>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this heading">#</a></h2>
 <a class="reference internal image-reference" href="../_images/mongo.png"><img alt="../_images/mongo.png" src="../_images/mongo.png" style="width: 400px;" /></a>
 <p>MongoDB is a document-based DBMS:</p>
 <ul class="simple">
@@ -665,12 +692,12 @@ document.write(`
 <li><p>Powerful query language</p></li>
 </ul>
 <section id="who-uses-mongodb">
-<h3>Who uses MongoDB<a class="headerlink" href="#who-uses-mongodb" title="Permalink to this headline">#</a></h3>
+<h3>Who uses MongoDB<a class="headerlink" href="#who-uses-mongodb" title="Permalink to this heading">#</a></h3>
 <p>Google, ebay, Craigslist, Toyota, Forbes, Electronic Arts, Adobe, AstraZeneca, and the list goes on.</p>
 <p>(https://www.mongodb.com/who-uses-mongodb)</p>
 </section>
 <section id="json">
-<h3>JSON<a class="headerlink" href="#json" title="Permalink to this headline">#</a></h3>
+<h3>JSON<a class="headerlink" href="#json" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>JSON is short for Java Script Object Notation.</p></li>
 <li><p>JSON documents are simple containers, where a string key is mapped to a value (e.g. a number, string, function, another object).</p></li>
@@ -702,7 +729,7 @@ document.write(`
 </ul>
 </section>
 <section id="bson">
-<h3>BSON<a class="headerlink" href="#bson" title="Permalink to this headline">#</a></h3>
+<h3>BSON<a class="headerlink" href="#bson" title="Permalink to this heading">#</a></h3>
 <p>Although the JSON document may look great for storing data <strong><em>as is</em></strong>, but it has a number of drawbacks:</p>
 <ul class="simple">
 <li><p>JSON is text, and text parsing is very slow</p></li>
@@ -713,12 +740,12 @@ document.write(`
 <p>For a an overview, see <a class="reference external" href="https://www.mongodb.com/json-and-bson">here</a>.</p>
 </section>
 <section id="collections">
-<h3>Collections<a class="headerlink" href="#collections" title="Permalink to this headline">#</a></h3>
+<h3>Collections<a class="headerlink" href="#collections" title="Permalink to this heading">#</a></h3>
 <p>In MongoDB, a database consists of one or more <strong>collections</strong>, each containing multiple <strong>documents</strong>.</p>
 <a class="reference internal image-reference" href="../_images/collection.png"><img alt="../_images/collection.png" src="../_images/collection.png" style="width: 600px;" /></a>
 </section>
 <section id="documents">
-<h3>Documents<a class="headerlink" href="#documents" title="Permalink to this headline">#</a></h3>
+<h3>Documents<a class="headerlink" href="#documents" title="Permalink to this heading">#</a></h3>
 <a class="reference internal image-reference" href="../_images/document.png"><img alt="../_images/document.png" src="../_images/document.png" style="width: 600px;" /></a>
 <ul class="simple">
 <li><p>Each document contains field-value pairs</p></li>
@@ -740,7 +767,7 @@ document.write(`
 </section>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 7 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -750,7 +777,7 @@ document.write(`
 </ul>
 </section>
 <section id="worksheet-7">
-<h2>Worksheet 7<a class="headerlink" href="#worksheet-7" title="Permalink to this headline">#</a></h2>
+<h2>Worksheet 7<a class="headerlink" href="#worksheet-7" title="Permalink to this heading">#</a></h2>
 <p><em><strong>In any graph questions keep two rules in mind. Can you…</strong></em></p>
 <ul class="simple">
 <li><p>Break the questions into various parts</p>
@@ -825,8 +852,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -836,6 +865,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -873,7 +903,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -886,6 +916,7 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -903,7 +934,7 @@ By Gittu George, PhD
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -912,8 +943,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

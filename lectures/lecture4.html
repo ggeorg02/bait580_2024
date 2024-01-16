@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 4: (de)Normalization &amp; Data Warehousing &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,12 +38,14 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,8 +67,9 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lecture 3: Disk Management and Indexes" href="lecture3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -74,7 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -108,12 +120,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -128,9 +148,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -140,8 +162,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
   
   
 </a></div>
@@ -159,16 +181,20 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 </ul>
 
     </div>
@@ -371,20 +397,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -447,13 +475,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-4-de-normalization-data-warehousing">
-<h1>Lecture 4: (de)Normalization &amp; Data Warehousing<a class="headerlink" href="#lecture-4-de-normalization-data-warehousing" title="Permalink to this headline">#</a></h1>
-<p>Gittu George, January 12 2023</p>
+<h1>Lecture 4: (de)Normalization &amp; Data Warehousing<a class="headerlink" href="#lecture-4-de-normalization-data-warehousing" title="Permalink to this heading">#</a></h1>
+<p>Gittu George, January 18 2023</p>
 <section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Office Hours</p>
 <ul>
@@ -473,7 +501,7 @@ document.write(`
 </ul>
 </section>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>WHAT is a Data Warehouse?</p></li>
 <li><p>WHY Data Warehouse?</p></li>
@@ -483,7 +511,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Understanding of data warehouse.</p></li>
 <li><p>Building a data warehouse.</p></li>
@@ -491,7 +519,7 @@ document.write(`
 </ul>
 </section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">#</a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <a class="reference internal image-reference" href="../_images/memory.png"><img alt="../_images/memory.png" src="../_images/memory.png" style="width: 80%;" /></a>
@@ -516,7 +544,7 @@ document.write(`
 <p>***<em>NOTE:</em>***This will be our last class talking about relational databases.</p>
 </section>
 <section id="what-is-a-data-warehouse">
-<h2>WHAT is a Data Warehouse?<a class="headerlink" href="#what-is-a-data-warehouse" title="Permalink to this headline">#</a></h2>
+<h2>WHAT is a Data Warehouse?<a class="headerlink" href="#what-is-a-data-warehouse" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>A Data Warehouse is a Data Management System</p></li>
 <li><p>Data Analysts and BI Experts query a front end</p></li>
@@ -535,9 +563,9 @@ document.write(`
 <p>How do you think a data warehouse may look like?</p>
 </section>
 <section id="general-structure-of-data-warehouse">
-<h2>General structure of Data Warehouse<a class="headerlink" href="#general-structure-of-data-warehouse" title="Permalink to this headline">#</a></h2>
+<h2>General structure of Data Warehouse<a class="headerlink" href="#general-structure-of-data-warehouse" title="Permalink to this heading">#</a></h2>
 <section id="reciept-story">
-<h3>Reciept story<a class="headerlink" href="#reciept-story" title="Permalink to this headline">#</a></h3>
+<h3>Reciept story<a class="headerlink" href="#reciept-story" title="Permalink to this heading">#</a></h3>
 <a class="reference internal image-reference" href="../_images/reciept.png"><img alt="../_images/reciept.png" src="../_images/reciept.png" style="width: 30%;" /></a>
 <p>Image source: <a class="reference external" href="https://commons.wikimedia.org/w/index.php?curid=2612801">wikiMedia</a></p>
 <p>Fact Table: A table that contains the measurements of a business process of interest (in red - above diagram).
@@ -549,7 +577,7 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </section>
 </section>
 <section id="why">
-<h2>WHY<a class="headerlink" href="#why" title="Permalink to this headline">#</a></h2>
+<h2>WHY<a class="headerlink" href="#why" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Data Can Be Complex</p></li>
 <li><p>Multiple Sources</p></li>
@@ -560,7 +588,7 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </ul>
 </section>
 <section id="goals-of-data-warehousing-bi">
-<h2>Goals of Data Warehousing &amp; BI<a class="headerlink" href="#goals-of-data-warehousing-bi" title="Permalink to this headline">#</a></h2>
+<h2>Goals of Data Warehousing &amp; BI<a class="headerlink" href="#goals-of-data-warehousing-bi" title="Permalink to this heading">#</a></h2>
 <p>The Data Warehouse system must:</p>
 <ul class="simple">
 <li><p>Make information easily accessible</p></li>
@@ -572,7 +600,7 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 <li><p>Be accepted by end-users</p></li>
 </ul>
 <section id="so-how-do-we-meet-expectations">
-<h3>So How Do We Meet Expectations?<a class="headerlink" href="#so-how-do-we-meet-expectations" title="Permalink to this headline">#</a></h3>
+<h3>So How Do We Meet Expectations?<a class="headerlink" href="#so-how-do-we-meet-expectations" title="Permalink to this heading">#</a></h3>
 <p>We have this dimensional model influenced by the business requirements &amp; data realities.</p>
 <p>The Data Warehouse Design must be collaborative for the expectations to be met. Some parties include;</p>
 <ul class="simple">
@@ -586,7 +614,7 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </section>
 </section>
 <section id="how-do-we-build-a-data-warehouse">
-<h2>How Do We Build a Data Warehouse?<a class="headerlink" href="#how-do-we-build-a-data-warehouse" title="Permalink to this headline">#</a></h2>
+<h2>How Do We Build a Data Warehouse?<a class="headerlink" href="#how-do-we-build-a-data-warehouse" title="Permalink to this heading">#</a></h2>
 <p>You are already in the process of building an enterprise data warehouse. Here are the steps that you already did;</p>
 <ul class="simple">
 <li><p>You identified the data sources</p></li>
@@ -595,7 +623,7 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </ul>
 <p>Even though you are already doing some joins to get to the analysis, we haven’t properly identified the facts and dimensions for denormalizing the data to one flat table. So let’s go through our Twitter data to see how this process looks like.</p>
 <section id="in-our-twitter-data-eg">
-<h3>in our Twitter data, eg….<a class="headerlink" href="#in-our-twitter-data-eg" title="Permalink to this headline">#</a></h3>
+<h3>in our Twitter data, eg….<a class="headerlink" href="#in-our-twitter-data-eg" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>What is the question?</p></li>
 <li><p>Data we got in hand?</p></li>
@@ -659,20 +687,6 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">psycopg2</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;psycopg2&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -713,13 +727,36 @@ Dimension Table(s): Tables that provide context for the fact table (in purple - 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@mbandtweet.cpcoibvq7lck.us-west-2.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
-CPU times: user 13.9 ms, sys: 2.5 ms, total: 16.4 ms
-Wall time: 171 ms
+CPU times: user 12 ms, sys: 2.28 ms, total: 14.3 ms
+Wall time: 589 ms
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">bait580envtestbug</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">IPython</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">interactiveshell</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">3553</span> <span class="ow">in</span> <span class="n">run_code</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">code_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_global_ns</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">user_ns</span><span class="p">)</span>
+
+  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_cell_magic</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%%</span><span class="s2">sql</span><span class="se">\n</span><span class="s2">CREATE MATERIALIZED VIEW if not exists tweets.dtwide AS</span><span class="se">\n</span><span class="s2">SELECT sy.nasdaqsymbol,</span><span class="se">\n\t</span><span class="s2">   sy.securityname,</span><span class="se">\n</span><span class="s2">       cl.tweet,</span><span class="se">\n\t</span><span class="s2">   cl.userid,</span><span class="se">\n\t</span><span class="s2">   CASE WHEN rp.replyid IS NULL THEN &#39;FALSE&#39; </span><span class="se">\n\t</span><span class="s2">                                ELSE &#39;TRUE&#39; END AS reply,</span><span class="se">\n\t</span><span class="s2">   CASE WHEN rt.retweetid IS NULL THEN &#39;FALSE&#39; </span><span class="se">\n\t</span><span class="s2">                                ELSE &#39;TRUE&#39; END AS retweet,</span><span class="se">\n\t</span><span class="s2">   ROUND(sv.open::numeric,2) AS open,</span><span class="se">\n\t</span><span class="s2">   ROUND(sv.close::numeric, 2) AS close,</span><span class="se">\n\t</span><span class="s2">   ROUND(sv.close::numeric, 2) - ROUND(sv.open::numeric,2) AS change,</span><span class="se">\n\t</span><span class="s2">   date_trunc(&#39;day&#39;, cl.createdate)::date AS day</span><span class="se">\n</span><span class="s2">FROM          tweets.cashtags AS ct</span><span class="se">\n</span><span class="s2">INNER JOIN tweets.cleantweets AS cl ON  cl.tweetid = ct.tweetid</span><span class="se">\n</span><span class="s2">INNER JOIN     tweets.symbols AS sy ON sy.symbolid = ct.symbolid</span><span class="se">\n</span><span class="s2">INNER JOIN tweets.stockvalues AS sv ON sv.symbolid = sy.symbolid AND sv.date = date_trunc(&#39;day&#39;, cl.createdate)::date</span><span class="se">\n</span><span class="s2">LEFT JOIN      tweets.replies AS rp ON  rp.tweetid = cl.tweetid</span><span class="se">\n</span><span class="s2">LEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">bait580envtestbug</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">IPython</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">interactiveshell</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">2523</span> <span class="ow">in</span> <span class="n">run_cell_magic</span>
+    <span class="k">if</span> <span class="n">DisplayHook</span><span class="o">.</span><span class="n">semicolon_at_end_of_expression</span><span class="p">(</span><span class="n">cell</span><span class="p">):</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">bait580envtestbug</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">IPython</span><span class="o">/</span><span class="n">core</span><span class="o">/</span><span class="n">displayhook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">101</span> <span class="ow">in</span> <span class="n">semicolon_at_end_of_expression</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">tokenize</span><span class="o">.</span><span class="n">generate_tokens</span><span class="p">(</span><span class="n">sio</span><span class="o">.</span><span class="n">readline</span><span class="p">))</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">bait580envtestbug</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">tokenize</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">541</span> <span class="ow">in</span> <span class="n">_generate_tokens_from_c_tokenizer</span>
+    <span class="k">raise</span> <span class="n">e</span> <span class="kn">from</span> <span class="kc">None</span>
+
+  <span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">miniconda3</span><span class="o">/</span><span class="n">envs</span><span class="o">/</span><span class="n">bait580envtestbug</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.12</span><span class="o">/</span><span class="n">tokenize</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">537</span> <span class="ow">in</span> <span class="n">_generate_tokens_from_c_tokenizer</span>
+    <span class="k">for</span> <span class="n">info</span> <span class="ow">in</span> <span class="n">it</span><span class="p">:</span>
+
+  <span class="n">File</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">5</span>
+    <span class="n">cl</span><span class="o">.</span><span class="n">tweet</span><span class="p">,</span>
+             <span class="o">^</span>
+<span class="ne">IndentationError</span>: unindent does not match any outer indentation level
 </pre></div>
 </div>
 </div>
@@ -1025,7 +1062,7 @@ Wall time: 88.8 ms
 <a class="reference internal image-reference" href="../_images/yooo.png"><img alt="../_images/yooo.png" src="../_images/yooo.png" style="width: 50%;" /></a>
 </aside>
 <p><em><strong>Excellent! We improved the speed of the query execution.</strong></em></p>
-<p>I plan to use Plotly for visualization, so I am installing it. You might have learned visualization in python using some other packages - please feel free to install those and use those for your assignments (like <a class="reference external" href="https://altair-viz.github.io/">altair</a>)</p>
+<p>I plan to use Plotly for visualization, so I am installing it. You might have learned visualization in python using some other packages - please feel free to install those and use those for your assignments (like <a class="reference external" href="https://altair-viz.github.io/#">altair</a>)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>plotly
@@ -1150,10 +1187,10 @@ Returning data to local variable query_output
 </section>
 </section>
 <section id="differences">
-<h2>Differences<a class="headerlink" href="#differences" title="Permalink to this headline">#</a></h2>
+<h2>Differences<a class="headerlink" href="#differences" title="Permalink to this heading">#</a></h2>
 <section id="dw-vs-rmdbs">
-<h3>DW vs RMDBS<a class="headerlink" href="#dw-vs-rmdbs" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>DW vs RMDBS<a class="headerlink" href="#dw-vs-rmdbs" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Database</p></th>
 <th class="head"><p>Data Warehouse</p></th>
@@ -1176,8 +1213,8 @@ Returning data to local variable query_output
 </table>
 </section>
 <section id="etl-vs-elt">
-<h3>ETL vs ELT<a class="headerlink" href="#etl-vs-elt" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>ETL vs ELT<a class="headerlink" href="#etl-vs-elt" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>ETL</p></th>
 <th class="head"><p>ELT</p></th>
@@ -1203,8 +1240,8 @@ Returning data to local variable query_output
 </table>
 </section>
 <section id="olap-vs-oltp">
-<h3>OLAP vs OLTP<a class="headerlink" href="#olap-vs-oltp" title="Permalink to this headline">#</a></h3>
-<table class="colwidths-auto table">
+<h3>OLAP vs OLTP<a class="headerlink" href="#olap-vs-oltp" title="Permalink to this heading">#</a></h3>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>OLAP</p></th>
 <th class="head"><p>OLTP</p></th>
@@ -1224,12 +1261,12 @@ Returning data to local variable query_output
 </table>
 </section>
 <section id="bi-vs-dw">
-<h3>BI vs DW<a class="headerlink" href="#bi-vs-dw" title="Permalink to this headline">#</a></h3>
+<h3>BI vs DW<a class="headerlink" href="#bi-vs-dw" title="Permalink to this heading">#</a></h3>
 <p>Data warehouse powers up BI. (Business intelligence)</p>
 </section>
 </section>
 <section id="can-you">
-<h2>Can you<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
+<h2>Can you<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Distinguish two different types of views and when to use what?</p></li>
 <li><p>Define what is data warehousing and why we want it?</p></li>
@@ -1238,7 +1275,7 @@ Returning data to local variable query_output
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 4 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1274,9 +1311,20 @@ Returning data to local variable query_output
 
               
               
-                <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 3: Disk Management and Indexes</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -1285,6 +1333,7 @@ Returning data to local variable query_output
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1327,7 +1376,7 @@ Returning data to local variable query_output
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner">
+            
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1340,6 +1389,7 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2022.
@@ -1357,7 +1407,7 @@ By Gittu George, PhD
     
   </div>
   
-</div></div>
+</div>
           </footer>
         
 
@@ -1366,8 +1416,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>

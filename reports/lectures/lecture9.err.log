@@ -1,24 +1,20 @@
 Traceback (most recent call last):
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 1265, in execute
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/contextlib.py", line 222, in __aexit__
-    await self.gen.athrow(typ, value, traceback)
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 648, in async_setup_kernel
-    yield
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 703, in async_execute
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 1021, in async_execute_cell
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 915, in _check_raise_for_error
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -36,13 +32,59 @@ url = "mongodb+srv://{}:{}@{}/?retryWrites=true&w=majority".format(username, pas
 client = MongoClient(url)
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpymongo[39;00m [38;5;28;01mimport[39;00m MongoClient
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mjson[39;00m
-[1;32m      3[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mparse[39;00m
 
-[0;31mModuleNotFoundError[0m: No module named 'pymongo'
-ModuleNotFoundError: No module named 'pymongo'
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mConfigurationError[0m                        Traceback (most recent call last)
+Cell [0;32mIn[1], line 12[0m
+[1;32m     10[0m host [38;5;241m=[39m login[[38;5;124m'[39m[38;5;124mhost[39m[38;5;124m'[39m]
+[1;32m     11[0m url [38;5;241m=[39m [38;5;124m"[39m[38;5;124mmongodb+srv://[39m[38;5;132;01m{}[39;00m[38;5;124m:[39m[38;5;132;01m{}[39;00m[38;5;124m@[39m[38;5;132;01m{}[39;00m[38;5;124m/?retryWrites=true&w=majority[39m[38;5;124m"[39m[38;5;241m.[39mformat(username, password, host)
+[0;32m---> 12[0m client [38;5;241m=[39m [43mMongoClient[49m[43m([49m[43murl[49m[43m)[49m
+
+File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/mongo_client.py:771[0m, in [0;36mMongoClient.__init__[0;34m(self, host, port, document_class, tz_aware, connect, type_registry, **kwargs)[0m
+[1;32m    767[0m [38;5;28;01mif[39;00m timeout [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    768[0m     timeout [38;5;241m=[39m common[38;5;241m.[39mvalidate_timeout_or_none_or_zero(
+[1;32m    769[0m         keyword_opts[38;5;241m.[39mcased_key([38;5;124m"[39m[38;5;124mconnecttimeoutms[39m[38;5;124m"[39m), timeout
+[1;32m    770[0m     )
+[0;32m--> 771[0m res [38;5;241m=[39m [43muri_parser[49m[38;5;241;43m.[39;49m[43mparse_uri[49m[43m([49m
+[1;32m    772[0m [43m    [49m[43mentity[49m[43m,[49m
+[1;32m    773[0m [43m    [49m[43mport[49m[43m,[49m
+[1;32m    774[0m [43m    [49m[43mvalidate[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m    775[0m [43m    [49m[43mwarn[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m,[49m
+[1;32m    776[0m [43m    [49m[43mnormalize[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    777[0m [43m    [49m[43mconnect_timeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m,[49m
+[1;32m    778[0m [43m    [49m[43msrv_service_name[49m[38;5;241;43m=[39;49m[43msrv_service_name[49m[43m,[49m
+[1;32m    779[0m [43m    [49m[43msrv_max_hosts[49m[38;5;241;43m=[39;49m[43msrv_max_hosts[49m[43m,[49m
+[1;32m    780[0m [43m[49m[43m)[49m
+[1;32m    781[0m seeds[38;5;241m.[39mupdate(res[[38;5;124m"[39m[38;5;124mnodelist[39m[38;5;124m"[39m])
+[1;32m    782[0m username [38;5;241m=[39m res[[38;5;124m"[39m[38;5;124musername[39m[38;5;124m"[39m] [38;5;129;01mor[39;00m username
+
+File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/uri_parser.py:558[0m, in [0;36mparse_uri[0;34m(uri, default_port, validate, warn, normalize, connect_timeout, srv_service_name, srv_max_hosts)[0m
+[1;32m    556[0m connect_timeout [38;5;241m=[39m connect_timeout [38;5;129;01mor[39;00m options[38;5;241m.[39mget([38;5;124m"[39m[38;5;124mconnectTimeoutMS[39m[38;5;124m"[39m)
+[1;32m    557[0m dns_resolver [38;5;241m=[39m _SrvResolver(fqdn, connect_timeout, srv_service_name, srv_max_hosts)
+[0;32m--> 558[0m nodes [38;5;241m=[39m [43mdns_resolver[49m[38;5;241;43m.[39;49m[43mget_hosts[49m[43m([49m[43m)[49m
+[1;32m    559[0m dns_options [38;5;241m=[39m dns_resolver[38;5;241m.[39mget_options()
+[1;32m    560[0m [38;5;28;01mif[39;00m dns_options:
+
+File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:131[0m, in [0;36m_SrvResolver.get_hosts[0;34m(self)[0m
+[1;32m    130[0m [38;5;28;01mdef[39;00m [38;5;21mget_hosts[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mlist[39m[[38;5;28mtuple[39m[[38;5;28mstr[39m, Any]]:
+[0;32m--> 131[0m     _, nodes [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_get_srv_response_and_hosts[49m[43m([49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[1;32m    132[0m     [38;5;28;01mreturn[39;00m nodes
+
+File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:111[0m, in [0;36m_SrvResolver._get_srv_response_and_hosts[0;34m(self, encapsulate_errors)[0m
+[1;32m    108[0m [38;5;28;01mdef[39;00m [38;5;21m_get_srv_response_and_hosts[39m(
+[1;32m    109[0m     [38;5;28mself[39m, encapsulate_errors: [38;5;28mbool[39m
+[1;32m    110[0m ) [38;5;241m-[39m[38;5;241m>[39m [38;5;28mtuple[39m[resolver[38;5;241m.[39mAnswer, [38;5;28mlist[39m[[38;5;28mtuple[39m[[38;5;28mstr[39m, Any]]]:
+[0;32m--> 111[0m     results [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_resolve_uri[49m[43m([49m[43mencapsulate_errors[49m[43m)[49m
+[1;32m    113[0m     [38;5;66;03m# Construct address tuples[39;00m
+[1;32m    114[0m     nodes [38;5;241m=[39m [
+[1;32m    115[0m         (maybe_decode(res[38;5;241m.[39mtarget[38;5;241m.[39mto_text(omit_final_dot[38;5;241m=[39m[38;5;28;01mTrue[39;00m)), res[38;5;241m.[39mport) [38;5;28;01mfor[39;00m res [38;5;129;01min[39;00m results
+[1;32m    116[0m     ]
+
+File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:105[0m, in [0;36m_SrvResolver._resolve_uri[0;34m(self, encapsulate_errors)[0m
+[1;32m    103[0m         [38;5;28;01mraise[39;00m
+[1;32m    104[0m     [38;5;66;03m# Else, raise all errors as ConfigurationError.[39;00m
+[0;32m--> 105[0m     [38;5;28;01mraise[39;00m ConfigurationError([38;5;28mstr[39m(exc)) [38;5;28;01mfrom[39;00m [38;5;28;01mNone[39;00m
+[1;32m    106[0m [38;5;28;01mreturn[39;00m results
+
+[0;31mConfigurationError[0m: The DNS query name does not exist: _mongodb._tcp.mban.tgetfcz.mongodb.net.
 

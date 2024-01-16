@@ -1,54 +1,77 @@
 Traceback (most recent call last):
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 1265, in execute
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 1305, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 166, in wrapped
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/asyncio/base_events.py", line 650, in run_until_complete
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/asyncio/base_events.py", line 684, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/contextlib.py", line 222, in __aexit__
-    await self.gen.athrow(typ, value, traceback)
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 648, in async_setup_kernel
-    yield
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 703, in async_execute
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 705, in async_execute
     await self.async_execute_cell(
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 1021, in async_execute_cell
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 1058, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/ggeorg02/opt/miniconda3/envs/jb2023clone/lib/python3.11/site-packages/nbclient/client.py", line 915, in _check_raise_for_error
+  File "/Users/ggeorg02/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/nbclient/client.py", line 914, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-import matplotlib.pyplot as plt
-import psycopg2
-import json
-import urllib.parse
-
-%load_ext sql
-%config SqlMagic.displaylimit = 20
-
-with open('credentials.json') as f:
-    login = json.load(f)
-    
-username = login['user']
-password = urllib.parse.quote(login['password'])
-host = login['host']
-port = login['port']
+%%time
+%%sql
+CREATE MATERIALIZED VIEW if not exists tweets.dtwide AS
+SELECT sy.nasdaqsymbol,
+	   sy.securityname,
+       cl.tweet,
+	   cl.userid,
+	   CASE WHEN rp.replyid IS NULL THEN 'FALSE' 
+	                                ELSE 'TRUE' END AS reply,
+	   CASE WHEN rt.retweetid IS NULL THEN 'FALSE' 
+	                                ELSE 'TRUE' END AS retweet,
+	   ROUND(sv.open::numeric,2) AS open,
+	   ROUND(sv.close::numeric, 2) AS close,
+	   ROUND(sv.close::numeric, 2) - ROUND(sv.open::numeric,2) AS change,
+	   date_trunc('day', cl.createdate)::date AS day
+FROM          tweets.cashtags AS ct
+INNER JOIN tweets.cleantweets AS cl ON  cl.tweetid = ct.tweetid
+INNER JOIN     tweets.symbols AS sy ON sy.symbolid = ct.symbolid
+INNER JOIN tweets.stockvalues AS sv ON sv.symbolid = sy.symbolid AND sv.date = date_trunc('day', cl.createdate)::date
+LEFT JOIN      tweets.replies AS rp ON  rp.tweetid = cl.tweetid
+LEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 3[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
-[0;32m----> 3[0m [38;5;28;01mimport[39;00m [38;5;21;01mpsycopg2[39;00m
-[1;32m      4[0m [38;5;28;01mimport[39;00m [38;5;21;01mjson[39;00m
-[1;32m      5[0m [38;5;28;01mimport[39;00m [38;5;21;01murllib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mparse[39;00m
+----- stdout -----
+ * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+----- stdout -----
+Done.
+CPU times: user 12 ms, sys: 2.28 ms, total: 14.3 ms
+Wall time: 589 ms
+------------------
 
-[0;31mModuleNotFoundError[0m: No module named 'psycopg2'
-ModuleNotFoundError: No module named 'psycopg2'
+Traceback [0;36m(most recent call last)[0m:
+
+[0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/IPython/core/interactiveshell.py:3553[0m in [1;35mrun_code[0m
+    exec(code_obj, self.user_global_ns, self.user_ns)[0m
+
+[0m  Cell [1;32mIn[3], line 1[0m
+    get_ipython().run_cell_magic('time', '', "%%sql\nCREATE MATERIALIZED VIEW if not exists tweets.dtwide AS\nSELECT sy.nasdaqsymbol,\n\t   sy.securityname,\n       cl.tweet,\n\t   cl.userid,\n\t   CASE WHEN rp.replyid IS NULL THEN 'FALSE' \n\t                                ELSE 'TRUE' END AS reply,\n\t   CASE WHEN rt.retweetid IS NULL THEN 'FALSE' \n\t                                ELSE 'TRUE' END AS retweet,\n\t   ROUND(sv.open::numeric,2) AS open,\n\t   ROUND(sv.close::numeric, 2) AS close,\n\t   ROUND(sv.close::numeric, 2) - ROUND(sv.open::numeric,2) AS change,\n\t   date_trunc('day', cl.createdate)::date AS day\nFROM          tweets.cashtags AS ct\nINNER JOIN tweets.cleantweets AS cl ON  cl.tweetid = ct.tweetid\nINNER JOIN     tweets.symbols AS sy ON sy.symbolid = ct.symbolid\nINNER JOIN tweets.stockvalues AS sv ON sv.symbolid = sy.symbolid AND sv.date = date_trunc('day', cl.createdate)::date\nLEFT JOIN      tweets.replies AS rp ON  rp.tweetid = cl.tweetid\nLEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;\n")[0m
+
+[0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/IPython/core/interactiveshell.py:2523[0m in [1;35mrun_cell_magic[0m
+    if DisplayHook.semicolon_at_end_of_expression(cell):[0m
+
+[0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/IPython/core/displayhook.py:101[0m in [1;35msemicolon_at_end_of_expression[0m
+    tokens = list(tokenize.generate_tokens(sio.readline))[0m
+
+[0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/tokenize.py:541[0m in [1;35m_generate_tokens_from_c_tokenizer[0m
+    raise e from None[0m
+
+[0;36m  File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/tokenize.py:537[0;36m in [0;35m_generate_tokens_from_c_tokenizer[0;36m
+[0;31m    for info in it:[0;36m
+
+[0;36m  File [0;32m<string>:5[0;36m[0m
+[0;31m    cl.tweet,[0m
+[0m             ^[0m
+[0;31mIndentationError[0m[0;31m:[0m unindent does not match any outer indentation level
+
 
