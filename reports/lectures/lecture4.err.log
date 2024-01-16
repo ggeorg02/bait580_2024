@@ -20,33 +20,18 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 ------------------
 %%time
 %%sql
-CREATE MATERIALIZED VIEW if not exists tweets.dtwide AS
-SELECT sy.nasdaqsymbol,
-	   sy.securityname,
-       cl.tweet,
-	   cl.userid,
-	   CASE WHEN rp.replyid IS NULL THEN 'FALSE' 
-	                                ELSE 'TRUE' END AS reply,
-	   CASE WHEN rt.retweetid IS NULL THEN 'FALSE' 
-	                                ELSE 'TRUE' END AS retweet,
-	   ROUND(sv.open::numeric,2) AS open,
-	   ROUND(sv.close::numeric, 2) AS close,
-	   ROUND(sv.close::numeric, 2) - ROUND(sv.open::numeric,2) AS change,
-	   date_trunc('day', cl.createdate)::date AS day
-FROM          tweets.cashtags AS ct
-INNER JOIN tweets.cleantweets AS cl ON  cl.tweetid = ct.tweetid
-INNER JOIN     tweets.symbols AS sy ON sy.symbolid = ct.symbolid
-INNER JOIN tweets.stockvalues AS sv ON sv.symbolid = sy.symbolid AND sv.date = date_trunc('day', cl.createdate)::date
-LEFT JOIN      tweets.replies AS rp ON  rp.tweetid = cl.tweetid
-LEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;
+explain analyze SELECT nasdaqsymbol, ROUND(change / open, 2), COUNT(*) AS tweets
+               FROM tweets.dtwide 
+        WHERE retweet = 'FALSE' AND nasdaqsymbol = 'BABA'
+        GROUP BY day, nasdaqsymbol, change, open;
 ------------------
 
 ----- stdout -----
  * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 ----- stdout -----
-Done.
-CPU times: user 12.2 ms, sys: 1.68 ms, total: 13.9 ms
-Wall time: 613 ms
+17 rows affected.
+CPU times: user 11.7 ms, sys: 5.6 ms, total: 17.3 ms
+Wall time: 14.8 s
 ------------------
 
 Traceback [0;36m(most recent call last)[0m:
@@ -54,8 +39,8 @@ Traceback [0;36m(most recent call last)[0m:
 [0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/IPython/core/interactiveshell.py:3553[0m in [1;35mrun_code[0m
     exec(code_obj, self.user_global_ns, self.user_ns)[0m
 
-[0m  Cell [1;32mIn[3], line 1[0m
-    get_ipython().run_cell_magic('time', '', "%%sql\nCREATE MATERIALIZED VIEW if not exists tweets.dtwide AS\nSELECT sy.nasdaqsymbol,\n\t   sy.securityname,\n       cl.tweet,\n\t   cl.userid,\n\t   CASE WHEN rp.replyid IS NULL THEN 'FALSE' \n\t                                ELSE 'TRUE' END AS reply,\n\t   CASE WHEN rt.retweetid IS NULL THEN 'FALSE' \n\t                                ELSE 'TRUE' END AS retweet,\n\t   ROUND(sv.open::numeric,2) AS open,\n\t   ROUND(sv.close::numeric, 2) AS close,\n\t   ROUND(sv.close::numeric, 2) - ROUND(sv.open::numeric,2) AS change,\n\t   date_trunc('day', cl.createdate)::date AS day\nFROM          tweets.cashtags AS ct\nINNER JOIN tweets.cleantweets AS cl ON  cl.tweetid = ct.tweetid\nINNER JOIN     tweets.symbols AS sy ON sy.symbolid = ct.symbolid\nINNER JOIN tweets.stockvalues AS sv ON sv.symbolid = sy.symbolid AND sv.date = date_trunc('day', cl.createdate)::date\nLEFT JOIN      tweets.replies AS rp ON  rp.tweetid = cl.tweetid\nLEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;\n")[0m
+[0m  Cell [1;32mIn[6], line 1[0m
+    get_ipython().run_cell_magic('time', '', "%%sql\nexplain analyze SELECT nasdaqsymbol, ROUND(change / open, 2), COUNT(*) AS tweets\n               FROM tweets.dtwide \n        WHERE retweet = 'FALSE' AND nasdaqsymbol = 'BABA'\n        GROUP BY day, nasdaqsymbol, change, open;\n")[0m
 
 [0m  File [1;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/IPython/core/interactiveshell.py:2523[0m in [1;35mrun_cell_magic[0m
     if DisplayHook.semicolon_at_end_of_expression(cell):[0m
@@ -69,9 +54,9 @@ Traceback [0;36m(most recent call last)[0m:
 [0;36m  File [0;32m~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/tokenize.py:537[0;36m in [0;35m_generate_tokens_from_c_tokenizer[0;36m
 [0;31m    for info in it:[0;36m
 
-[0;36m  File [0;32m<string>:5[0;36m[0m
-[0;31m    cl.tweet,[0m
-[0m             ^[0m
+[0;36m  File [0;32m<string>:4[0;36m[0m
+[0;31m    WHERE retweet = 'FALSE' AND nasdaqsymbol = 'BABA'[0m
+[0m                                                     ^[0m
 [0;31mIndentationError[0m[0;31m:[0m unindent does not match any outer indentation level
 
 
