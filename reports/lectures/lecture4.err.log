@@ -45,8 +45,8 @@ LEFT JOIN     tweets.retweets AS rt ON  rt.tweetid = cl.tweetid;
  * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
 ----- stdout -----
 Done.
-CPU times: user 12 ms, sys: 2.28 ms, total: 14.3 ms
-Wall time: 589 ms
+CPU times: user 12.2 ms, sys: 1.68 ms, total: 13.9 ms
+Wall time: 613 ms
 ------------------
 
 Traceback [0;36m(most recent call last)[0m:
