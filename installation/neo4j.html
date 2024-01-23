@@ -390,6 +390,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -478,9 +479,34 @@ document.write(`
 <a class="reference internal image-reference" href="../_images/neo4jresume.png"><img alt="../_images/neo4jresume.png" src="../_images/neo4jresume.png" style="width: 900px;" /></a>
 </figure>
 <p>Once you click on <code class="docutils literal notranslate"><span class="pre">Resume</span></code> your database will be resumed in few minutes.</p>
+</section>
+<section id="known-issue-with-py2neo">
+<h2>Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code><a class="headerlink" href="#known-issue-with-py2neo" title="Permalink to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>After you resume your database and when you try to connect to the database from your jupyter, you might run into an error <code class="docutils literal notranslate"><span class="pre">py2neo.errors.ServiceUnavailable:</span> <span class="pre">Cannot</span> <span class="pre">connect</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">known</span> <span class="pre">routers</span></code>. There won’t be issues in using it with the neo4j query space. If this is the situation you want to connect from the jupyterbook, then you want to create another instance after deleting the current instance. Sorry, it is weird that it is like this with the free database.</p>
+</div>
+<p>If that too didn’t help then you can use a different driver/package to connect to your database. Here are the instructions on using it</p>
+<p>Here is the link to that. https://github.com/neo4j/neo4j-python-driver . Here are steps to get you started. (If I were you, I would make a new environment to test this thing out, to make sure that I don’t mess with the environment that I have now)</p>
+<p>Install neo4j driver:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install neo4j
+</pre></div>
+</div>
+<p>Run the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="kn">from</span> <span class="nn">neo4j</span> <span class="kn">import</span> <span class="n">GraphDatabase</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_neo4j.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">username</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+<span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;neo4j+s://</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
+<span class="n">driver</span> <span class="o">=</span> <span class="n">GraphDatabase</span><span class="o">.</span><span class="n">driver</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+<span class="n">most</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;neo4j&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;MATCH (m:Movie) RETURN m.title LIMIT 1&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
+<span class="n">most</span>
+</pre></div>
 </div>
 </section>
 </section>
@@ -532,6 +558,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>
   </nav></div>
 

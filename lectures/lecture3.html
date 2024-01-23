@@ -600,10 +600,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=1186.731..1195.530 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=2492.761..2502.771 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=1186.720..1195.522 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=2490.817..2502.760 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -612,10 +612,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=1175.448..1175.449 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=2485.653..2485.654 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=1175.444..1175.445 rows=0 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=2485.650..2485.650 rows=0 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname = &#x27;flavor halibut&#x27;::text)</td>
@@ -624,10 +624,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3724110</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.229 ms</td>
+            <td>Planning Time: 0.223 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1195.582 ms</td>
+            <td>Execution Time: 2502.822 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -653,10 +653,10 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1257.945..1261.756 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1178.511..1184.403 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1254.781..1261.745 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1178.502..1184.396 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -665,10 +665,10 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1246.835..1246.836 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1170.807..1170.808 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.084..1242.453 rows=9271 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.041..1166.581 rows=9271 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
@@ -677,10 +677,10 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.085 ms</td>
+            <td>Planning Time: 0.080 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1261.794 ms</td>
+            <td>Execution Time: 1184.437 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -733,10 +733,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.027..0.028 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.035..0.036 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.023..0.024 rows=0 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.031..0.032 rows=0 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
@@ -745,10 +745,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.141 ms</td>
+            <td>Planning Time: 0.261 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 0.047 ms</td>
+            <td>Execution Time: 0.067 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -775,10 +775,10 @@ WHERE productname LIKE &#39;fla%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=7.25..7.26 rows=1 width=8) (actual time=5.314..5.315 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=7.25..7.26 rows=1 width=8) (actual time=4.865..4.867 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..4.46 rows=1117 width=0) (actual time=0.137..3.685 rows=27814 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..4.46 rows=1117 width=0) (actual time=0.044..3.545 rows=27814 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((productname ~&gt;=~ &#x27;fla&#x27;::text) AND (productname ~&lt;~ &#x27;flb&#x27;::text))</td>
@@ -790,10 +790,10 @@ WHERE productname LIKE &#39;fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.189 ms</td>
+            <td>Planning Time: 0.203 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 5.358 ms</td>
+            <td>Execution Time: 4.908 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -825,10 +825,10 @@ WHERE productname LIKE &#39;%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=2497.088..2501.020 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=2048.044..2054.384 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=2497.078..2501.012 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=2048.033..2054.377 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -837,19 +837,19 @@ WHERE productname LIKE &#39;%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=2487.136..2487.138 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=2039.390..2039.391 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.022..1797.197 rows=3724110 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.017..1514.004 rows=3724110 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.075 ms</td>
+            <td>Planning Time: 0.076 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 2501.057 ms</td>
+            <td>Execution Time: 2054.444 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -905,10 +905,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1691.960..1697.718 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1454.876..1459.227 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1690.069..1697.707 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1452.025..1459.191 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -917,10 +917,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1680.854..1680.855 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1444.418..1444.419 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.069..1674.417 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.042..1441.420 rows=22257 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
@@ -929,10 +929,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.163 ms</td>
+            <td>Planning Time: 0.091 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1697.757 ms</td>
+            <td>Execution Time: 1459.270 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1030,7 +1030,7 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.014..0.015 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.014..0.014 rows=1 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.45..232.63 rows=58 width=0) (actual time=0.011..0.011 rows=0 loops=1)</td>
@@ -1045,10 +1045,10 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 3.357 ms</td>
+            <td>Planning Time: 0.124 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 0.042 ms</td>
+            <td>Execution Time: 0.039 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1075,10 +1075,10 @@ WHERE productname LIKE &#39;fla%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1397.830..1401.854 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1144.608..1146.944 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1395.144..1401.841 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1144.596..1146.936 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1087,10 +1087,10 @@ WHERE productname LIKE &#39;fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1387.412..1387.414 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1136.926..1136.928 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.039..1382.996 rows=9271 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.153..1135.626 rows=9271 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
@@ -1099,10 +1099,10 @@ WHERE productname LIKE &#39;fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.090 ms</td>
+            <td>Planning Time: 0.089 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1401.904 ms</td>
+            <td>Execution Time: 1146.981 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1190,124 +1190,124 @@ WHERE productname LIKE &#39;%new%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>98753</td>
+            <td>94839</td>
+            <td>74856</td>
+            <td>black newsprint</td>
+            <td>$30.96</td>
+        </tr>
+        <tr>
+            <td>94884</td>
+            <td>38687</td>
+            <td>blood newsprint</td>
+            <td>$58.75</td>
+        </tr>
+        <tr>
+            <td>94899</td>
             <td>129142</td>
             <td>drizzle newsprint</td>
             <td>$76.29</td>
         </tr>
         <tr>
-            <td>98758</td>
-            <td>31968</td>
-            <td>newsstand rectangle</td>
-            <td>$22.77</td>
-        </tr>
-        <tr>
-            <td>98771</td>
+            <td>94979</td>
             <td>83270</td>
             <td>newsstand body</td>
             <td>$84.04</td>
         </tr>
         <tr>
-            <td>98776</td>
-            <td>53861</td>
-            <td>ping newsprint</td>
-            <td>$54.96</td>
+            <td>95028</td>
+            <td>209844</td>
+            <td>engineer newsprint</td>
+            <td>$60.58</td>
         </tr>
         <tr>
-            <td>98825</td>
+            <td>95059</td>
+            <td>38552</td>
+            <td>spinach newsstand</td>
+            <td>$21.41</td>
+        </tr>
+        <tr>
+            <td>95169</td>
+            <td>38687</td>
+            <td>blood newsprint</td>
+            <td>$58.75</td>
+        </tr>
+        <tr>
+            <td>95176</td>
             <td>47932</td>
             <td>newsprint ticket</td>
             <td>$17.66</td>
         </tr>
         <tr>
-            <td>98866</td>
-            <td>35008</td>
-            <td>news fortnight</td>
-            <td>$34.05</td>
-        </tr>
-        <tr>
-            <td>98872</td>
-            <td>53861</td>
-            <td>ping newsprint</td>
-            <td>$54.96</td>
-        </tr>
-        <tr>
-            <td>98872</td>
-            <td>83270</td>
-            <td>newsstand body</td>
-            <td>$84.04</td>
-        </tr>
-        <tr>
-            <td>98908</td>
-            <td>55845</td>
-            <td>hate newsstand</td>
-            <td>$4.80</td>
-        </tr>
-        <tr>
-            <td>98933</td>
-            <td>151681</td>
-            <td>flugelhorn newsstand</td>
-            <td>$45.80</td>
-        </tr>
-        <tr>
-            <td>99036</td>
-            <td>30475</td>
-            <td>news pheasant</td>
-            <td>$58.80</td>
-        </tr>
-        <tr>
-            <td>99298</td>
-            <td>27267</td>
-            <td>news lightning</td>
-            <td>$26.03</td>
-        </tr>
-        <tr>
-            <td>99321</td>
-            <td>53861</td>
-            <td>ping newsprint</td>
-            <td>$54.96</td>
-        </tr>
-        <tr>
-            <td>99328</td>
-            <td>38687</td>
-            <td>blood newsprint</td>
-            <td>$58.75</td>
-        </tr>
-        <tr>
-            <td>99346</td>
-            <td>93065</td>
-            <td>criminal newsstand</td>
-            <td>$5.81</td>
-        </tr>
-        <tr>
-            <td>99350</td>
-            <td>145121</td>
-            <td>newsprint place</td>
-            <td>$48.11</td>
-        </tr>
-        <tr>
-            <td>99385</td>
-            <td>38687</td>
-            <td>blood newsprint</td>
-            <td>$58.75</td>
-        </tr>
-        <tr>
-            <td>99397</td>
-            <td>93065</td>
-            <td>criminal newsstand</td>
-            <td>$5.81</td>
-        </tr>
-        <tr>
-            <td>99420</td>
+            <td>95176</td>
             <td>66920</td>
             <td>news hearing</td>
             <td>$97.78</td>
         </tr>
         <tr>
-            <td>99433</td>
-            <td>55845</td>
-            <td>hate newsstand</td>
-            <td>$4.80</td>
+            <td>95260</td>
+            <td>80002</td>
+            <td>tray news</td>
+            <td>$8.63</td>
+        </tr>
+        <tr>
+            <td>95277</td>
+            <td>190783</td>
+            <td>news eye</td>
+            <td>$13.68</td>
+        </tr>
+        <tr>
+            <td>95381</td>
+            <td>129142</td>
+            <td>drizzle newsprint</td>
+            <td>$76.29</td>
+        </tr>
+        <tr>
+            <td>95494</td>
+            <td>93065</td>
+            <td>criminal newsstand</td>
+            <td>$5.81</td>
+        </tr>
+        <tr>
+            <td>95519</td>
+            <td>129142</td>
+            <td>drizzle newsprint</td>
+            <td>$76.29</td>
+        </tr>
+        <tr>
+            <td>95623</td>
+            <td>151681</td>
+            <td>flugelhorn newsstand</td>
+            <td>$45.80</td>
+        </tr>
+        <tr>
+            <td>95623</td>
+            <td>115942</td>
+            <td>tuna news</td>
+            <td>$45.19</td>
+        </tr>
+        <tr>
+            <td>95647</td>
+            <td>102398</td>
+            <td>evening newsprint</td>
+            <td>$90.70</td>
+        </tr>
+        <tr>
+            <td>95761</td>
+            <td>7875</td>
+            <td>priest newsprint</td>
+            <td>$50.64</td>
+        </tr>
+        <tr>
+            <td>95767</td>
+            <td>83270</td>
+            <td>newsstand body</td>
+            <td>$84.04</td>
+        </tr>
+        <tr>
+            <td>95804</td>
+            <td>145121</td>
+            <td>newsprint place</td>
+            <td>$48.11</td>
         </tr>
     </tbody>
 </table>
@@ -1354,10 +1354,10 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=31414.594..31417.711 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=27815.647..27818.680 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=31411.050..31417.700 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=27811.708..27818.669 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1366,10 +1366,10 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=31405.624..31405.625 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=27806.102..27806.103 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=17.841..31399.629 rows=3158 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=11.534..27800.782 rows=3158 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
@@ -1378,10 +1378,10 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
         </tr>
         <tr>
-            <td>Planning Time: 2.693 ms</td>
+            <td>Planning Time: 2.358 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 31417.764 ms</td>
+            <td>Execution Time: 27818.726 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1403,8 +1403,8 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 Done.
 Done.
 Done.
-CPU times: user 15.4 ms, sys: 13.8 ms, total: 29.1 ms
-Wall time: 52.5 s
+CPU times: user 23.8 ms, sys: 15.3 ms, total: 39.1 ms
+Wall time: 45.4 s
 </pre></div>
 </div>
 </div>
@@ -1431,10 +1431,10 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=19.767..20.843 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=11.823..12.633 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=17.263..20.833 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=11.814..12.627 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1443,28 +1443,28 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=7.328..7.330 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=5.275..5.276 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=3.997..6.290 rows=3158 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=1.886..5.009 rows=3158 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=6341</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=818</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=6.507..6.507 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=3.764..3.765 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.233 ms</td>
+            <td>Planning Time: 0.194 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 20.882 ms</td>
+            <td>Execution Time: 12.672 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1511,10 +1511,10 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex_materialized WHERE produ
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=17094.34..17094.35 rows=1 width=8) (actual time=5.535..5.536 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=17094.34..17094.35 rows=1 width=8) (actual time=5.247..5.249 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=62.97..17081.77 rows=5028 width=0) (actual time=3.295..5.071 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=62.97..17081.77 rows=5028 width=0) (actual time=2.839..4.779 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
@@ -1523,16 +1523,16 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex_materialized WHERE produ
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9160</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..61.71 rows=5028 width=0) (actual time=1.416..1.416 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..61.71 rows=5028 width=0) (actual time=1.443..1.444 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.276 ms</td>
+            <td>Planning Time: 0.433 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 5.568 ms</td>
+            <td>Execution Time: 5.286 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1561,10 +1561,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1595.111..1597.604 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1480.575..1485.342 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1590.177..1597.591 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1478.397..1485.331 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1573,10 +1573,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1581.494..1581.495 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1469.421..1469.422 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.044..1577.189 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.044..1462.526 rows=22257 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
@@ -1585,10 +1585,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.070 ms</td>
+            <td>Planning Time: 0.072 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 1597.640 ms</td>
+            <td>Execution Time: 1485.379 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1665,10 +1665,10 @@ WHERE productname LIKE &#39;%fla%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Finalize Aggregate  (cost=124690.89..124690.90 rows=1 width=8) (actual time=107.187..110.016 rows=1 loops=1)</td>
+            <td>Finalize Aggregate  (cost=124690.89..124690.90 rows=1 width=8) (actual time=112.034..117.462 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=124690.67..124690.88 rows=2 width=8) (actual time=103.160..110.004 rows=3 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=124690.67..124690.88 rows=2 width=8) (actual time=109.941..117.453 rows=3 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
@@ -1677,28 +1677,28 @@ WHERE productname LIKE &#39;%fla%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=123690.67..123690.68 rows=1 width=8) (actual time=96.404..96.405 rows=1 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=123690.67..123690.68 rows=1 width=8) (actual time=102.913..102.914 rows=1 loops=3)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=2093.20..123455.56 rows=94043 width=0) (actual time=19.953..92.206 rows=22257 loops=3)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=2093.20..123455.56 rows=94043 width=0) (actual time=20.109..99.811 rows=22257 loops=3)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=22745</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=20894</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..2036.78 rows=225704 width=0) (actual time=17.417..17.417 rows=66772 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..2036.78 rows=225704 width=0) (actual time=17.680..17.680 rows=66772 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.171 ms</td>
+            <td>Planning Time: 0.160 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 110.062 ms</td>
+            <td>Execution Time: 117.535 ms</td>
         </tr>
     </tbody>
 </table></div></div>
@@ -1726,10 +1726,10 @@ WHERE productname LIKE &#39;%flavor%&#39;;
     </thead>
     <tbody>
         <tr>
-            <td>Aggregate  (cost=4333.15..4333.16 rows=1 width=8) (actual time=15.925..15.927 rows=1 loops=1)</td>
+            <td>Aggregate  (cost=4333.15..4333.16 rows=1 width=8) (actual time=17.861..17.863 rows=1 loops=1)</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=256.66..4330.36 rows=1117 width=0) (actual time=4.777..15.417 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=256.66..4330.36 rows=1117 width=0) (actual time=5.169..17.310 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
@@ -1738,16 +1738,16 @@ WHERE productname LIKE &#39;%flavor%&#39;;
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=8925</td>
         </tr>
         <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..256.38 rows=1117 width=0) (actual time=3.397..3.397 rows=9474 loops=1)</td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..256.38 rows=1117 width=0) (actual time=3.744..3.744 rows=9474 loops=1)</td>
         </tr>
         <tr>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
         </tr>
         <tr>
-            <td>Planning Time: 0.090 ms</td>
+            <td>Planning Time: 0.095 ms</td>
         </tr>
         <tr>
-            <td>Execution Time: 15.964 ms</td>
+            <td>Execution Time: 17.913 ms</td>
         </tr>
     </tbody>
 </table></div></div>

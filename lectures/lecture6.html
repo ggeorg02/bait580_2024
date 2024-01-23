@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lecture 5: Beyond RDBMS" href="lecture5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,12 +189,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture5.html">Lecture 5: Beyond RDBMS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 6: CQL 1</a></li>
 </ul>
 
     </div>
@@ -440,8 +443,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-nodes-relationships">Creating nodes &amp; relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-movie-dataset">Loading movie dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-nodes-relationships">Creating nodes &amp; relationships</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-constraints">Creating constraints</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-schema">Inspecting schema</a></li>
 </ul>
@@ -459,7 +461,6 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-shortest-path">Finding the shortest path</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dumps">Working with dumps.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-nodes-and-relationships-optional">Deleting Nodes and Relationships (OPTIONAL)</a></li>
@@ -477,7 +478,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-6-cql-1">
 <h1>Lecture 6: CQL 1<a class="headerlink" href="#lecture-6-cql-1" title="Permalink to this heading">#</a></h1>
-<p>Gittu George, January 19 2023</p>
+<p>Gittu George, January 25 2024</p>
 <p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
 <section id="todays-agenda">
 <h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
@@ -534,18 +535,6 @@ document.write(`
 <p>Let’s start with how to examine the data model,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">visualization</span><span class="p">()</span>
 </pre></div>
-</div>
-</section>
-<section id="loading-movie-dataset">
-<h2>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this heading">#</a></h2>
-<p>Let’s create better dummy data in neo4j to learn how to query the database using cypher. <a class="reference external" href="https://canvas.ubc.ca/files/24945340/download?download_frd=1">We will use a movie dataset that neo4j provides</a>. Let’s load the data first. Please download this file and copy it to your neo4j query space.</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<img alt="../_images/demos.png" src="../_images/demos.png" />
-</aside>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Please make sure you only run this one time, Because every time it’s running, it creates nodes and relationships again.</p>
 </div>
 <section id="creating-constraints">
 <h3>Creating constraints<a class="headerlink" href="#creating-constraints" title="Permalink to this heading">#</a></h3>
@@ -906,19 +895,6 @@ RETURN p.name, p.born AS `birth year`
 </div>
 </section>
 </section>
-<section id="working-with-dumps">
-<h2>Working with dumps.<a class="headerlink" href="#working-with-dumps" title="Permalink to this heading">#</a></h2>
-<p>You can use the GUI interface to load dumps. You need to do this for your assignment 3.</p>
-<p>Go to your Neo4j Aura web console. Click on <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Database</span></code> –&gt; <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">a</span> <span class="pre">.dump</span> <span class="pre">file</span></code> –&gt; select the file from your local file system</p>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<img alt="../_images/demos.png" src="../_images/demos.png" />
-</aside>
-<img alt="../_images/dump1.png" src="../_images/dump1.png" />
-<p><em><strong>Additional Info (OPTIONAL):</strong></em></p>
-<p>You don’t want to know this, and I am not expecting you to know this, but I am putting <a class="reference external" href="https://canvas.ubc.ca/files/19063585/download?download_frd=1">this</a> notebook here just as a reference if you want to get an idea of the steps I took to load our Twitter data into the graph database. But if we load the entire Twitter data, then the number of nodes will shoot up as we got lots of user IDs and we got limitations on the number of nodes that we load to our Neo4J aura, and hence I did a sampling so that we can make sure that our nodes are under the limit.</p>
-<p>I loaded all this data for you and took a dump. You will be using the CQL that we will be learning in our class to work on the assignments.</p>
-</section>
 <section id="can-you">
 <h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
 <p>Write Cypher statements to:</p>
@@ -951,7 +927,6 @@ RETURN p.name, p.born AS `birth year`
 <p>Check worksheet 6 in canvas for detailed instructions on activity and submission instructions.</p>
 </div>
 <ul class="simple">
-<li><p>Load movie data to your Neo4j</p></li>
 <li><p>Practice CQL.</p></li>
 </ul>
 </section>
@@ -1119,6 +1094,15 @@ RETURN p.name, p.born AS `birth year`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 5: Beyond RDBMS</p>
+      </div>
+    </a>
 </div>
                 </footer>
               
@@ -1137,8 +1121,7 @@ RETURN p.name, p.born AS `birth year`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-nodes-relationships">Creating nodes &amp; relationships</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-movie-dataset">Loading movie dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-nodes-relationships">Creating nodes &amp; relationships</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-constraints">Creating constraints</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-schema">Inspecting schema</a></li>
 </ul>
@@ -1156,7 +1139,6 @@ RETURN p.name, p.born AS `birth year`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-shortest-path">Finding the shortest path</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#working-with-dumps">Working with dumps.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#can-you">Can you?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#class-activity">Class activity</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deleting-nodes-and-relationships-optional">Deleting Nodes and Relationships (OPTIONAL)</a></li>

@@ -67,6 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 6: CQL 1" href="lecture6.html" />
+    <link rel="prev" title="Lecture 4: (de)Normalization &amp; Data Warehousing" href="lecture4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,12 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 5: Beyond RDBMS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture6.html">Lecture 6: CQL 1</a></li>
 </ul>
 
     </div>
@@ -482,6 +486,11 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-graph-database">Setting up your graph database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-connect">How to connect?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-neo4j-browser">via Neo4j Browser</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-movie-dataset">Loading movie dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dataset-for-assignment2">Loading dataset for assignment2</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py2neo-drivers">Python py2neo (drivers)</a></li>
 </ul>
 </li>
@@ -500,16 +509,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-beyond-rdbms">
 <h1>Lecture 5: Beyond RDBMS<a class="headerlink" href="#lecture-5-beyond-rdbms" title="Permalink to this heading">#</a></h1>
-<p>Gittu George, January 17 2023</p>
+<p>Gittu George, January 23 2024</p>
 <p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
 <section id="announcements">
 <h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Late submissions won’t be accepted even for partial credits.</p></li>
+<li><p>Remember: Late submissions won’t be accepted even for partial credits.</p></li>
 <li><p>Internet was not working when you tried to upload it at 11:45 PM is not an excuse. You are responsible for uploading it earlier so that situations like this don’t happen.</p></li>
 <li><p>You are allowed to make multiple submission</p></li>
-<li><p>RHL provided date and time for the final exam - Tuesday, Feb 7th 1:00PM – 2:30PM</p></li>
-<li><p>Check for the upcoming deadlines with assignments - We won’t be able to provide you an extension.</p></li>
+<li><p>Check for the upcoming deadlines with assignments/worksheets - We won’t be able to provide you an extension.</p></li>
+<li><p>Please start early.</p></li>
 </ul>
 </section>
 <section id="todays-agenda">
@@ -834,6 +843,22 @@ Just like how # is in python &amp; how – in SQL</p>
 </pre></div>
 </div>
 <p>We modeled our nodes and relationship, and in the next class, we will create these in our graph database.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>You will do everything mentioned below as part of worksheet 5. You must watch this video that talks about everything in worksheet 5. Here is the video link</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=i010tSnGmyI">https://www.youtube.com/watch?v=i010tSnGmyI</a></p>
+<p>Here are the timestamps for each question:</p>
+<ul class="simple">
+<li><p>0:00 Brief Intro - The plan</p></li>
+<li><p>1:38 Que 2 - WS 5</p></li>
+<li><p>06:45 Que 3 - WS 5</p></li>
+<li><p>11:56 Que 4 - WS 5</p></li>
+<li><p>17:01 Que 5 - WS 5</p></li>
+<li><p>22:40 Que 5 - WS 5 - some issues and fixes</p></li>
+<li><p>26:15 Que 6 - WS 4 - using a different package</p></li>
+<li><p>27:53 Conclusion and learnings</p></li>
+</ul>
+</div>
 </section>
 </section>
 </section>
@@ -854,12 +879,29 @@ Just like how # is in python &amp; how – in SQL</p>
 </section>
 <section id="how-to-connect">
 <h2>How to connect?<a class="headerlink" href="#how-to-connect" title="Permalink to this heading">#</a></h2>
-<p>How we can create a</p>
 <ul class="simple">
 <li><p>Command-line</p></li>
-<li><p>Neo4j Browser</p></li>
-<li><p>Python py2neo (drivers)</p></li>
+<li><p>Neo4j Browser - we will use this to load the data for worksheets and labs</p></li>
+<li><p>Python py2neo (drivers) - we use this to connect to the graph database from our notebook.</p></li>
 </ul>
+<section id="via-neo4j-browser">
+<h3>via Neo4j Browser<a class="headerlink" href="#via-neo4j-browser" title="Permalink to this heading">#</a></h3>
+<section id="loading-movie-dataset">
+<h4>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this heading">#</a></h4>
+<p>Let’s create better dummy data in neo4j to learn how to query the database using cypher. <a class="reference external" href="https://canvas.ubc.ca/files/24945340/download?download_frd=1">We will use a movie dataset that neo4j provides</a>. Let’s load the data first. Please download this file and copy it to your neo4j query space.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<img alt="../_images/demos.png" src="../_images/demos.png" />
+</aside>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please make sure you only run this one time, Because every time it’s running, it creates nodes and relationships again.</p>
+</div>
+</section>
+<section id="loading-dataset-for-assignment2">
+<h4>Loading dataset for assignment2<a class="headerlink" href="#loading-dataset-for-assignment2" title="Permalink to this heading">#</a></h4>
+</section>
+</section>
 <section id="python-py2neo-drivers">
 <h3>Python py2neo (drivers)<a class="headerlink" href="#python-py2neo-drivers" title="Permalink to this heading">#</a></h3>
 <p>First, you need to install the packages; I recommend installing it using pip, as conda might not install dependencies. If you followed the instructions in <a class="reference internal" href="../installation/conda.html"><span class="doc std std-doc">conda</span></a> and have used the environment file and the environment <code class="docutils literal notranslate"><span class="pre">bait580env</span></code>, then you don’t want to worry about it as it is already installed for you.</p>
@@ -1032,6 +1074,24 @@ Just like how # is in python &amp; how – in SQL</p>
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 4: (de)Normalization &amp; Data Warehousing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 6: CQL 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1092,6 +1152,11 @@ Just like how # is in python &amp; how – in SQL</p>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-your-graph-database">Setting up your graph database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-connect">How to connect?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#via-neo4j-browser">via Neo4j Browser</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-movie-dataset">Loading movie dataset</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-dataset-for-assignment2">Loading dataset for assignment2</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-py2neo-drivers">Python py2neo (drivers)</a></li>
 </ul>
 </li>
