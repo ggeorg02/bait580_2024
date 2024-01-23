@@ -196,6 +196,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
 </ul>
 
     </div>
@@ -417,7 +419,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -433,6 +437,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-package-manager">Importance of package manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-relational-database-rds">Setting up relational database - RDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-rds">Setting up graph database - RDS</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -449,10 +463,15 @@ document.write(`
 <img alt="../_images/video.png" src="../_images/video.png" />
 </aside>
 <p>Here are recorded videos that supplement your learning. These can be short videos made by the teaching team or tutorials hosted by TAs.</p>
+<section id="importance-of-package-manager">
+<h2>Importance of package manager<a class="headerlink" href="#importance-of-package-manager" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://canvas.ubc.ca/files/30831874/download?download_frd=1">Importance of package manager -conda</a> - from tutorial by &#64;daniel (last year)</p></li>
 </ul>
 <p>We will also be having a tutorial this year. Scheduled to happen Thur this week by Jordan Yu (TA) 5 - 6 pm.</p>
+</section>
+<section id="setting-up-relational-database-rds">
+<h2>Setting up relational database - RDS<a class="headerlink" href="#setting-up-relational-database-rds" title="Permalink to this heading">#</a></h2>
 <p>Here is the youtube video that will help you with first-week installations and setup.</p>
 <p>Check out youtube video: <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
 <p>Here are the video chapters:</p>
@@ -481,6 +500,36 @@ document.write(`
 </div>
 <div class="output text_html"><iframe width="860" height="616" src="https://www.youtube.com/embed/Wm5zLfpLD8I?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div></div>
 </div>
+</section>
+<section id="setting-up-graph-database-rds">
+<h2>Setting up graph database - RDS<a class="headerlink" href="#setting-up-graph-database-rds" title="Permalink to this heading">#</a></h2>
+<p>Week 3 and 4</p>
+<p>You will do everything mentioned below as part of worksheet 5. You must watch this video that talks about everything in worksheet 5. Here is the video link</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=i010tSnGmyI">https://www.youtube.com/watch?v=i010tSnGmyI</a></p>
+<p>Here are the timestamps for each question:</p>
+<ul class="simple">
+<li><p>0:00 Brief Intro - The plan</p></li>
+<li><p>1:38 Que 2 - WS 5</p></li>
+<li><p>06:45 Que 3 - WS 5</p></li>
+<li><p>11:56 Que 4 - WS 5</p></li>
+<li><p>17:01 Que 5 - WS 5</p></li>
+<li><p>22:40 Que 5 - WS 5 - some issues and fixes</p></li>
+<li><p>26:15 Que 6 - WS 4 - using a different package</p></li>
+<li><p>27:53 Conclusion and learnings</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="c1"># Youtube</span>
+<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;iframe width=&quot;860&quot; height=&quot;616&quot; src=&quot;https://www.youtube.com/embed/i010tSnGmyI?rel=0&amp;amp;controls=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><iframe width="860" height="616" src="https://www.youtube.com/embed/i010tSnGmyI?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></div></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -538,7 +587,22 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-package-manager">Importance of package manager</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-relational-database-rds">Setting up relational database - RDS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-rds">Setting up graph database - RDS</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
