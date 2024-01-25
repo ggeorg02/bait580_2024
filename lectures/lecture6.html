@@ -649,15 +649,15 @@ RETURN p.name, p.born AS `birth year`
 <span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">rel</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Let’s try adding some properties for relationships;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span> <span class="p">{</span><span class="n">rating</span><span class="p">:</span> <span class="mi">65</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Da Vinci Code&#39;</span><span class="p">})</span>
+<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
 <p><em><strong>Traversing multiple relationships</strong></em>.</p>
 <p>Since we have a graph, we can traverse through nodes to obtain relationships further into the traversal. In addition, you can assign a variable to the path and return the path as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="n">path</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">FOLLOWS</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Person</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span><span class="s1">&#39;Jessica Thompson&#39;</span><span class="p">})</span>
 <span class="n">RETURN</span> <span class="n">path</span>
-</pre></div>
-</div>
-<p>Let’s try adding some properties for relationships;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REVIEWED</span> <span class="p">{</span><span class="n">rating</span><span class="p">:</span> <span class="mi">65</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(:</span><span class="n">Movie</span> <span class="p">{</span><span class="n">title</span><span class="p">:</span> <span class="s1">&#39;The Da Vinci Code&#39;</span><span class="p">})</span>
-<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
 </pre></div>
 </div>
 </section>
