@@ -679,7 +679,7 @@ RETURN p.name, p.born AS `birth year`
 <p class="admonition-title">Important</p>
 <p>You can only refer to named nodes or relationships in a WHERE clause, so you <em><strong>must specify a variable for any node or relationship</strong></em> you are testing in the WHERE clause.</p>
 </div>
-<p><em>If we can write the same thing without using WHERE, then why do we need WHERE?</em></p>
+<p><em><strong><em>If we can write the same thing without using WHERE, then why do we need WHERE?</em></strong></em></p>
 <p>With the WHERE clause, you can specify potentially complex conditions for the query.</p>
 <p>Here are some examples;</p>
 <p>Using <code class="docutils literal notranslate"><span class="pre">AND</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">OR</span></code> in WHERE clause.</p>
@@ -722,17 +722,6 @@ RETURN p.name, p.born AS `birth year`
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p>There are other string matching operators like <code class="docutils literal notranslate"><span class="pre">ENDS</span> <span class="pre">WITH</span></code>, <code class="docutils literal notranslate"><span class="pre">CONTAINS</span></code></p>
-</div>
-<p>We can also <em><strong>test it with regular expressions</strong></em>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span>
-<span class="n">WHERE</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span> <span class="o">=~</span><span class="s1">&#39;Tom.*&#39;</span>
-<span class="n">RETURN</span> <span class="n">p</span><span class="o">.</span><span class="n">name</span>
-</pre></div>
-</div>
-<p>Here <code class="docutils literal notranslate"><span class="pre">=~</span></code> is used to filter words</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you specify a regular expression. The index will never be used. In addition, the property value must fully match the regular expression.</p>
 </div>
 <p>Here is an example where we want to return all Person nodes of people who wrote movies:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MATCH</span> <span class="p">(</span><span class="n">p</span><span class="p">:</span><span class="n">Person</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">WROTE</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">m</span><span class="p">:</span><span class="n">Movie</span><span class="p">)</span>
