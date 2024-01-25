@@ -489,7 +489,6 @@ document.write(`
 <li><p>Creating constraints.</p></li>
 <li><p>Querying nodes and relationships.</p></li>
 <li><p>Working with patterns in queries.</p></li>
-<li><p>Loading data using dumps.</p></li>
 <li><p>Class activity:</p></li>
 </ul>
 </section>
@@ -536,6 +535,10 @@ document.write(`
 <p>With this, we finished creating our dummy graph data in the cloud. To see what we have created, we need to query the database.</p>
 <p>Let’s start with how to examine the data model,</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CALL</span> <span class="n">db</span><span class="o">.</span><span class="n">schema</span><span class="o">.</span><span class="n">visualization</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>For more information:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Call</span> <span class="n">apoc</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
 </pre></div>
 </div>
 <section id="creating-constraints">
