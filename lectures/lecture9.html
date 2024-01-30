@@ -67,6 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Lecture 8: MQL 1" href="lecture8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,6 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../installation/aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/pgadmin.html">pgAdmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/dump.html">Load Dumps (using pgadmin)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
@@ -187,8 +189,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/regrade.html">Regrade requests</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
@@ -196,6 +202,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture5.html">Lecture 5: Beyond RDBMS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture6.html">Lecture 6: CQL 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 9: MQL 2</a></li>
 </ul>
 
     </div>
@@ -477,7 +486,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-mql-2">
 <h1>Lecture 9: MQL 2<a class="headerlink" href="#lecture-9-mql-2" title="Permalink to this heading">#</a></h1>
-<p>Gittu George, January 31, 2023</p>
+<p>Gittu George, Feb 06, 2024</p>
 <p><em>Attribution: This notebook is developed using materials from DSCI 513 by Arman.</em></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -493,64 +502,6 @@ document.write(`
 <span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">@</span><span class="si">{}</span><span class="s2">/?retryWrites=true&amp;w=majority&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ConfigurationError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">@</span><span class="si">{}</span><span class="s2">/?retryWrites=true&amp;w=majority&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/mongo_client.py:771,</span> in <span class="ni">MongoClient.__init__</span><span class="nt">(self, host, port, document_class, tz_aware, connect, type_registry, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">validate_timeout_or_none_or_zero</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">769</span>         <span class="n">keyword_opts</span><span class="o">.</span><span class="n">cased_key</span><span class="p">(</span><span class="s2">&quot;connecttimeoutms&quot;</span><span class="p">),</span> <span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">771</span> <span class="n">res</span> <span class="o">=</span> <span class="n">uri_parser</span><span class="o">.</span><span class="n">parse_uri</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span>     <span class="n">entity</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">773</span>     <span class="n">port</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">774</span>     <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">775</span>     <span class="n">warn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">776</span>     <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">777</span>     <span class="n">connect_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">778</span>     <span class="n">srv_service_name</span><span class="o">=</span><span class="n">srv_service_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">779</span>     <span class="n">srv_max_hosts</span><span class="o">=</span><span class="n">srv_max_hosts</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">780</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">781</span> <span class="n">seeds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&quot;nodelist&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">782</span> <span class="n">username</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">username</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/uri_parser.py:558,</span> in <span class="ni">parse_uri</span><span class="nt">(uri, default_port, validate, warn, normalize, connect_timeout, srv_service_name, srv_max_hosts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="n">connect_timeout</span> <span class="o">=</span> <span class="n">connect_timeout</span> <span class="ow">or</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;connectTimeoutMS&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="n">dns_resolver</span> <span class="o">=</span> <span class="n">_SrvResolver</span><span class="p">(</span><span class="n">fqdn</span><span class="p">,</span> <span class="n">connect_timeout</span><span class="p">,</span> <span class="n">srv_service_name</span><span class="p">,</span> <span class="n">srv_max_hosts</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">558</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">dns_resolver</span><span class="o">.</span><span class="n">get_hosts</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="n">dns_options</span> <span class="o">=</span> <span class="n">dns_resolver</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span> <span class="k">if</span> <span class="n">dns_options</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:131,</span> in <span class="ni">_SrvResolver.get_hosts</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">def</span> <span class="nf">get_hosts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="ne">--&gt; </span><span class="mi">131</span>     <span class="n">_</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_srv_response_and_hosts</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="k">return</span> <span class="n">nodes</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:111,</span> in <span class="ni">_SrvResolver._get_srv_response_and_hosts</span><span class="nt">(self, encapsulate_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">def</span> <span class="nf">_get_srv_response_and_hosts</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">encapsulate_errors</span><span class="p">:</span> <span class="nb">bool</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">resolver</span><span class="o">.</span><span class="n">Answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]:</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_uri</span><span class="p">(</span><span class="n">encapsulate_errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># Construct address tuples</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="p">(</span><span class="n">maybe_decode</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">to_text</span><span class="p">(</span><span class="n">omit_final_dot</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span> <span class="n">res</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="p">]</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:105,</span> in <span class="ni">_SrvResolver._resolve_uri</span><span class="nt">(self, encapsulate_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="k">raise</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="c1"># Else, raise all errors as ConfigurationError.</span>
-<span class="ne">--&gt; </span><span class="mi">105</span>     <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span> <span class="kn">from</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="k">return</span> <span class="n">results</span>
-
-<span class="ne">ConfigurationError</span>: The DNS query name does not exist: _mongodb._tcp.mban.tgetfcz.mongodb.net.
 </pre></div>
 </div>
 </div>
@@ -586,11 +537,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 399, &#39;title&#39;: &#39;Les vampires&#39;, &#39;year&#39;: 1915},
- {&#39;runtime&#39;: 240, &#39;title&#39;: &#39;Napoleon&#39;, &#39;year&#39;: 1927},
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 240, &#39;title&#39;: &#39;Napoleon&#39;, &#39;year&#39;: 1927},
  {&#39;runtime&#39;: 281, &#39;title&#39;: &#39;Les Misèrables&#39;, &#39;year&#39;: 1934},
  {&#39;runtime&#39;: 245, &#39;title&#39;: &#39;Flash Gordon&#39;, &#39;year&#39;: 1936},
- {&#39;runtime&#39;: 238, &#39;title&#39;: &#39;Gone with the Wind&#39;, &#39;year&#39;: 1939}]
+ {&#39;runtime&#39;: 238, &#39;title&#39;: &#39;Gone with the Wind&#39;, &#39;year&#39;: 1939},
+ {&#39;runtime&#39;: 201, &#39;title&#39;: &#39;Giant&#39;, &#39;year&#39;: 1956}]
 </pre></div>
 </div>
 </div>
@@ -603,7 +554,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>199
 </pre></div>
 </div>
 </div>
@@ -629,8 +580,8 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Forsyte Saga&#39;, &#39;type&#39;: &#39;series&#39;},
  {&#39;title&#39;: &#39;Scenes from a Marriage&#39;, &#39;type&#39;: &#39;series&#39;},
  {&#39;title&#39;: &#39;Ironiya sudby, ili S legkim parom!&#39;, &#39;type&#39;: &#39;series&#39;},
- {&#39;title&#39;: &#39;I, Claudius&#39;, &#39;type&#39;: &#39;series&#39;},
- {&#39;title&#39;: &#39;Sybil&#39;, &#39;type&#39;: &#39;series&#39;}]
+ {&#39;title&#39;: &#39;Sybil&#39;, &#39;type&#39;: &#39;series&#39;},
+ {&#39;title&#39;: &#39;Jesus of Nazareth&#39;, &#39;type&#39;: &#39;series&#39;}]
 </pre></div>
 </div>
 </div>
@@ -706,7 +657,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4888
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4411
 </pre></div>
 </div>
 </div>
@@ -742,6 +693,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2016, 5, 16, 3, 43, 15, 808000),
+  &#39;storeLocation&#39;: &#39;Seattle&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 26,
+   &#39;email&#39;: &#39;kupeen@gareha.ne&#39;,
+   &#39;satisfaction&#39;: 5},
+  &#39;couponUsed&#39;: True,
+  &#39;purchaseMethod&#39;: &#39;In store&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2016, 10, 22, 18, 50, 44, 216000),
+  &#39;storeLocation&#39;: &#39;Seattle&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 52,
+   &#39;email&#39;: &#39;nupzig@apubu.hu&#39;,
+   &#39;satisfaction&#39;: 3},
+  &#39;couponUsed&#39;: True,
+  &#39;purchaseMethod&#39;: &#39;In store&#39;}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>The above query is equivalent to:</p>
 <div class="cell docutils container">
@@ -758,6 +729,26 @@ document.write(`
         <span class="n">limit</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2016, 5, 16, 3, 43, 15, 808000),
+  &#39;storeLocation&#39;: &#39;Seattle&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 26,
+   &#39;email&#39;: &#39;kupeen@gareha.ne&#39;,
+   &#39;satisfaction&#39;: 5},
+  &#39;couponUsed&#39;: True,
+  &#39;purchaseMethod&#39;: &#39;In store&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2016, 10, 22, 18, 50, 44, 216000),
+  &#39;storeLocation&#39;: &#39;Seattle&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 52,
+   &#39;email&#39;: &#39;nupzig@apubu.hu&#39;,
+   &#39;satisfaction&#39;: 3},
+  &#39;couponUsed&#39;: True,
+  &#39;purchaseMethod&#39;: &#39;In store&#39;}]
 </pre></div>
 </div>
 </div>
@@ -778,6 +769,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>153
+</pre></div>
+</div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -793,6 +789,11 @@ document.write(`
             <span class="s1">&#39;saleDate&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$lte&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2014</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">)}</span>
     <span class="p">}</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1861
 </pre></div>
 </div>
 </div>
@@ -820,6 +821,50 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2017, 3, 21, 1, 54, 26, 657000),
+  &#39;storeLocation&#39;: &#39;New York&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;M&#39;,
+   &#39;age&#39;: 26,
+   &#39;email&#39;: &#39;rapifoozi@viupoen.bb&#39;,
+   &#39;satisfaction&#39;: 5},
+  &#39;couponUsed&#39;: True,
+  &#39;purchaseMethod&#39;: &#39;In store&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2013, 8, 21, 9, 36, 7, 188000),
+  &#39;storeLocation&#39;: &#39;New York&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 53,
+   &#39;email&#39;: &#39;se@nacwev.an&#39;,
+   &#39;satisfaction&#39;: 4},
+  &#39;couponUsed&#39;: False,
+  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2017, 9, 2, 15, 42, 22, 167000),
+  &#39;storeLocation&#39;: &#39;New York&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;M&#39;,
+   &#39;age&#39;: 34,
+   &#39;email&#39;: &#39;bubbecgu@odidecned.tf&#39;,
+   &#39;satisfaction&#39;: 3},
+  &#39;couponUsed&#39;: False,
+  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2015, 3, 6, 19, 13, 35, 155000),
+  &#39;storeLocation&#39;: &#39;New York&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 42,
+   &#39;email&#39;: &#39;jecosab@copfatma.af&#39;,
+   &#39;satisfaction&#39;: 3},
+  &#39;couponUsed&#39;: False,
+  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
+ {&#39;saleDate&#39;: datetime.datetime(2015, 10, 14, 23, 25, 30, 610000),
+  &#39;storeLocation&#39;: &#39;New York&#39;,
+  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
+   &#39;age&#39;: 39,
+   &#39;email&#39;: &#39;fip@ruc.cg&#39;,
+   &#39;satisfaction&#39;: 5},
+  &#39;couponUsed&#39;: False,
+  &#39;purchaseMethod&#39;: &#39;Phone&#39;}]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -841,6 +886,20 @@ document.write(`
         <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Storm Over Asia&#39;, &#39;languages&#39;: [&#39;Russian&#39;]},
+ {&#39;title&#39;: &#39;Asphalt&#39;, &#39;languages&#39;: [&#39;German&#39;]},
+ {&#39;title&#39;: &#39;David Golder&#39;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;Westfront 1918&#39;, &#39;languages&#39;: [&#39;German&#39;]},
+ {&#39;title&#39;: &#39;Comradeship&#39;, &#39;languages&#39;: [&#39;French&#39;, &#39;German&#39;]},
+ {&#39;title&#39;: &#39;Mèdchen in Uniform&#39;, &#39;languages&#39;: [&#39;German&#39;]},
+ {&#39;title&#39;: &quot;L&#39;opèra de quat&#39;sous&quot;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;è Nous la Libertè&#39;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Blue Light&#39;, &#39;languages&#39;: [&#39;German&#39;, &#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;The Song of Night&#39;, &#39;languages&#39;: [&#39;German&#39;]}]
 </pre></div>
 </div>
 </div>
@@ -933,6 +992,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+</pre></div>
+</div>
+</div>
 </div>
 <p>But if we supply the full <code class="docutils literal notranslate"><span class="pre">department</span></code> sub-document:</p>
 <div class="cell docutils container">
@@ -947,6 +1011,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+  &#39;name&#39;: &#39;Tiffany&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
+   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
+   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+  &#39;name&#39;: &#39;Alexi&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
+   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>However, we can look for particular values for sub-fields directly using the dot notation. For example, if we want to find instructors from the Statistics department, we can use the following query:</p>
 <div class="cell docutils container">
@@ -958,6 +1037,21 @@ document.write(`
         <span class="p">}</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+  &#39;name&#39;: &#39;Tiffany&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
+   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
+   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+  &#39;name&#39;: &#39;Alexi&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
+   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
 </pre></div>
 </div>
 </div>
@@ -980,6 +1074,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;David Golder&#39;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Morocco&#39;,
+  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Spanish&#39;, &#39;Arabic&#39;, &#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Comradeship&#39;, &#39;languages&#39;: [&#39;French&#39;, &#39;German&#39;]},
+ {&#39;title&#39;: &quot;L&#39;opèra de quat&#39;sous&quot;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;è Nous la Libertè&#39;, &#39;languages&#39;: [&#39;French&#39;]},
+ {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Red Head&#39;, &#39;languages&#39;: [&#39;French&#39;]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">languages</span></code> field in all of the above documents contains French, occasionally in addition to other languages.</p>
 <p>Things are different if we’re looking for more than one element. If the desired elements are specified inside <code class="docutils literal notranslate"><span class="pre">[]</span></code>, then MongoDB looks for an exact match. For example, with the following query:</p>
@@ -997,6 +1106,20 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Baby Face&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Footlight Parade&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Going Hollywood&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Folies Bergère de Paris&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Invisible Ray&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &quot;Lloyd&#39;s of London&quot;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>only those documents will be returned that <strong>only and only</strong> have <code class="docutils literal notranslate"><span class="pre">['English',</span> <span class="pre">'French']</span></code> in their <code class="docutils literal notranslate"><span class="pre">'languages'</span></code>, <strong>in the exact same order</strong>. You can switch the order of the languages to see that you get different results.</p>
 <p>We can also query an array by <strong>index</strong>. Here, I’m looking for movies which have Italian listed as the first language in their <code class="docutils literal notranslate"><span class="pre">languages</span></code> field:</p>
@@ -1011,6 +1134,20 @@ document.write(`
         <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &quot;Everybody&#39;s Woman&quot;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;The Siege of the Alcazar&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;The White Ship&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;Ossessione&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;The Testimony&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;The Bandit&#39;, &#39;languages&#39;: [&#39;Italian&#39;, &#39;German&#39;, &#39;English&#39;]},
+ {&#39;title&#39;: &#39;La porta del cielo&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;Rome, Open City&#39;, &#39;languages&#39;: [&#39;Italian&#39;, &#39;German&#39;, &#39;Latin&#39;]},
+ {&#39;title&#39;: &#39;Lost Youth&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;Angelina&#39;, &#39;languages&#39;: [&#39;Italian&#39;]}]
 </pre></div>
 </div>
 </div>
@@ -1032,6 +1169,25 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics&#39;,
+  &#39;directors&#39;: [&#39;Winsor McCay&#39;, &#39;J. Stuart Blackton&#39;]},
+ {&#39;title&#39;: &#39;The Perils of Pauline&#39;,
+  &#39;directors&#39;: [&#39;Louis J. Gasnier&#39;, &#39;Donald MacKenzie&#39;]},
+ {&#39;title&#39;: &#39;Where Are My Children?&#39;,
+  &#39;directors&#39;: [&#39;Phillips Smalley&#39;, &#39;Lois Weber&#39;]},
+ {&#39;title&#39;: &#39;From Hand to Mouth&#39;,
+  &#39;directors&#39;: [&#39;Alfred J. Goulding&#39;, &#39;Hal Roach&#39;]},
+ {&#39;title&#39;: &#39;One Week&#39;, &#39;directors&#39;: [&#39;Edward F. Cline&#39;, &#39;Buster Keaton&#39;]},
+ {&#39;title&#39;: &#39;The Saphead&#39;, &#39;directors&#39;: [&#39;Herbert Blachè&#39;, &#39;Winchell Smith&#39;]},
+ {&#39;title&#39;: &#39;Now or Never&#39;, &#39;directors&#39;: [&#39;Fred C. Newmeyer&#39;, &#39;Hal Roach&#39;]},
+ {&#39;title&#39;: &#39;Salomè&#39;, &#39;directors&#39;: [&#39;Charles Bryant&#39;, &#39;Alla Nazimova&#39;]},
+ {&#39;title&#39;: &#39;Three Ages&#39;, &#39;directors&#39;: [&#39;Edward F. Cline&#39;, &#39;Buster Keaton&#39;]},
+ {&#39;title&#39;: &quot;Grass: A Nation&#39;s Battle for Life&quot;,
+  &#39;directors&#39;: [&#39;Merian C. Cooper&#39;, &#39;Ernest B. Schoedsack&#39;]}]
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="all">
@@ -1048,6 +1204,22 @@ document.write(`
         <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Morocco&#39;,
+  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Spanish&#39;, &#39;Arabic&#39;, &#39;Italian&#39;]},
+ {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Shanghai Express&#39;,
+  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Cantonese&#39;, &#39;German&#39;]},
+ {&#39;title&#39;: &#39;Baby Face&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Footlight Parade&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;Going Hollywood&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
+ {&#39;title&#39;: &#39;The Gay Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Italian&#39;]}]
 </pre></div>
 </div>
 </div>
@@ -1097,6 +1269,19 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999451&#39;),
+  &#39;name&#39;: &#39;Quan&#39;,
+  &#39;grades&#39;: [79, 87, 97]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999452&#39;),
+  &#39;name&#39;: &#39;Varada&#39;,
+  &#39;grades&#39;: [75, 82, 90]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999453&#39;),
+  &#39;name&#39;: &#39;Florencia&#39;,
+  &#39;grades&#39;: [92, 93, 77]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Oops, it returned all documents!</p>
 <p>The reason is that when multiple conditions are defined on an array, MongoDB checks the array on its entirety. If there is at least one match for each condition in the whole array, then that document will be returned. In order to force MongoDB to check the conditions on <strong>each</strong> individual element, we need to use <code class="docutils literal notranslate"><span class="pre">$elemMatch</span></code>:</p>
@@ -1107,6 +1292,13 @@ document.write(`
         <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;grades&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$elemMatch&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span> <span class="s1">&#39;$lte&#39;</span><span class="p">:</span> <span class="mi">85</span><span class="p">}}}</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999452&#39;),
+  &#39;name&#39;: &#39;Varada&#39;,
+  &#39;grades&#39;: [75, 82, 90]}]
 </pre></div>
 </div>
 </div>
@@ -1123,6 +1315,26 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+  &#39;name&#39;: &#39;Mike&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
+   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+  &#39;name&#39;: &#39;Tiffany&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
+   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
+   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
+ {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+  &#39;name&#39;: &#39;Alexi&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
+   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>If we want to find instructor(s) who teach DSCI 512, we may try the following query:</p>
 <div class="cell docutils container">
@@ -1132,6 +1344,11 @@ document.write(`
         <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;courses&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="mi">512</span><span class="p">}}</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1147,6 +1364,15 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+  &#39;name&#39;: &#39;Mike&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
+   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]}]
+</pre></div>
+</div>
+</div>
 </div>
 <p>The easier way is to use the dot notation for reaching into the sub-documents in the array and place a condition on a particular sub-field</p>
 <div class="cell docutils container">
@@ -1156,6 +1382,15 @@ document.write(`
         <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;courses.code&#39;</span><span class="p">:</span> <span class="mi">512</span><span class="p">}</span>
     <span class="p">)</span>
 <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+  &#39;name&#39;: &#39;Mike&#39;,
+  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
+  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
+   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]}]
 </pre></div>
 </div>
 </div>
@@ -1210,6 +1445,15 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture8.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 8: MQL 1</p>
+      </div>
+    </a>
 </div>
                 </footer>
               

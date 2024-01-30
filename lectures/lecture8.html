@@ -67,6 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 9: MQL 2" href="lecture9.html" />
+    <link rel="prev" title="Lecture 7: CQL 2/ MongoDB introduction" href="lecture7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../installation/aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/pgadmin.html">pgAdmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/dump.html">Load Dumps (using pgadmin)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
@@ -187,8 +190,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional/regrade.html">Regrade requests</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Lectures</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="lecture0.html">Lecture 0: Course Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture1.html">Lecture 1: Data Management in a Big Data Environment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
@@ -196,6 +203,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture5.html">Lecture 5: Beyond RDBMS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture6.html">Lecture 6: CQL 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 8: MQL 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
 </ul>
 
     </div>
@@ -484,7 +494,6 @@ document.write(`
 <ul class="simple">
 <li><p>Please make sure you follow the mechanics correctly.</p></li>
 <li><p>We can’t accept chatGPT responses - this can be a more serious issue as we want assignments to be done by you, not chatGPT.</p></li>
-<li><p>Plan is to release assignment 1 grades this week.</p></li>
 <li><p>Read <a class="reference internal" href="../additional/regrade.html"><span class="doc std std-doc">regrade request policy</span></a> very carefully before submitting. Address to Daniel and cc me too.</p></li>
 <li><p>There won’t be mongoDB tutorial. But we will have all OHs next week, so please make use of it.</p></li>
 </ul>
@@ -535,62 +544,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ConfigurationError</span><span class="g g-Whitespace">                        </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">client</span> <span class="o">=</span> <span class="n">MongoClient</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/mongo_client.py:771,</span> in <span class="ni">MongoClient.__init__</span><span class="nt">(self, host, port, document_class, tz_aware, connect, type_registry, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">767</span> <span class="k">if</span> <span class="n">timeout</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">768</span>     <span class="n">timeout</span> <span class="o">=</span> <span class="n">common</span><span class="o">.</span><span class="n">validate_timeout_or_none_or_zero</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">769</span>         <span class="n">keyword_opts</span><span class="o">.</span><span class="n">cased_key</span><span class="p">(</span><span class="s2">&quot;connecttimeoutms&quot;</span><span class="p">),</span> <span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">770</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">771</span> <span class="n">res</span> <span class="o">=</span> <span class="n">uri_parser</span><span class="o">.</span><span class="n">parse_uri</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">772</span>     <span class="n">entity</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">773</span>     <span class="n">port</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">774</span>     <span class="n">validate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">775</span>     <span class="n">warn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">776</span>     <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">777</span>     <span class="n">connect_timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">778</span>     <span class="n">srv_service_name</span><span class="o">=</span><span class="n">srv_service_name</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">779</span>     <span class="n">srv_max_hosts</span><span class="o">=</span><span class="n">srv_max_hosts</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">780</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">781</span> <span class="n">seeds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s2">&quot;nodelist&quot;</span><span class="p">])</span>
-<span class="g g-Whitespace">    </span><span class="mi">782</span> <span class="n">username</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">username</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/uri_parser.py:558,</span> in <span class="ni">parse_uri</span><span class="nt">(uri, default_port, validate, warn, normalize, connect_timeout, srv_service_name, srv_max_hosts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">556</span> <span class="n">connect_timeout</span> <span class="o">=</span> <span class="n">connect_timeout</span> <span class="ow">or</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;connectTimeoutMS&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span> <span class="n">dns_resolver</span> <span class="o">=</span> <span class="n">_SrvResolver</span><span class="p">(</span><span class="n">fqdn</span><span class="p">,</span> <span class="n">connect_timeout</span><span class="p">,</span> <span class="n">srv_service_name</span><span class="p">,</span> <span class="n">srv_max_hosts</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">558</span> <span class="n">nodes</span> <span class="o">=</span> <span class="n">dns_resolver</span><span class="o">.</span><span class="n">get_hosts</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="n">dns_options</span> <span class="o">=</span> <span class="n">dns_resolver</span><span class="o">.</span><span class="n">get_options</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span> <span class="k">if</span> <span class="n">dns_options</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:131,</span> in <span class="ni">_SrvResolver.get_hosts</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">130</span> <span class="k">def</span> <span class="nf">get_hosts</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
-<span class="ne">--&gt; </span><span class="mi">131</span>     <span class="n">_</span><span class="p">,</span> <span class="n">nodes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_srv_response_and_hosts</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="k">return</span> <span class="n">nodes</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:111,</span> in <span class="ni">_SrvResolver._get_srv_response_and_hosts</span><span class="nt">(self, encapsulate_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="k">def</span> <span class="nf">_get_srv_response_and_hosts</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">109</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">encapsulate_errors</span><span class="p">:</span> <span class="nb">bool</span>
-<span class="g g-Whitespace">    </span><span class="mi">110</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">resolver</span><span class="o">.</span><span class="n">Answer</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]]:</span>
-<span class="ne">--&gt; </span><span class="mi">111</span>     <span class="n">results</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_resolve_uri</span><span class="p">(</span><span class="n">encapsulate_errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">113</span>     <span class="c1"># Construct address tuples</span>
-<span class="g g-Whitespace">    </span><span class="mi">114</span>     <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="p">(</span><span class="n">maybe_decode</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">to_text</span><span class="p">(</span><span class="n">omit_final_dot</span><span class="o">=</span><span class="kc">True</span><span class="p">)),</span> <span class="n">res</span><span class="o">.</span><span class="n">port</span><span class="p">)</span> <span class="k">for</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">results</span>
-<span class="g g-Whitespace">    </span><span class="mi">116</span>     <span class="p">]</span>
-
-<span class="nn">File ~/opt/miniconda3/envs/bait580envtestbug/lib/python3.12/site-packages/pymongo/srv_resolver.py:105,</span> in <span class="ni">_SrvResolver._resolve_uri</span><span class="nt">(self, encapsulate_errors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="k">raise</span>
-<span class="g g-Whitespace">    </span><span class="mi">104</span>     <span class="c1"># Else, raise all errors as ConfigurationError.</span>
-<span class="ne">--&gt; </span><span class="mi">105</span>     <span class="k">raise</span> <span class="n">ConfigurationError</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">exc</span><span class="p">))</span> <span class="kn">from</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="k">return</span> <span class="n">results</span>
-
-<span class="ne">ConfigurationError</span>: The DNS query name does not exist: _mongodb._tcp.mban.tgetfcz.mongodb.net.
 </pre></div>
 </div>
 </div>
@@ -695,7 +648,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;theaters&#39;, &#39;comments&#39;, &#39;sessions&#39;, &#39;movies&#39;, &#39;users&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sessions&#39;, &#39;theaters&#39;, &#39;comments&#39;, &#39;users&#39;, &#39;movies&#39;, &#39;embedded_movies&#39;]
 </pre></div>
 </div>
 </div>
@@ -708,7 +661,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;theaters&#39;, &#39;comments&#39;, &#39;sessions&#39;, &#39;movies&#39;, &#39;users&#39;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;sessions&#39;, &#39;theaters&#39;, &#39;comments&#39;, &#39;users&#39;, &#39;movies&#39;, &#39;embedded_movies&#39;]
 </pre></div>
 </div>
 </div>
@@ -734,7 +687,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.cursor.Cursor at 0x111b10090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.cursor.Cursor at 0x110bde0f0&gt;
 </pre></div>
 </div>
 </div>
@@ -748,38 +701,33 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
- &#39;plot&#39;: &#39;An unhappy married couple deal with their problems on board the ill-fated ship.&#39;,
- &#39;genres&#39;: [&#39;Drama&#39;, &#39;History&#39;, &#39;Romance&#39;],
- &#39;runtime&#39;: 98,
- &#39;rated&#39;: &#39;NOT RATED&#39;,
- &#39;cast&#39;: [&#39;Clifton Webb&#39;,
-  &#39;Barbara Stanwyck&#39;,
-  &#39;Robert Wagner&#39;,
-  &#39;Audrey Dalton&#39;],
- &#39;num_mflix_comments&#39;: 0,
- &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BMTU3NTUyMTc3Nl5BMl5BanBnXkFtZTgwOTA2MDE3MTE@._V1_SY1000_SX677_AL_.jpg&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
+ &#39;plot&#39;: &#39;The story of the 1912 sinking of the largest luxury liner ever built, the tragedy that befell over two thousand of the rich and famous as well as of the poor and unknown passengers aboard the doomed ship.&#39;,
+ &#39;genres&#39;: [&#39;Action&#39;, &#39;Drama&#39;, &#39;History&#39;],
+ &#39;runtime&#39;: 173,
+ &#39;cast&#39;: [&#39;Peter Gallagher&#39;,
+  &#39;George C. Scott&#39;,
+  &#39;Catherine Zeta-Jones&#39;,
+  &#39;Eva Marie Saint&#39;],
+ &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BYWM0MDE3OWMtMzlhZC00YzMyLThiNjItNzFhNGVhYzQ1YWM5XkEyXkFqcGdeQXVyMTczNjQwOTY@._V1_SY1000_SX677_AL_.jpg&#39;,
  &#39;title&#39;: &#39;Titanic&#39;,
- &#39;fullplot&#39;: &#39;Unhappily married and uncomfortable with life among the British upper crust, Julia Sturges takes her two children and boards the Titanic for America. Her husband Richard also arranges passage on the doomed luxury liner in order to let him have custody of their two children. Their problems soon seem minor when the ship hits an iceberg.&#39;,
- &#39;languages&#39;: [&#39;English&#39;, &#39;Basque&#39;, &#39;French&#39;, &#39;Spanish&#39;],
- &#39;released&#39;: datetime.datetime(1953, 7, 13, 0, 0),
- &#39;directors&#39;: [&#39;Jean Negulesco&#39;],
- &#39;writers&#39;: [&#39;Charles Brackett&#39;, &#39;Walter Reisch&#39;, &#39;Richard L. Breen&#39;],
+ &#39;fullplot&#39;: &quot;The plot focuses on the romances of two couples upon the doomed ship&#39;s maiden voyage. Isabella Paradine (Catherine Zeta-Jones) is a wealthy woman mourning the loss of her aunt, who reignites a romance with former flame Wynn Park (Peter Gallagher). Meanwhile, a charming ne&#39;er-do-well named Jamie Perse (Mike Doyle) steals a ticket for the ship, and falls for a sweet innocent Irish girl on board. But their romance is threatened by the villainous Simon Doonan (Tim Curry), who has discovered about the ticket and makes Jamie his unwilling accomplice, as well as having sinister plans for the girl.&quot;,
+ &#39;languages&#39;: [&#39;English&#39;],
+ &#39;released&#39;: datetime.datetime(1996, 11, 17, 0, 0),
+ &#39;rated&#39;: &#39;PG-13&#39;,
  &#39;awards&#39;: {&#39;wins&#39;: 0,
-  &#39;nominations&#39;: 3,
-  &#39;text&#39;: &#39;Won 1 Oscar. Another 2 nominations.&#39;},
- &#39;lastupdated&#39;: &#39;2015-09-16 00:00:16.593000000&#39;,
- &#39;year&#39;: 1953,
- &#39;imdb&#39;: {&#39;rating&#39;: 7.3, &#39;votes&#39;: 4677, &#39;id&#39;: 46435},
- &#39;countries&#39;: [&#39;USA&#39;],
- &#39;type&#39;: &#39;movie&#39;,
- &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.6, &#39;numReviews&#39;: 86400, &#39;meter&#39;: 65},
-  &#39;dvd&#39;: datetime.datetime(2003, 9, 2, 0, 0),
-  &#39;critic&#39;: {&#39;rating&#39;: 6.7, &#39;numReviews&#39;: 9, &#39;meter&#39;: 89},
-  &#39;lastUpdated&#39;: datetime.datetime(2015, 9, 10, 19, 15, 34),
-  &#39;rotten&#39;: 1,
-  &#39;production&#39;: &#39;20th Century Fox&#39;,
-  &#39;fresh&#39;: 8}}
+  &#39;nominations&#39;: 9,
+  &#39;text&#39;: &#39;Won 1 Primetime Emmy. Another 8 nominations.&#39;},
+ &#39;lastupdated&#39;: &#39;2015-08-30 00:47:02.163000000&#39;,
+ &#39;year&#39;: 1996,
+ &#39;imdb&#39;: {&#39;rating&#39;: 5.9, &#39;votes&#39;: 3435, &#39;id&#39;: 115392},
+ &#39;countries&#39;: [&#39;Canada&#39;, &#39;USA&#39;],
+ &#39;type&#39;: &#39;series&#39;,
+ &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.8, &#39;numReviews&#39;: 30909, &#39;meter&#39;: 71},
+  &#39;dvd&#39;: datetime.datetime(1999, 9, 7, 0, 0),
+  &#39;production&#39;: &#39;Hallmark Entertainment&#39;,
+  &#39;lastUpdated&#39;: datetime.datetime(2015, 8, 15, 18, 12, 51)},
+ &#39;num_mflix_comments&#39;: 0}
 </pre></div>
 </div>
 </div>
@@ -794,39 +742,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
-  &#39;plot&#39;: &#39;An unhappy married couple deal with their problems on board the ill-fated ship.&#39;,
-  &#39;genres&#39;: [&#39;Drama&#39;, &#39;History&#39;, &#39;Romance&#39;],
-  &#39;runtime&#39;: 98,
-  &#39;rated&#39;: &#39;NOT RATED&#39;,
-  &#39;cast&#39;: [&#39;Clifton Webb&#39;,
-   &#39;Barbara Stanwyck&#39;,
-   &#39;Robert Wagner&#39;,
-   &#39;Audrey Dalton&#39;],
-  &#39;num_mflix_comments&#39;: 0,
-  &#39;poster&#39;: &#39;https://m.media-amazon.com/images/M/MV5BMTU3NTUyMTc3Nl5BMl5BanBnXkFtZTgwOTA2MDE3MTE@._V1_SY1000_SX677_AL_.jpg&#39;,
-  &#39;title&#39;: &#39;Titanic&#39;,
-  &#39;fullplot&#39;: &#39;Unhappily married and uncomfortable with life among the British upper crust, Julia Sturges takes her two children and boards the Titanic for America. Her husband Richard also arranges passage on the doomed luxury liner in order to let him have custody of their two children. Their problems soon seem minor when the ship hits an iceberg.&#39;,
-  &#39;languages&#39;: [&#39;English&#39;, &#39;Basque&#39;, &#39;French&#39;, &#39;Spanish&#39;],
-  &#39;released&#39;: datetime.datetime(1953, 7, 13, 0, 0),
-  &#39;directors&#39;: [&#39;Jean Negulesco&#39;],
-  &#39;writers&#39;: [&#39;Charles Brackett&#39;, &#39;Walter Reisch&#39;, &#39;Richard L. Breen&#39;],
-  &#39;awards&#39;: {&#39;wins&#39;: 0,
-   &#39;nominations&#39;: 3,
-   &#39;text&#39;: &#39;Won 1 Oscar. Another 2 nominations.&#39;},
-  &#39;lastupdated&#39;: &#39;2015-09-16 00:00:16.593000000&#39;,
-  &#39;year&#39;: 1953,
-  &#39;imdb&#39;: {&#39;rating&#39;: 7.3, &#39;votes&#39;: 4677, &#39;id&#39;: 46435},
-  &#39;countries&#39;: [&#39;USA&#39;],
-  &#39;type&#39;: &#39;movie&#39;,
-  &#39;tomatoes&#39;: {&#39;viewer&#39;: {&#39;rating&#39;: 3.6, &#39;numReviews&#39;: 86400, &#39;meter&#39;: 65},
-   &#39;dvd&#39;: datetime.datetime(2003, 9, 2, 0, 0),
-   &#39;critic&#39;: {&#39;rating&#39;: 6.7, &#39;numReviews&#39;: 9, &#39;meter&#39;: 89},
-   &#39;lastUpdated&#39;: datetime.datetime(2015, 9, 10, 19, 15, 34),
-   &#39;rotten&#39;: 1,
-   &#39;production&#39;: &#39;20th Century Fox&#39;,
-   &#39;fresh&#39;: 8}},
- {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
   &#39;plot&#39;: &#39;The story of the 1912 sinking of the largest luxury liner ever built, the tragedy that befell over two thousand of the rich and famous as well as of the poor and unknown passengers aboard the doomed ship.&#39;,
   &#39;genres&#39;: [&#39;Action&#39;, &#39;Drama&#39;, &#39;History&#39;],
   &#39;runtime&#39;: 173,
@@ -923,10 +839,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a1394f29313caabcdf639&#39;),
-  &#39;title&#39;: &#39;Titanic&#39;,
-  &#39;year&#39;: 1953},
- {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcefb1d&#39;),
   &#39;title&#39;: &#39;Titanic&#39;,
   &#39;year&#39;: 1996},
  {&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcf0d74&#39;),
@@ -956,9 +869,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1953},
- {&#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996},
- {&#39;year&#39;: 1997, &#39;title&#39;: &#39;Titanic&#39;}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996}, {&#39;year&#39;: 1997, &#39;title&#39;: &#39;Titanic&#39;}]
 </pre></div>
 </div>
 </div>
@@ -984,8 +895,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 98, &#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1953},
- {&#39;runtime&#39;: 173, &#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996},
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 173, &#39;title&#39;: &#39;Titanic&#39;, &#39;year&#39;: 1996},
  {&#39;year&#39;: 1997, &#39;title&#39;: &#39;Titanic&#39;, &#39;runtime&#39;: 194}]
 </pre></div>
 </div>
@@ -1011,11 +921,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Blacksmith Scene&#39;},
- {&#39;title&#39;: &#39;The Great Train Robbery&#39;},
- {&#39;title&#39;: &#39;The Land Beyond the Sunset&#39;},
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Great Train Robbery&#39;},
  {&#39;title&#39;: &#39;A Corner in Wheat&#39;},
- {&#39;title&#39;: &#39;Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics&#39;}]
+ {&#39;title&#39;: &#39;Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics&#39;},
+ {&#39;title&#39;: &#39;Traffic in Souls&#39;},
+ {&#39;title&#39;: &#39;Gertie the Dinosaur&#39;}]
 </pre></div>
 </div>
 </div>
@@ -1036,7 +946,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>618
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>581
 </pre></div>
 </div>
 </div>
@@ -1062,9 +972,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;573a139af29313caabcf0d74&#39;),
-  &#39;year&#39;: 1997,
-  &#39;title&#39;: &#39;Titanic&#39;}]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1148,6 +1056,24 @@ document.write(`
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lecture7.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lecture 7: CQL 2/ MongoDB introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture9.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 9: MQL 2</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
