@@ -516,7 +516,7 @@ document.write(`
 </section>
 <section id="and-operators-in-mongodb">
 <h2><code class="docutils literal notranslate"><span class="pre">$</span></code> and operators in MongoDB<a class="headerlink" href="#and-operators-in-mongodb" title="Permalink to this heading">#</a></h2>
-<p>In MongoDB, operators are denoted with a dollar sign <code class="docutils literal notranslate"><span class="pre">$</span></code>. For example, the <code class="docutils literal notranslate"><span class="pre">$sum</span></code> operator which is used in aggregation pipelines, or comparison operators such as <code class="docutils literal notranslate"><span class="pre">$gte</span></code> which is equivalent to <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> in SQL or Python.</p>
+<p>In MongoDB, operators are denoted with a dollar sign <code class="docutils literal notranslate"><span class="pre">$</span></code>. For example, the comparison operators such as <code class="docutils literal notranslate"><span class="pre">$gte</span></code> which is equivalent to <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> in SQL or Python.</p>
 </section>
 <section id="comparison-operators">
 <h2>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">#</a></h2>
@@ -1012,13 +1012,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
   &#39;name&#39;: &#39;Tiffany&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
    {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
    {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
   &#39;name&#39;: &#39;Alexi&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
@@ -1041,13 +1041,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
   &#39;name&#39;: &#39;Tiffany&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
    {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
    {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
   &#39;name&#39;: &#39;Alexi&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
@@ -1270,13 +1270,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999451&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e6f&#39;),
   &#39;name&#39;: &#39;Quan&#39;,
   &#39;grades&#39;: [79, 87, 97]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999452&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e70&#39;),
   &#39;name&#39;: &#39;Varada&#39;,
   &#39;grades&#39;: [75, 82, 90]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999453&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e71&#39;),
   &#39;name&#39;: &#39;Florencia&#39;,
   &#39;grades&#39;: [92, 93, 77]}]
 </pre></div>
@@ -1296,7 +1296,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999452&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e70&#39;),
   &#39;name&#39;: &#39;Varada&#39;,
   &#39;grades&#39;: [75, 82, 90]}]
 </pre></div>
@@ -1316,18 +1316,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
   &#39;name&#39;: &#39;Mike&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
    {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944f&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
   &#39;name&#39;: &#39;Tiffany&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
    {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
    {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d545999450&#39;),
+ {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
   &#39;name&#39;: &#39;Alexi&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
@@ -1365,7 +1365,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
   &#39;name&#39;: &#39;Mike&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
@@ -1386,7 +1386,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65b87302a474f4d54599944e&#39;),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
   &#39;name&#39;: &#39;Mike&#39;,
   &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
   &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
