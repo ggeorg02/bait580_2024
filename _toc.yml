@@ -6,9 +6,9 @@ parts:
   - file: installation/awssummary
   - file: installation/conda
   - file: installation/jupyterlabtest
+  - file: installation/pgadmin
   - file: installation/aws
   # - file: installation/RDSCreation
-  - file: installation/pgadmin
   - file: installation/dump
 
   # - file: installation/neo4j
