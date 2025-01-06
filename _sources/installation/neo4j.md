@@ -1,4 +1,4 @@
-# Neo4j (week 3)
+# Neo4j Instalaltion (week 3)
 
 ## Setting up graph database - video
 
