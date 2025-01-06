@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Neo4j &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    <title>Neo4j (week 3) &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
   
   
@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="MongoDB installation" href="Mongodb_installation.html" />
+    <link rel="prev" title="Load Dumps (using pgadmin)" href="dump.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -147,14 +149,18 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview of Installation instructions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview first week installations and setup.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview and setup videos.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions Details</span></p>
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyterlabtest.html">JuypterLab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Load Dumps (using pgadmin)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Neo4j (week 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
@@ -162,10 +168,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/packagemanager.html">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -178,12 +181,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture8.html">Lecture 8: MQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture9.html">Lecture 9: MQL 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -367,7 +364,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Neo4j</h1>
+    <h1>Neo4j (week 3)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -377,6 +374,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-video">Setting up graph database - video</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-instructions">Written instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>
@@ -390,8 +389,27 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="neo4j">
-<h1>Neo4j<a class="headerlink" href="#neo4j" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="neo4j-week-3">
+<h1>Neo4j (week 3)<a class="headerlink" href="#neo4j-week-3" title="Permalink to this headline">#</a></h1>
+<section id="setting-up-graph-database-video">
+<h2>Setting up graph database - video<a class="headerlink" href="#setting-up-graph-database-video" title="Permalink to this headline">#</a></h2>
+<p>Week 3 and 4</p>
+<p>You will do everything mentioned below as part of worksheet 5. You must watch this video that talks about everything in worksheet 5. Here is the video link</p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=i010tSnGmyI">https://www.youtube.com/watch?v=i010tSnGmyI</a></p>
+<p>Here are the timestamps for each question:</p>
+<ul class="simple">
+<li><p>0:00 Brief Intro - The plan</p></li>
+<li><p>1:38 Que 2 - WS 5</p></li>
+<li><p>06:45 Que 3 - WS 5</p></li>
+<li><p>11:56 Que 4 - WS 5</p></li>
+<li><p>17:01 Que 5 - WS 5</p></li>
+<li><p>22:40 Que 5 - WS 5 - some issues and fixes</p></li>
+<li><p>26:15 Que 6 - WS 4 - using a different package</p></li>
+<li><p>27:53 Conclusion and learnings</p></li>
+</ul>
+</section>
+<section id="written-instructions">
+<h2>Written instructions<a class="headerlink" href="#written-instructions" title="Permalink to this headline">#</a></h2>
 <p>In this document, we will set up a neo4j aura instance in the cloud.</p>
 <p>Click on <a class="reference external" href="https://neo4j.com/cloud/aura/?ref=get-started-dropdown-cta">this</a> and press on <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Free</span></code>; this will take you to the registration page.</p>
 <figure class="align-center">
@@ -457,6 +475,7 @@ document.write(`
 <li><p>If you want to log back in, you can use this <a class="reference external" href="https://neo4j.com/cloud/platform/aura-graph-database/">URL</a>; Click on <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Free</span></code> and then login using your email and password. Once you log in you can see your databases.</p></li>
 </ul>
 </div>
+</section>
 <section id="resume-database">
 <h2>Resume Database<a class="headerlink" href="#resume-database" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -527,6 +546,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="dump.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Load Dumps (using pgadmin)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Mongodb_installation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">MongoDB installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -542,6 +579,8 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-video">Setting up graph database - video</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-instructions">Written instructions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>

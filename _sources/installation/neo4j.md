@@ -1,4 +1,25 @@
-# Neo4j
+# Neo4j (week 3)
+
+## Setting up graph database - video
+
+Week 3 and 4
+
+You will do everything mentioned below as part of worksheet 5. You must watch this video that talks about everything in worksheet 5. Here is the video link 
+
+[https://www.youtube.com/watch?v=i010tSnGmyI](https://www.youtube.com/watch?v=i010tSnGmyI)
+
+Here are the timestamps for each question:
+
+- 0:00 Brief Intro - The plan 
+- 1:38 Que 2 - WS 5
+- 06:45 Que 3 - WS 5
+- 11:56 Que 4 - WS 5
+- 17:01 Que 5 - WS 5
+- 22:40 Que 5 - WS 5 - some issues and fixes
+- 26:15 Que 6 - WS 4 - using a different package
+- 27:53 Conclusion and learnings
+
+## Written instructions
 
 In this document, we will set up a neo4j aura instance in the cloud.
 

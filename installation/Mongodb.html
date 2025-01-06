@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>MongoDB &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    <title>MongoDB (week 4) &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
   
   
@@ -147,14 +147,18 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview of Installation instructions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview first week installations and setup.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview and setup videos.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions Details</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyterlabtest.html">JuypterLab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Load Dumps (using pgadmin)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="neo4j.html">Neo4j (week 3)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
@@ -162,10 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/packagemanager.html">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -178,12 +179,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture8.html">Lecture 8: MQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture9.html">Lecture 9: MQL 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -367,7 +362,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>MongoDB</h1>
+    <h1>MongoDB (week 4)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,8 +388,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="mongodb">
-<h1>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mongodb-week-4">
+<h1>MongoDB (week 4)<a class="headerlink" href="#mongodb-week-4" title="Permalink to this headline">#</a></h1>
 <p>You must first set up an account in <a class="reference external" href="https://www.mongodb.com/cloud/atlas/register">mongoDB atlas</a>. MongoDB Atlas is a cloud service that mongoDB provides.</p>
 <p><img alt="" src="../_images/verifyemailmongo.png" /></p>
 <p>After you verify your email address, you will see a screen like the one below; Here are the options that I selected</p>

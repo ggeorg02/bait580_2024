@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Working with dumps &#8212; BAIT 580A - Topics in Information Technology Management</title>
+    <title>Importance of package manager &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
   
   
@@ -61,10 +61,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'additional/dumpscommand';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'additional/packagemanager';</script>
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regrade requests" href="regrade.html" />
+    <link rel="prev" title="Views" href="views.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -162,11 +164,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../installation/Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packagemanager.html">Importance of package manager</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -233,7 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/additional/dumpscommand.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ggeorg02/BAIT580/master?urlpath=tree/additional/packagemanager.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -282,7 +284,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/additional/dumpscommand.ipynb" target="_blank"
+      <li><a href="https://github.com/ggeorg02/BAIT580/edit/master/additional/packagemanager.ipynb" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -299,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Fadditional/dumpscommand.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ggeorg02/BAIT580/issues/new?title=Issue%20on%20page%20%2Fadditional/packagemanager.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -329,7 +331,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/additional/dumpscommand.ipynb" target="_blank"
+      <li><a href="../_sources/additional/packagemanager.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +411,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Working with dumps</h1>
+    <h1>Importance of package manager</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -423,27 +425,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="working-with-dumps">
-<h1>Working with dumps<a class="headerlink" href="#working-with-dumps" title="Permalink to this headline">#</a></h1>
-<p>Taking dumps comes in handy when you want to share a copy of your database with someone or if you’re going to keep it as a backup.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="importance-of-package-manager">
+<h1>Importance of package manager<a class="headerlink" href="#importance-of-package-manager" title="Permalink to this headline">#</a></h1>
+<p>Here are recorded videos that supplement your learning. These can be short videos made by the teaching team or tutorials hosted by TAs.</p>
 <ul class="simple">
-<li><p>How can I take a dump of the database that I already have.</p></li>
+<li><p><a class="reference external" href="https://canvas.ubc.ca/files/30831874/download?download_frd=1">Importance of package manager -conda</a> - from tutorial by &#64;daniel (last year)</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pg_dump<span class="w"> </span>-h<span class="w"> </span>mbandtweet.xxxxx.ca-central-1.rds.amazonaws.com<span class="w"> </span>--username<span class="o">=</span>postgres<span class="w"> </span>-n<span class="w"> </span>import<span class="w"> </span>-f<span class="w"> </span>import.sql
-</pre></div>
-</div>
-<p>Read more about how to take database dumps <a class="reference external" href="https://www.postgresql.org/docs/12/app-pgdump.html">here</a>.</p>
-<ul class="simple">
-<li><p>How can you load these dumps to make your schema and tables ready? (You want to know how to do this for your worksheet and assignment)</p></li>
-</ul>
-<p>psql -h HOST_NAME -U USER_NAME DATABASE &lt; PATH_TO_THE_.sql_DUMP_FILE</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>psql<span class="w"> </span>-h<span class="w"> </span>mbandtweet.xxxx.us-west-2.rds.amazonaws.com<span class="w"> </span>-U<span class="w"> </span>postgres<span class="w"> </span>postgres<span class="w"> </span>&lt;<span class="w"> </span>import.sql
-</pre></div>
-</div>
-<aside class="margin sidebar">
-<p class="sidebar-title"></p>
-<img alt="additional/img/demos.png" src="additional/img/demos.png" />
-</aside>
+<p>We will also be having a tutorial this year. Scheduled to happen Thur this week by Jordan Yu (TA) 5 - 6 pm.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -474,6 +462,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="views.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Views</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="regrade.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regrade requests</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
