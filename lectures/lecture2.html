@@ -149,25 +149,24 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview of Installation instructions</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../installation/awssummary.html">Overview first week installations and setup.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/awssummary.html">Overview and setup videos.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions Details</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../installation/conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/jupyterlabtest.html">JuypterLab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation/aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/pgadmin.html">pgAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/dump.html">Load Dumps (using pgadmin)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../installation/Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/packagemanager.html">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -180,12 +179,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture5.html">Lecture 5: Beyond RDBMS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture6.html">Lecture 6: CQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -458,7 +451,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-setting-up-rds-and-connection-to-cloud">
 <h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this headline">#</a></h1>
-<p>Gittu George, January 11 2024</p>
+<p>Gittu George, January 9 2025</p>
 <section id="todays-agenda">
 <h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -561,6 +554,62 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;load_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;sql&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2369,</span> in <span class="ni">InteractiveShell.run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2367</span>     <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2368</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2369</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2371</span> <span class="c1"># The code below prevents the output from being displayed</span>
+<span class="g g-Whitespace">   </span><span class="mi">2372</span> <span class="c1"># when using magics with decodator @output_can_be_silenced</span>
+<span class="g g-Whitespace">   </span><span class="mi">2373</span> <span class="c1"># when the last Python token in the expression is a &#39;;&#39;.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2374</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">magic</span><span class="o">.</span><span class="n">MAGIC_OUTPUT_CAN_BE_SILENCED</span><span class="p">,</span> <span class="kc">False</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023/lib/python3.11/site-packages/IPython/core/magics/extension.py:33,</span> in <span class="ni">ExtensionMagics.load_ext</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">module_str</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>     <span class="k">raise</span> <span class="n">UsageError</span><span class="p">(</span><span class="s1">&#39;Missing module name.&#39;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">33</span> <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">extension_manager</span><span class="o">.</span><span class="n">load_extension</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="k">if</span> <span class="n">res</span> <span class="o">==</span> <span class="s1">&#39;already loaded&#39;</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The </span><span class="si">%s</span><span class="s2"> extension is already loaded. To reload it, use:&quot;</span> <span class="o">%</span> <span class="n">module_str</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023/lib/python3.11/site-packages/IPython/core/extensions.py:76,</span> in <span class="ni">ExtensionManager.load_extension</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">69</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Load an IPython extension by its module name.</span>
+<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd"> Returns the string &quot;already loaded&quot; if the extension is already loaded,</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd"> &quot;no load function&quot; if the module doesn&#39;t have a load_ipython_extension</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="sd"> function, or None if it succeeded.</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">76</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_load_extension</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">77</span> <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">78</span>     <span class="k">if</span> <span class="n">module_str</span> <span class="ow">in</span> <span class="n">BUILTINS_EXTS</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023/lib/python3.11/site-packages/IPython/core/extensions.py:91,</span> in <span class="ni">ExtensionManager._load_extension</span><span class="nt">(self, module_str)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="k">if</span> <span class="n">module_str</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>         <span class="n">mod</span> <span class="o">=</span> <span class="n">import_module</span><span class="p">(</span><span class="n">module_str</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">mod</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="n">module_str</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_load_ipython_extension</span><span class="p">(</span><span class="n">mod</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/jb2023/lib/python3.11/importlib/__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1206,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1178,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1142,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;sql&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>Now we need the host address of where the database is stored, along with a username and a password.</p>
 <aside class="margin sidebar">
@@ -615,12 +664,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(psycopg2.OperationalError) could not translate host name &quot;database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com&quot; to address: nodename nor servname provided, or not known
-
-(Background on this error at: https://sqlalche.me/e/14/e3q8)
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Connected: postgres@postgres&#39;
 </pre></div>
 </div>
 </div>
@@ -639,13 +683,116 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+9 rows affected.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>schemaname</th>
+            <th>tablename</th>
+            <th>tableowner</th>
+            <th>tablespace</th>
+            <th>hasindexes</th>
+            <th>hasrules</th>
+            <th>hastriggers</th>
+            <th>rowsecurity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>tweets</td>
+            <td>stockvalues</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>fakedata</td>
+            <td>testindex</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>tweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>False</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>symbols</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>cashtags</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>cleantweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>users</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>True</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>replies</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+        <tr>
+            <td>tweets</td>
+            <td>retweets</td>
+            <td>postgres</td>
+            <td>None</td>
+            <td>False</td>
+            <td>False</td>
+            <td>True</td>
+            <td>False</td>
+        </tr>
+    </tbody>
+</table></div></div>
 </div>
 <p>Let’s run some SQL statements now. Let’s retrieve the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">population</span></code> columns from the <code class="docutils literal notranslate"><span class="pre">country</span></code> table:</p>
 <div class="cell docutils container">
@@ -655,13 +802,71 @@ Connection info needed in SQLAlchemy format, example:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+10 rows affected.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+    </tbody>
+</table></div></div>
 </div>
 <section id="limiting-returned-and-displayed-rows">
 <h4>Limiting returned and displayed rows<a class="headerlink" href="#limiting-returned-and-displayed-rows" title="Permalink to this headline">#</a></h4>
@@ -685,13 +890,72 @@ Connection info needed in SQLAlchemy format, example:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+6121 rows affected.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 <p>Looks good. Let’s apply the magic to an entire cell so that we can break the lines:</p>
 <div class="cell docutils container">
@@ -703,13 +967,72 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+6121 rows affected.
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 </section>
 <section id="assigning-returned-rows-to-python-variables">
@@ -722,10 +1045,8 @@ Connection info needed in SQLAlchemy format, example:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+6121 rows affected.
 </pre></div>
 </div>
 </div>
@@ -741,10 +1062,9 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
-Connection info needed in SQLAlchemy format, example:
-               postgresql://username:password@hostname/dbname
-               or an existing connection: dict_keys([])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+6121 rows affected.
+Returning data to local variable query_output
 </pre></div>
 </div>
 </div>
@@ -755,6 +1075,69 @@ Connection info needed in SQLAlchemy format, example:
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table>
+    <thead>
+        <tr>
+            <th>symbolid</th>
+            <th>nasdaqsymbol</th>
+            <th>securityname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>A</td>
+            <td>Agilent Technologies, Inc. Common Stock</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>AA</td>
+            <td>Alcoa Corporation Common Stock </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>AAA</td>
+            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>AAAU</td>
+            <td>Goldman Sachs Physical Gold ETF Shares</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>AAC</td>
+            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>AAC=</td>
+            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>AAC+</td>
+            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>AAIC</td>
+            <td>Arlington Asset Investment Corp Class A (new)</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>AAIC-B</td>
+            <td>Arlington Asset Investment Corp 7.00% </td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>AAIC-C</td>
+            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
+        </tr>
+    </tbody>
+</table>
+<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 <p>Now you can use the <code class="docutils literal notranslate"><span class="pre">query_output</span></code> dataframe to do any other analysis or visualization that you learned in your other courses.</p>
 </section>

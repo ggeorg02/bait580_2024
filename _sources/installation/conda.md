@@ -29,7 +29,7 @@ Python 3.8.5
 ```
 ## Setting up environment
 
-Now let us create an environment that we will be using for this course. We are providing you with a conda environment file which is available here. You can download [this file](https://canvas.ubc.ca/files/30845979/download?download_frd=1) and create a conda environment for the course and activate it as follows.
+Now let us create an environment that we will be using for this course. We are providing you with a conda environment file which is available here. You can download [this file](https://canvas.ubc.ca/files/37176170/download?download_frd=1) and create a conda environment for the course and activate it as follows.
 
 ```bash
 (base) ggeorg02@MacBook-Pro ~ % conda env create -f bait580_2024.yml 
