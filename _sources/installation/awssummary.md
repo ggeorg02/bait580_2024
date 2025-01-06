@@ -1,4 +1,4 @@
-# Overview first week installations and setup.
+# Overview and setup videos.
 
 ```{note}
 Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this page to guide you through the things in a sequential order. You will also find various sources for assistance, including our lectures,  videos, or Office Hours, or a combination of all three. Hopefully, we will all navigate through this week smoothly.
