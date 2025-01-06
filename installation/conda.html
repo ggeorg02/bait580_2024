@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="JuypterLab" href="jupyterlabtest.html" />
-    <link rel="prev" title="Overview first week installations and setup." href="awssummary.html" />
+    <link rel="prev" title="Overview and setup videos." href="awssummary.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -149,25 +149,24 @@ const thebe_selector_output = ".output, .cell_output"
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview of Installation instructions</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview and setup videos.</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions Details</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview first week installations and setup.</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyterlabtest.html">JuypterLab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Load Dumps (using pgadmin)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/packagemanager.html">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -180,12 +179,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture8.html">Lecture 8: MQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture9.html">Lecture 9: MQL 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -421,25 +414,27 @@ Python<span class="w"> </span><span class="m">3</span>.8.5
 <section id="setting-up-environment">
 <h2>Setting up environment<a class="headerlink" href="#setting-up-environment" title="Permalink to this headline">#</a></h2>
 <p>Now let us create an environment that we will be using for this course. We are providing you with a conda environment file which is available here. You can download <a class="reference external" href="https://canvas.ubc.ca/files/30845979/download?download_frd=1">this file</a> and create a conda environment for the course and activate it as follows.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bait580env.yml
-<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>bait580env
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>env<span class="w"> </span>create<span class="w"> </span>-f<span class="w"> </span>bait580_2024.yml<span class="w"> </span>
+<span class="o">(</span>base<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%<span class="w"> </span>conda<span class="w"> </span>activate<span class="w"> </span>bait580_2024
 </pre></div>
 </div>
+<p>This is how it looks after you run the above commands.</p>
+<p><img alt="alt text" src="../_images/outputshell.png" /></p>
 <p>Note that this is not a complete list of the packages we’ll be using in the course and there might be a few packages you will be installing using conda install later in the course. But this is a good enough list to get you started.</p>
 <p>The above command activates the MBAN environment and will show the following in the terminal.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>MBAN<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>bait580_2024<span class="o">)</span><span class="w"> </span>ggeorg02@MacBook-Pro<span class="w"> </span>~<span class="w"> </span>%
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Notice the (base) changed to the (MBAN) once the MBAN environment is activated.</p>
+<p>Notice the (base) changed to the (bait580_2024) once the bait580_2024 environment is activated.</p>
 </div>
 <p><a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/tasks/install-packages/#installing-a-conda-package">Here</a> are instructions on installing any additional packages using conda.</p>
 </section>
 <section id="importance-of-environment">
 <h2>Importance of environment<a class="headerlink" href="#importance-of-environment" title="Permalink to this headline">#</a></h2>
 <p>Python environment management is important for properly organizing your packages in a python environment because it ensures that all developers work in the same environment with the same packages and versions. The primary use of anaconda is to manage your python environment. You will definitely see this and use it when you start working on a large data science project. If you understand its value, you will also use it for your projects to organize your python environments with other courses/projects. This also helps with deployments, as the code can be tested in the same environment in which it will be deployed. It also allows for testing the effects of upgrading packages by creating a new environment with the updated packages.</p>
-<p>In our case, the developer (in this situation, me) is sharing a specific environment called “bait580env.yml” with other developers (you all) to use. To create a new environment using the “bait580env.yml” file, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">bait580env.yml</span></code>. In addition, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nb_conda_kernels</span></code> to install in base environment so that you can easily select all available environments from your jupyter.</p>
+<p>In our case, the developer (in this situation, me) is sharing a specific environment called “bait580_2024.yml” with other developers (you all) to use. To create a new environment using the “bait580_2024.yml” file, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">env</span> <span class="pre">create</span> <span class="pre">-f</span> <span class="pre">bait580_2024.yml</span></code>. In addition, you can use the command <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nb_conda_kernels</span></code> to install in base environment so that you can easily select all available environments from your jupyter.</p>
 <p>Please read more about it <a class="reference external" href="https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/">here</a></p>
 </section>
 </section>
@@ -478,7 +473,7 @@ Python<span class="w"> </span><span class="m">3</span>.8.5
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Overview first week installations and setup.</p>
+        <p class="prev-next-title">Overview and setup videos.</p>
       </div>
     </a>
     <a class="right-next"
