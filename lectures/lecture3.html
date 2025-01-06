@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 3: Disk Management and Indexes &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 4: (de)Normalization &amp; Data Warehousing" href="lecture4.html" />
     <link rel="prev" title="Lecture 2: Setting up RDS and connection to cloud" href="lecture2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -206,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -408,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -479,13 +457,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-3-disk-management-and-indexes">
-<h1>Lecture 3: Disk Management and Indexes<a class="headerlink" href="#lecture-3-disk-management-and-indexes" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 3: Disk Management and Indexes<a class="headerlink" href="#lecture-3-disk-management-and-indexes" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, January 16 2024</p>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>HOW do humans store and search data?</p></li>
 <li><p>HOW does Postgres store data?</p></li>
@@ -497,7 +475,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>You will apply knowledge of disk management and query structure to optimize complex queries.</p></li>
 <li><p>You will understand the different types of INDEXes available in Postgres and the best-suited applications</p></li>
@@ -506,7 +484,7 @@ document.write(`
 <p>You already have the data we will use in this lecture from worksheet 2, but if not, please load it so that you can follow with me in lecture (You can load this data to your database using this <a class="reference external" href="https://canvas.ubc.ca/files/24584464/download?download_frd=1">dump</a>. It’s a zip file; do make sure you extract it.). I will use the <code class="docutils literal notranslate"><span class="pre">testindex</span></code> table from <code class="docutils literal notranslate"><span class="pre">fakedata</span></code> schema for demonstration.</p>
 </section>
 <section id="how-do-humans-store-and-search-data">
-<h2>How do humans store and search data?<a class="headerlink" href="#how-do-humans-store-and-search-data" title="Permalink to this heading">#</a></h2>
+<h2>How do humans store and search data?<a class="headerlink" href="#how-do-humans-store-and-search-data" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <a class="reference internal image-reference" href="../_images/lookcartoon.png"><img alt="../_images/lookcartoon.png" src="../_images/lookcartoon.png" style="width: 50%;" /></a>
@@ -519,7 +497,7 @@ document.write(`
 <p>OKAY, now you all know how humans search for data from a book; Postgres also store and search data similarly.</p>
 </section>
 <section id="how-does-postgres-store-data">
-<h2>How does Postgres store data?<a class="headerlink" href="#how-does-postgres-store-data" title="Permalink to this heading">#</a></h2>
+<h2>How does Postgres store data?<a class="headerlink" href="#how-does-postgres-store-data" title="Permalink to this headline">#</a></h2>
 <p>Information within a database is also stored in pages. A database page is not structured like in a book, but it’s structured like below.</p>
 <a class="reference internal image-reference" href="../_images/page.png"><img alt="../_images/page.png" src="../_images/page.png" style="width: 90%;" /></a>
 <p>.</p>
@@ -528,7 +506,7 @@ document.write(`
 <p>Read more about it <a class="reference external" href="https://www.postgresql.org/docs/current/storage-page-layout.html">here.</a></p>
 </section>
 <section id="how-does-postgres-search-data">
-<h2>How does Postgres search data?<a class="headerlink" href="#how-does-postgres-search-data" title="Permalink to this heading">#</a></h2>
+<h2>How does Postgres search data?<a class="headerlink" href="#how-does-postgres-search-data" title="Permalink to this headline">#</a></h2>
 <p>Let’s consider a complicated table.</p>
 <a class="reference internal image-reference" href="../_images/table.png"><img alt="../_images/table.png" src="../_images/table.png" style="width: 70%;" /></a>
 <p>For explanation, let’s assume that the contents in this table are stored in 3 page files. Here we are interested in finding the rows with the unique name that starts with <code class="docutils literal notranslate"><span class="pre">y</span></code>. A database, just like a kid, needs to search through the 3 pages to find the rows that contain a name that begins with <code class="docutils literal notranslate"><span class="pre">y</span></code>. This is a sequential search, and this is how a database search by default. This process could be slow if we got millions of rows spread across multiple pages, as the computer needs to go through the entire pages to find the names that start with y.</p>
@@ -564,7 +542,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Connected: postgres@postgres&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(psycopg2.OperationalError) could not translate host name &quot;database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com&quot; to address: nodename nor servname provided, or not known
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -579,12 +562,10 @@ DROP INDEX if exists fakedata.pgweb_idx;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -598,49 +579,13 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=3334.445..3353.914 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=3326.780..3353.899 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=3310.060..3310.062 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=3310.056..3310.057 rows=0 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3724110</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.334 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 3353.991 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>We are doing a pattern matching search to return all the <code class="docutils literal notranslate"><span class="pre">productname</span></code> that start with <code class="docutils literal notranslate"><span class="pre">fla</span></code>.</p>
 <div class="cell docutils container">
@@ -651,49 +596,13 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1700.229..1710.236 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1699.359..1710.227 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1693.468..1693.469 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.139..1691.540 rows=9271 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.088 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1710.270 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -702,7 +611,7 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
 <p>These are computers, so it’s faster than humans to go through all the pages, but it’s inefficient. <em><strong><em>Won’t it be cool to tell the database that the data you are looking for is only on certain pages, so database don’t want to go through all these pages !!!</em></strong></em> This is WHY we want indexes. We will see if indexing can speed up the previous query.</p>
 </section>
 <section id="what-are-indexes">
-<h2>WHAT are indexes?<a class="headerlink" href="#what-are-indexes" title="Permalink to this heading">#</a></h2>
+<h2>WHAT are indexes?<a class="headerlink" href="#what-are-indexes" title="Permalink to this headline">#</a></h2>
 <p>Indexes make a map of each of these rows effectively as where they are put into the page files so we can do a sequential scan of an index to find the pointer to page/pages this information is stored. So the database can go straight to those pages and skip the rest of the pages.</p>
 <a class="reference internal image-reference" href="../_images/indexscan.png"><img alt="../_images/indexscan.png" src="../_images/indexscan.png" style="width: 60%;" /></a>
 <p>Index gets applied to a column in a table. As we were querying on the column <code class="docutils literal notranslate"><span class="pre">productname</span></code>, let’s now apply an index to the column <code class="docutils literal notranslate"><span class="pre">productname</span></code> in the database and see how the query execution plan changes. Will it improve the speed? Let’s see..</p>
@@ -714,11 +623,10 @@ CREATE INDEX if not exists default_testindex_index ON fakedata.testindex (produc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -731,37 +639,13 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-6 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.035..0.035 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.031..0.031 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.212 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 0.065 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -773,40 +657,13 @@ WHERE productname LIKE &#39;fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-7 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=7.25..7.26 rows=1 width=8) (actual time=5.837..5.838 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..4.46 rows=1117 width=0) (actual time=0.045..4.370 rows=27814 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((productname ~&gt;=~ &#x27;fla&#x27;::text) AND (productname ~&lt;~ &#x27;flb&#x27;::text))</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.208 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 5.880 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p><em><strong><em>Hurrayyy!!!!</em></strong></em> It increased the speed, and you see that your query planner used the index to speed up queries.</p>
 <p>But keep in mind if the selection criteria are too broad, or the INDEX is too imprecise, the query planner will skip it.</p>
@@ -823,46 +680,13 @@ WHERE productname LIKE &#39;%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-9 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=2240.885..2247.992 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=2240.513..2247.982 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=2232.934..2232.935 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.019..1680.630 rows=3724110 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.082 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 2248.028 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>It’s good that database engines are smart enough to identify if it’s better to look at an index or perform a sequential scan. Here in this example, the database engine understands the query is too broad. But, ultimately, it’s going to search through entire rows, so it’s better to perform a sequential scan rather than look up at the index.</p>
 <p>As the index is making a map in the disk, it takes up disk storage. Let’s see how much space this index is taking up</p>
@@ -874,22 +698,13 @@ SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-1 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>pg_size_pretty</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>83 MB</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>Now we realize indexes are great! So let’s try some different queries.</p>
 <div class="cell docutils container">
@@ -903,54 +718,18 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1697.465..1704.312 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1697.112..1704.302 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1689.651..1689.652 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.078..1685.605 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.084 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1704.355 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>This was not too broad search; we were trying to return all the elements that contains <code class="docutils literal notranslate"><span class="pre">fla</span></code>. <em><strong><em>But why didn’t it speed things up? So we can’t always go with default indexing, and it might not be helpful in all cases.</em></strong></em> That’s why it’s important to know about different indexes and a general understanding of how it works. This will help you to choose indexes properly in various situations.</p>
 </section>
 <section id="different-kinds-of-indexes">
-<h2>Different kinds of indexes<a class="headerlink" href="#different-kinds-of-indexes" title="Permalink to this heading">#</a></h2>
+<h2>Different kinds of indexes<a class="headerlink" href="#different-kinds-of-indexes" title="Permalink to this headline">#</a></h2>
 <p>In this section, we will go through various kinds of indexes and syntax for creating them;</p>
 <ul class="simple">
 <li><p>B-Tree (binary search tree - btree)</p></li>
@@ -965,7 +744,7 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </pre></div>
 </div>
 <section id="b-tree">
-<h3>B-Tree<a class="headerlink" href="#b-tree" title="Permalink to this heading">#</a></h3>
+<h3>B-Tree<a class="headerlink" href="#b-tree" title="Permalink to this headline">#</a></h3>
 <p>B-Tree is the default index, and you can see we used this previously for column <code class="docutils literal notranslate"><span class="pre">productname</span></code>.</p>
 <p>General Syntax: Here the <code class="docutils literal notranslate"> <span class="pre">Operator_Classes</span></code> is optional. Read more on it <a class="reference external" href="https://www.postgresql.org/docs/current/indexes-opclass.html">here</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">INDEX</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">exists</span> <span class="n">index_name</span> <span class="n">ON</span> <span class="n">schema</span><span class="o">.</span><span class="n">tablename</span> <span class="p">(</span><span class="n">columnname</span> <span class="n">Operator_Classes</span><span class="p">);</span>
@@ -991,7 +770,7 @@ WHERE productname LIKE &#39;%fla%&#39;;
 <a class="reference internal image-reference" href="../_images/btreealph.png"><img alt="../_images/btreealph.png" src="../_images/btreealph.png" style="width: 80%;" /></a>
 </section>
 <section id="hash">
-<h3>Hash<a class="headerlink" href="#hash" title="Permalink to this heading">#</a></h3>
+<h3>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Cell values are hashed (encoded) form and mapped to address “buckets”</p></li>
 <li><p>Hash -&gt; bucket mappings -&gt; disk address</p></li>
@@ -1010,12 +789,10 @@ CREATE INDEX if not exists hash_testindex_index ON fakedata.testindex USING hash
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1028,40 +805,13 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-7 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.014..0.014 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.45..232.63 rows=58 width=0) (actual time=0.011..0.011 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on hash_testindex_index  (cost=0.00..4.43 rows=58 width=0) (actual time=0.010..0.010 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.109 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 0.038 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1073,49 +823,13 @@ WHERE productname LIKE &#39;fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1178.042..1184.899 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1178.032..1184.891 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1172.461..1172.462 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.053..1170.953 rows=9271 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.092 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1184.934 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1125,22 +839,13 @@ SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-1 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>pg_size_pretty</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>381 MB</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <ul class="simple">
 <li><p>Why do you think hash takes up more space here?</p></li>
@@ -1148,9 +853,9 @@ SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </ul>
 </section>
 <section id="gin">
-<h3>GIN<a class="headerlink" href="#gin" title="Permalink to this heading">#</a></h3>
+<h3>GIN<a class="headerlink" href="#gin" title="Permalink to this headline">#</a></h3>
 <p>Before talking about GIN indexes, let me give you a little bit of background on a full-text search. Full-text search is usually used if you have a column with sentences and you need to query rows based on the match for a particular string in that sentence. For example, say we want to get rows with <code class="docutils literal notranslate"><span class="pre">new</span></code> in the <code class="docutils literal notranslate"><span class="pre">sentence</span></code> column.</p>
-<table class="table">
+<table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>row number</p></th>
 <th class="head"><p>sentence</p></th>
@@ -1185,143 +890,13 @@ WHERE productname LIKE &#39;%new%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-27510 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>nameid</th>
-            <th>productid</th>
-            <th>productname</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>89802</td>
-            <td>31504</td>
-            <td>Italy newsstand</td>
-            <td>$66.23</td>
-        </tr>
-        <tr>
-            <td>89802</td>
-            <td>129142</td>
-            <td>drizzle newsprint</td>
-            <td>$76.29</td>
-        </tr>
-        <tr>
-            <td>89857</td>
-            <td>35008</td>
-            <td>news fortnight</td>
-            <td>$34.05</td>
-        </tr>
-        <tr>
-            <td>89939</td>
-            <td>129142</td>
-            <td>drizzle newsprint</td>
-            <td>$76.29</td>
-        </tr>
-        <tr>
-            <td>90009</td>
-            <td>80002</td>
-            <td>tray news</td>
-            <td>$8.63</td>
-        </tr>
-        <tr>
-            <td>90031</td>
-            <td>198374</td>
-            <td>newsprint pond</td>
-            <td>$50.85</td>
-        </tr>
-        <tr>
-            <td>90046</td>
-            <td>129142</td>
-            <td>drizzle newsprint</td>
-            <td>$76.29</td>
-        </tr>
-        <tr>
-            <td>90058</td>
-            <td>129142</td>
-            <td>drizzle newsprint</td>
-            <td>$76.29</td>
-        </tr>
-        <tr>
-            <td>90089</td>
-            <td>31504</td>
-            <td>Italy newsstand</td>
-            <td>$66.23</td>
-        </tr>
-        <tr>
-            <td>90192</td>
-            <td>30475</td>
-            <td>news pheasant</td>
-            <td>$58.80</td>
-        </tr>
-        <tr>
-            <td>90252</td>
-            <td>93065</td>
-            <td>criminal newsstand</td>
-            <td>$5.81</td>
-        </tr>
-        <tr>
-            <td>90300</td>
-            <td>113322</td>
-            <td>perfume newsprint</td>
-            <td>$90.00</td>
-        </tr>
-        <tr>
-            <td>90443</td>
-            <td>30475</td>
-            <td>news pheasant</td>
-            <td>$58.80</td>
-        </tr>
-        <tr>
-            <td>90455</td>
-            <td>145121</td>
-            <td>newsprint place</td>
-            <td>$48.11</td>
-        </tr>
-        <tr>
-            <td>90474</td>
-            <td>129142</td>
-            <td>drizzle newsprint</td>
-            <td>$76.29</td>
-        </tr>
-        <tr>
-            <td>90490</td>
-            <td>231226</td>
-            <td>carpenter newsstand</td>
-            <td>$71.82</td>
-        </tr>
-        <tr>
-            <td>90509</td>
-            <td>192628</td>
-            <td>hemp news</td>
-            <td>$48.81</td>
-        </tr>
-        <tr>
-            <td>90616</td>
-            <td>126880</td>
-            <td>newsstand chard</td>
-            <td>$41.71</td>
-        </tr>
-        <tr>
-            <td>90695</td>
-            <td>126880</td>
-            <td>newsstand chard</td>
-            <td>$41.71</td>
-        </tr>
-        <tr>
-            <td>90712</td>
-            <td>115033</td>
-            <td>news beautician</td>
-            <td>$67.54</td>
-        </tr>
-    </tbody>
-</table>
-<span style="font-style:italic;text-align:center;">30 rows, truncated to displaylimit of 20</span></div></div>
+</div>
 </div>
 <p>That’s why we go for full-text search; I found <a class="reference external" href="https://arctype.com/blog/postgres-full-text-search/">this</a> blog to help understand this.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">fakedata</span><span class="o">.</span><span class="n">testindex</span> 
@@ -1352,49 +927,13 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=29598.231..29601.045 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=29593.871..29601.033 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=29582.633..29582.634 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=18.318..29578.335 rows=3158 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 6.980 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 29601.098 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>Let’s see how much time it is going to take with indexing. Before that we want to create index for the column.</p>
 <div class="cell docutils container">
@@ -1409,12 +948,12 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-Done.
-Done.
-CPU times: user 24.5 ms, sys: 16.5 ms, total: 40.9 ms
-Wall time: 52.3 s
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
+CPU times: user 41 µs, sys: 5 µs, total: 46 µs
+Wall time: 49.8 µs
 </pre></div>
 </div>
 </div>
@@ -1429,55 +968,13 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-12 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=13.199..14.678 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=13.182..14.669 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=5.809..5.810 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=2.160..5.444 rows=3158 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=1156</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=4.318..4.319 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.198 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 14.723 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p><em>Wooohoooo!!! A great improvement!!</em> By creating a materialized view (We will see more about views in next class) with a computed <code class="docutils literal notranslate"><span class="pre">tsvector</span></code> column, we can make searches even faster, since it will not be necessary to redo the <code class="docutils literal notranslate"><span class="pre">to_tsvector</span></code> calls to verify index matches.</p>
 <div class="cell docutils container">
@@ -1490,12 +987,10 @@ CREATE INDEX if not exists pgweb_idx_mat ON fakedata.testindex_materialized USIN
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1509,43 +1004,13 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex_materialized WHERE produ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-8 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=17094.34..17094.35 rows=1 width=8) (actual time=7.656..7.658 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=62.97..17081.77 rows=5028 width=0) (actual time=3.984..6.855 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9160</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..61.71 rows=5028 width=0) (actual time=2.188..2.189 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.398 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 7.700 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>This indexing does speed up things if we want to search for a particular word from a column, like <code class="docutils literal notranslate"><span class="pre">flavor</span></code>. But if we want to search for some pattern within a sentence, then this index won’t help. EG the query what we trying from beginning</p>
 <div class="cell docutils container">
@@ -1559,53 +1024,17 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1585.257..1606.664 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1584.929..1606.655 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1572.141..1572.141 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.062..1568.632 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.081 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1606.700 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>Hence, we want a different flavor of gin indexing, trigram index. I found <a class="reference external" href="https://scoutapm.com/blog/how-to-make-text-searches-in-postgresql-faster-with-trigram-similarity">this</a> blog to help understand this.</p>
 <section id="trigrams-details-optional">
-<h4>Trigrams Details (OPTIONAL)<a class="headerlink" href="#trigrams-details-optional" title="Permalink to this heading">#</a></h4>
+<h4>Trigrams Details (OPTIONAL)<a class="headerlink" href="#trigrams-details-optional" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">Trigrams</span></code> are a special case of <a class="reference external" href="https://web.stanford.edu/~jurafsky/slp3/4.pdf">N-grams</a>. The concept relies on dividing the sentence into a sequence of three consecutive letters, and this result is considered as a <code class="docutils literal notranslate"><span class="pre">set</span></code>. Before performing this process</p>
 <ul class="simple">
 <li><p>Two blank spaces are added at the beginning.</p></li>
@@ -1623,11 +1052,10 @@ CREATE EXTENSION pg_trgm;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-(psycopg2.errors.DuplicateObject) extension &quot;pg_trgm&quot; already exists
-
-[SQL: CREATE EXTENSION pg_trgm;]
-(Background on this error at: https://sqlalche.me/e/14/f405)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1641,12 +1069,10 @@ CREATE INDEX pgweb_idx ON fakedata.testindex USING GIN (productname gin_trgm_ops
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
-Done.
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1663,55 +1089,13 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-12 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=124690.89..124690.90 rows=1 width=8) (actual time=132.111..138.470 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=124690.67..124690.88 rows=2 width=8) (actual time=131.608..138.461 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=123690.67..123690.68 rows=1 width=8) (actual time=122.986..122.987 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=2093.20..123455.56 rows=94043 width=0) (actual time=33.997..120.030 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=21059</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..2036.78 rows=225704 width=0) (actual time=27.706..27.706 rows=66772 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.161 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 138.513 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1724,49 +1108,19 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-8 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=4333.15..4333.16 rows=1 width=8) (actual time=17.011..17.012 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=256.66..4330.36 rows=1117 width=0) (actual time=4.770..16.420 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=8925</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..256.38 rows=1117 width=0) (actual time=3.331..3.331 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.099 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 17.051 ms</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>Finally, we see this query is using indexes, and it did speed up the query.</p>
 </section>
 </section>
 <section id="gist">
-<h3>GIST<a class="headerlink" href="#gist" title="Permalink to this heading">#</a></h3>
+<h3>GIST<a class="headerlink" href="#gist" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Supports many search types, including spatial and full text.</p></li>
 <li><p>Can be extended to custom data types</p></li>
@@ -1775,7 +1129,7 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 <a class="reference internal image-reference" href="../_images/gist.png"><img alt="../_images/gist.png" src="../_images/gist.png" style="width: 50%;" /></a>
 </section>
 <section id="brin">
-<h3>BRIN<a class="headerlink" href="#brin" title="Permalink to this heading">#</a></h3>
+<h3>BRIN<a class="headerlink" href="#brin" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Indexes block statistics for ordered data</p></li>
 <li><p>Block min &amp; max mapped to index</p></li>
@@ -1800,7 +1154,7 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 </section>
 </section>
 <section id="compared-to-other-services-optional">
-<h2>Compared to Other Services (optional)<a class="headerlink" href="#compared-to-other-services-optional" title="Permalink to this heading">#</a></h2>
+<h2>Compared to Other Services (optional)<a class="headerlink" href="#compared-to-other-services-optional" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>BigQuery, AWS RedShift</p>
 <ul>
@@ -1823,7 +1177,7 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 </ul>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Indexes are important to speed up operations</p></li>
 <li><p>Indexes are optimized to certain kinds of data</p></li>
@@ -1832,7 +1186,7 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 3 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1869,10 +1223,8 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture2.html"
@@ -1900,7 +1252,6 @@ WHERE productname LIKE &#39;%flavor%&#39;;
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1936,7 +1287,7 @@ WHERE productname LIKE &#39;%flavor%&#39;;
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1949,7 +1300,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1967,7 +1317,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1976,8 +1326,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

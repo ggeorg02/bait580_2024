@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 5: Beyond RDBMS &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 6: CQL 1" href="lecture6.html" />
     <link rel="prev" title="Lecture 4: (de)Normalization &amp; Data Warehousing" href="lecture4.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -206,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -408,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -513,14 +491,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-5-beyond-rdbms">
-<h1>Lecture 5: Beyond RDBMS<a class="headerlink" href="#lecture-5-beyond-rdbms" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 5: Beyond RDBMS<a class="headerlink" href="#lecture-5-beyond-rdbms" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, January 23 2024</p>
 <p><em>Attribution: This notebook is developed using some materials provided by neo4j.</em></p>
 <section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Remember: Late submissions won’t be accepted even for partial credits.</p></li>
 <li><p>Internet was not working when you tried to upload it at 11:45 PM is not an excuse. You are responsible for uploading it earlier so that situations like this don’t happen.</p></li>
@@ -530,7 +508,7 @@ document.write(`
 </ul>
 </section>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Where are we with RDBMS?</p></li>
 <li><p>Advantages &amp; Disadvantages of RDBMS</p></li>
@@ -543,7 +521,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Understand (traditional) limitations of RDBMS</p></li>
 <li><p>Understand the main forms of NoSQL/non-relational databases</p></li>
@@ -553,7 +531,7 @@ document.write(`
 </ul>
 </section>
 <section id="where-are-we-with-rdbms-halfway-check">
-<h2>Where are we with RDBMS? (halfway check)<a class="headerlink" href="#where-are-we-with-rdbms-halfway-check" title="Permalink to this heading">#</a></h2>
+<h2>Where are we with RDBMS? (halfway check)<a class="headerlink" href="#where-are-we-with-rdbms-halfway-check" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>We talked about Big Data generally and issues with data specifically</p></li>
 <li><p>We talked about cloud computing and set up an RDS instance in the cloud.</p></li>
@@ -564,7 +542,7 @@ document.write(`
 </ul>
 </section>
 <section id="story-time-justin-beiber-problem">
-<h2>Story Time (Justin Beiber problem)<a class="headerlink" href="#story-time-justin-beiber-problem" title="Permalink to this heading">#</a></h2>
+<h2>Story Time (Justin Beiber problem)<a class="headerlink" href="#story-time-justin-beiber-problem" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/justin.png" src="../_images/justin.png" />
@@ -575,7 +553,7 @@ document.write(`
 <p>The takeaway message from this story is that even though they had a big infrastructure on Postgres, no other techniques really worked out to solve this problem. And they want to rely on a hybrid solution ( Postgres and Cassandra) to this problem. Most data systems are hybrid in the era we are in; you will experience this when you start working in the industry.</p>
 </section>
 <section id="advantages-of-rdbms">
-<h2>Advantages of RDBMS<a class="headerlink" href="#advantages-of-rdbms" title="Permalink to this heading">#</a></h2>
+<h2>Advantages of RDBMS<a class="headerlink" href="#advantages-of-rdbms" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Uses a (semi) standard language (SQL) across all platforms.</p></li>
 <li><p>Uses ACID principles</p>
@@ -590,7 +568,7 @@ document.write(`
 </ul>
 </section>
 <section id="disadvantages-of-rdbms">
-<h2>Disadvantages of RDBMS<a class="headerlink" href="#disadvantages-of-rdbms" title="Permalink to this heading">#</a></h2>
+<h2>Disadvantages of RDBMS<a class="headerlink" href="#disadvantages-of-rdbms" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Write times and table locks reduce efficiency</p>
 <ul>
@@ -604,7 +582,7 @@ document.write(`
 </ul>
 </section>
 <section id="what-is-nosql">
-<h2>What is NoSQL?<a class="headerlink" href="#what-is-nosql" title="Permalink to this heading">#</a></h2>
+<h2>What is NoSQL?<a class="headerlink" href="#what-is-nosql" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/NoSQL.jpg" src="../_images/NoSQL.jpg" />
@@ -612,7 +590,7 @@ document.write(`
 </aside>
 <p>NoSQL (Not (Only) SQL) was there for quite a while now. It was first introduced in 1998 by <a class="reference external" href="http://www.strozzi.it/users/carlo/vitae.html">Carlo Strozzi’s</a> to call his lightweight, relational database that did not follow the standard SQL interface, and hence NoSQL. Later in 2000, this got popular as hashtag #NoSQL to discuss the advancement in the non-relational database world. It’s a trendy buzzword these days.</p>
 <section id="main-goals-of-nosql">
-<h3>Main Goals of NoSQL<a class="headerlink" href="#main-goals-of-nosql" title="Permalink to this heading">#</a></h3>
+<h3>Main Goals of NoSQL<a class="headerlink" href="#main-goals-of-nosql" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Reduce the dependence on fixed data schema.</p></li>
 <li><p>Reduce the dependence on a single point of truth.</p></li>
@@ -620,7 +598,7 @@ document.write(`
 </ul>
 </section>
 <section id="nosql-strengths">
-<h3>NoSQL Strengths<a class="headerlink" href="#nosql-strengths" title="Permalink to this heading">#</a></h3>
+<h3>NoSQL Strengths<a class="headerlink" href="#nosql-strengths" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>I came up with [the BASE] acronym with my students in their office earlier that year. I agree it is contrived a bit, but so is “ACID” – much more than people realize, so we figured it was good enough. <em><strong>- Eric Brewer</strong></em></p>
@@ -647,31 +625,31 @@ document.write(`
 </ul>
 </section>
 <section id="different-types-of-nosql-database">
-<h3>Different types of NoSQL database.<a class="headerlink" href="#different-types-of-nosql-database" title="Permalink to this heading">#</a></h3>
+<h3>Different types of NoSQL database.<a class="headerlink" href="#different-types-of-nosql-database" title="Permalink to this headline">#</a></h3>
 <section id="keyvalue-store">
-<h4>Key–value store<a class="headerlink" href="#keyvalue-store" title="Permalink to this heading">#</a></h4>
+<h4>Key–value store<a class="headerlink" href="#keyvalue-store" title="Permalink to this headline">#</a></h4>
 <p>In these kinds of databases, data is stored as key-value pairs. You can think of it as a giant dictionary object. In these cases, the database will contain a simple, unique string as the key, and that key will point to a large data value. The data value can be stored as an integer, a string, or a complex structure. This database is based on the Amazon Dynamo <a class="reference external" href="https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf">paper</a>.</p>
 <p>E.g., Amazon DynamoDB, Redis, Memcached</p>
 </section>
 <section id="document-store">
-<h4>Document store<a class="headerlink" href="#document-store" title="Permalink to this heading">#</a></h4>
+<h4>Document store<a class="headerlink" href="#document-store" title="Permalink to this headline">#</a></h4>
 <p>A type of key-value DB with internal (searchable) structure. A “document” contains all relevant data and has a unique key.</p>
 <p>Eg: ElasticSearch, MongoDB, AWS DocumentDB</p>
 </section>
 <section id="column-based">
-<h4>Column based<a class="headerlink" href="#column-based" title="Permalink to this heading">#</a></h4>
+<h4>Column based<a class="headerlink" href="#column-based" title="Permalink to this headline">#</a></h4>
 <p>Column-based databases are built based on google’s big table <a class="reference external" href="https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf">paper</a>. Our normal files and relational databases store data in the disk in a row based fashion, but here data is stored in a column-based fashion. Efficiency comes in filtering when a few columns are needed.</p>
 <p>E.g., Bigtable, Cassandra, Amazon Redshift.</p>
 </section>
 <section id="graph-based">
-<h4>Graph based<a class="headerlink" href="#graph-based" title="Permalink to this heading">#</a></h4>
+<h4>Graph based<a class="headerlink" href="#graph-based" title="Permalink to this headline">#</a></h4>
 <p>Objects are defined with properties, focused on relationships between objects. More to follow…</p>
 <p>E.g., Neo4j, OrientDB, AWS Neptune.</p>
 </section>
 </section>
 </section>
 <section id="introduction-to-graph-databases">
-<h2>Introduction to Graph Databases<a class="headerlink" href="#introduction-to-graph-databases" title="Permalink to this heading">#</a></h2>
+<h2>Introduction to Graph Databases<a class="headerlink" href="#introduction-to-graph-databases" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/bridge.png" src="../_images/bridge.png" />
@@ -691,19 +669,19 @@ document.write(`
 <p>We can model many things around us using simple graphs. Let’s draw out a simple example here…</p>
 <img alt="../_images/draw.png" src="../_images/draw.png" />
 <section id="graph-database-history">
-<h3>Graph database history<a class="headerlink" href="#graph-database-history" title="Permalink to this heading">#</a></h3>
+<h3>Graph database history<a class="headerlink" href="#graph-database-history" title="Permalink to this headline">#</a></h3>
 <p>A graph database is a database management system that will enable you to perform Create, Read, Update, and Delete (CRUD) operations on these graph models that we drew out before.</p>
 <p>Graph databases were there for quite a long time. It may be that it’s getting traction these days because of this big data and NoSQL era. So here, I drew out a timeline of graph databases.</p>
 <img alt="../_images/timeline.png" src="../_images/timeline.png" />
 <p>Graph databases are often used for OLTP; data is stored inside these databases as graphs, and relationship brings lots of value. So from a data scientist/ analyst perspective, relationships end up being the critical element for analyzing the data.</p>
 </section>
 <section id="use-cases-of-graph-databases">
-<h3>Use cases of graph databases<a class="headerlink" href="#use-cases-of-graph-databases" title="Permalink to this heading">#</a></h3>
+<h3>Use cases of graph databases<a class="headerlink" href="#use-cases-of-graph-databases" title="Permalink to this headline">#</a></h3>
 <img alt="../_images/usecase.png" src="../_images/usecase.png" />
 <p>You can find various use-cases from different domains. Please check <a class="reference external" href="https://neo4j.com/use-cases/">this out</a> to see use-cases for your domain of interest.</p>
 </section>
 <section id="how-do-we-interact-with-a-graph-database">
-<h3>How Do We Interact with a Graph Database?<a class="headerlink" href="#how-do-we-interact-with-a-graph-database" title="Permalink to this heading">#</a></h3>
+<h3>How Do We Interact with a Graph Database?<a class="headerlink" href="#how-do-we-interact-with-a-graph-database" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><em><strong>AQL (ArangoDB Query Language):</strong></em> a SQL-like query language used in ArangoDB for both documents and graphs</p></li>
 <li><p><em><strong>Cypher Query Language (Cypher):</strong></em> a graph query declarative language for Neo4j that enables ad hoc and programmatic (SQL-like) access to the graph.</p></li>
@@ -715,7 +693,7 @@ document.write(`
 <p>Source: Wikipedia</p>
 </section>
 <section id="neo4j-dbms">
-<h3>Neo4j DBMS<a class="headerlink" href="#neo4j-dbms" title="Permalink to this heading">#</a></h3>
+<h3>Neo4j DBMS<a class="headerlink" href="#neo4j-dbms" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>I recommend watching <a class="reference external" href="https://www.youtube.com/watch?v=GM9bB4ytGao">this video</a> on Neo4j.</p>
@@ -749,7 +727,7 @@ document.write(`
 <p>As we discussed before, Neo4j uses Cypher Query Language (CQL) to retrieve data. This graph engine is used to interpret the cypher query passed by the user to retrieve the data, whether it is on disk or cached in memory. Our next 2 lectures are dedicated to CQL.</p>
 </section>
 <section id="graph-model">
-<span id="graphmodel"></span><h3>Graph model<a class="headerlink" href="#graph-model" title="Permalink to this heading">#</a></h3>
+<span id="graphmodel"></span><h3>Graph model<a class="headerlink" href="#graph-model" title="Permalink to this headline">#</a></h3>
 <p>Let’s understand the key elements in a graph model. What we sketched before will be modeled like this in Neo4j. Understanding this is very important for querying the graph database.</p>
 <img alt="../_images/graph.png" src="../_images/graph.png" />
 <ul class="simple">
@@ -762,7 +740,7 @@ document.write(`
 </section>
 </section>
 <section id="cypher-art">
-<h2>Cypher Art<a class="headerlink" href="#cypher-art" title="Permalink to this heading">#</a></h2>
+<h2>Cypher Art<a class="headerlink" href="#cypher-art" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Querying a graph using Cypher is intuitive.</p></li>
 <li><p>Cypher is ASCII art</p></li>
@@ -777,7 +755,7 @@ document.write(`
 </aside>
 <p>We saw our dummy example and graph model. Two key elements that make up a graph are Nodes (also known as vertices) and Relationships (also known as edges). And a graph model consists of 5 elements Nodes, Labels, Properties Value, Relationships, Relationship types. So let’s see how these elements are represented in cypher language.</p>
 <section id="nodes">
-<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this heading">#</a></h3>
+<h3>Nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">#</a></h3>
 <p>Cypher uses a pair of parentheses like ( ), (n) to represent a node.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>( ) – represents an anonymous node.
 (n) – Here n represents a variable. All the nodes will be referred to this variable.
@@ -785,7 +763,7 @@ document.write(`
 </div>
 <p>We can specify the nodes we want based on the Label and/or properties inside ( ).</p>
 <section id="labels">
-<h4>Labels<a class="headerlink" href="#labels" title="Permalink to this heading">#</a></h4>
+<h4>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(:Label) – returns all nodes with specified Label
 (variable:Label) – returns all nodes with specified Label to variable
 (:Label1:Label2) – returns all nodes with Label1 and Label2
@@ -794,7 +772,7 @@ document.write(`
 </div>
 </section>
 <section id="property-for-nodes">
-<h4>Property for nodes<a class="headerlink" href="#property-for-nodes" title="Permalink to this heading">#</a></h4>
+<h4>Property for nodes<a class="headerlink" href="#property-for-nodes" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">variable</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">})</span>
 <span class="p">(</span><span class="n">variable</span><span class="p">:</span><span class="n">Label</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">})</span>
 <span class="p">(</span><span class="n">variable</span> <span class="p">{</span><span class="n">propertyKey1</span><span class="p">:</span> <span class="n">propertyValue1</span><span class="p">,</span> <span class="n">propertyKey2</span><span class="p">:</span> <span class="n">propertyValue2</span><span class="p">})</span>
@@ -803,7 +781,7 @@ document.write(`
 </div>
 </section>
 <section id="let-s-work-out-our-nodes">
-<h4>Let’s work out our nodes<a class="headerlink" href="#let-s-work-out-our-nodes" title="Permalink to this heading">#</a></h4>
+<h4>Let’s work out our nodes<a class="headerlink" href="#let-s-work-out-our-nodes" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">git</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Gittu&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
 <span class="p">(</span><span class="n">mik</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Mike&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Associate Professor&#39;</span><span class="p">})</span>
 <span class="p">(</span><span class="n">tom</span><span class="p">:</span><span class="n">PERSON</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span><span class="n">profession</span><span class="p">:</span><span class="s1">&#39;Postdoctoral Fellow&#39;</span><span class="p">})</span>
@@ -815,7 +793,7 @@ document.write(`
 </section>
 </section>
 <section id="relationships">
-<h3>Relationships<a class="headerlink" href="#relationships" title="Permalink to this heading">#</a></h3>
+<h3>Relationships<a class="headerlink" href="#relationships" title="Permalink to this headline">#</a></h3>
 <p>Syntax: Specifying aliases for column headings</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">()</span> <span class="o">//</span> <span class="n">a</span> <span class="n">node</span>
 <span class="p">()</span><span class="o">--</span><span class="p">()</span> <span class="o">//</span> <span class="mi">2</span> <span class="n">nodes</span> <span class="n">have</span> <span class="n">some</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">relationship</span>
@@ -829,20 +807,20 @@ document.write(`
 Just like how # is in python &amp; how – in SQL</p>
 </div>
 <section id="relationship-type">
-<h4>Relationship type<a class="headerlink" href="#relationship-type" title="Permalink to this heading">#</a></h4>
+<h4>Relationship type<a class="headerlink" href="#relationship-type" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span><span class="p">]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="properties-for-relationships">
-<h4>Properties for relationships<a class="headerlink" href="#properties-for-relationships" title="Permalink to this heading">#</a></h4>
+<h4>Properties for relationships<a class="headerlink" href="#properties-for-relationships" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
 <span class="p">(</span><span class="n">node1</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">REL_TYPE</span> <span class="p">{</span><span class="n">propertyKey</span><span class="p">:</span> <span class="n">propertyValue</span><span class="p">,</span> <span class="n">propertyKey2</span><span class="p">:</span> <span class="n">propertyValue2</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">node2</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="let-s-work-out-our-relationships">
-<h4>Let’s work out our relationships<a class="headerlink" href="#let-s-work-out-our-relationships" title="Permalink to this heading">#</a></h4>
+<h4>Let’s work out our relationships<a class="headerlink" href="#let-s-work-out-our-relationships" title="Permalink to this headline">#</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">git</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pan</span><span class="p">)</span>
 <span class="p">(</span><span class="n">mik</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">90</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
 <span class="p">(</span><span class="n">tom</span><span class="p">)</span><span class="o">-</span><span class="p">[:</span><span class="n">LIKE</span> <span class="p">{</span><span class="n">percent</span><span class="p">:</span> <span class="mi">100</span><span class="p">}]</span><span class="o">-&gt;</span><span class="p">(</span><span class="n">pol</span><span class="p">)</span>
@@ -871,7 +849,7 @@ Just like how # is in python &amp; how – in SQL</p>
 </section>
 </section>
 <section id="setting-up-your-graph-database">
-<h2>Setting up your graph database<a class="headerlink" href="#setting-up-your-graph-database" title="Permalink to this heading">#</a></h2>
+<h2>Setting up your graph database<a class="headerlink" href="#setting-up-your-graph-database" title="Permalink to this headline">#</a></h2>
 <p>Now we are quite knowledgeable about graph databases, and in particular, with Neo4j, we will set up our graph database(neo4j).</p>
 <p>You can install neo4j</p>
 <ul class="simple">
@@ -886,16 +864,16 @@ Just like how # is in python &amp; how – in SQL</p>
 <p>We will be setting up our neo4j in the cloud. There are a couple of options to do it, either we can spin up an ec2 instance in AWS and install neo4j in there, but remember doing it this way means we need to manage neo4j for all the software updates, system maintenance, and other admin tasks. Recently, in 2019, neo4j came up with its own managed cloud service called neo4j Aura. So we will be using neo4j aura for this course. Follow the instructions under <a class="reference internal" href="../installation/neo4j.html"><span class="doc std std-doc">installation instructions</span></a> to setup this.</p>
 </section>
 <section id="how-to-connect">
-<h2>How to connect?<a class="headerlink" href="#how-to-connect" title="Permalink to this heading">#</a></h2>
+<h2>How to connect?<a class="headerlink" href="#how-to-connect" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Command-line</p></li>
 <li><p>Neo4j Browser - we will use this to load the data for worksheets and labs</p></li>
 <li><p>Python py2neo (drivers) - we use this to connect to the graph database from our notebook.</p></li>
 </ul>
 <section id="via-neo4j-browser">
-<h3>via Neo4j Browser<a class="headerlink" href="#via-neo4j-browser" title="Permalink to this heading">#</a></h3>
+<h3>via Neo4j Browser<a class="headerlink" href="#via-neo4j-browser" title="Permalink to this headline">#</a></h3>
 <section id="loading-movie-dataset">
-<h4>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this heading">#</a></h4>
+<h4>Loading movie dataset<a class="headerlink" href="#loading-movie-dataset" title="Permalink to this headline">#</a></h4>
 <p>Let’s create better dummy data in neo4j to learn how to query the database using cypher. <a class="reference external" href="https://canvas.ubc.ca/files/24945340/download?download_frd=1">We will use a movie dataset that neo4j provides</a>. Let’s load the data first. Please download this file and copy it to your neo4j query space.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -907,11 +885,11 @@ Just like how # is in python &amp; how – in SQL</p>
 </div>
 </section>
 <section id="loading-dataset-for-assignment2">
-<h4>Loading dataset for assignment2<a class="headerlink" href="#loading-dataset-for-assignment2" title="Permalink to this heading">#</a></h4>
+<h4>Loading dataset for assignment2<a class="headerlink" href="#loading-dataset-for-assignment2" title="Permalink to this headline">#</a></h4>
 </section>
 </section>
 <section id="python-py2neo-drivers">
-<h3>Python py2neo (drivers)<a class="headerlink" href="#python-py2neo-drivers" title="Permalink to this heading">#</a></h3>
+<h3>Python py2neo (drivers)<a class="headerlink" href="#python-py2neo-drivers" title="Permalink to this headline">#</a></h3>
 <p>First, you need to install the packages; I recommend installing it using pip, as conda might not install dependencies. If you followed the instructions in <a class="reference internal" href="../installation/conda.html"><span class="doc std std-doc">conda</span></a> and have used the environment file and the environment <code class="docutils literal notranslate"><span class="pre">bait580env</span></code>, then you don’t want to worry about it as it is already installed for you.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import sys
 !{sys.executable} -m pip install py2neo
@@ -946,7 +924,16 @@ Just like how # is in python &amp; how – in SQL</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;m.title&#39;: &#39;The Matrix&#39;}]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">py2neo</span> <span class="kn">import</span> <span class="n">Graph</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_neo4j.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;py2neo&#39;
 </pre></div>
 </div>
 </div>
@@ -954,7 +941,7 @@ Just like how # is in python &amp; how – in SQL</p>
 </section>
 </section>
 <section id="can-you">
-<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Describe what a graph is.</p></li>
 <li><p>Describe what a graph database is.</p></li>
@@ -965,7 +952,7 @@ Just like how # is in python &amp; how – in SQL</p>
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 5 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1002,10 +989,8 @@ Just like how # is in python &amp; how – in SQL</p>
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture4.html"
@@ -1033,7 +1018,6 @@ Just like how # is in python &amp; how – in SQL</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1103,7 +1087,7 @@ Just like how # is in python &amp; how – in SQL</p>
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1116,7 +1100,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1134,7 +1117,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1143,8 +1126,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

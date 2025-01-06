@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>MongoDB installation &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Using psycopg2 package" href="../additional/pscopg2.html" />
     <link rel="prev" title="Load Dumps (using pgadmin)" href="dump.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -201,11 +180,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture8.html">Lecture 8: MQL 1</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture9.html">Lecture 9: MQL 2</a></li>
 </ul>
 
     </div>
@@ -408,22 +382,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -481,10 +453,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="mongodb-installation">
-<h1>MongoDB installation<a class="headerlink" href="#mongodb-installation" title="Permalink to this heading">#</a></h1>
+<h1>MongoDB installation<a class="headerlink" href="#mongodb-installation" title="Permalink to this headline">#</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>For assignment 3 and learn MongoDB.</p>
@@ -493,14 +465,14 @@ document.write(`
 <p>Probably one of the motivations why cloud computing is so popular is that there won’t be any installation pains. You no longer want to deal with any issues that can arise that are more specific to your own computer or wrong setup.</p>
 <p>Let’s get to the installation.</p>
 <section id="installation-videos">
-<h2>Installation videos<a class="headerlink" href="#installation-videos" title="Permalink to this heading">#</a></h2>
+<h2>Installation videos<a class="headerlink" href="#installation-videos" title="Permalink to this headline">#</a></h2>
 <p>If you are a person who can sometimes go wrong with the installation because you are very new to the IT world and software installations, then watching the following videos in order is the best option, as you can go with me step by step and do the installation.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <a class="reference internal image-reference" href="../_images/checkthis.png"><img alt="../_images/checkthis.png" src="../_images/checkthis.png" style="width: 90%;" /></a>
 </aside>
 <section id="mongodb-atlas-account-creation">
-<h3>MongoDB Atlas account creation<a class="headerlink" href="#mongodb-atlas-account-creation" title="Permalink to this heading">#</a></h3>
+<h3>MongoDB Atlas account creation<a class="headerlink" href="#mongodb-atlas-account-creation" title="Permalink to this headline">#</a></h3>
 <div class="admonition-img-src-img-videoicon-png-width-5 admonition">
 <p class="admonition-title"><a class="reference internal" href="../_images/videoicon.png"><img alt="../_images/videoicon.png" src="../_images/videoicon.png" style="width: 5%;" /></a></p>
 <p><a class="reference external" href="https://youtu.be/zSA9brtCmm0">This video</a> is in me showing you how to setup MongoDB atlas. In this video, you will be getting information on the following things.</p>
@@ -520,7 +492,7 @@ document.write(`
 </div>
 </section>
 <section id="connecting-to-mongodb-atlas-from-jupyter-notebook">
-<h3>Connecting to MongoDB Atlas from jupyter notebook<a class="headerlink" href="#connecting-to-mongodb-atlas-from-jupyter-notebook" title="Permalink to this heading">#</a></h3>
+<h3>Connecting to MongoDB Atlas from jupyter notebook<a class="headerlink" href="#connecting-to-mongodb-atlas-from-jupyter-notebook" title="Permalink to this headline">#</a></h3>
 <div class="admonition-img-src-img-videoicon-png-width-5 admonition">
 <p class="admonition-title"><a class="reference internal" href="../_images/videoicon.png"><img alt="../_images/videoicon.png" src="../_images/videoicon.png" style="width: 5%;" /></a></p>
 <p><a class="reference external" href="https://youtu.be/_Ci2Jj8Sqhk">This video</a> show you how to connect to MongDB atlas from jupyter notebook. In this video, you will be getting information on the following things.</p>
@@ -536,7 +508,7 @@ document.write(`
 </div>
 </section>
 <section id="connecting-to-mongodb-atlas-from-compass">
-<h3>Connecting to MongoDB Atlas from Compass<a class="headerlink" href="#connecting-to-mongodb-atlas-from-compass" title="Permalink to this heading">#</a></h3>
+<h3>Connecting to MongoDB Atlas from Compass<a class="headerlink" href="#connecting-to-mongodb-atlas-from-compass" title="Permalink to this headline">#</a></h3>
 <div class="admonition-img-src-img-videoicon-png-width-5 admonition">
 <p class="admonition-title"><a class="reference internal" href="../_images/videoicon.png"><img alt="../_images/videoicon.png" src="../_images/videoicon.png" style="width: 5%;" /></a></p>
 <p><a class="reference external" href="https://youtu.be/fKGNxi30UMs">This video</a> is showing GUI interface for interacting with MongoDB (MongoDB compass). In this video, you will be getting information on the following things.</p>
@@ -567,7 +539,7 @@ document.write(`
 </section>
 </section>
 <section id="atlas">
-<span id="id1"></span><h2>MongoDB atlas account creation<a class="headerlink" href="#atlas" title="Permalink to this heading">#</a></h2>
+<span id="id1"></span><h2>MongoDB atlas account creation<a class="headerlink" href="#atlas" title="Permalink to this headline">#</a></h2>
 <p>You must first set up an account in <a class="reference external" href="https://www.mongodb.com/cloud/atlas/register">mongoDB atlas</a>. MongoDB Atlas is a cloud service that MongoDB provides.</p>
 <p><img alt="" src="../_images/verifyemailmongo.png" /></p>
 <p>After you verify your email address, you will see a screen like the one below. Here are my options, but you can select whatever you want.</p>
@@ -582,7 +554,7 @@ document.write(`
 <p><img alt="" src="installation/img/advanced2.png%0D" /></p>
 <p><img alt="" src="../_images/advanced.png" /></p>
 <section id="setting-up-username-and-password">
-<h3>Setting up username and password<a class="headerlink" href="#setting-up-username-and-password" title="Permalink to this heading">#</a></h3>
+<h3>Setting up username and password<a class="headerlink" href="#setting-up-username-and-password" title="Permalink to this headline">#</a></h3>
 <p>After you click on Create Cluster, it will take you to a screen like the one below. It will take some time to create the cluster. In the below screen, you want to set up your username and password.</p>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
@@ -590,7 +562,7 @@ document.write(`
 </div>
 </section>
 <section id="whitelisting-ip-address">
-<h3>Whitelisting IP address<a class="headerlink" href="#whitelisting-ip-address" title="Permalink to this heading">#</a></h3>
+<h3>Whitelisting IP address<a class="headerlink" href="#whitelisting-ip-address" title="Permalink to this headline">#</a></h3>
 <p>Now, you need to add the IP addresses from which your database has access. Here, you will be given access to your laptop’s IP address. Depending on the router, the IP might change, so if you want to make sure that it always accepts connections, you can add 0.0.0.0/0 to the IP, and it will accept connections from any IP address (This is not a good practice, but for now we will do it.).</p>
 <blockquote>
 <div><p>NOTE: I am also showing you how to add an IP address in the video.</p>
@@ -598,7 +570,7 @@ document.write(`
 <p><img alt="" src="../_images/ipaddress.png" /></p>
 </section>
 <section id="loading-the-sample-data">
-<h3>Loading the sample data<a class="headerlink" href="#loading-the-sample-data" title="Permalink to this heading">#</a></h3>
+<h3>Loading the sample data<a class="headerlink" href="#loading-the-sample-data" title="Permalink to this headline">#</a></h3>
 <p>Click on load sample data.</p>
 <p><img alt="" src="../_images/loadsample.png" /></p>
 <p>It will show the following popup, and you can click on load sample data.</p>
@@ -610,7 +582,7 @@ document.write(`
 </section>
 </section>
 <section id="connecting-to-mongodb-from-compass">
-<span id="compass"></span><h2>Connecting to MongoDB from compass<a class="headerlink" href="#connecting-to-mongodb-from-compass" title="Permalink to this heading">#</a></h2>
+<span id="compass"></span><h2>Connecting to MongoDB from compass<a class="headerlink" href="#connecting-to-mongodb-from-compass" title="Permalink to this headline">#</a></h2>
 <p>Click on the connect button on the cluster you created. Then select connect with MongoDB Compass.</p>
 <p><img alt="" src="../_images/compass.png" /></p>
 <p>You will see all the instructions for connecting to the database. This includes downloading the compass application based on the OS and then using the connection string to connect to the database.</p>
@@ -630,7 +602,7 @@ document.write(`
 <p><img alt="" src="../_images/exploreschema.png" /></p>
 </section>
 <section id="connecting-to-mongodb-from-your-notebook">
-<span id="jupy"></span><h2>Connecting to MongoDB from your notebook<a class="headerlink" href="#connecting-to-mongodb-from-your-notebook" title="Permalink to this heading">#</a></h2>
+<span id="jupy"></span><h2>Connecting to MongoDB from your notebook<a class="headerlink" href="#connecting-to-mongodb-from-your-notebook" title="Permalink to this headline">#</a></h2>
 <p>Now, we are done with all the deployments. It is time to connect to it. We are connecting it from jupyter notebook.</p>
 <p>Add a credentials_mongodb.json file to your directory with the following information.</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -658,6 +630,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymongo&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -667,7 +651,7 @@ document.write(`
 </div>
 </div>
 <section id="accessing-databases">
-<h3>Accessing databases<a class="headerlink" href="#accessing-databases" title="Permalink to this heading">#</a></h3>
+<h3>Accessing databases<a class="headerlink" href="#accessing-databases" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
@@ -675,8 +659,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;exam&#39;,
- &#39;mds&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;mds&#39;,
  &#39;sample_airbnb&#39;,
  &#39;sample_analytics&#39;,
  &#39;sample_geospatial&#39;,
@@ -694,7 +677,7 @@ document.write(`
 </div>
 </section>
 <section id="accessing-collections">
-<h3>Accessing collections<a class="headerlink" href="#accessing-collections" title="Permalink to this heading">#</a></h3>
+<h3>Accessing collections<a class="headerlink" href="#accessing-collections" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;sample_mflix&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">list_collection_names</span><span class="p">()</span>
@@ -721,10 +704,10 @@ document.write(`
 </section>
 </section>
 <section id="faqs-some-common-installation-issues">
-<span id="faqs"></span><h2>FAQs (some common installation issues)<a class="headerlink" href="#faqs-some-common-installation-issues" title="Permalink to this heading">#</a></h2>
+<span id="faqs"></span><h2>FAQs (some common installation issues)<a class="headerlink" href="#faqs-some-common-installation-issues" title="Permalink to this headline">#</a></h2>
 </section>
 <section id="faq1-ssl-error">
-<h2>FAQ1: SSL Error<a class="headerlink" href="#faq1-ssl-error" title="Permalink to this heading">#</a></h2>
+<h2>FAQ1: SSL Error<a class="headerlink" href="#faq1-ssl-error" title="Permalink to this headline">#</a></h2>
 <p><em><strong>1) In windows machines, if you get a server timeout error like below</strong></em></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ServerSelectionTimeoutError</span><span class="p">:</span> <span class="n">ac</span><span class="o">-</span><span class="mi">6</span><span class="n">txag5o</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">00</span><span class="o">-</span><span class="mf">02.</span><span class="n">fixvcgm</span><span class="o">.</span><span class="n">mongodb</span><span class="o">.</span><span class="n">net</span><span class="p">:</span><span class="mi">27017</span><span class="p">:</span> <span class="p">[</span><span class="n">SSL</span><span class="p">:</span> <span class="n">CERTIFICATE_VERIFY_FAILED</span><span class="p">]</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">has</span> <span class="n">expired</span> <span class="p">(</span><span class="n">_ssl</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">992</span><span class="p">),</span><span class="n">ac</span><span class="o">-</span><span class="mi">6</span><span class="n">txag5o</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">00</span><span class="o">-</span><span class="mf">00.</span><span class="n">fixvcgm</span><span class="o">.</span><span class="n">mongodb</span><span class="o">.</span><span class="n">net</span><span class="p">:</span><span class="mi">27017</span><span class="p">:</span> <span class="p">[</span><span class="n">SSL</span><span class="p">:</span> <span class="n">CERTIFICATE_VERIFY_FAILED</span><span class="p">]</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">has</span> <span class="n">expired</span> <span class="p">(</span><span class="n">_ssl</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">992</span><span class="p">),</span><span class="n">ac</span><span class="o">-</span><span class="mi">6</span><span class="n">txag5o</span><span class="o">-</span><span class="n">shard</span><span class="o">-</span><span class="mi">00</span><span class="o">-</span><span class="mf">01.</span><span class="n">fixvcgm</span><span class="o">.</span><span class="n">mongodb</span><span class="o">.</span><span class="n">net</span><span class="p">:</span><span class="mi">27017</span><span class="p">:</span> <span class="p">[</span><span class="n">SSL</span><span class="p">:</span> <span class="n">CERTIFICATE_VERIFY_FAILED</span><span class="p">]</span> <span class="n">certificate</span> <span class="n">verify</span> <span class="n">failed</span><span class="p">:</span> <span class="n">certificate</span> <span class="n">has</span> <span class="n">expired</span> <span class="p">(</span><span class="n">_ssl</span><span class="o">.</span><span class="n">c</span><span class="p">:</span><span class="mi">992</span><span class="p">),</span> <span class="n">Timeout</span><span class="p">:</span> <span class="mi">30</span><span class="n">s</span><span class="p">,</span> <span class="n">Topology</span> <span class="n">Description</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">TopologyDescription</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">63</span><span class="n">d2f9f5ef1f9bd5911a6788</span><span class="p">,</span> <span class="n">topology_type</span><span class="p">:</span> <span class="n">ReplicaSetNoPrimary</span><span class="p">,</span> <span class="n">servers</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">ServerDescription</span> <span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-00.fixvcgm.mongodb.net&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span> <span class="n">server_type</span><span class="p">:</span> <span class="n">Unknown</span><span class="p">,</span> <span class="n">rtt</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">AutoReconnect</span><span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-00.fixvcgm.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:992)&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">ServerDescription</span> <span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-01.fixvcgm.mongodb.net&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span> <span class="n">server_type</span><span class="p">:</span> <span class="n">Unknown</span><span class="p">,</span> <span class="n">rtt</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">AutoReconnect</span><span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-01.fixvcgm.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:992)&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">ServerDescription</span> <span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-02.fixvcgm.mongodb.net&#39;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span> <span class="n">server_type</span><span class="p">:</span> <span class="n">Unknown</span><span class="p">,</span> <span class="n">rtt</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">AutoReconnect</span><span class="p">(</span><span class="s1">&#39;ac-6txag5o-shard-00-02.fixvcgm.mongodb.net:27017: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:992)&#39;</span><span class="p">)</span><span class="o">&gt;</span><span class="p">]</span><span class="o">&gt;</span>
 </pre></div>
@@ -748,13 +731,13 @@ document.write(`
 </div>
 </section>
 <section id="faq2-connection-bounce-error">
-<h2>FAQ2: connection bounce Error<a class="headerlink" href="#faq2-connection-bounce-error" title="Permalink to this heading">#</a></h2>
+<h2>FAQ2: connection bounce Error<a class="headerlink" href="#faq2-connection-bounce-error" title="Permalink to this headline">#</a></h2>
 <p><em><strong>2) If you are seeing your connection bouncing then you haven’t whitelisted your IP address. You can do it by following the instructions above.</strong></em></p>
 <img alt="../_images/bounce.png" src="../_images/bounce.png" />
 <img alt="../_images/bounce2.png" src="../_images/bounce2.png" />
 </section>
 <section id="faq3-cluster-has-conflicting-non-empty-namespace">
-<h2>FAQ3: Cluster has conflicting non-empty namespace.<a class="headerlink" href="#faq3-cluster-has-conflicting-non-empty-namespace" title="Permalink to this heading">#</a></h2>
+<h2>FAQ3: Cluster has conflicting non-empty namespace.<a class="headerlink" href="#faq3-cluster-has-conflicting-non-empty-namespace" title="Permalink to this headline">#</a></h2>
 <p><em><strong>3) An error occurred loading sample data: Target cluster has conflicting non-empty namespace with the dataset.</strong></em></p>
 <p>If you get this error when you try to load the sample data, you already have the same database within your Mongo cluster. You can delete the existing data from the database and reinitiate the process. There are many ways in which you can delete it, but the easiest way is to delete it from your mongo atlas. Here are a couple of screenshots to guide you through.</p>
 <p>Navigate to the collection and delete all the databases that you see there, like below.</p>
@@ -791,10 +774,8 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="dump.html"
@@ -822,7 +803,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -860,7 +840,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -873,7 +853,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -891,7 +870,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -900,8 +879,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

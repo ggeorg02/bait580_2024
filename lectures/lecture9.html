@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 9: MQL 2 &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,9 +65,10 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lecture 10:" href="lecture10.html" />
     <link rel="prev" title="Lecture 8: MQL 1" href="lecture8.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -77,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -120,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -148,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -162,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -205,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -407,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -482,10 +461,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-9-mql-2">
-<h1>Lecture 9: MQL 2<a class="headerlink" href="#lecture-9-mql-2" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 9: MQL 2<a class="headerlink" href="#lecture-9-mql-2" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, Feb 06, 2024</p>
 <p><em>Attribution: This notebook is developed using materials from DSCI 513 by Arman.</em></p>
 <div class="cell docutils container">
@@ -505,9 +484,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymongo&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="lecture-outline">
-<h2>Lecture outline<a class="headerlink" href="#lecture-outline" title="Permalink to this heading">#</a></h2>
+<h2>Lecture outline<a class="headerlink" href="#lecture-outline" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Operators in MongoDB</p></li>
 <li><p>Query conditionals</p></li>
@@ -515,13 +506,13 @@ document.write(`
 </ul>
 </section>
 <section id="and-operators-in-mongodb">
-<h2><code class="docutils literal notranslate"><span class="pre">$</span></code> and operators in MongoDB<a class="headerlink" href="#and-operators-in-mongodb" title="Permalink to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">$</span></code> and operators in MongoDB<a class="headerlink" href="#and-operators-in-mongodb" title="Permalink to this headline">#</a></h2>
 <p>In MongoDB, operators are denoted with a dollar sign <code class="docutils literal notranslate"><span class="pre">$</span></code>. For example, the comparison operators such as <code class="docutils literal notranslate"><span class="pre">$gte</span></code> which is equivalent to <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> in SQL or Python.</p>
 </section>
 <section id="comparison-operators">
-<h2>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this heading">#</a></h2>
+<h2>Comparison operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">#</a></h2>
 <section id="gt-gte-lt-lte">
-<h3><code class="docutils literal notranslate"><span class="pre">$gt</span></code>, <code class="docutils literal notranslate"><span class="pre">$gte</span></code>, <code class="docutils literal notranslate"><span class="pre">$lt</span></code>, <code class="docutils literal notranslate"><span class="pre">$lte</span></code><a class="headerlink" href="#gt-gte-lt-lte" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$gt</span></code>, <code class="docutils literal notranslate"><span class="pre">$gte</span></code>, <code class="docutils literal notranslate"><span class="pre">$lt</span></code>, <code class="docutils literal notranslate"><span class="pre">$lte</span></code><a class="headerlink" href="#gt-gte-lt-lte" title="Permalink to this headline">#</a></h3>
 <p>These operators have the same meaning as <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, and <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> in SQL or Python. For example, while a filter <code class="docutils literal notranslate"><span class="pre">{'runtime':</span> <span class="pre">200}</span></code> would return documents whose runtime is exactly 200 minutes, <code class="docutils literal notranslate"><span class="pre">{'runtime':</span> <span class="pre">{'$gte':</span> <span class="pre">200}}</span></code> would return documents whose runtime is greater that 200 minutes.</p>
 <p><strong>Example:</strong> Return the title, runtime, and production year of 5 movies with a runtime of 200 minutes or greater.</p>
 <div class="cell docutils container">
@@ -537,11 +528,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 240, &#39;title&#39;: &#39;Napoleon&#39;, &#39;year&#39;: 1927},
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;runtime&#39;: 399, &#39;title&#39;: &#39;Les vampires&#39;, &#39;year&#39;: 1915},
+ {&#39;runtime&#39;: 240, &#39;title&#39;: &#39;Napoleon&#39;, &#39;year&#39;: 1927},
  {&#39;runtime&#39;: 281, &#39;title&#39;: &#39;Les Misèrables&#39;, &#39;year&#39;: 1934},
  {&#39;runtime&#39;: 245, &#39;title&#39;: &#39;Flash Gordon&#39;, &#39;year&#39;: 1936},
- {&#39;runtime&#39;: 238, &#39;title&#39;: &#39;Gone with the Wind&#39;, &#39;year&#39;: 1939},
- {&#39;runtime&#39;: 201, &#39;title&#39;: &#39;Giant&#39;, &#39;year&#39;: 1956}]
+ {&#39;runtime&#39;: 238, &#39;title&#39;: &#39;Gone with the Wind&#39;, &#39;year&#39;: 1939}]
 </pre></div>
 </div>
 </div>
@@ -554,14 +545,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>199
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>227
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="ne">
-<h3><code class="docutils literal notranslate"><span class="pre">$ne</span></code><a class="headerlink" href="#ne" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$ne</span></code><a class="headerlink" href="#ne" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">$ne</span></code> (not equal) operator has the same meaning as <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span></code> in SQL or <code class="docutils literal notranslate"><span class="pre">!=</span></code> in Python.</p>
 <p><strong>Example:</strong> Find the title and the type of 5 documents in the <code class="docutils literal notranslate"><span class="pre">movies</span></code> collection that are not of type <code class="docutils literal notranslate"><span class="pre">movie</span></code>.</p>
 <div class="cell docutils container">
@@ -580,8 +571,8 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Forsyte Saga&#39;, &#39;type&#39;: &#39;series&#39;},
  {&#39;title&#39;: &#39;Scenes from a Marriage&#39;, &#39;type&#39;: &#39;series&#39;},
  {&#39;title&#39;: &#39;Ironiya sudby, ili S legkim parom!&#39;, &#39;type&#39;: &#39;series&#39;},
- {&#39;title&#39;: &#39;Sybil&#39;, &#39;type&#39;: &#39;series&#39;},
- {&#39;title&#39;: &#39;Jesus of Nazareth&#39;, &#39;type&#39;: &#39;series&#39;}]
+ {&#39;title&#39;: &#39;I, Claudius&#39;, &#39;type&#39;: &#39;series&#39;},
+ {&#39;title&#39;: &#39;Sybil&#39;, &#39;type&#39;: &#39;series&#39;}]
 </pre></div>
 </div>
 </div>
@@ -593,7 +584,7 @@ document.write(`
 </div>
 </section>
 <section id="in-nin">
-<h3><code class="docutils literal notranslate"><span class="pre">$in</span></code>, <code class="docutils literal notranslate"><span class="pre">$nin</span></code><a class="headerlink" href="#in-nin" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$in</span></code>, <code class="docutils literal notranslate"><span class="pre">$nin</span></code><a class="headerlink" href="#in-nin" title="Permalink to this headline">#</a></h3>
 <p>These two operators are equivalent to <code class="docutils literal notranslate"><span class="pre">IN</span></code> and <code class="docutils literal notranslate"><span class="pre">NOT</span> <span class="pre">IN</span></code> in SQL, or <code class="docutils literal notranslate"><span class="pre">in</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">in</span></code> in Python. They are used to check if the value of a field is equal (or not equal) to any value in a given list. What these operators do can also be imitated with <code class="docutils literal notranslate"><span class="pre">$or</span></code> or <code class="docutils literal notranslate"><span class="pre">$nor</span></code>, but these are more concise.</p>
 <p><strong>Example:</strong> Return the title, production year, and the cast of these movies: The Sixth Sense, Imitation Game, The Red Violin, Match Point, Forrest Gump.</p>
 <div class="cell docutils container">
@@ -657,7 +648,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4411
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4888
 </pre></div>
 </div>
 </div>
@@ -665,9 +656,9 @@ document.write(`
 </section>
 </section>
 <section id="logical-operators">
-<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this heading">#</a></h2>
+<h2>Logical operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">#</a></h2>
 <section id="implicit-and-and">
-<h3>Implicit AND, <code class="docutils literal notranslate"><span class="pre">$and</span></code><a class="headerlink" href="#implicit-and-and" title="Permalink to this heading">#</a></h3>
+<h3>Implicit AND, <code class="docutils literal notranslate"><span class="pre">$and</span></code><a class="headerlink" href="#implicit-and-and" title="Permalink to this headline">#</a></h3>
 <p>In MongoDB, specifying multiple conditions on a field or multiple fields implies an implicit logical AND and we don’t need to explicitly need to use <code class="docutils literal notranslate"><span class="pre">$and</span></code>. For example, in these filters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;$gte&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span> <span class="s1">&#39;$lte&#39;</span><span class="p">:</span> <span class="mi">2010</span><span class="p">}}</span>
 </pre></div>
@@ -693,26 +684,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2016, 5, 16, 3, 43, 15, 808000),
-  &#39;storeLocation&#39;: &#39;Seattle&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 26,
-   &#39;email&#39;: &#39;kupeen@gareha.ne&#39;,
-   &#39;satisfaction&#39;: 5},
-  &#39;couponUsed&#39;: True,
-  &#39;purchaseMethod&#39;: &#39;In store&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2016, 10, 22, 18, 50, 44, 216000),
-  &#39;storeLocation&#39;: &#39;Seattle&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 52,
-   &#39;email&#39;: &#39;nupzig@apubu.hu&#39;,
-   &#39;satisfaction&#39;: 3},
-  &#39;couponUsed&#39;: True,
-  &#39;purchaseMethod&#39;: &#39;In store&#39;}]
-</pre></div>
-</div>
-</div>
 </div>
 <p>The above query is equivalent to:</p>
 <div class="cell docutils container">
@@ -732,26 +703,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2016, 5, 16, 3, 43, 15, 808000),
-  &#39;storeLocation&#39;: &#39;Seattle&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 26,
-   &#39;email&#39;: &#39;kupeen@gareha.ne&#39;,
-   &#39;satisfaction&#39;: 5},
-  &#39;couponUsed&#39;: True,
-  &#39;purchaseMethod&#39;: &#39;In store&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2016, 10, 22, 18, 50, 44, 216000),
-  &#39;storeLocation&#39;: &#39;Seattle&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 52,
-   &#39;email&#39;: &#39;nupzig@apubu.hu&#39;,
-   &#39;satisfaction&#39;: 3},
-  &#39;couponUsed&#39;: True,
-  &#39;purchaseMethod&#39;: &#39;In store&#39;}]
-</pre></div>
-</div>
-</div>
 </div>
 <p><strong>Example:</strong> Using the <code class="docutils literal notranslate"><span class="pre">sample_supplies</span></code> database, find the number of sales made between October 1, 2014 and December 1, 2014.</p>
 <div class="cell docutils container">
@@ -766,11 +717,6 @@ document.write(`
             <span class="p">}</span>
         <span class="p">}</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>153
 </pre></div>
 </div>
 </div>
@@ -792,15 +738,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1861
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="or-nor">
-<h3><code class="docutils literal notranslate"><span class="pre">$or</span></code>, <code class="docutils literal notranslate"><span class="pre">$nor</span></code><a class="headerlink" href="#or-nor" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$or</span></code>, <code class="docutils literal notranslate"><span class="pre">$nor</span></code><a class="headerlink" href="#or-nor" title="Permalink to this headline">#</a></h3>
 <p>These are general logical OR/NOR operators. The difference with <code class="docutils literal notranslate"><span class="pre">$in</span></code>/<code class="docutils literal notranslate"><span class="pre">$nin</span></code> is that <code class="docutils literal notranslate"><span class="pre">$in</span></code>/<code class="docutils literal notranslate"><span class="pre">$nin</span></code> can be used for an equality condition on a single field, but <code class="docutils literal notranslate"><span class="pre">$or</span></code>/<code class="docutils literal notranslate"><span class="pre">$nor</span></code> are general and can be used with any boolean expression.</p>
 <p><strong>Example:</strong> Using the <code class="docutils literal notranslate"><span class="pre">sample_supplies</span></code> database, find 5 sales that were made in New York and were either paid by phone or didn’t use a coupon.</p>
 <div class="cell docutils container">
@@ -821,55 +762,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;saleDate&#39;: datetime.datetime(2017, 3, 21, 1, 54, 26, 657000),
-  &#39;storeLocation&#39;: &#39;New York&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;M&#39;,
-   &#39;age&#39;: 26,
-   &#39;email&#39;: &#39;rapifoozi@viupoen.bb&#39;,
-   &#39;satisfaction&#39;: 5},
-  &#39;couponUsed&#39;: True,
-  &#39;purchaseMethod&#39;: &#39;In store&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2013, 8, 21, 9, 36, 7, 188000),
-  &#39;storeLocation&#39;: &#39;New York&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 53,
-   &#39;email&#39;: &#39;se@nacwev.an&#39;,
-   &#39;satisfaction&#39;: 4},
-  &#39;couponUsed&#39;: False,
-  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2017, 9, 2, 15, 42, 22, 167000),
-  &#39;storeLocation&#39;: &#39;New York&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;M&#39;,
-   &#39;age&#39;: 34,
-   &#39;email&#39;: &#39;bubbecgu@odidecned.tf&#39;,
-   &#39;satisfaction&#39;: 3},
-  &#39;couponUsed&#39;: False,
-  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2015, 3, 6, 19, 13, 35, 155000),
-  &#39;storeLocation&#39;: &#39;New York&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 42,
-   &#39;email&#39;: &#39;jecosab@copfatma.af&#39;,
-   &#39;satisfaction&#39;: 3},
-  &#39;couponUsed&#39;: False,
-  &#39;purchaseMethod&#39;: &#39;Phone&#39;},
- {&#39;saleDate&#39;: datetime.datetime(2015, 10, 14, 23, 25, 30, 610000),
-  &#39;storeLocation&#39;: &#39;New York&#39;,
-  &#39;customer&#39;: {&#39;gender&#39;: &#39;F&#39;,
-   &#39;age&#39;: 39,
-   &#39;email&#39;: &#39;fip@ruc.cg&#39;,
-   &#39;satisfaction&#39;: 5},
-  &#39;couponUsed&#39;: False,
-  &#39;purchaseMethod&#39;: &#39;Phone&#39;}]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
 <section id="field-existence-with-exists">
-<h2>Field existence with <code class="docutils literal notranslate"><span class="pre">$exists</span></code><a class="headerlink" href="#field-existence-with-exists" title="Permalink to this heading">#</a></h2>
+<h2>Field existence with <code class="docutils literal notranslate"><span class="pre">$exists</span></code><a class="headerlink" href="#field-existence-with-exists" title="Permalink to this headline">#</a></h2>
 <p>One of the hallmarks of document-based NoSQL databases is that <strong>their schema is flexible</strong>, meaning that not all documents need to have the same fields. This is why sometimes we need to check for the existence of a field before trying to use it. This is done using the <code class="docutils literal notranslate"><span class="pre">$exists</span></code> operator in MongoDB.</p>
 <p>In the following example, I want to select documents for movies that are not in English. However, I should make sure that <code class="docutils literal notranslate"><span class="pre">languages</span></code> field actually exists, because otherwise I might filter out English movies that simply don’t have the <code class="docutils literal notranslate"><span class="pre">languages</span></code> field:</p>
 <div class="cell docutils container">
@@ -889,24 +786,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Storm Over Asia&#39;, &#39;languages&#39;: [&#39;Russian&#39;]},
- {&#39;title&#39;: &#39;Asphalt&#39;, &#39;languages&#39;: [&#39;German&#39;]},
- {&#39;title&#39;: &#39;David Golder&#39;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;Westfront 1918&#39;, &#39;languages&#39;: [&#39;German&#39;]},
- {&#39;title&#39;: &#39;Comradeship&#39;, &#39;languages&#39;: [&#39;French&#39;, &#39;German&#39;]},
- {&#39;title&#39;: &#39;Mèdchen in Uniform&#39;, &#39;languages&#39;: [&#39;German&#39;]},
- {&#39;title&#39;: &quot;L&#39;opèra de quat&#39;sous&quot;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;è Nous la Libertè&#39;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;The Blue Light&#39;, &#39;languages&#39;: [&#39;German&#39;, &#39;Italian&#39;]},
- {&#39;title&#39;: &#39;The Song of Night&#39;, &#39;languages&#39;: [&#39;German&#39;]}]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="querying-sub-documents">
-<h2>Querying sub-documents<a class="headerlink" href="#querying-sub-documents" title="Permalink to this heading">#</a></h2>
+<h2>Querying sub-documents<a class="headerlink" href="#querying-sub-documents" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span><span class="p">[</span><span class="s1">&#39;mds&#39;</span><span class="p">][</span><span class="s1">&#39;instructors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">()</span>
@@ -992,11 +875,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <p>But if we supply the full <code class="docutils literal notranslate"><span class="pre">department</span></code> sub-document:</p>
 <div class="cell docutils container">
@@ -1008,21 +886,6 @@ document.write(`
         <span class="p">}</span>
     <span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
-  &#39;name&#39;: &#39;Tiffany&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
-   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
-   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
-  &#39;name&#39;: &#39;Alexi&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
-   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
 </pre></div>
 </div>
 </div>
@@ -1040,26 +903,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
-  &#39;name&#39;: &#39;Tiffany&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
-   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
-   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
-  &#39;name&#39;: &#39;Alexi&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
-   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
-</pre></div>
-</div>
-</div>
 </div>
 <p>In this way, if over time other fields are added to the <code class="docutils literal notranslate"><span class="pre">department</span></code> field, our query will still be robust and runs without any problems.</p>
 </section>
 <section id="querying-arrays">
-<h2>Querying arrays<a class="headerlink" href="#querying-arrays" title="Permalink to this heading">#</a></h2>
+<h2>Querying arrays<a class="headerlink" href="#querying-arrays" title="Permalink to this headline">#</a></h2>
 <p>Similar to sub-documents, arrays can either be matched exactly or partially.</p>
 <p>If we’re looking for a single value inside an array, we can write our query as if the array field was a regular simple field. For example, the following query returns movies that are available in French, among other languages:</p>
 <div class="cell docutils container">
@@ -1071,21 +919,6 @@ document.write(`
         <span class="n">limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;David Golder&#39;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Morocco&#39;,
-  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Spanish&#39;, &#39;Arabic&#39;, &#39;Italian&#39;]},
- {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Comradeship&#39;, &#39;languages&#39;: [&#39;French&#39;, &#39;German&#39;]},
- {&#39;title&#39;: &quot;L&#39;opèra de quat&#39;sous&quot;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;è Nous la Libertè&#39;, &#39;languages&#39;: [&#39;French&#39;]},
- {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;The Red Head&#39;, &#39;languages&#39;: [&#39;French&#39;]}]
 </pre></div>
 </div>
 </div>
@@ -1106,20 +939,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Baby Face&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Footlight Parade&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Going Hollywood&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Folies Bergère de Paris&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;The Invisible Ray&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &quot;Lloyd&#39;s of London&quot;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]}]
-</pre></div>
-</div>
-</div>
 </div>
 <p>only those documents will be returned that <strong>only and only</strong> have <code class="docutils literal notranslate"><span class="pre">['English',</span> <span class="pre">'French']</span></code> in their <code class="docutils literal notranslate"><span class="pre">'languages'</span></code>, <strong>in the exact same order</strong>. You can switch the order of the languages to see that you get different results.</p>
 <p>We can also query an array by <strong>index</strong>. Here, I’m looking for movies which have Italian listed as the first language in their <code class="docutils literal notranslate"><span class="pre">languages</span></code> field:</p>
@@ -1137,23 +956,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &quot;Everybody&#39;s Woman&quot;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;The Siege of the Alcazar&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;The White Ship&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;Ossessione&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;The Testimony&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;The Bandit&#39;, &#39;languages&#39;: [&#39;Italian&#39;, &#39;German&#39;, &#39;English&#39;]},
- {&#39;title&#39;: &#39;La porta del cielo&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;Rome, Open City&#39;, &#39;languages&#39;: [&#39;Italian&#39;, &#39;German&#39;, &#39;Latin&#39;]},
- {&#39;title&#39;: &#39;Lost Youth&#39;, &#39;languages&#39;: [&#39;Italian&#39;]},
- {&#39;title&#39;: &#39;Angelina&#39;, &#39;languages&#39;: [&#39;Italian&#39;]}]
-</pre></div>
-</div>
-</div>
 </div>
 <section id="size">
-<h3><code class="docutils literal notranslate"><span class="pre">$size</span></code><a class="headerlink" href="#size" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$size</span></code><a class="headerlink" href="#size" title="Permalink to this headline">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">$size</span></code> operator checks for the number of elements inside an array. For example, suppose that we want to return all movies that are have 2 directors:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1169,29 +974,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;Winsor McCay, the Famous Cartoonist of the N.Y. Herald and His Moving Comics&#39;,
-  &#39;directors&#39;: [&#39;Winsor McCay&#39;, &#39;J. Stuart Blackton&#39;]},
- {&#39;title&#39;: &#39;The Perils of Pauline&#39;,
-  &#39;directors&#39;: [&#39;Louis J. Gasnier&#39;, &#39;Donald MacKenzie&#39;]},
- {&#39;title&#39;: &#39;Where Are My Children?&#39;,
-  &#39;directors&#39;: [&#39;Phillips Smalley&#39;, &#39;Lois Weber&#39;]},
- {&#39;title&#39;: &#39;From Hand to Mouth&#39;,
-  &#39;directors&#39;: [&#39;Alfred J. Goulding&#39;, &#39;Hal Roach&#39;]},
- {&#39;title&#39;: &#39;One Week&#39;, &#39;directors&#39;: [&#39;Edward F. Cline&#39;, &#39;Buster Keaton&#39;]},
- {&#39;title&#39;: &#39;The Saphead&#39;, &#39;directors&#39;: [&#39;Herbert Blachè&#39;, &#39;Winchell Smith&#39;]},
- {&#39;title&#39;: &#39;Now or Never&#39;, &#39;directors&#39;: [&#39;Fred C. Newmeyer&#39;, &#39;Hal Roach&#39;]},
- {&#39;title&#39;: &#39;Salomè&#39;, &#39;directors&#39;: [&#39;Charles Bryant&#39;, &#39;Alla Nazimova&#39;]},
- {&#39;title&#39;: &#39;Three Ages&#39;, &#39;directors&#39;: [&#39;Edward F. Cline&#39;, &#39;Buster Keaton&#39;]},
- {&#39;title&#39;: &quot;Grass: A Nation&#39;s Battle for Life&quot;,
-  &#39;directors&#39;: [&#39;Merian C. Cooper&#39;, &#39;Ernest B. Schoedsack&#39;]}]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="all">
-<h3><code class="docutils literal notranslate"><span class="pre">$all</span></code><a class="headerlink" href="#all" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$all</span></code><a class="headerlink" href="#all" title="Permalink to this headline">#</a></h3>
 <p>Now suppose that we want to find movies that are available in both English and French, among other languages, and we don’t care about the order in which they appear. For this situation, we can use the <code class="docutils literal notranslate"><span class="pre">$all</span></code> operator to match arrays that contain all listed values among other values, in no particular order:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1207,27 +993,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;title&#39;: &#39;The Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Morocco&#39;,
-  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Spanish&#39;, &#39;Arabic&#39;, &#39;Italian&#39;]},
- {&#39;title&#39;: &#39;Cimarron&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;The Sin of Madelon Claudet&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Forbidden&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Shanghai Express&#39;,
-  &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Cantonese&#39;, &#39;German&#39;]},
- {&#39;title&#39;: &#39;Baby Face&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Footlight Parade&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;Going Hollywood&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;]},
- {&#39;title&#39;: &#39;The Gay Divorcee&#39;, &#39;languages&#39;: [&#39;English&#39;, &#39;French&#39;, &#39;Italian&#39;]}]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">languages</span></code> field of all of the above documents contains English and French in no particular, in addition to other languages that might happen to exist in the same array.</p>
 </section>
 <section id="elemmatch-optional">
-<h3><code class="docutils literal notranslate"><span class="pre">$elemMatch</span></code> (OPTIONAL)<a class="headerlink" href="#elemmatch-optional" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">$elemMatch</span></code> (OPTIONAL)<a class="headerlink" href="#elemmatch-optional" title="Permalink to this headline">#</a></h3>
 <p>We can best see the use case of this operator with an example. Consider these documents in the <code class="docutils literal notranslate"><span class="pre">students</span></code> collection of the <code class="docutils literal notranslate"><span class="pre">mds</span></code> database:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1269,19 +1039,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e6f&#39;),
-  &#39;name&#39;: &#39;Quan&#39;,
-  &#39;grades&#39;: [79, 87, 97]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e70&#39;),
-  &#39;name&#39;: &#39;Varada&#39;,
-  &#39;grades&#39;: [75, 82, 90]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e71&#39;),
-  &#39;name&#39;: &#39;Florencia&#39;,
-  &#39;grades&#39;: [92, 93, 77]}]
-</pre></div>
-</div>
-</div>
 </div>
 <p>Oops, it returned all documents!</p>
 <p>The reason is that when multiple conditions are defined on an array, MongoDB checks the array on its entirety. If there is at least one match for each condition in the whole array, then that document will be returned. In order to force MongoDB to check the conditions on <strong>each</strong> individual element, we need to use <code class="docutils literal notranslate"><span class="pre">$elemMatch</span></code>:</p>
@@ -1295,43 +1052,16 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a984c86996e697a1e70&#39;),
-  &#39;name&#39;: &#39;Varada&#39;,
-  &#39;grades&#39;: [75, 82, 90]}]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="arrays-of-sub-documents">
-<h3>Arrays of sub-documents<a class="headerlink" href="#arrays-of-sub-documents" title="Permalink to this heading">#</a></h3>
+<h3>Arrays of sub-documents<a class="headerlink" href="#arrays-of-sub-documents" title="Permalink to this headline">#</a></h3>
 <p>Querying sub-documents nested inside an array works a lot like querying arrays with simple elements. Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">instructors</span></code> collection of the <code class="docutils literal notranslate"><span class="pre">mds</span></code> database we created earlier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="p">(</span>
     <span class="n">client</span><span class="p">[</span><span class="s1">&#39;mds&#39;</span><span class="p">][</span><span class="s1">&#39;instructors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">find</span><span class="p">({})</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
-  &#39;name&#39;: &#39;Mike&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
-   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6d&#39;),
-  &#39;name&#39;: &#39;Tiffany&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Programming for Data Manipulation&#39;, &#39;code&#39;: 523},
-   {&#39;name&#39;: &#39;Data Science Workflows&#39;, &#39;code&#39;: 522},
-   {&#39;name&#39;: &#39;Collaborative Software Development&#39;, &#39;code&#39;: 524}]},
- {&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6e&#39;),
-  &#39;name&#39;: &#39;Alexi&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Statistics&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Statistical Inference and Computation&#39;, &#39;code&#39;: 552},
-   {&#39;name&#39;: &#39;Regression II&#39;, &#39;code&#39;: 562}]}]
 </pre></div>
 </div>
 </div>
@@ -1347,11 +1077,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
-</pre></div>
-</div>
-</div>
 </div>
 <p>But it doesn’t work because just like arrays, a condition like <code class="docutils literal notranslate"><span class="pre">{'code':</span> <span class="pre">512}</span></code> has to match an entire sub-document:</p>
 <div class="cell docutils container">
@@ -1361,15 +1086,6 @@ document.write(`
         <span class="nb">filter</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;courses&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Algorithms &amp; Data Structures&#39;</span><span class="p">,</span> <span class="s1">&#39;code&#39;</span><span class="p">:</span> <span class="mi">512</span><span class="p">}}</span>
     <span class="p">)</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
-  &#39;name&#39;: &#39;Mike&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
-   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]}]
 </pre></div>
 </div>
 </div>
@@ -1385,26 +1101,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;_id&#39;: ObjectId(&#39;65c24a974c86996e697a1e6c&#39;),
-  &#39;name&#39;: &#39;Mike&#39;,
-  &#39;department&#39;: {&#39;name&#39;: &#39;Computer Science&#39;, &#39;campus&#39;: &#39;Vancouver&#39;},
-  &#39;courses&#39;: [{&#39;name&#39;: &#39;Algorithms &amp; Data Structures&#39;, &#39;code&#39;: 512},
-   {&#39;name&#39;: &#39;Descriptive Statistics and Probability&#39;, &#39;code&#39;: 551}]}]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
 <section id="can-you">
-<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Use MQL to intereact with MongoDB ?</p></li>
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 9 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1440,10 +1147,8 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture8.html"
@@ -1454,6 +1159,15 @@ document.write(`
         <p class="prev-next-title">Lecture 8: MQL 1</p>
       </div>
     </a>
+    <a class="right-next"
+       href="lecture10.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lecture 10:</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1462,7 +1176,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1502,7 +1215,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1515,7 +1228,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1533,7 +1245,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1542,8 +1254,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

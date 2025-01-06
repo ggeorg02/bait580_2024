@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 1: Data Management in a Big Data Environment &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 2: Setting up RDS and connection to cloud" href="lecture2.html" />
     <link rel="prev" title="Lecture 0: Course Introduction" href="lecture0.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -206,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -408,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -502,13 +480,13 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-1-data-management-in-a-big-data-environment">
-<h1>Lecture 1: Data Management in a Big Data Environment<a class="headerlink" href="#lecture-1-data-management-in-a-big-data-environment" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 1: Data Management in a Big Data Environment<a class="headerlink" href="#lecture-1-data-management-in-a-big-data-environment" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, January 9 2024</p>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Formal introduction to big data</p></li>
 <li><p>Intro to cloud computing – WHAT ?, WHY ?, HOW?</p></li>
@@ -519,7 +497,7 @@ document.write(`
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>You will understand how database management systems can be optimized for big data applications</p></li>
 <li><p>You will understand how the axes of big data (the 3Vs) apply to databases</p></li>
@@ -528,7 +506,7 @@ document.write(`
 </ul>
 </section>
 <section id="let-s-hear-a-story-on-it-depends">
-<h2>Let’s hear a story on ‘it Depends.’<a class="headerlink" href="#let-s-hear-a-story-on-it-depends" title="Permalink to this heading">#</a></h2>
+<h2>Let’s hear a story on ‘it Depends.’<a class="headerlink" href="#let-s-hear-a-story-on-it-depends" title="Permalink to this headline">#</a></h2>
 <p>You probably might have come across many questions like this in Reddit or StackOverflow.</p>
 <img alt="../_images/l21.png" src="../_images/l21.png" />
 <aside class="margin sidebar">
@@ -582,14 +560,14 @@ It all boils down to <code class="docutils literal notranslate"><span class="pre
 It depends on many <code class="docutils literal notranslate"><span class="pre">V's.</span></code> Let’s discuss 3 <code class="docutils literal notranslate"><span class="pre">V's</span></code> in our next section.</p>
 </section>
 <section id="vs-of-big-data">
-<h2>3 Vs of Big Data<a class="headerlink" href="#vs-of-big-data" title="Permalink to this heading">#</a></h2>
+<h2>3 Vs of Big Data<a class="headerlink" href="#vs-of-big-data" title="Permalink to this headline">#</a></h2>
 <p>Whenever you come across any big-data article, you will hear about V’s. 3V ’s definition was introduced in 2001 by Gartner Inc. analyst Doug Laney. After this, it evolved a lot with many other V’s. Here I will be going through more common 3V’s discussed in today’s industry. The 3 V’s are, broadly speaking, Velocity, Volume, and Variety. These were introduced to help understand the challenges of Big Data in computing and analytics.  The concepts are broadly applicable across all disciplines—for example, check what my colleague wrote about <a class="reference external" href="https://doi.org/10.1093/biosci/biy068">big data in Ecology</a>.  Various datasets or problems are affected differently by each of the different axes, so understanding the different dimensions of big data is critical to finding the analytic solutions we intend to apply.</p>
 <img alt="../_images/vvvv.png" src="../_images/vvvv.png" />
 <p>Source: Farley, Dawson, Goring &amp; Williams, Ecography, 2018 <a class="reference external" href="https://academic.oup.com/bioscience/article/68/8/563/5049569">Open Access</a></p>
 <p>Other people have spoken about five Vs (<a class="reference external" href="https://bizibl.com/marketing/download/fifth-v-big-data">Value</a>), <a class="reference external" href="https://impact.com/marketing-intelligence/7-vs-big-data/">seven Vs</a> (adding Variability, Visualization and Value), and even more.  If you want to know more V’s ( 42 of them ) and add your vocabulary, you can check out <a class="reference external" href="https://www.elderresearch.com/blog/the-42-vs-of-big-data-and-data-science/">this</a> article. These additional V’s can be informative, but, by and large, the Four V’s provide the most insight into data challenges.</p>
 <p>Let’s checkout 3 V’s in detail.</p>
 <section id="volume">
-<h3>Volume<a class="headerlink" href="#volume" title="Permalink to this heading">#</a></h3>
+<h3>Volume<a class="headerlink" href="#volume" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/volume.png" src="../_images/volume.png" />
@@ -601,7 +579,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 <li><p>Number of Data Points</p></li>
 </ul>
 <section id="volume-solutions">
-<h4>Volume Solutions<a class="headerlink" href="#volume-solutions" title="Permalink to this heading">#</a></h4>
+<h4>Volume Solutions<a class="headerlink" href="#volume-solutions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Cloud storage solutions</p></li>
 </ul>
@@ -621,7 +599,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </section>
 </section>
 <section id="velocity">
-<h3>Velocity<a class="headerlink" href="#velocity" title="Permalink to this heading">#</a></h3>
+<h3>Velocity<a class="headerlink" href="#velocity" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/velocitysolu.png" src="../_images/velocitysolu.png" />
@@ -652,7 +630,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </li>
 </ul>
 <section id="velocity-solutions">
-<h4>Velocity Solutions<a class="headerlink" href="#velocity-solutions" title="Permalink to this heading">#</a></h4>
+<h4>Velocity Solutions<a class="headerlink" href="#velocity-solutions" title="Permalink to this headline">#</a></h4>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/coldhot.png" src="../_images/coldhot.png" />
@@ -668,7 +646,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </section>
 </section>
 <section id="variety">
-<h3>Variety<a class="headerlink" href="#variety" title="Permalink to this heading">#</a></h3>
+<h3>Variety<a class="headerlink" href="#variety" title="Permalink to this headline">#</a></h3>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/variety.png" src="../_images/variety.png" />
@@ -690,7 +668,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </li>
 </ul>
 <section id="variety-solutions">
-<h4>Variety Solutions<a class="headerlink" href="#variety-solutions" title="Permalink to this heading">#</a></h4>
+<h4>Variety Solutions<a class="headerlink" href="#variety-solutions" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Normalize using multiple data sources.</p></li>
 <li><p>Clear interface layers (structured based on velocity and volume).</p></li>
@@ -700,7 +678,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </section>
 </section>
 <section id="the-3-v-s-and-analytic-workflows">
-<h2>The 3 V’s and Analytic Workflows<a class="headerlink" href="#the-3-v-s-and-analytic-workflows" title="Permalink to this heading">#</a></h2>
+<h2>The 3 V’s and Analytic Workflows<a class="headerlink" href="#the-3-v-s-and-analytic-workflows" title="Permalink to this headline">#</a></h2>
 <p>These challenges come to the forefront when we’re working with data.  The goto standard is to open up an Excel or read in a comma-separated file to look at the data, get a sense of what is happening, or summarise the key elements.</p>
 <ul class="simple">
 <li><p>When that file is &lt;10MB in size, that’s often not a big problem, but as files get bigger and bigger, even calculating a simple mean is an issue (<strong>Volume</strong>).</p></li>
@@ -708,7 +686,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 <li><p>When the 10MB you just summarized are out-of-date, as soon as you’re done outlining them, how do you present these results to your colleagues? (<strong>Velocity</strong>)</p></li>
 </ul>
 <section id="problem-based-approaches">
-<h3>Problem Based Approaches<a class="headerlink" href="#problem-based-approaches" title="Permalink to this heading">#</a></h3>
+<h3>Problem Based Approaches<a class="headerlink" href="#problem-based-approaches" title="Permalink to this headline">#</a></h3>
 <p>Many of these challenges have straightforward(ish) solutions, but how we apply those solutions and our choices are often specific to the problem we are trying to answer.  For example, a common solution people present to <strong>Volume</strong> is to use a NoSQL database to store and index information.  This is an appropriate solution in many cases; <em><strong>however, most data is well suited to relational databases</strong></em>, and these often provide advantages over non-relational databases.</p>
 <p>One of the most important steps in choosing how to set up your analytic workflow is the proper framing of your question.  This will help you understand:</p>
 <ol class="arabic simple">
@@ -723,7 +701,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 <li><p>If analysis crashes your computer (laptop)</p></li>
 </ul>
 <section id="processing">
-<h4>Processing<a class="headerlink" href="#processing" title="Permalink to this heading">#</a></h4>
+<h4>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Bring just what is needed to memory (<code class="docutils literal notranslate"><span class="pre">usecols</span></code>, <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, <code class="docutils literal notranslate"><span class="pre">working</span> <span class="pre">on</span> <span class="pre">individual</span> <span class="pre">files</span></code>, <code class="docutils literal notranslate"><span class="pre">chunksize</span></code>)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Parallel</span> <span class="pre">processing</span></code> so that pieces of files can be processed at the same time. (packages like arrow does all these for you)</p></li>
@@ -733,13 +711,13 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </section>
 </section>
 <section id="approaches-for-big-data">
-<h2>Approaches for big data<a class="headerlink" href="#approaches-for-big-data" title="Permalink to this heading">#</a></h2>
+<h2>Approaches for big data<a class="headerlink" href="#approaches-for-big-data" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <img alt="../_images/upcartoon.png" src="../_images/upcartoon.png" />
 </aside>
 <section id="scale-up">
-<h3>Scale UP<a class="headerlink" href="#scale-up" title="Permalink to this heading">#</a></h3>
+<h3>Scale UP<a class="headerlink" href="#scale-up" title="Permalink to this headline">#</a></h3>
 <p><em><strong>With cloud computing, a scale-UP solution is just one click away;</strong></em> before the rise of cloud computing, it was considered very difficult as it had to be done in an on-premise setup. As a student, you can think about buying a new 32 GB RAM laptop when things don’t work anymore in your 16 GB laptop. You can, of course, think about all the difficulties involved in it.</p>
 <p>Even though a scale-UP solution sounds easy with cloud computing, it might not be appropriate in many situations, especially when dealing with big data. Here are some of the disadvantages you can think of with a scale-UP solution.</p>
 <ul class="simple">
@@ -755,7 +733,7 @@ It depends on many <code class="docutils literal notranslate"><span class="pre">
 </aside>
 </section>
 <section id="scale-out">
-<h3>Scale OUT<a class="headerlink" href="#scale-out" title="Permalink to this heading">#</a></h3>
+<h3>Scale OUT<a class="headerlink" href="#scale-out" title="Permalink to this headline">#</a></h3>
 <p>Add more computers so that it behaves as a single machine. Many scale OUT solutions are available, like <code class="docutils literal notranslate"><span class="pre">cluster</span> <span class="pre">computer</span></code>, <code class="docutils literal notranslate"><span class="pre">High</span> <span class="pre">Performance</span> <span class="pre">Computing</span> <span class="pre">(HPC)</span></code>, <code class="docutils literal notranslate"><span class="pre">Hadoop</span></code>, <code class="docutils literal notranslate"><span class="pre">Spark</span></code> etc… Our focus will be on the Scale UP solution. In our last class on special topics, I will briefly touch upon some more details on the scale OUT solution.</p>
 <p>To summarize;
 A scale-UP solution makes more sense when thinking about just an individual working on some data on a research project. However, looking from a large scale or an enterprise solution standpoint, a scale-UP solution is not a great option in most cases as there is always an expectation of huge and steady growth in data in the long run. So, let’s get into the details of a scale-OUT solution.</p>
@@ -769,7 +747,7 @@ A scale-UP solution makes more sense when thinking about just an individual work
 </section>
 </section>
 <section id="intro-to-cloud-computing">
-<h2>Intro to cloud computing<a class="headerlink" href="#intro-to-cloud-computing" title="Permalink to this heading">#</a></h2>
+<h2>Intro to cloud computing<a class="headerlink" href="#intro-to-cloud-computing" title="Permalink to this headline">#</a></h2>
 <p>Let me tell you a short cloud-computing tale. This story starts from a computer that you all are familiar with. By the end of this tale, you will answer <em><strong>WHAT, WHY &amp; HOW cloud computing.</strong></em></p>
 <p>Here is the computer that I am talking about:
 <br>
@@ -784,7 +762,7 @@ OKAY! So now we all agreed to call monitor as the client and that box as server.
 <p>Let me pause and take a minute to answer this question:</p>
 </section>
 <section id="clicker-1">
-<h2>Clicker 1<a class="headerlink" href="#clicker-1" title="Permalink to this heading">#</a></h2>
+<h2>Clicker 1<a class="headerlink" href="#clicker-1" title="Permalink to this headline">#</a></h2>
 <aside class="sidebar">
 <p class="sidebar-title">Question is here..</p>
 <p>So assume that UBC has some server, and we are using this “client-server model” to do our analysis, then what do we not care about in the laptop requirements that MBAN mandates?</p>
@@ -803,7 +781,7 @@ OKAY! So now we all agreed to call monitor as the client and that box as server.
 <img alt="../_images/l35.png" src="../_images/l35.png" />
 </section>
 <section id="class-activity-1">
-<h2>Class activity 1<a class="headerlink" href="#class-activity-1" title="Permalink to this heading">#</a></h2>
+<h2>Class activity 1<a class="headerlink" href="#class-activity-1" title="Permalink to this headline">#</a></h2>
 <div class="toggle docutils container">
 <p><em><strong>List down in your notes about the labor costs:</strong></em></p>
 <p><em><strong>List down costs other than labor cost:</strong></em></p>
@@ -825,7 +803,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 </ul>
 </section>
 <section id="benefits-of-cloud-computing">
-<h2>Benefits of cloud computing:<a class="headerlink" href="#benefits-of-cloud-computing" title="Permalink to this heading">#</a></h2>
+<h2>Benefits of cloud computing:<a class="headerlink" href="#benefits-of-cloud-computing" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Trade capital expense for variable expense</p></li>
 <li><p>Massive economies of scale</p></li>
@@ -837,7 +815,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 <p>Source: aws</p>
 </section>
 <section id="cloud-providers">
-<h2>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this heading">#</a></h2>
+<h2>Cloud providers<a class="headerlink" href="#cloud-providers" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Amazon Web Services (AWS)</p></li>
 <li><p>Microsoft Azure</p></li>
@@ -845,7 +823,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 </ul>
 </section>
 <section id="category-of-services-available-in-aws">
-<h2>Category of services available in AWS<a class="headerlink" href="#category-of-services-available-in-aws" title="Permalink to this heading">#</a></h2>
+<h2>Category of services available in AWS<a class="headerlink" href="#category-of-services-available-in-aws" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Compute</p>
 <ul>
@@ -863,7 +841,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 <img alt="../_images/l36.png" src="../_images/l36.png" />
 <p>Source: <a class="reference external" href="https://www.dbbest.com/technologies/nosql-databases/">dbtest</a></p>
 <section id="database-amazon-rds">
-<h3>Database (Amazon RDS)<a class="headerlink" href="#database-amazon-rds" title="Permalink to this heading">#</a></h3>
+<h3>Database (Amazon RDS)<a class="headerlink" href="#database-amazon-rds" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Relational database service (RDS) provides a simple way to provision, create, and scale a relational database within AWS.</p></li>
 <li><p>Managed service – AWS takes responsibility for the administrative tasks</p></li>
@@ -882,7 +860,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 </section>
 </section>
 <section id="ways-to-interact-with-aws">
-<h2>Ways to interact with AWS<a class="headerlink" href="#ways-to-interact-with-aws" title="Permalink to this heading">#</a></h2>
+<h2>Ways to interact with AWS<a class="headerlink" href="#ways-to-interact-with-aws" title="Permalink to this headline">#</a></h2>
 <ul>
 <li><p><a class="reference external" href="https://www.awsacademy.com/LMS_Login">Web interface</a></p>
 <p>A web-based GUI provides the capability to interact with the services within AWS.</p>
@@ -893,7 +871,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 <p>A good blog <a class="reference external" href="https://adamraffe.com/2019/02/20/aws-fundamentals-part-3-interacting-with-aws/">here</a> explains various ways of interaction.</p>
 </section>
 <section id="demo">
-<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this heading">#</a></h2>
+<h2>Demo<a class="headerlink" href="#demo" title="Permalink to this headline">#</a></h2>
 <p>Let’s together explore AWS</p>
 <ul class="simple">
 <li><p>Sign up for AWS Academy</p></li>
@@ -909,7 +887,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 </div>
 </section>
 <section id="can-you">
-<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Define what Big data is in a more formal way ?</p></li>
 <li><p>List down various dimensions of Big data?</p></li>
@@ -919,7 +897,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 </ul>
 </section>
 <section id="class-activity-2">
-<h2>Class activity 2<a class="headerlink" href="#class-activity-2" title="Permalink to this heading">#</a></h2>
+<h2>Class activity 2<a class="headerlink" href="#class-activity-2" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 1 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -956,10 +934,8 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture0.html"
@@ -987,7 +963,6 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1046,7 +1021,7 @@ Some cloud vendors provide infrastructure as a service by taking care of all the
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1059,7 +1034,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1077,7 +1051,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1086,8 +1060,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

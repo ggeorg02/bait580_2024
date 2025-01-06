@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 8: MQL 1 &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 9: MQL 2" href="lecture9.html" />
     <link rel="prev" title="Lecture 7: CQL 2/ MongoDB introduction" href="lecture7.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -206,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -408,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -483,14 +461,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-8-mql-1">
-<h1>Lecture 8: MQL 1<a class="headerlink" href="#lecture-8-mql-1" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 8: MQL 1<a class="headerlink" href="#lecture-8-mql-1" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, Feb 01, 2024</p>
 <p><em>Attribution: This notebook is developed using materials from DSCI 513 by Arman.</em></p>
 <section id="announcements">
-<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this heading">#</a></h2>
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>2 more weeks before the final exam.</p>
 <ul>
@@ -515,7 +493,7 @@ document.write(`
 </ul>
 </section>
 <section id="agenda">
-<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this heading">#</a></h2>
+<h2>Agenda<a class="headerlink" href="#agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Introduction to NoSQL document database (MongoDB)</p></li>
 <li><p>Basic queries in MongoDB</p></li>
@@ -523,23 +501,23 @@ document.write(`
 </ul>
 </section>
 <section id="objectives">
-<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this heading">#</a></h2>
+<h2>Objectives<a class="headerlink" href="#objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Setting up mongoDB instance in cloud</p></li>
 <li><p>Write basic MQL</p></li>
 </ul>
 <section id="mongodb-interfaces">
-<h3>MongoDB interfaces<a class="headerlink" href="#mongodb-interfaces" title="Permalink to this heading">#</a></h3>
+<h3>MongoDB interfaces<a class="headerlink" href="#mongodb-interfaces" title="Permalink to this headline">#</a></h3>
 <section id="mongodb-shell-mongosh">
-<h4>MongoDB shell (<code class="docutils literal notranslate"><span class="pre">mongosh</span></code>)<a class="headerlink" href="#mongodb-shell-mongosh" title="Permalink to this heading">#</a></h4>
+<h4>MongoDB shell (<code class="docutils literal notranslate"><span class="pre">mongosh</span></code>)<a class="headerlink" href="#mongodb-shell-mongosh" title="Permalink to this headline">#</a></h4>
 <p>This is command line interface for interacting with a MongoDB database, similar to <code class="docutils literal notranslate"><span class="pre">psql</span></code> that we’ve used for Postgres. <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> is based on the JavaScript language. We will not use <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> much in this course.</p>
 </section>
 <section id="mongodb-compass">
-<h4>MongoDB Compass<a class="headerlink" href="#mongodb-compass" title="Permalink to this heading">#</a></h4>
+<h4>MongoDB Compass<a class="headerlink" href="#mongodb-compass" title="Permalink to this headline">#</a></h4>
 <p>Compass is a versatile graphical user interface for using MongoDB databases. This is a similar application to pgAdmin that we’ve used for Postgres.</p>
 </section>
 <section id="mongodb-s-python-driver-pymongo">
-<h4>MongoDB’s Python driver (<code class="docutils literal notranslate"><span class="pre">pymongo</span></code>)<a class="headerlink" href="#mongodb-s-python-driver-pymongo" title="Permalink to this heading">#</a></h4>
+<h4>MongoDB’s Python driver (<code class="docutils literal notranslate"><span class="pre">pymongo</span></code>)<a class="headerlink" href="#mongodb-s-python-driver-pymongo" title="Permalink to this headline">#</a></h4>
 <p>And finally, <code class="docutils literal notranslate"><span class="pre">pymongo</span></code> is the official Python driver for MongoDB. If your using the course <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment, this package is installed and ready to use in Jupyter Lab. You can take a look at <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>s documentation <a class="reference external" href="https://pymongo.readthedocs.io/en/stable/tutorial.html">here</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -554,6 +532,18 @@ document.write(`
 <span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
 <span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;mongodb+srv://</span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">@</span><span class="si">{}</span><span class="s2">/?retryWrites=true&amp;w=majority&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">host</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">pymongo</span> <span class="kn">import</span> <span class="n">MongoClient</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">urllib.parse</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;pymongo&#39;
 </pre></div>
 </div>
 </div>
@@ -572,19 +562,99 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;exam&#39;,
- &#39;mds&#39;,
- &#39;sample_airbnb&#39;,
- &#39;sample_analytics&#39;,
- &#39;sample_geospatial&#39;,
- &#39;sample_guides&#39;,
- &#39;sample_mflix&#39;,
- &#39;sample_restaurants&#39;,
- &#39;sample_supplies&#39;,
- &#39;sample_training&#39;,
- &#39;sample_weatherdata&#39;,
- &#39;admin&#39;,
- &#39;local&#39;]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ServerSelectionTimeoutError</span><span class="g g-Whitespace">               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">client</span><span class="o">.</span><span class="n">list_database_names</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/mongo_client.py:1867,</span> in <span class="ni">MongoClient.list_database_names</span><span class="nt">(self, session, comment)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1849</span> <span class="k">def</span> <span class="nf">list_database_names</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1850</span>     <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1851</span>     <span class="n">session</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">client_session</span><span class="o">.</span><span class="n">ClientSession</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1852</span>     <span class="n">comment</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1853</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1854</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Get a list of the names of all databases on the connected server.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1855</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1856</span><span class="sd">     :Parameters:</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1865</span><span class="sd">     .. versionadded:: 3.6</span>
+<span class="g g-Whitespace">   </span><span class="mi">1866</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1867</span>     <span class="k">return</span> <span class="p">[</span><span class="n">doc</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">list_databases</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">nameOnly</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="n">comment</span><span class="p">)]</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/mongo_client.py:1840,</span> in <span class="ni">MongoClient.list_databases</span><span class="nt">(self, session, comment, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1838</span>     <span class="n">cmd</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">comment</span>
+<span class="g g-Whitespace">   </span><span class="mi">1839</span> <span class="n">admin</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_database_default_options</span><span class="p">(</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1840</span> <span class="n">res</span> <span class="o">=</span> <span class="n">admin</span><span class="o">.</span><span class="n">_retryable_read_command</span><span class="p">(</span><span class="n">cmd</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">session</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1841</span> <span class="c1"># listDatabases doesn&#39;t return a cursor (yet). Fake one.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1842</span> <span class="n">cursor</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">   </span><span class="mi">1843</span>     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1844</span>     <span class="s2">&quot;firstBatch&quot;</span><span class="p">:</span> <span class="n">res</span><span class="p">[</span><span class="s2">&quot;databases&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1845</span>     <span class="s2">&quot;ns&quot;</span><span class="p">:</span> <span class="s2">&quot;admin.$cmd&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1846</span> <span class="p">}</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/database.py:849,</span> in <span class="ni">Database._retryable_read_command</span><span class="nt">(self, command, value, check, allowable_errors, read_preference, codec_options, session, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">836</span> <span class="k">def</span> <span class="nf">_cmd</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">sock_info</span><span class="p">,</span> <span class="n">read_preference</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">837</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_command</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">838</span>         <span class="n">sock_info</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">839</span>         <span class="n">command</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">846</span>         <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">847</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">849</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__client</span><span class="o">.</span><span class="n">_retryable_read</span><span class="p">(</span><span class="n">_cmd</span><span class="p">,</span> <span class="n">read_preference</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/_csot.py:105,</span> in <span class="ni">apply.&lt;locals&gt;.csot_wrapper</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">103</span>         <span class="k">with</span> <span class="n">_TimeoutContext</span><span class="p">(</span><span class="n">timeout</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">104</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">105</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/mongo_client.py:1441,</span> in <span class="ni">MongoClient._retryable_read</span><span class="nt">(self, func, read_pref, session, address, retryable)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1439</span>         <span class="k">raise</span> <span class="n">last_error</span>
+<span class="g g-Whitespace">   </span><span class="mi">1440</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1441</span>     <span class="n">server</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_server</span><span class="p">(</span><span class="n">read_pref</span><span class="p">,</span> <span class="n">session</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1442</span>     <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_socket_from_server</span><span class="p">(</span><span class="n">read_pref</span><span class="p">,</span> <span class="n">server</span><span class="p">,</span> <span class="n">session</span><span class="p">)</span> <span class="k">as</span> <span class="p">(</span><span class="n">sock_info</span><span class="p">,</span> <span class="n">read_pref</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1443</span>         <span class="k">if</span> <span class="n">retrying</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">retryable</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1444</span>             <span class="c1"># A retry is not possible because this server does</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span>             <span class="c1"># not support retryable reads, raise the last error.</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/mongo_client.py:1257,</span> in <span class="ni">MongoClient._select_server</span><span class="nt">(self, server_selector, session, address)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1255</span>             <span class="k">raise</span> <span class="n">AutoReconnect</span><span class="p">(</span><span class="s2">&quot;server </span><span class="si">%s</span><span class="s2">:</span><span class="si">%d</span><span class="s2"> no longer available&quot;</span> <span class="o">%</span> <span class="n">address</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1256</span>     <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1257</span>         <span class="n">server</span> <span class="o">=</span> <span class="n">topology</span><span class="o">.</span><span class="n">select_server</span><span class="p">(</span><span class="n">server_selector</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1258</span>     <span class="k">return</span> <span class="n">server</span>
+<span class="g g-Whitespace">   </span><span class="mi">1259</span> <span class="k">except</span> <span class="n">PyMongoError</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1260</span>     <span class="c1"># Server selection errors in a transaction are transient.</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/topology.py:272,</span> in <span class="ni">Topology.select_server</span><span class="nt">(self, selector, server_selection_timeout, address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">270</span> <span class="k">def</span> <span class="nf">select_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">,</span> <span class="n">server_selection_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">271</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Like select_servers, but choose a random server if several match.&quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">272</span>     <span class="n">server</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_server</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">server_selection_timeout</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span>     <span class="k">if</span> <span class="n">_csot</span><span class="o">.</span><span class="n">get_timeout</span><span class="p">():</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>         <span class="n">_csot</span><span class="o">.</span><span class="n">set_rtt</span><span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">description</span><span class="o">.</span><span class="n">round_trip_time</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/topology.py:261,</span> in <span class="ni">Topology._select_server</span><span class="nt">(self, selector, server_selection_timeout, address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span> <span class="k">def</span> <span class="nf">_select_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">selector</span><span class="p">,</span> <span class="n">server_selection_timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">261</span>     <span class="n">servers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">select_servers</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">server_selection_timeout</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">servers</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="k">return</span> <span class="n">servers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/topology.py:223,</span> in <span class="ni">Topology.select_servers</span><span class="nt">(self, selector, server_selection_timeout, address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">220</span>     <span class="n">server_timeout</span> <span class="o">=</span> <span class="n">server_selection_timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="n">server_descriptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_select_servers_loop</span><span class="p">(</span><span class="n">selector</span><span class="p">,</span> <span class="n">server_timeout</span><span class="p">,</span> <span class="n">address</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">225</span>     <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">get_server_by_address</span><span class="p">(</span><span class="n">sd</span><span class="o">.</span><span class="n">address</span><span class="p">)</span> <span class="k">for</span> <span class="n">sd</span> <span class="ow">in</span> <span class="n">server_descriptions</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/miniconda3/envs/bait580env/lib/python3.11/site-packages/pymongo/topology.py:238,</span> in <span class="ni">Topology._select_servers_loop</span><span class="nt">(self, selector, timeout, address)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="k">while</span> <span class="ow">not</span> <span class="n">server_descriptions</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span>     <span class="c1"># No suitable servers.</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="k">if</span> <span class="n">timeout</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">now</span> <span class="o">&gt;</span> <span class="n">end_time</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">238</span>         <span class="k">raise</span> <span class="n">ServerSelectionTimeoutError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">239</span>             <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">, Timeout: </span><span class="si">%s</span><span class="s2">s, Topology Description: </span><span class="si">%r</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">240</span>             <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_error_message</span><span class="p">(</span><span class="n">selector</span><span class="p">),</span> <span class="n">timeout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">241</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_ensure_opened</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">244</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_request_check_all</span><span class="p">()</span>
+
+<span class="ne">ServerSelectionTimeoutError</span>: SSL handshake failed: ac-uvqmtkk-shard-00-02.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992),SSL handshake failed: ac-uvqmtkk-shard-00-01.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992),SSL handshake failed: ac-uvqmtkk-shard-00-00.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992), Timeout: 30s, Topology Description: &lt;TopologyDescription id: 65bbd90f60df86db93fa35b7, topology_type: ReplicaSetNoPrimary, servers: [&lt;ServerDescription (&#39;ac-uvqmtkk-shard-00-00.rjjc4dz.mongodb.net&#39;, 27017) server_type: Unknown, rtt: None, error=AutoReconnect(&#39;SSL handshake failed: ac-uvqmtkk-shard-00-00.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992)&#39;)&gt;, &lt;ServerDescription (&#39;ac-uvqmtkk-shard-00-01.rjjc4dz.mongodb.net&#39;, 27017) server_type: Unknown, rtt: None, error=AutoReconnect(&#39;SSL handshake failed: ac-uvqmtkk-shard-00-01.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992)&#39;)&gt;, &lt;ServerDescription (&#39;ac-uvqmtkk-shard-00-02.rjjc4dz.mongodb.net&#39;, 27017) server_type: Unknown, rtt: None, error=AutoReconnect(&#39;SSL handshake failed: ac-uvqmtkk-shard-00-02.rjjc4dz.mongodb.net:27017: [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:992)&#39;)&gt;]&gt;
 </pre></div>
 </div>
 </div>
@@ -593,7 +663,7 @@ document.write(`
 </section>
 </section>
 <section id="mongodb-query-language-mql">
-<h2>MongoDB query language (MQL)<a class="headerlink" href="#mongodb-query-language-mql" title="Permalink to this heading">#</a></h2>
+<h2>MongoDB query language (MQL)<a class="headerlink" href="#mongodb-query-language-mql" title="Permalink to this headline">#</a></h2>
 <a class="reference internal image-reference" href="../_images/nosql.png"><img alt="../_images/nosql.png" src="../_images/nosql.png" style="width: 400px;" /></a>
 <p>(<a class="reference external" href="https://dataedo.com/cartoon/it-is-nosql">image source</a>)</p>
 <div class="admonition-see-also admonition">
@@ -603,7 +673,7 @@ document.write(`
 <p>As mentioned earlier, there is no standard query language among NoSQL DBMSs. This is because each NoSQL DBMS supports a different data model and obviously no one language can suit all data models.</p>
 <p>MongoDB has its own query language known as MongoDB Query Language or MQL (We already saw CQL for neo4j). I will walk you through the usage of MQL in the remainder of this lecture.</p>
 <section id="accessing-databases-and-collections">
-<h3>Accessing databases and collections<a class="headerlink" href="#accessing-databases-and-collections" title="Permalink to this heading">#</a></h3>
+<h3>Accessing databases and collections<a class="headerlink" href="#accessing-databases-and-collections" title="Permalink to this headline">#</a></h3>
 <p>Here is how we can access databases through different interfaces.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">Compass</span></code></strong>:</p>
 <p>It’s just point and click. I’ll demo this in class.</p>
@@ -632,8 +702,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;exam&#39;,
- &#39;mds&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;mds&#39;,
  &#39;sample_airbnb&#39;,
  &#39;sample_analytics&#39;,
  &#39;sample_geospatial&#39;,
@@ -692,7 +761,7 @@ document.write(`
 <p>even queries themselves!</p>
 </section>
 <section id="find">
-<h3><code class="docutils literal notranslate"><span class="pre">find</span></code><a class="headerlink" href="#find" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">find</span></code><a class="headerlink" href="#find" title="Permalink to this headline">#</a></h3>
 <p>The main method used for querying documents is the <code class="docutils literal notranslate"><span class="pre">.find()</span></code> method. Here is an example of a query in MongoDB:</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
@@ -706,7 +775,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.cursor.Cursor at 0x10e7e2150&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pymongo.cursor.Cursor at 0x114030d50&gt;
 </pre></div>
 </div>
 </div>
@@ -846,7 +915,7 @@ document.write(`
 <p>Note that there is another method <code class="docutils literal notranslate"><span class="pre">.findOne()</span></code> in <code class="docutils literal notranslate"><span class="pre">mongosh</span></code> and <code class="docutils literal notranslate"><span class="pre">.find_one()</span></code> in <code class="docutils literal notranslate"><span class="pre">pymongo</span></code>. This method returns only one document regardless of how many there are, according to the order in which documents are stored on the physical disk. It can be</p>
 </section>
 <section id="projection">
-<h3><code class="docutils literal notranslate"><span class="pre">projection</span></code><a class="headerlink" href="#projection" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">projection</span></code><a class="headerlink" href="#projection" title="Permalink to this headline">#</a></h3>
 <p>Remember what projection meant in SQL? Returning a particular set of columns among all that exist in a table was called projection (of the results onto particular columns).</p>
 <p>Projection has a similar meaning in NoSQL: it means explicitly choosing the fields that we are interested in, instead of all fields that are returned by default. This is done by feeding a list of fields to the <code class="docutils literal notranslate"><span class="pre">projection=</span></code> argument, as well as a truthy of falsy value that indicates whether or not that field should be included.</p>
 <p>For example, here I return the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">year</span></code> fields only from the document in the result:</p>
@@ -904,7 +973,7 @@ document.write(`
 </div>
 </section>
 <section id="sort">
-<h3><code class="docutils literal notranslate"><span class="pre">sort</span></code><a class="headerlink" href="#sort" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">sort</span></code><a class="headerlink" href="#sort" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">filter</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">projection</span><span class="o">&gt;</span><span class="p">).</span><span class="nx">sort</span><span class="p">(</span><span class="w"> </span><span class="p">{</span><span class="nx">runtime</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">year</span><span class="o">:-</span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
@@ -931,7 +1000,7 @@ document.write(`
 </div>
 </section>
 <section id="limit">
-<h3><code class="docutils literal notranslate"><span class="pre">limit</span></code><a class="headerlink" href="#limit" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">limit</span></code><a class="headerlink" href="#limit" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">({},</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="nx">_id</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span><span class="p">}).</span><span class="nx">limit</span><span class="p">(</span><span class="mf">5</span><span class="p">)</span>
 </pre></div>
@@ -960,7 +1029,7 @@ document.write(`
 </div>
 </section>
 <section id="count-and-count-documents">
-<h3><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">count_documents</span></code><a class="headerlink" href="#count-and-count-documents" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">count</span></code> and <code class="docutils literal notranslate"><span class="pre">count_documents</span></code><a class="headerlink" href="#count-and-count-documents" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">({</span><span class="nx">year</span><span class="o">:</span><span class="mf">2000</span><span class="p">}).</span><span class="nx">count</span><span class="p">()</span>
 <span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">countDocuments</span><span class="p">()</span>
@@ -981,7 +1050,7 @@ document.write(`
 </div>
 </section>
 <section id="skip">
-<h3><code class="docutils literal notranslate"><span class="pre">skip</span></code><a class="headerlink" href="#skip" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">skip</span></code><a class="headerlink" href="#skip" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="w"> </span><span class="nx">filter</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">},</span><span class="w"> </span><span class="nx">projection</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;year&#39;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">}</span><span class="w"> </span><span class="p">).</span><span class="nx">skip</span><span class="p">(</span><span class="mf">2</span><span class="p">)</span>
 </pre></div>
@@ -1007,7 +1076,7 @@ document.write(`
 </div>
 </section>
 <section id="distinct">
-<h3><code class="docutils literal notranslate"><span class="pre">distinct</span></code><a class="headerlink" href="#distinct" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">distinct</span></code><a class="headerlink" href="#distinct" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mongosh</span></code></strong>:</p>
 <div class="highlight-js notranslate"><div class="highlight"><pre><span></span><span class="nx">db</span><span class="p">.</span><span class="nx">movies</span><span class="p">.</span><span class="nx">distinct</span><span class="p">(</span><span class="w"> </span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Titanic&#39;</span><span class="p">}</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
@@ -1033,7 +1102,7 @@ document.write(`
 </section>
 </section>
 <section id="can-you">
-<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
+<h2>Can you?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>list down the benefits of having a document database</p></li>
 <li><p>Set up MongoDB cloud instance?</p></li>
@@ -1042,7 +1111,7 @@ document.write(`
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Check worksheet 8 in canvas for detailed instructions on activity and submission instructions.</p>
@@ -1079,10 +1148,8 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture7.html"
@@ -1110,7 +1177,6 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1150,7 +1216,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1163,7 +1229,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1181,7 +1246,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1190,8 +1255,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>

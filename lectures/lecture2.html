@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Lecture 2: Setting up RDS and connection to cloud &#8212; BAIT 580A - Topics in Information Technology Management</title>
   
@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,14 +38,12 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -70,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Lecture 3: Disk Management and Indexes" href="lecture3.html" />
     <link rel="prev" title="Lecture 1: Data Management in a Big Data Environment" href="lecture1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -78,16 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -121,20 +110,12 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <header>
   
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-  </header>
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,11 +130,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="../intro.html">
-  
   
   
   
@@ -163,8 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="BAIT 580A - Topics in Information Technology Management - Home"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="BAIT 580A - Topics in Information Technology Management - Home"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
   
   
 </a></div>
@@ -206,6 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture8.html">Lecture 8: MQL 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lecture9.html">Lecture 9: MQL 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture10.html">Lecture 10:</a></li>
 </ul>
 
     </div>
@@ -408,22 +388,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -476,19 +454,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-setting-up-rds-and-connection-to-cloud">
-<h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this heading">#</a></h1>
+<h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, January 11 2024</p>
 <section id="todays-agenda">
-<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this heading">#</a></h2>
+<h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Connecting to RDS (Postgres)</p></li>
 </ul>
 </section>
 <section id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Setup your first cloud database (RDS instance)</p></li>
 <li><p>You will know how to connect to a remote database from a Jupyter notebook.</p></li>
@@ -498,7 +476,7 @@ document.write(`
 </ul>
 </section>
 <section id="setting-up-rds">
-<span id="settingup"></span><h2>Setting up RDS<a class="headerlink" href="#setting-up-rds" title="Permalink to this heading">#</a></h2>
+<span id="settingup"></span><h2>Setting up RDS<a class="headerlink" href="#setting-up-rds" title="Permalink to this headline">#</a></h2>
 <p>Demo time</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/explore.png"><img alt="../_images/explore.png" src="../_images/explore.png" style="width: 200px;" /></a>
@@ -508,7 +486,7 @@ document.write(`
 <p>Consider the database that you built as an independent entity. Then, follow the below instructions to connect to your database in the cloud.</p>
 </section>
 <section id="connecting-to-cloud-rds">
-<h2>Connecting To Cloud (RDS)<a class="headerlink" href="#connecting-to-cloud-rds" title="Permalink to this heading">#</a></h2>
+<h2>Connecting To Cloud (RDS)<a class="headerlink" href="#connecting-to-cloud-rds" title="Permalink to this headline">#</a></h2>
 <p>If you haven’t yet set it up, please follow instructions in <a class="reference internal" href="#settingup"><span class="std std-ref">Setting up RDS</span></a></p>
 <p>OKAY.. so now you have your database ready! In our case, we set up our Postgres database in RDS. Since you are not using an already existing database, you created it, so it’s empty now. So we need to load data into this database. After loading data to the database, we are all set with querying from the database.</p>
 <p>Whether it’s for loading or querying the database, we need to connect to the database.</p>
@@ -525,7 +503,7 @@ document.write(`
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">.read_sql_query()</span></code> method in Pandas</p></li>
 </ul>
 <section id="first-thing-first">
-<h3>First thing first<a class="headerlink" href="#first-thing-first" title="Permalink to this heading">#</a></h3>
+<h3>First thing first<a class="headerlink" href="#first-thing-first" title="Permalink to this headline">#</a></h3>
 <p><em><strong>What information do you want to know if you’re going to connect to the above?</strong></em> We need to know the information of the database that you wanted to connect to</p>
 <ul class="simple">
 <li><p>Hostname</p></li>
@@ -554,7 +532,7 @@ document.write(`
 <p>In the rest of the section, let’s focus on connecting to the database from python and the jupyter notebook. We will be using specific packages to make this possible, but as we have discussed, it uses ODBC for the connection.</p>
 </section>
 <section id="pgadmin">
-<h3>pgAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this heading">#</a></h3>
+<h3>pgAdmin<a class="headerlink" href="#pgadmin" title="Permalink to this headline">#</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>You use pgadmin to load dumps for worksheet 2 and assignment 1.</p>
@@ -568,14 +546,14 @@ document.write(`
 </div></blockquote>
 </section>
 <section id="psql">
-<h3>psql<a class="headerlink" href="#psql" title="Permalink to this heading">#</a></h3>
+<h3>psql<a class="headerlink" href="#psql" title="Permalink to this headline">#</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>You can run SQL commands in pgadmin and/or jupyter notebook. <em><strong>We don’t need this for this course.</strong></em></p>
 </div>
 </section>
 <section id="ipython-sql-sql-and-sql">
-<h3><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> (<code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code>)<a class="headerlink" href="#ipython-sql-sql-and-sql" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> (<code class="docutils literal notranslate"><span class="pre">%sql</span></code> and <code class="docutils literal notranslate"><span class="pre">%%sql</span></code>)<a class="headerlink" href="#ipython-sql-sql-and-sql" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">ipython-sql</span></code> is a package that enables us to run SQL statements right from a Jupyter notebook. You should install this package in your conda environment ( you probabily have it <a class="reference internal" href="../installation/conda.html"><span class="doc std std-doc">if you used the yml file</span></a> to setup your environment). In order to use it, we should load it first:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +615,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Connected: postgres@postgres&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(psycopg2.OperationalError) could not translate host name &quot;database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com&quot; to address: nodename nor servname provided, or not known
+
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -656,116 +639,13 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-9 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>schemaname</th>
-            <th>tablename</th>
-            <th>tableowner</th>
-            <th>tablespace</th>
-            <th>hasindexes</th>
-            <th>hasrules</th>
-            <th>hastriggers</th>
-            <th>rowsecurity</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>tweets</td>
-            <td>stockvalues</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>False</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>fakedata</td>
-            <td>testindex</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>True</td>
-            <td>False</td>
-            <td>False</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>tweets</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>True</td>
-            <td>False</td>
-            <td>False</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>symbols</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>True</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>cashtags</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>False</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>cleantweets</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>True</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>users</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>True</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>replies</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>False</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-        <tr>
-            <td>tweets</td>
-            <td>retweets</td>
-            <td>postgres</td>
-            <td>None</td>
-            <td>False</td>
-            <td>False</td>
-            <td>True</td>
-            <td>False</td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <p>Let’s run some SQL statements now. Let’s retrieve the <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">population</span></code> columns from the <code class="docutils literal notranslate"><span class="pre">country</span></code> table:</p>
 <div class="cell docutils container">
@@ -775,74 +655,16 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-10 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>symbolid</th>
-            <th>nasdaqsymbol</th>
-            <th>securityname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>A</td>
-            <td>Agilent Technologies, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AA</td>
-            <td>Alcoa Corporation Common Stock </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>AAA</td>
-            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>AAAU</td>
-            <td>Goldman Sachs Physical Gold ETF Shares</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>AAC</td>
-            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>AAC=</td>
-            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>AAC+</td>
-            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>AAIC</td>
-            <td>Arlington Asset Investment Corp Class A (new)</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>AAIC-B</td>
-            <td>Arlington Asset Investment Corp 7.00% </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>AAIC-C</td>
-            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
-        </tr>
-    </tbody>
-</table></div></div>
+</div>
 </div>
 <section id="limiting-returned-and-displayed-rows">
-<h4>Limiting returned and displayed rows<a class="headerlink" href="#limiting-returned-and-displayed-rows" title="Permalink to this heading">#</a></h4>
+<h4>Limiting returned and displayed rows<a class="headerlink" href="#limiting-returned-and-displayed-rows" title="Permalink to this headline">#</a></h4>
 <p>As you can see, all rows are returned and displayed by default. This behaviour can be problematic if our table is very large for two reasons:</p>
 <ol class="arabic simple">
 <li><p>Retrieving large tables can be slow, and maybe not necessary</p></li>
@@ -863,72 +685,13 @@ WHERE schemaname != &#39;pg_catalog&#39; AND
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-6121 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>symbolid</th>
-            <th>nasdaqsymbol</th>
-            <th>securityname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>A</td>
-            <td>Agilent Technologies, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AA</td>
-            <td>Alcoa Corporation Common Stock </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>AAA</td>
-            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>AAAU</td>
-            <td>Goldman Sachs Physical Gold ETF Shares</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>AAC</td>
-            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>AAC=</td>
-            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>AAC+</td>
-            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>AAIC</td>
-            <td>Arlington Asset Investment Corp Class A (new)</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>AAIC-B</td>
-            <td>Arlington Asset Investment Corp 7.00% </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>AAIC-C</td>
-            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
-        </tr>
-    </tbody>
-</table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
+</div>
 </div>
 <p>Looks good. Let’s apply the magic to an entire cell so that we can break the lines:</p>
 <div class="cell docutils container">
@@ -940,76 +703,17 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-6121 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>symbolid</th>
-            <th>nasdaqsymbol</th>
-            <th>securityname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>A</td>
-            <td>Agilent Technologies, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AA</td>
-            <td>Alcoa Corporation Common Stock </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>AAA</td>
-            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>AAAU</td>
-            <td>Goldman Sachs Physical Gold ETF Shares</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>AAC</td>
-            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>AAC=</td>
-            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>AAC+</td>
-            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>AAIC</td>
-            <td>Arlington Asset Investment Corp Class A (new)</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>AAIC-B</td>
-            <td>Arlington Asset Investment Corp 7.00% </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>AAIC-C</td>
-            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
-        </tr>
-    </tbody>
-</table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
+</div>
 </div>
 </section>
 <section id="assigning-returned-rows-to-python-variables">
-<h4>Assigning returned rows to Python variables<a class="headerlink" href="#assigning-returned-rows-to-python-variables" title="Permalink to this heading">#</a></h4>
+<h4>Assigning returned rows to Python variables<a class="headerlink" href="#assigning-returned-rows-to-python-variables" title="Permalink to this headline">#</a></h4>
 <p>Single line queries:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1018,8 +722,10 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-6121 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1035,9 +741,10 @@ FROM tweets.symbols;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-6121 rows affected.
-Returning data to local variable query_output
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Environment variable $DATABASE_URL not set, and no connect string given.
+Connection info needed in SQLAlchemy format, example:
+               postgresql://username:password@hostname/dbname
+               or an existing connection: dict_keys([])
 </pre></div>
 </div>
 </div>
@@ -1048,75 +755,12 @@ Returning data to local variable query_output
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>symbolid</th>
-            <th>nasdaqsymbol</th>
-            <th>securityname</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>A</td>
-            <td>Agilent Technologies, Inc. Common Stock</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>AA</td>
-            <td>Alcoa Corporation Common Stock </td>
-        </tr>
-        <tr>
-            <td>3</td>
-            <td>AAA</td>
-            <td>Listed Funds Trust AAF First Priority CLO Bond ETF</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>AAAU</td>
-            <td>Goldman Sachs Physical Gold ETF Shares</td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>AAC</td>
-            <td>Ares Acquisition Corporation Class A Ordinary Shares</td>
-        </tr>
-        <tr>
-            <td>6</td>
-            <td>AAC=</td>
-            <td>Ares Acquisition Corporation Units, each consisting of one Class A ordinary share, and one-fifth of one redeemable warrant</td>
-        </tr>
-        <tr>
-            <td>7</td>
-            <td>AAC+</td>
-            <td>Ares Acquisition Corporation Redeemable Warrants, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>AAIC</td>
-            <td>Arlington Asset Investment Corp Class A (new)</td>
-        </tr>
-        <tr>
-            <td>9</td>
-            <td>AAIC-B</td>
-            <td>Arlington Asset Investment Corp 7.00% </td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>AAIC-C</td>
-            <td>Arlington Asset Investment Corp 8.250% Seies C Fixed-to-Floating Rate Cumulative Redeemable Preferred Stock   </td>
-        </tr>
-    </tbody>
-</table>
-<span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
 <p>Now you can use the <code class="docutils literal notranslate"><span class="pre">query_output</span></code> dataframe to do any other analysis or visualization that you learned in your other courses.</p>
 </section>
 </section>
 <section id="using-psycopg2-package-optional">
-<h3>Using psycopg2 package (OPTIONAL)<a class="headerlink" href="#using-psycopg2-package-optional" title="Permalink to this heading">#</a></h3>
+<h3>Using psycopg2 package (OPTIONAL)<a class="headerlink" href="#using-psycopg2-package-optional" title="Permalink to this headline">#</a></h3>
 <p>Refer <a class="reference internal" href="../additional/pscopg2.html"><span class="doc std std-doc">here</span></a> if you want to know on psycopg2 package and how to use it.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1129,7 +773,7 @@ Returning data to local variable query_output
 </section>
 </section>
 <section id="can-you">
-<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this heading">#</a></h2>
+<h2>Can you ?<a class="headerlink" href="#can-you" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Setup your database in cloud ?</p></li>
 <li><p>Recollect various options that are available while setting up ?</p></li>
@@ -1139,7 +783,7 @@ Returning data to local variable query_output
 </ul>
 </section>
 <section id="class-activity">
-<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this heading">#</a></h2>
+<h2>Class activity<a class="headerlink" href="#class-activity" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <a class="reference internal image-reference" href="../_images/cloudb21.png"><img alt="../_images/cloudb21.png" src="../_images/cloudb21.png" style="width: 50%;" /></a>
@@ -1181,10 +825,8 @@ Returning data to local variable query_output
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  
+                <footer class="bd-footer-article">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="lecture1.html"
@@ -1212,7 +854,6 @@ Returning data to local variable query_output
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1245,7 +886,7 @@ Returning data to local variable query_output
             
           </div>
           <footer class="bd-footer-content">
-            
+            <div class="bd-footer-content__inner">
 <div class="bd-footer-content__inner container">
   
   <div class="footer-item">
@@ -1258,7 +899,6 @@ By Gittu George, PhD
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
       © Copyright 2022.
@@ -1276,7 +916,7 @@ By Gittu George, PhD
     
   </div>
   
-</div>
+</div></div>
           </footer>
         
 
@@ -1285,8 +925,8 @@ By Gittu George, PhD
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
 
   <footer class="bd-footer">
   </footer>
