@@ -1,6 +1,6 @@
 # BAIT 580A - Topics in Information Technology Management
 
-These are lecture notes for the course BAIT 580A offered in Winter 2022 at the University of British Columbia, Vancouver, Canada. This course will be cloud-based and done in Amazon web services (AWS). Enrolled students should visit the UBC piazza board [course website](https://canvas.ubc.ca/courses/89141) for the latest announcements and discussions.
+These are lecture notes for the course BAIT 580A offered in Winter 2024W2 at the University of British Columbia, Vancouver, Canada. This course will be cloud-based and done in Amazon web services (AWS). Enrolled students should visit the UBC piazza board for the latest announcements and discussions.
 
 ## Learning objectives
 

@@ -1,7 +1,7 @@
 # Overview first week installations and setup.
 
 ```{note}
-Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this page to guide you through the things in a sequential order. You will also find various sources for assistance, including our lectures, videos, or tutorials, or a combination of all three. Hopefully, we will all navigate through this week smoothly.
+Disclaimer: Dealing with all these installations may be challenging if you are not from an IT background. Therefore, I have created this page to guide you through the things in a sequential order. You will also find various sources for assistance, including our lectures,  videos, or Office Hours, or a combination of all three. Hopefully, we will all navigate through this week smoothly.
 ```
 
 ## Following are the installations for first week 
@@ -52,7 +52,6 @@ Tutorial this week by Jordan 5 - 6 pm.
 ```{admonition} Helpers:
 - You can follow the instructions here [https://ggeorg02.github.io/bait580_2024/installation/aws.html](https://ggeorg02.github.io/bait580_2024/installation/aws.html)
 - I showed you this in lecture 1.
-- Daniel is also hosting a tutorial Friday 2 – 3 PM.
 ```
 (four)=
 ## Setting up your RDS database.
@@ -64,7 +63,6 @@ You need this for your worksheets and assignment 1.
 - You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
     - 11:30 Setting up RDS database
     - 25:58 IMPORTANT: Update security group RDS
-- Daniel is also hosting a tutorial Friday 2 – 3 PM.
 ```
 (six)=
 ## Connecting from your pgadmin to RDS database.
@@ -74,7 +72,6 @@ You need this for your worksheets and assignment 1.
 - You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
     - 29:00 Connecting pgadmin to the RDS
 - I will also show this in class during lecture 2 time.
-- Tutorial Daniel this week Friday 2 – 3 PM.
 ```
 (seven)=
 ## Loading dumps to your Database
@@ -86,7 +83,6 @@ You need to do this for assignment 1 and worksheet 2.
 - I will also show this in class during lecture 2 time.
 - You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
     - 34:30 Loading dumps to your Database
-- Tutorial Daniel this week Friday 2 – 3 PM.
 ```
 
 (five)=
@@ -96,14 +92,12 @@ You need to do this for assignment 1 and worksheet 2.
 - You can find information in our lecture 2 notes. [https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql](https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql)
 - You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
     - 52:58 Connecting Jupyter Notebook to the RDS
-- Tutorial Daniel this week Friday 2 – 3 PM.
 ```
 In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
 
 ```{admonition} Helpers:
 - You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
     - 45:10 Understanding absolute vs relative path
-Tutorial Daniel this week Friday 2 – 3 PM.
 ```
 (summary)=
 ## Summary
