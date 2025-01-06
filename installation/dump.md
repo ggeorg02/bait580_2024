@@ -20,6 +20,8 @@ Once the process is complete, you will see the `fakedata` schema and `testindex`
 
 ![](img/dumprefresh.png)
 
+## Windows user issues
+
 I have listed some of the issues that Windows users in session 2 experienced. 
 
 - You need to use a forward slash in the file path as that is how file path looks in windows(e.g., `\i 'C:/dumpname.sql'`)
