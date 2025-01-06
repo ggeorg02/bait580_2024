@@ -1,31 +1,29 @@
 format: jb-book
 root: intro
 parts:
-- caption: Installation instructions
+- caption: Overview of Installation instructions
   chapters:
   - file: installation/awssummary
+- caption: Installation instructions Details
+  chapters:
   - file: installation/conda
   - file: installation/jupyterlabtest
   - file: installation/pgadmin
   - file: installation/aws
   # - file: installation/RDSCreation
   - file: installation/dump
-
   # - file: installation/neo4j
-  - file: installation/Mongodb_installation
+  # - file: installation/Mongodb_installation
   
 - caption: Additional materials / Refresher
   chapters:
   - file: additional/pscopg2
   - file: additional/normalization
   - file: additional/views
+  - file: additional/packagemanager
   # - file: additional/secrets
 #   - file: installation/psql
 #   - file: additional/dumpscommand
-
-- caption: Video series
-  chapters:
-  - file: additional/video
 
 - caption: Regrade requests
   chapters:
