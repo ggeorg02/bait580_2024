@@ -120,6 +120,35 @@ align: center
 
 Once you click on `Resume` your database will be resumed in few minutes. 
 
+## Known issue with `py2neo`
+
 ```{warning}
 After you resume your database and when you try to connect to the database from your jupyter, you might run into an error `py2neo.errors.ServiceUnavailable: Cannot connect to any known routers`. There won't be issues in using it with the neo4j query space. If this is the situation you want to connect from the jupyterbook, then you want to create another instance after deleting the current instance. Sorry, it is weird that it is like this with the free database. 
+```
+If that too didn't help then you can use a different driver/package to connect to your database. Here are the instructions on using it 
+
+Here is the link to that. https://github.com/neo4j/neo4j-python-driver . Here are steps to get you started. (If I were you, I would make a new environment to test this thing out, to make sure that I don't mess with the environment that I have now)
+
+Install neo4j driver:
+
+```
+!pip install neo4j
+```
+
+Run the following:
+
+```
+import os
+import json
+import urllib.parse
+from neo4j import GraphDatabase
+with open('credentials_neo4j.json') as f:
+login = json.load(f)
+username = login['username']
+password = urllib.parse.quote(login['password'])
+host = login['host']
+url = "neo4j+s://{}".format(host)
+driver = GraphDatabase.driver(url, auth=(username, password))
+most = driver.session(database="neo4j").run("""MATCH (m:Movie) RETURN m.title LIMIT 1""").data()
+most
 ```
