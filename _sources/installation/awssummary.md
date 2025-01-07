@@ -60,17 +60,17 @@ You need this for your worksheets and assignment 1.
 
 ```{admonition} Helpers:
 - I will be showing you this in lecture 2.
-- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
-    - 11:30 Setting up RDS database
-    - 25:58 IMPORTANT: Update security group RDS
+- You can also check out the YouTube video [https://youtu.be/3OyQ3EeVPNs](https://youtu.be/3OyQ3EeVPNs)
+    - 0:00  Setting up RDS database
+    - 8:10 IMPORTANT Update security group RDS
 ```
 (six)=
 ## Connecting from your pgadmin to RDS database.
 
 ```{admonition} Helpers:
 - You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html](https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html)
-- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
-    - 29:00 Connecting pgadmin to the RDS
+- You can also check out the YouTube video [https://youtu.be/3OyQ3EeVPNs](https://youtu.be/3OyQ3EeVPNs)  
+    - 9:35 Connecting pgadmin to the RDS
 - I will also show this in class during lecture 2 time.
 ```
 (seven)=
@@ -81,8 +81,9 @@ You need to do this for assignment 1 and worksheet 2.
 ```{admonition} Helpers:
 - You can find information here in the lecture notes. [https://ggeorg02.github.io/bait580_2024/installation/dump.html](https://ggeorg02.github.io/bait580_2024/installation/dump.html) Windows users, make sure you check it.
 - I will also show this in class during lecture 2 time.
-- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
-    - 34:30 Loading dumps to your Database
+- You can also check out the YouTube video [https://youtu.be/3OyQ3EeVPNs](https://youtu.be/3OyQ3EeVPNs) 
+    - 12:30 Loading dumps to your Database
+
 ```
 
 (five)=
@@ -90,26 +91,21 @@ You need to do this for assignment 1 and worksheet 2.
 
 ```{admonition} Helpers:
 - You can find information in our lecture 2 notes. [https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql](https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql)
-- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
-    - 52:58 Connecting Jupyter Notebook to the RDS
+- You can also check out the YouTube video [https://youtu.be/3OyQ3EeVPNs](https://youtu.be/3OyQ3EeVPNs) 
+    - 18:19 Connecting Jupyter Notebook to the RDS
 ```
 In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.
 
-```{admonition} Helpers:
-- You can also check out the YouTube video [https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
-    - 45:10 Understanding absolute vs relative path
-```
 (summary)=
 ## Summary
 
 Here is the summary of the contents in the YouTube video, which is in sections above. You will also find it in the description of the YouTube video.
 
-[https://www.youtube.com/watch?v=Wm5zLfpLD8I](https://www.youtube.com/watch?v=Wm5zLfpLD8I)  
+[https://www.youtube.com/watch?v=IQV0kk0v6Hk](https://www.youtube.com/watch?v=IQV0kk0v6Hk)  
 
 - 0:00 Brief intro
-- 11:30 Setting up RDS database
-- 25:58 IMPORTANT: Update security group RDS
-- 29:00 Connecting pgadmin to the RDS
-- 34:30 Loading dumps to your Database
-- 45:10 Understanding absolute vs relative path
-- 52:58 Connecting Jupyter Notebook to the RDS
+- 5:50 Setting up RDS database
+- 12:00 IMPORTANT Update security group RDS
+- 13:30 Connecting pgadmin to the RDS
+- 16:23 Loading dumps to your Database
+- 22:08 Connecting Jupyter Notebook to the RDS

@@ -160,17 +160,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Load Dumps (using pgadmin)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Mongodb_installation.html">MongoDB installation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../additional/pscopg2.html">Using psycopg2 package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/normalization.html">Data Normalization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional/views.html">Views</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video series</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional/video.html">Mini Video series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../additional/packagemanager.html">Importance of package manager</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Regrade requests</span></p>
 <ul class="nav bd-sidenav">
@@ -472,10 +468,10 @@ document.write(`
 <p class="admonition-title">Helpers:</p>
 <ul class="simple">
 <li><p>I will be showing you this in lecture 2.</p></li>
-<li><p>You can also check out the YouTube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<li><p>You can also check out the YouTube video <a class="reference external" href="https://youtu.be/3OyQ3EeVPNs">https://youtu.be/3OyQ3EeVPNs</a></p>
 <ul>
-<li><p>11:30 Setting up RDS database</p></li>
-<li><p>25:58 IMPORTANT: Update security group RDS</p></li>
+<li><p>0:00  Setting up RDS database</p></li>
+<li><p>8:10 IMPORTANT Update security group RDS</p></li>
 </ul>
 </li>
 </ul>
@@ -487,9 +483,9 @@ document.write(`
 <p class="admonition-title">Helpers:</p>
 <ul class="simple">
 <li><p>You can find information here in the lecture notes. <a class="reference external" href="https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html">https://ggeorg02.github.io/bait580_2024/installation/pgadmin.html</a></p></li>
-<li><p>You can also check out the YouTube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<li><p>You can also check out the YouTube video <a class="reference external" href="https://youtu.be/3OyQ3EeVPNs">https://youtu.be/3OyQ3EeVPNs</a></p>
 <ul>
-<li><p>29:00 Connecting pgadmin to the RDS</p></li>
+<li><p>9:35 Connecting pgadmin to the RDS</p></li>
 </ul>
 </li>
 <li><p>I will also show this in class during lecture 2 time.</p></li>
@@ -504,9 +500,9 @@ document.write(`
 <ul class="simple">
 <li><p>You can find information here in the lecture notes. <a class="reference external" href="https://ggeorg02.github.io/bait580_2024/installation/dump.html">https://ggeorg02.github.io/bait580_2024/installation/dump.html</a> Windows users, make sure you check it.</p></li>
 <li><p>I will also show this in class during lecture 2 time.</p></li>
-<li><p>You can also check out the YouTube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<li><p>You can also check out the YouTube video <a class="reference external" href="https://youtu.be/3OyQ3EeVPNs">https://youtu.be/3OyQ3EeVPNs</a></p>
 <ul>
-<li><p>34:30 Loading dumps to your Database</p></li>
+<li><p>12:30 Loading dumps to your Database</p></li>
 </ul>
 </li>
 </ul>
@@ -518,37 +514,26 @@ document.write(`
 <p class="admonition-title">Helpers:</p>
 <ul class="simple">
 <li><p>You can find information in our lecture 2 notes. <a class="reference external" href="https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql">https://ggeorg02.github.io/bait580_2024/lectures/lecture2.html#ipython-sql-sql-and-sql</a></p></li>
-<li><p>You can also check out the YouTube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<li><p>You can also check out the YouTube video <a class="reference external" href="https://youtu.be/3OyQ3EeVPNs">https://youtu.be/3OyQ3EeVPNs</a></p>
 <ul>
-<li><p>52:58 Connecting Jupyter Notebook to the RDS</p></li>
+<li><p>18:19 Connecting Jupyter Notebook to the RDS</p></li>
 </ul>
 </li>
 </ul>
 </div>
 <p>In order to do this correctly, you should know about absolute and relative paths and how to give file location correctly. We expect you know this from your previous courses. But if you still need help, then use the following helpers.</p>
-<div class="admonition-helpers admonition">
-<p class="admonition-title">Helpers:</p>
-<ul class="simple">
-<li><p>You can also check out the YouTube video <a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
-<ul>
-<li><p>45:10 Understanding absolute vs relative path</p></li>
-</ul>
-</li>
-</ul>
-</div>
 </section>
 <section id="summary">
 <span id="id1"></span><h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Here is the summary of the contents in the YouTube video, which is in sections above. You will also find it in the description of the YouTube video.</p>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=Wm5zLfpLD8I">https://www.youtube.com/watch?v=Wm5zLfpLD8I</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=IQV0kk0v6Hk">https://www.youtube.com/watch?v=IQV0kk0v6Hk</a></p>
 <ul class="simple">
 <li><p>0:00 Brief intro</p></li>
-<li><p>11:30 Setting up RDS database</p></li>
-<li><p>25:58 IMPORTANT: Update security group RDS</p></li>
-<li><p>29:00 Connecting pgadmin to the RDS</p></li>
-<li><p>34:30 Loading dumps to your Database</p></li>
-<li><p>45:10 Understanding absolute vs relative path</p></li>
-<li><p>52:58 Connecting Jupyter Notebook to the RDS</p></li>
+<li><p>5:50 Setting up RDS database</p></li>
+<li><p>12:00 IMPORTANT Update security group RDS</p></li>
+<li><p>13:30 Connecting pgadmin to the RDS</p></li>
+<li><p>16:23 Loading dumps to your Database</p></li>
+<li><p>22:08 Connecting Jupyter Notebook to the RDS</p></li>
 </ul>
 </section>
 </section>

@@ -547,11 +547,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Connected: postgres@postgres&#39;
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -563,7 +558,7 @@ DROP INDEX if exists fakedata.pgweb_idx;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
 </pre></div>
@@ -582,48 +577,44 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144310.50..144310.51 rows=1 width=8) (actual time=1250.708..1256.055 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144310.28..144310.49 rows=2 width=8) (actual time=1247.747..1256.043 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143310.28..143310.29 rows=1 width=8) (actual time=1240.073..1240.074 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=24 width=0) (actual time=1240.070..1240.070 rows=0 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3724110</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.725 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1256.110 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=144385.24..144385.25 rows=1 width=8) (actual time=1239.318..1244.724 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144385.03..144385.24 rows=2 width=8) (actual time=1239.309..1244.717 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143385.03..143385.04 rows=1 width=8) (actual time=1232.102..1232.103 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143384.96 rows=25 width=0) (actual time=1232.098..1232.098 rows=0 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname = &#x27;flavor halibut&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3724110</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.219 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 1244.833 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>We are doing a pattern matching search to return all the <code class="docutils literal notranslate"><span class="pre">productname</span></code> that start with <code class="docutils literal notranslate"><span class="pre">fla</span></code>.</p>
@@ -635,48 +626,44 @@ EXPLAIN ANALYZE SELECT COUNT(*) FROM fakedata.testindex WHERE productname LIKE &
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1297.771..1301.867 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1292.387..1301.854 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1275.144..1275.145 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.096..1273.605 rows=9271 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.112 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1301.904 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=144386.34..144386.35 rows=1 width=8) (actual time=1389.019..1389.733 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144386.13..144386.34 rows=2 width=8) (actual time=1384.436..1389.719 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143386.13..143386.14 rows=1 width=8) (actual time=1375.788..1375.789 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143384.96 rows=465 width=0) (actual time=0.096..1374.113 rows=9271 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.099 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 1389.769 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <div class="admonition note">
@@ -698,7 +685,7 @@ CREATE INDEX if not exists default_testindex_index ON fakedata.testindex (produc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 </pre></div>
 </div>
@@ -715,36 +702,32 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 6 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=5.59..5.60 rows=1 width=8) (actual time=0.033..0.033 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..5.45 rows=58 width=0) (actual time=0.030..0.030 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.323 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 0.055 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=9.65..9.66 rows=1 width=8) (actual time=0.032..0.033 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..9.50 rows=61 width=0) (actual time=0.030..0.030 rows=0 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.210 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 0.058 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <div class="cell docutils container">
@@ -757,39 +740,35 @@ WHERE productname LIKE &#39;fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 7 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=7.25..7.26 rows=1 width=8) (actual time=7.399..7.400 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..4.46 rows=1117 width=0) (actual time=0.039..5.443 rows=27814 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((productname ~&gt;=~ &#x27;fla&#x27;::text) AND (productname ~&lt;~ &#x27;flb&#x27;::text))</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.203 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 7.444 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=11.25..11.26 rows=1 width=8) (actual time=4.700..4.701 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Index Only Scan using default_testindex_index on testindex  (cost=0.43..8.46 rows=1117 width=0) (actual time=0.033..3.442 rows=27814 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: ((productname ~&gt;=~ &#x27;fla&#x27;::text) AND (productname ~&lt;~ &#x27;flb&#x27;::text))</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Fetches: 0</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 1.034 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 5.326 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p><em><strong><em>Hurrayyy!!!!</em></strong></em> It increased the speed, and you see that your query planner used the index to speed up queries.</p>
@@ -807,45 +786,41 @@ WHERE productname LIKE &#39;%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 9 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=155947.12..155947.13 rows=1 width=8) (actual time=2246.624..2252.749 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=155946.90..155947.11 rows=2 width=8) (actual time=2246.615..2252.742 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=154946.90..154946.91 rows=1 width=8) (actual time=2221.586..2221.587 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=4654672 width=0) (actual time=0.026..1649.784 rows=3724110 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.072 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 2252.785 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=156010.12..156010.13 rows=1 width=8) (actual time=1882.714..1883.335 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=156009.90..156010.11 rows=2 width=8) (actual time=1877.923..1883.320 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=155009.90..155009.91 rows=1 width=8) (actual time=1871.705..1871.706 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143373.22 rows=4654672 width=0) (actual time=0.040..1341.050 rows=3724110 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.071 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 1883.369 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>It’s good that database engines are smart enough to identify if it’s better to look at an index or perform a sequential scan. Here in this example, the database engine understands the query is too broad. But, ultimately, it’s going to search through entire rows, so it’s better to perform a sequential scan rather than look up at the index.</p>
@@ -858,21 +833,17 @@ SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 1 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>pg_size_pretty</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>83 MB</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>pg_size_pretty</th>
+    </tr>
+    <tr>
+        <td>83 MB</td>
+    </tr>
 </table></div></div>
 </div>
 <p>Now we realize indexes are great! So let’s try some different queries.</p>
@@ -887,48 +858,44 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=2004.882..2007.964 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=2004.873..2007.957 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1992.540..1992.541 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.073..1988.611 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.086 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 2008.001 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=144374.60..144374.61 rows=1 width=8) (actual time=2611.150..2614.830 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144374.39..144374.60 rows=2 width=8) (actual time=2608.287..2614.816 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143374.39..143374.40 rows=1 width=8) (actual time=2583.330..2583.331 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143373.22 rows=465 width=0) (actual time=0.081..2577.623 rows=22257 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.075 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 2614.867 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>This was not too broad search; we were trying to return all the elements that contains <code class="docutils literal notranslate"><span class="pre">fla</span></code>. <em><strong><em>But why didn’t it speed things up? So we can’t always go with default indexing, and it might not be helpful in all cases.</em></strong></em> That’s why it’s important to know about different indexes and a general understanding of how it works. This will help you to choose indexes properly in various situations.</p>
@@ -994,7 +961,7 @@ CREATE INDEX if not exists hash_testindex_index ON fakedata.testindex USING hash
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
 </pre></div>
@@ -1012,39 +979,35 @@ explain analyze select count(*) from fakedata.testindex where productname = &#39
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 7 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=232.78..232.79 rows=1 width=8) (actual time=0.013..0.014 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.45..232.63 rows=58 width=0) (actual time=0.011..0.011 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on hash_testindex_index  (cost=0.00..4.43 rows=58 width=0) (actual time=0.009..0.010 rows=0 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.118 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 0.036 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=244.49..244.50 rows=1 width=8) (actual time=0.545..0.546 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=4.47..244.34 rows=61 width=0) (actual time=0.540..0.541 rows=0 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on hash_testindex_index  (cost=0.00..4.46 rows=61 width=0) (actual time=0.538..0.538 rows=0 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname = &#x27;flavor halibut&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.135 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 0.581 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <div class="cell docutils container">
@@ -1057,48 +1020,44 @@ WHERE productname LIKE &#39;fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144311.60..144311.61 rows=1 width=8) (actual time=1700.752..1715.719 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144311.39..144311.60 rows=2 width=8) (actual time=1700.742..1715.711 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143311.39..143311.40 rows=1 width=8) (actual time=1692.459..1692.460 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=465 width=0) (actual time=0.121..1683.538 rows=9271 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.087 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1715.755 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=144374.60..144374.61 rows=1 width=8) (actual time=1399.701..1402.610 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144374.39..144374.60 rows=2 width=8) (actual time=1396.766..1402.596 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143374.39..143374.40 rows=1 width=8) (actual time=1387.416..1387.417 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143373.22 rows=465 width=0) (actual time=0.490..1382.669 rows=9271 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3714839</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.081 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 1402.648 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <div class="cell docutils container">
@@ -1109,21 +1068,17 @@ SELECT pg_size_pretty (pg_indexes_size(&#39;fakedata.testindex&#39;));
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 1 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>pg_size_pretty</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>381 MB</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>pg_size_pretty</th>
+    </tr>
+    <tr>
+        <td>381 MB</td>
+    </tr>
 </table></div></div>
 </div>
 <ul class="simple">
@@ -1169,141 +1124,137 @@ WHERE productname LIKE &#39;%new%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 27510 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>nameid</th>
-            <th>productid</th>
-            <th>productname</th>
-            <th>price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>90412</td>
-            <td>132623</td>
-            <td>page news</td>
-            <td>$54.57</td>
-        </tr>
-        <tr>
-            <td>90424</td>
-            <td>103889</td>
-            <td>behavior news</td>
-            <td>$56.44</td>
-        </tr>
-        <tr>
-            <td>90550</td>
-            <td>172047</td>
-            <td>Germany newsprint</td>
-            <td>$34.25</td>
-        </tr>
-        <tr>
-            <td>90550</td>
-            <td>119841</td>
-            <td>ocean newsprint</td>
-            <td>$83.88</td>
-        </tr>
-        <tr>
-            <td>90620</td>
-            <td>70315</td>
-            <td>newsstand child</td>
-            <td>$66.10</td>
-        </tr>
-        <tr>
-            <td>90649</td>
-            <td>73081</td>
-            <td>newsstand quill</td>
-            <td>$82.05</td>
-        </tr>
-        <tr>
-            <td>90686</td>
-            <td>70315</td>
-            <td>newsstand child</td>
-            <td>$66.10</td>
-        </tr>
-        <tr>
-            <td>90699</td>
-            <td>50624</td>
-            <td>smell news</td>
-            <td>$8.82</td>
-        </tr>
-        <tr>
-            <td>90738</td>
-            <td>31929</td>
-            <td>news airport</td>
-            <td>$64.83</td>
-        </tr>
-        <tr>
-            <td>90738</td>
-            <td>132623</td>
-            <td>page news</td>
-            <td>$54.57</td>
-        </tr>
-        <tr>
-            <td>90753</td>
-            <td>51109</td>
-            <td>newsprint sailor</td>
-            <td>$83.88</td>
-        </tr>
-        <tr>
-            <td>90889</td>
-            <td>137134</td>
-            <td>news carp</td>
-            <td>$27.09</td>
-        </tr>
-        <tr>
-            <td>90967</td>
-            <td>119841</td>
-            <td>ocean newsprint</td>
-            <td>$83.88</td>
-        </tr>
-        <tr>
-            <td>91003</td>
-            <td>137134</td>
-            <td>news carp</td>
-            <td>$27.09</td>
-        </tr>
-        <tr>
-            <td>91070</td>
-            <td>119841</td>
-            <td>ocean newsprint</td>
-            <td>$83.88</td>
-        </tr>
-        <tr>
-            <td>91187</td>
-            <td>50603</td>
-            <td>newsstand tailor</td>
-            <td>$11.89</td>
-        </tr>
-        <tr>
-            <td>91256</td>
-            <td>103535</td>
-            <td>border newsstand</td>
-            <td>$2.32</td>
-        </tr>
-        <tr>
-            <td>91379</td>
-            <td>137134</td>
-            <td>news carp</td>
-            <td>$27.09</td>
-        </tr>
-        <tr>
-            <td>91397</td>
-            <td>380526</td>
-            <td>wool news</td>
-            <td>$44.23</td>
-        </tr>
-        <tr>
-            <td>91439</td>
-            <td>129317</td>
-            <td>newsstand suit</td>
-            <td>$85.11</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>nameid</th>
+        <th>productid</th>
+        <th>productname</th>
+        <th>price</th>
+    </tr>
+    <tr>
+        <td>60</td>
+        <td>325578</td>
+        <td>replace news</td>
+        <td>$41.82</td>
+    </tr>
+    <tr>
+        <td>171</td>
+        <td>34359</td>
+        <td>newsstand bird</td>
+        <td>$26.18</td>
+    </tr>
+    <tr>
+        <td>183</td>
+        <td>24364</td>
+        <td>newsstand Charles</td>
+        <td>$76.91</td>
+    </tr>
+    <tr>
+        <td>201</td>
+        <td>142804</td>
+        <td>Venezuela news</td>
+        <td>$8.37</td>
+    </tr>
+    <tr>
+        <td>285</td>
+        <td>90194</td>
+        <td>news cub</td>
+        <td>$31.87</td>
+    </tr>
+    <tr>
+        <td>392</td>
+        <td>185778</td>
+        <td>ounce newsstand</td>
+        <td>$92.40</td>
+    </tr>
+    <tr>
+        <td>496</td>
+        <td>158475</td>
+        <td>newsprint softball</td>
+        <td>$81.24</td>
+    </tr>
+    <tr>
+        <td>582</td>
+        <td>83529</td>
+        <td>hub newsstand</td>
+        <td>$87.06</td>
+    </tr>
+    <tr>
+        <td>644</td>
+        <td>130920</td>
+        <td>news carbon</td>
+        <td>$44.99</td>
+    </tr>
+    <tr>
+        <td>691</td>
+        <td>158475</td>
+        <td>newsprint softball</td>
+        <td>$81.24</td>
+    </tr>
+    <tr>
+        <td>760</td>
+        <td>221233</td>
+        <td>news frog</td>
+        <td>$64.35</td>
+    </tr>
+    <tr>
+        <td>783</td>
+        <td>199957</td>
+        <td>cathedral newsstand</td>
+        <td>$23.38</td>
+    </tr>
+    <tr>
+        <td>798</td>
+        <td>92081</td>
+        <td>cod newsstand</td>
+        <td>$87.92</td>
+    </tr>
+    <tr>
+        <td>858</td>
+        <td>250217</td>
+        <td>result newsstand</td>
+        <td>$50.36</td>
+    </tr>
+    <tr>
+        <td>1002</td>
+        <td>204775</td>
+        <td>sing newsstand</td>
+        <td>$57.54</td>
+    </tr>
+    <tr>
+        <td>1025</td>
+        <td>83529</td>
+        <td>hub newsstand</td>
+        <td>$87.06</td>
+    </tr>
+    <tr>
+        <td>1262</td>
+        <td>166133</td>
+        <td>chauffeur newsprint</td>
+        <td>$77.66</td>
+    </tr>
+    <tr>
+        <td>1324</td>
+        <td>24364</td>
+        <td>newsstand Charles</td>
+        <td>$76.91</td>
+    </tr>
+    <tr>
+        <td>1410</td>
+        <td>51369</td>
+        <td>lynx newsstand</td>
+        <td>$0.85</td>
+    </tr>
+    <tr>
+        <td>1490</td>
+        <td>158475</td>
+        <td>newsprint softball</td>
+        <td>$81.24</td>
+    </tr>
 </table>
 <span style="font-style:italic;text-align:center;">30 rows, truncated to displaylimit of 20</span></div></div>
 </div>
@@ -1336,48 +1287,44 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=1308153.11..1308153.12 rows=1 width=8) (actual time=30568.393..30571.853 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308152.89..1308153.10 rows=2 width=8) (actual time=30565.244..30571.840 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307152.89..1307152.90 rows=1 width=8) (actual time=30559.175..30559.177 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307094.70 rows=23276 width=0) (actual time=14.261..30555.238 rows=3158 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 2.273 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 30571.901 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=1308216.11..1308216.12 rows=1 width=8) (actual time=26177.806..26181.109 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=1308215.89..1308216.10 rows=2 width=8) (actual time=26175.780..26181.098 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=1307215.89..1307215.90 rows=1 width=8) (actual time=26170.671..26170.672 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..1307157.70 rows=23276 width=0) (actual time=13.197..26167.098 rows=3158 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3720952</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 14.785 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 26181.164 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>Let’s see how much time it is going to take with indexing. Before that we want to create index for the column.</p>
@@ -1393,12 +1340,12 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
 Done.
-CPU times: user 13.5 ms, sys: 4.27 ms, total: 17.8 ms
-Wall time: 54.8 s
+CPU times: user 13.5 ms, sys: 4.86 ms, total: 18.3 ms
+Wall time: 46.2 s
 </pre></div>
 </div>
 </div>
@@ -1413,54 +1360,50 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex WHERE to_tsvector(&#39;e
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 12 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=87233.51..87233.52 rows=1 width=8) (actual time=16.957..18.038 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87233.30..87233.51 rows=2 width=8) (actual time=16.823..18.030 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86233.30..86233.31 rows=1 width=8) (actual time=9.949..9.951 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=520.93..86175.11 rows=23276 width=0) (actual time=3.333..9.698 rows=3158 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=2547</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..506.96 rows=55862 width=0) (actual time=3.030..3.030 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.199 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 18.078 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=87136.43..87136.44 rows=1 width=8) (actual time=21.842..22.372 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=87136.21..87136.42 rows=2 width=8) (actual time=20.043..22.361 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=86136.21..86136.22 rows=1 width=8) (actual time=9.367..9.368 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=384.34..86078.02 rows=23276 width=0) (actual time=3.997..9.100 rows=3158 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=341</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..370.37 rows=55862 width=0) (actual time=6.646..6.647 rows=9474 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (to_tsvector(&#x27;english&#x27;::regconfig, productname) @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.754 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 22.423 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p><em>Wooohoooo!!! A great improvement!!</em> By creating a materialized view (We will see more about views in next class) with a computed <code class="docutils literal notranslate"><span class="pre">tsvector</span></code> column, we can make searches even faster, since it will not be necessary to redo the <code class="docutils literal notranslate"><span class="pre">to_tsvector</span></code> calls to verify index matches.</p>
@@ -1474,8 +1417,8 @@ CREATE INDEX if not exists pgweb_idx_mat ON fakedata.testindex_materialized USIN
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-Done.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
+11172331 rows affected.
 Done.
 </pre></div>
 </div>
@@ -1493,42 +1436,38 @@ EXPLAIN ANALYZE SELECT count(*) FROM fakedata.testindex_materialized WHERE produ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 8 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=17094.34..17094.35 rows=1 width=8) (actual time=6.143..6.164 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=62.97..17081.77 rows=5028 width=0) (actual time=3.230..5.582 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9160</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..61.71 rows=5028 width=0) (actual time=1.515..1.516 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.483 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 6.202 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=106302.42..106302.43 rows=1 width=8) (actual time=71.255..71.257 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex_materialized  (cost=384.34..106162.76 rows=55862 width=0) (actual time=2.816..70.070 rows=9474 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=9148</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx_mat  (cost=0.00..370.37 rows=55862 width=0) (actual time=1.452..1.453 rows=9474 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname_ts @@ &#x27;&#x27;&#x27;flavor&#x27;&#x27;&#x27;::tsquery)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 1.169 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 71.305 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>This indexing does speed up things if we want to search for a particular word from a column, like <code class="docutils literal notranslate"><span class="pre">flavor</span></code>. But if we want to search for some pattern within a sentence, then this index won’t help. EG the query what we trying from beginning</p>
@@ -1543,48 +1482,44 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 10 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=144545.55..144545.56 rows=1 width=8) (actual time=1640.765..1652.437 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144545.33..144545.54 rows=2 width=8) (actual time=1636.348..1652.424 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143545.33..143545.34 rows=1 width=8) (actual time=1629.902..1629.903 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143310.22 rows=94043 width=0) (actual time=0.076..1626.393 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.072 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 1652.475 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Finalize Aggregate  (cost=144374.60..144374.61 rows=1 width=8) (actual time=3312.767..3313.683 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Gather  (cost=144374.39..144374.60 rows=2 width=8) (actual time=3311.975..3313.674 rows=3 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=143374.39..143374.40 rows=1 width=8) (actual time=3302.964..3302.965 rows=1 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Seq Scan on testindex  (cost=0.00..143373.22 rows=465 width=0) (actual time=0.211..3296.475 rows=22257 loops=3)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filter: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rows Removed by Filter: 3701853</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.120 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 3313.725 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>Hence, we want a different flavor of gin indexing, trigram index. I found <a class="reference external" href="https://scoutapm.com/blog/how-to-make-text-searches-in-postgresql-faster-with-trigram-similarity">this</a> blog to help understand this.</p>
@@ -1607,11 +1542,11 @@ CREATE EXTENSION pg_trgm;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-(psycopg2.errors.DuplicateObject) extension &quot;pg_trgm&quot; already exists
-
-[SQL: CREATE EXTENSION pg_trgm;]
-(Background on this error at: https://sqlalche.me/e/14/f405)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
+Done.
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[]
 </pre></div>
 </div>
 </div>
@@ -1625,7 +1560,7 @@ CREATE INDEX pgweb_idx ON fakedata.testindex USING GIN (productname gin_trgm_ops
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 Done.
 Done.
 </pre></div>
@@ -1647,54 +1582,38 @@ WHERE productname LIKE &#39;%fla%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
-12 rows affected.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
+8 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Finalize Aggregate  (cost=124690.89..124690.90 rows=1 width=8) (actual time=136.738..142.947 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Gather  (cost=124690.67..124690.88 rows=2 width=8) (actual time=134.431..142.933 rows=3 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Planned: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Workers Launched: 2</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Partial Aggregate  (cost=123690.67..123690.68 rows=1 width=8) (actual time=127.604..127.605 rows=1 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Parallel Bitmap Heap Scan on testindex  (cost=2093.20..123455.56 rows=94043 width=0) (actual time=24.321..124.265 rows=22257 loops=3)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=18807</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..2036.78 rows=225704 width=0) (actual time=19.149..19.150 rows=66772 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.156 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 143.009 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=4149.06..4149.07 rows=1 width=8) (actual time=584.019..584.021 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=72.43..4146.27 rows=1117 width=0) (actual time=17.973..577.445 rows=66772 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=46066</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..72.15 rows=1117 width=0) (actual time=8.702..8.703 rows=66772 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%fla%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.402 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 584.069 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <div class="cell docutils container">
@@ -1708,42 +1627,38 @@ WHERE productname LIKE &#39;%flavor%&#39;;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-2.ch0m6kus6nrp.us-east-1.rds.amazonaws.com:5432/postgres
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> * postgresql://postgres:***@database-1.ccf3srhijxm7.us-east-1.rds.amazonaws.com:5432/postgres
 8 rows affected.
 </pre></div>
 </div>
 <div class="output text_html"><table>
-    <thead>
-        <tr>
-            <th>QUERY PLAN</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Aggregate  (cost=4333.15..4333.16 rows=1 width=8) (actual time=17.930..17.932 rows=1 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=256.66..4330.36 rows=1117 width=0) (actual time=5.679..17.452 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=8925</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..256.38 rows=1117 width=0) (actual time=4.274..4.275 rows=9474 loops=1)</td>
-        </tr>
-        <tr>
-            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
-        </tr>
-        <tr>
-            <td>Planning Time: 0.091 ms</td>
-        </tr>
-        <tr>
-            <td>Execution Time: 17.970 ms</td>
-        </tr>
-    </tbody>
+    <tr>
+        <th>QUERY PLAN</th>
+    </tr>
+    <tr>
+        <td>Aggregate  (cost=4340.50..4340.51 rows=1 width=8) (actual time=44.886..44.888 rows=1 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;-&gt;  Bitmap Heap Scan on testindex  (cost=263.87..4337.70 rows=1117 width=0) (actual time=12.433..44.388 rows=9474 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Recheck Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Heap Blocks: exact=8921</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&gt;  Bitmap Index Scan on pgweb_idx  (cost=0.00..263.59 rows=1117 width=0) (actual time=7.086..7.087 rows=9474 loops=1)</td>
+    </tr>
+    <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Index Cond: (productname ~~ &#x27;%flavor%&#x27;::text)</td>
+    </tr>
+    <tr>
+        <td>Planning Time: 0.104 ms</td>
+    </tr>
+    <tr>
+        <td>Execution Time: 44.926 ms</td>
+    </tr>
 </table></div></div>
 </div>
 <p>Finally, we see this query is using indexes, and it did speed up the query.</p>
