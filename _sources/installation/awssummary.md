@@ -103,8 +103,8 @@ Here is the summary of the contents in the YouTube video, which is in sections a
 
 [https://www.youtube.com/watch?v=3OyQ3EeVPNs](https://www.youtube.com/watch?v=3OyQ3EeVPNs)  
 
-0:00  Setting up RDS database
-8:10 IMPORTANT Update security group RDS
-9:35 Connecting pgadmin to the RDS
-12:30 Loading dumps to your Database
-18:19 Connecting Jupyter Notebook to the RDS
+- 0:00  Setting up RDS database
+- 8:10 IMPORTANT Update security group RDS
+- 9:35 Connecting pgadmin to the RDS
+- 12:30 Loading dumps to your Database
+- 18:19 Connecting Jupyter Notebook to the RDS
