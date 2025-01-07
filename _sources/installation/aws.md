@@ -43,7 +43,7 @@ align: center
 ---
 ```
 
-- Later, follow the instructions in [this](https://canvas.ubc.ca/files/30825932/download?download_frd=1) pdf. 
+- Later, follow the instructions in [this](https://canvas.ubc.ca/files/37213465/download?download_frd=1) pdf. 
 
 
 After clicking on `Learner Lab - Foundational Services,` if you can't see anything (or show a `refused to connect` error), in most cases, it's that you have to configure your [SwitchyOmega for chrome](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-connect-master-node-proxy.html) or if you see a blank screen you probably be using safari. If you do see lab with no issues then you don't have to install SwitchyOmega.
