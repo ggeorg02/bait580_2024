@@ -13,7 +13,7 @@ Disclaimer: Dealing with all these installations may be challenging if you are n
 - [Connecting from your Jupyter Notebook to the RDS database](five)
 - [Connecting from your pgadmin to the RDS database](six)
 - [Loading dumps to your Database](seven)
-- [Summary](summary)
+- [Summary](summary) 
 
 
 (one)=
@@ -103,9 +103,8 @@ Here is the summary of the contents in the YouTube video, which is in sections a
 
 [https://www.youtube.com/watch?v=3OyQ3EeVPNs](https://www.youtube.com/watch?v=3OyQ3EeVPNs)  
 
-- 0:00 Brief intro
-- 5:50 Setting up RDS database
-- 12:00 IMPORTANT Update security group RDS
-- 13:30 Connecting pgadmin to the RDS
-- 16:23 Loading dumps to your Database
-- 22:08 Connecting Jupyter Notebook to the RDS
+0:00  Setting up RDS database
+8:10 IMPORTANT Update security group RDS
+9:35 Connecting pgadmin to the RDS
+12:30 Loading dumps to your Database
+18:19 Connecting Jupyter Notebook to the RDS
