@@ -101,7 +101,7 @@ In order to do this correctly, you should know about absolute and relative paths
 
 Here is the summary of the contents in the YouTube video, which is in sections above. You will also find it in the description of the YouTube video.
 
-[https://www.youtube.com/watch?v=IQV0kk0v6Hk](https://www.youtube.com/watch?v=IQV0kk0v6Hk)  
+[https://www.youtube.com/watch?v=3OyQ3EeVPNs](https://www.youtube.com/watch?v=3OyQ3EeVPNs)  
 
 - 0:00 Brief intro
 - 5:50 Setting up RDS database
