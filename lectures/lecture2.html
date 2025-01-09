@@ -421,6 +421,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-rds">Setting up RDS</a></li>
@@ -452,6 +453,24 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="lecture-2-setting-up-rds-and-connection-to-cloud">
 <h1>Lecture 2: Setting up RDS and connection to cloud<a class="headerlink" href="#lecture-2-setting-up-rds-and-connection-to-cloud" title="Permalink to this headline">#</a></h1>
 <p>Gittu George, January 9 2025</p>
+<section id="announcements">
+<h2>Announcements<a class="headerlink" href="#announcements" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Remember to watch this youtube video. <a class="reference external" href="https://www.youtube.com/watch?v=3OyQ3EeVPNs">https://www.youtube.com/watch?v=3OyQ3EeVPNs</a></p></li>
+<li><p>We finally managed to get the ROOM booking, and here are the TA OH details.</p>
+<ul>
+<li><p>Tuesday 12:00–1:00 PM – HA 358 - i.e., right after class, so that you can continue asking your questions with the TA.</p></li>
+<li><p>Tuesday 4:00–5:00 PM – HA 454 - i.e., right after class, so that you can continue asking your questions with the TA.</p></li>
+<li><p>Thursday 5:00–6:00 PM – HA 454</p></li>
+<li><p>Friday 3-4 PM - VIA ZOOM. Here is the link <a class="reference external" href="https://ubc.zoom.us/j/65657043766?pwd=0btOmgt8qHO5X1IayvghiX8lmM0fd1.1">https://ubc.zoom.us/j/65657043766?pwd=0btOmgt8qHO5X1IayvghiX8lmM0fd1.1</a></p></li>
+</ul>
+</li>
+<li><p>We will be having an OPTIONAL tutorial section on Friday 4-5pm, on conda and it’s importance. More details in piazza. <a class="reference external" href="https://piazza.com/class/m5l9q2ervdk6pj/post/7">https://piazza.com/class/m5l9q2ervdk6pj/post/7</a></p></li>
+<li><p>Worksheets for the following week will be released on Friday before 5:00 PM, so you will have time to review if you want.</p></li>
+<li><p>Start setting up and working on assignments early so that you have enough time to plan and ask questions. If you wait until the deadline to ask questions, you might not get a response in time.</p></li>
+<li><p>If your attendance falls below the required threshold for the MBAN program, your name will be reported to the Program Manager. Please ensure you get any concessions approved beforehand.</p></li>
+</ul>
+</section>
 <section id="todays-agenda">
 <h2>Todays Agenda<a class="headerlink" href="#todays-agenda" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
@@ -1114,6 +1133,113 @@ Returning data to local variable query_output
 </table>
 <span style="font-style:italic;text-align:center;">6121 rows, truncated to displaylimit of 10</span></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">query_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>symbolid</th>
+      <th>nasdaqsymbol</th>
+      <th>securityname</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>A</td>
+      <td>Agilent Technologies, Inc. Common Stock</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>AA</td>
+      <td>Alcoa Corporation Common Stock</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>AAA</td>
+      <td>Listed Funds Trust AAF First Priority CLO Bond...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>AAAU</td>
+      <td>Goldman Sachs Physical Gold ETF Shares</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>AAC</td>
+      <td>Ares Acquisition Corporation Class A Ordinary ...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6116</th>
+      <td>6117</td>
+      <td>ZUO</td>
+      <td>Zuora, Inc. Class A Common Stock</td>
+    </tr>
+    <tr>
+      <th>6117</th>
+      <td>6118</td>
+      <td>ZVIA</td>
+      <td>Zevia PBC Class A Common Stock</td>
+    </tr>
+    <tr>
+      <th>6118</th>
+      <td>6119</td>
+      <td>ZVV</td>
+      <td>NYSE ARCA test stock</td>
+    </tr>
+    <tr>
+      <th>6119</th>
+      <td>6120</td>
+      <td>ZXIET</td>
+      <td>IEX Test Company Test Symbol Three for IEX</td>
+    </tr>
+    <tr>
+      <th>6120</th>
+      <td>6121</td>
+      <td>ZYME</td>
+      <td>Zymeworks Inc. Common Shares</td>
+    </tr>
+  </tbody>
+</table>
+<p>6121 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Must use <code class="docutils literal notranslate"><span class="pre">pd.DataFrame(query_output)</span></code>, so that you get it as a pandas dataframe which you can use for further analysis, and visualization.</p>
+</div>
 <p>Now you can use the <code class="docutils literal notranslate"><span class="pre">query_output</span></code> dataframe to do any other analysis or visualization that you learned in your other courses.</p>
 </section>
 </section>
@@ -1153,7 +1279,7 @@ Returning data to local variable query_output
 <ul class="simple">
 <li><p>Setup your RDS instance</p></li>
 <li><p>Load data to your RDS instance using dump</p></li>
-<li><p>Ensure you installed the necessary packages for this course (bait580env.yml). Refer to Conda installation instructions for more details.</p></li>
+<li><p>Ensure you installed the necessary packages for this course (<code class="docutils literal notranslate"><span class="pre">bait580_2024.yml</span></code>). Refer to Conda installation instructions for more details.</p></li>
 </ul>
 </section>
 </section>
@@ -1219,6 +1345,7 @@ Returning data to local variable query_output
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#announcements">Announcements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todays-agenda">Todays Agenda</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-rds">Setting up RDS</a></li>
