@@ -935,7 +935,6 @@ WHERE productname LIKE &#39;%fla%&#39;;
 <li><p>Values are balanced across nodes to produce a minimum-spanning tree.</p></li>
 <li><p>Each node splits values, each “leaf” points to addresses.</p></li>
 <li><p>All nodes are equidistant from the root.</p></li>
-<li><p>High Key</p></li>
 </ul>
 <a class="reference internal image-reference" href="../_images/btreenum.png"><img alt="../_images/btreenum.png" src="../_images/btreenum.png" style="width: 80%;" /></a>
 <p>Btree is not just about dealing with numbers but also handling text columns; that’s the reason why I gave <code class="docutils literal notranslate"><span class="pre">varchar_pattern_ops</span></code> as <code class="docutils literal notranslate"><span class="pre">opclass</span></code>. So in this example, finds the field that we are looking for in just 3 steps, rather than scanning 7 rows.</p>
