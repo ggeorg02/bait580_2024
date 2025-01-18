@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using psycopg2 package" href="../additional/pscopg2.html" />
+    <link rel="prev" title="Load Dumps (using pgadmin)" href="dump.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -152,12 +154,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="awssummary.html">Overview and setup videos.</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Installation instructions Details</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="conda.html">Conda</a></li>
 <li class="toctree-l1"><a class="reference internal" href="jupyterlabtest.html">JuypterLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pgadmin.html">pgAdmin</a></li>
 <li class="toctree-l1"><a class="reference internal" href="aws.html">AWS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Load Dumps (using pgadmin)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Neo4j Instalaltion (week 3)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional materials / Refresher</span></p>
 <ul class="nav bd-sidenav">
@@ -177,6 +180,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture2.html">Lecture 2: Setting up RDS and connection to cloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture3.html">Lecture 3: Disk Management and Indexes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lectures/lecture4.html">Lecture 4: (de)Normalization &amp; Data Warehousing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture5.html">Lecture 5: Beyond RDBMS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture6.html">Lecture 6: CQL 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/lecture7.html">Lecture 7: CQL 2/ MongoDB introduction</a></li>
 </ul>
 
     </div>
@@ -371,9 +377,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-video">Setting up graph database - video</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-instructions">Written instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -391,126 +394,16 @@ document.write(`
 <h2>Setting up graph database - video<a class="headerlink" href="#setting-up-graph-database-video" title="Permalink to this headline">#</a></h2>
 <p>Week 3 and 4</p>
 <p>You will do everything mentioned below as part of worksheet 5. You must watch this video that talks about everything in worksheet 5. Here is the video link</p>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=i010tSnGmyI">https://www.youtube.com/watch?v=i010tSnGmyI</a></p>
+<p><a class="reference external" href="https://www.youtube.com/watch?v=fRcIiZALhc4">https://www.youtube.com/watch?v=fRcIiZALhc4</a></p>
 <p>Here are the timestamps for each question:</p>
 <ul class="simple">
 <li><p>0:00 Brief Intro - The plan</p></li>
-<li><p>1:38 Que 2 - WS 5</p></li>
-<li><p>06:45 Que 3 - WS 5</p></li>
-<li><p>11:56 Que 4 - WS 5</p></li>
-<li><p>17:01 Que 5 - WS 5</p></li>
-<li><p>22:40 Que 5 - WS 5 - some issues and fixes</p></li>
-<li><p>26:15 Que 6 - WS 4 - using a different package</p></li>
-<li><p>27:53 Conclusion and learnings</p></li>
+<li><p>0:49 Question 2 - WS 5</p></li>
+<li><p>03:14 Question 3 - WS 5</p></li>
+<li><p>05:48 Question 4 - WS 5</p></li>
+<li><p>08:06 Question 5 - WS 5</p></li>
+<li><p>11:16 Question 5 - WS 5 - some issues/fixes using a different package</p></li>
 </ul>
-</section>
-<section id="written-instructions">
-<h2>Written instructions<a class="headerlink" href="#written-instructions" title="Permalink to this headline">#</a></h2>
-<p>In this document, we will set up a neo4j aura instance in the cloud.</p>
-<p>Click on <a class="reference external" href="https://neo4j.com/cloud/aura/?ref=get-started-dropdown-cta">this</a> and press on <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Free</span></code>; this will take you to the registration page.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/register.png"><img alt="../_images/register.png" src="../_images/register.png" style="width: 900px;" /></a>
-</figure>
-<p>Enter an email and password that you want to use for the registration.</p>
-<p>Followed by this will take you to this page,</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/verifyemail.png"><img alt="../_images/verifyemail.png" src="../_images/verifyemail.png" style="width: 900px;" /></a>
-</figure>
-<p>You need to verify your email and <code class="docutils literal notranslate"><span class="pre">Go</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">Dashboard</span></code>. Then, agree to the <code class="docutils literal notranslate"><span class="pre">terms</span> <span class="pre">and</span> <span class="pre">conditions,</span></code> and after that, it will take you to this page to create your first database. If it doesn’t takes you automatically then you can click on the button <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Instance</span></code>. Following is how the page looks like - Here you want to create</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/emptyinstance.png"><img alt="../_images/emptyinstance.png" src="../_images/emptyinstance.png" style="width: 900px;" /></a>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>You can only create one free instance. If you want to create another you want to first you want to destroy the existing one.</p>
-</div>
-<p>We will be going with <code class="docutils literal notranslate"><span class="pre">AuraDB</span> <span class="pre">Free</span> <span class="pre">instance</span></code>. You need to keep an eye on the limitations of this database, copying and pasting it here for better visibility.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<ul class="simple">
-<li><p>1 forever free database</p></li>
-<li><p>Limits on graph size (50k nodes, 175k relationships)</p></li>
-<li><p>Standard procedure library (apoc-core)</p></li>
-<li><p>Auto-pause after 3 days of inactivity</p></li>
-</ul>
-</div>
-<p>You will get credentials for your database; make sure you save it safely. We need this for making a connection to this database.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/credentials.png"><img alt="../_images/credentials.png" src="../_images/credentials.png" style="width: 900px;" /></a>
-</figure>
-<p>It might take some time, but you will see it <code class="docutils literal notranslate"><span class="pre">Running</span></code> once your database is ready.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/settingup.png"><img alt="../_images/settingup.png" src="../_images/settingup.png" style="width: 900px;" /></a>
-</figure>
-<p>Make a note of the connection URL; you will need this to connect to your database.</p>
-<p>To summarize, now you created a neo4j graph database in the cloud.</p>
-<div class="admonition important">
-<p class="admonition-title">Important</p>
-<p>You need the following information for connecting to the graph database (in our case, for connecting from our jupyter notebook).</p>
-<ul class="simple">
-<li><p>connection URL</p></li>
-<li><p>username = default is neo4j</p></li>
-<li><p>password</p></li>
-</ul>
-</div>
-<p>You can now <code class="docutils literal notranslate"><span class="pre">Open</span> <span class="pre">with</span></code> neo4j browser.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/query.png"><img alt="../_images/query.png" src="../_images/query.png" style="width: 900px;" /></a>
-</figure>
-<p>This will take you to a page where you want to enter your connection details. Most of them will be automatically populated, and you want to enter your password.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/finalconnect.png"><img alt="../_images/finalconnect.png" src="../_images/finalconnect.png" style="width: 900px;" /></a>
-</figure>
-<p>This is your workspace for creating and exploring your graph database. Now it got nothing in there as we haven’t exported any data.</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/nowconnected.png"><img alt="../_images/nowconnected.png" src="../_images/nowconnected.png" style="width: 900px;" /></a>
-</figure>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>If you want to log back in, you can use this <a class="reference external" href="https://neo4j.com/cloud/platform/aura-graph-database/">URL</a>; Click on <code class="docutils literal notranslate"><span class="pre">Start</span> <span class="pre">Free</span></code> and then login using your email and password. Once you log in you can see your databases.</p></li>
-</ul>
-</div>
-</section>
-<section id="resume-database">
-<h2>Resume Database<a class="headerlink" href="#resume-database" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>If the database is inactive, then it will automatically be paused. So you need to start it after logging back.</p></li>
-</ul>
-<p>Here is how it looks like;</p>
-<figure class="align-center">
-<a class="reference internal image-reference" href="../_images/neo4jresume.png"><img alt="../_images/neo4jresume.png" src="../_images/neo4jresume.png" style="width: 900px;" /></a>
-</figure>
-<p>Once you click on <code class="docutils literal notranslate"><span class="pre">Resume</span></code> your database will be resumed in few minutes.</p>
-</section>
-<section id="known-issue-with-py2neo">
-<h2>Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code><a class="headerlink" href="#known-issue-with-py2neo" title="Permalink to this headline">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>After you resume your database and when you try to connect to the database from your jupyter, you might run into an error <code class="docutils literal notranslate"><span class="pre">py2neo.errors.ServiceUnavailable:</span> <span class="pre">Cannot</span> <span class="pre">connect</span> <span class="pre">to</span> <span class="pre">any</span> <span class="pre">known</span> <span class="pre">routers</span></code>. There won’t be issues in using it with the neo4j query space. If this is the situation you want to connect from the jupyterbook, then you want to create another instance after deleting the current instance. Sorry, it is weird that it is like this with the free database.</p>
-</div>
-<p>If that too didn’t help then you can use a different driver/package to connect to your database. Here are the instructions on using it</p>
-<p>Here is the link to that. https://github.com/neo4j/neo4j-python-driver . Here are steps to get you started. (If I were you, I would make a new environment to test this thing out, to make sure that I don’t mess with the environment that I have now)</p>
-<p>Install neo4j driver:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>!pip install neo4j
-</pre></div>
-</div>
-<p>Run the following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">urllib.parse</span>
-<span class="kn">from</span> <span class="nn">neo4j</span> <span class="kn">import</span> <span class="n">GraphDatabase</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials_neo4j.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-<span class="n">login</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="n">username</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
-<span class="n">password</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">quote</span><span class="p">(</span><span class="n">login</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">])</span>
-<span class="n">host</span> <span class="o">=</span> <span class="n">login</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;neo4j+s://</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">host</span><span class="p">)</span>
-<span class="n">driver</span> <span class="o">=</span> <span class="n">GraphDatabase</span><span class="o">.</span><span class="n">driver</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
-<span class="n">most</span> <span class="o">=</span> <span class="n">driver</span><span class="o">.</span><span class="n">session</span><span class="p">(</span><span class="n">database</span><span class="o">=</span><span class="s2">&quot;neo4j&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;MATCH (m:Movie) RETURN m.title LIMIT 1&quot;&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">data</span><span class="p">()</span>
-<span class="n">most</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -542,6 +435,24 @@ document.write(`
                 <footer class="bd-footer-article">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="dump.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Load Dumps (using pgadmin)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../additional/pscopg2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using psycopg2 package</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -558,9 +469,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-graph-database-video">Setting up graph database - video</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#written-instructions">Written instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resume-database">Resume Database</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-issue-with-py2neo">Known issue with <code class="docutils literal notranslate"><span class="pre">py2neo</span></code></a></li>
 </ul>
   </nav></div>
 
